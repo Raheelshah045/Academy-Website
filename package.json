@@ -2,36 +2,23 @@
   "name": "almaas-quran-academy",
   "version": "1.0.0",
   "private": true,
-  "description": "1. Create account on [vercel.com](https://vercel.com) 2. Click \"Add New Project\" 3. Import this Git repository 4. Vercel will auto-detect React and deploy! 5. Done! ✅",
-  "homepage": "https://github.com/Raheelshah045/Academy-Website#readme",
-  "bugs": {
-    "url": "https://github.com/Raheelshah045/Academy-Website/issues"
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "lucide-react": "^0.263.1",
+    "web-vitals": "^2.1.4"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Raheelshah045/Academy-Website.git"
-  },
-  "license": "ISC",
-  "author": "",
-  "type": "commonjs",
-  "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "lucide-react": "^0.263.1"
-  },
-  "devDependencies": {
-    "react-scripts": "^5.0.1"
-  },
   "eslintConfig": {
     "extends": [
-      "react-app"
+      "react-app",
+      "react-app/jest"
     ]
   },
   "browserslist": {
