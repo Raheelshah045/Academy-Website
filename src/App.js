@@ -80,7 +80,7 @@ const AlmaasQuranAcademy = () => {
 
   const LogoImage = ({ className = "h-16 w-16" }) => (
     <img 
-      src="https://raw.githubusercontent.com/Raheelshah045/Academy-work/50e55a129fb6eacfd3dd73727736d43505f0e98e/image/logo"
+      src="logo.png"
       alt="Almaas Logo"
       className={`${className} object-contain`}
     />
