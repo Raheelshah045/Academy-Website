@@ -66,6 +66,7 @@ const AlmaasQuranAcademy = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // eslint-disable-next-line no-unused-vars
   const [formData, setFormData] = useState({
     firstName: '', lastName: '', email: '', course: '', plan: '', phone: '', message: ''
   });
@@ -968,7 +969,7 @@ const AlmaasQuranAcademy = () => {
             </div>
           </div>
           <div className="border-t border-slate-800 pt-8 text-center text-sm">
-            ©Almaas Online Quran Academy.
+            © 2026 Almaas Online Quran Academy. All rights reserved.
           </div>
         </div>
       </footer>
