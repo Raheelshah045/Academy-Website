@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Globe, Shield, CreditCard, UserPlus, LogIn, Newspaper, ChevronDown, Facebook, Instagram, Youtube, ArrowLeft } from 'lucide-react';
+import { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Globe, Shield, CreditCard, UserPlus, Newspaper, ChevronDown, Facebook, Instagram, Youtube, ArrowLeft } from 'lucide-react';
 
 const AlmaasQuranAcademy = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,7 +25,7 @@ const AlmaasQuranAcademy = () => {
       setCurrentTagline((prev) => (prev + 1) % taglines.length);
     }, 3500);
     return () => clearInterval(taglineInterval);
-  }, []);
+  }, [taglines.length]);
 
   // Add Google Fonts for Arabic calligraphy
   useEffect(() => {
@@ -955,8 +955,8 @@ const AlmaasQuranAcademy = () => {
             <div>
               <h4 className="text-white font-semibold mb-3">Legal</h4>
               <div className="space-y-2 text-sm">
-                <a href="#" className="block hover:text-white">Privacy Policy</a>
-                <a href="#" className="block hover:text-white">Terms & Conditions</a>
+                <button onClick={() => alert('Privacy Policy - Coming Soon')} className="block hover:text-white text-left">Privacy Policy</button>
+                <button onClick={() => alert('Terms & Conditions - Coming Soon')} className="block hover:text-white text-left">Terms & Conditions</button>
               </div>
             </div>
             <div>
@@ -968,7 +968,7 @@ const AlmaasQuranAcademy = () => {
             </div>
           </div>
           <div className="border-t border-slate-800 pt-8 text-center text-sm">
-            © 2026 Almaas Online Quran Academy. All rights reserved.
+            ©Almaas Online Quran Academy.
           </div>
         </div>
       </footer>
