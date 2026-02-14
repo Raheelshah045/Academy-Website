@@ -1,4 +1,7 @@
-﻿
+﻿// Get React hooks from React library
+const { useState, useEffect } = React;
+
+// Get Lucide icons
 const { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Globe, Shield, CreditCard, UserPlus, Newspaper, ChevronDown, Facebook, Instagram, Youtube, ArrowLeft } = lucide;
 
 const AlmaasQuranAcademy = () => {
@@ -1029,11 +1032,5 @@ ${formData.message ? `ðŸ’¬ *Message:* ${formData.message}` : ''}
   );
 };
 
-export default AlmaasQuranAcademy;
 
-
-
-
-
-const { useState, useEffect } = React;
 ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(AlmaasQuranAcademy));
