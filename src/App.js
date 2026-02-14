@@ -108,7 +108,7 @@ ${formData.message ? `💬 *Message:* ${formData.message}` : ''}
 
   const LogoImage = ({ className = "h-16 w-16" }) => (
     <img
-      src=".\/logo.png"
+      src="./logo.png"
       alt="Almaas Logo"
       className={`${className} object-contain`}
       onError={(e) => {
@@ -122,7 +122,7 @@ ${formData.message ? `💬 *Message:* ${formData.message}` : ''}
       title: "Qaida for Beginners",
       shortDesc: "A foundational course designed to help beginners learn the Arabic alphabet, basic pronunciation, and the rules of Quranic reading step by step, with clarity and ease.",
       fullDesc: "This foundational course is designed for beginners who are starting their Quran learning journey from the very beginning. Students learn Arabic letters, correct pronunciation, and letter formation in a simple, step-by-step manner. Special focus is given to clarity, repetition, and individual attention so learners build confidence before moving on to Quran reading. This course is suitable for children, adults, and new learners with no prior Arabic background.",
-      image: ".\/Quaida.jpg",
+      image: "./Quaida.jpg",
       whatYouLearn: [
         "Arabic alphabet (Huroof-e-Hijai)",
         "Correct pronunciation and articulation",
@@ -139,7 +139,7 @@ ${formData.message ? `💬 *Message:* ${formData.message}` : ''}
       title: "Quran Reading",
       shortDesc: "A guided course designed to help learners read the Holy Quran fluently, focusing on correct pronunciation, smooth recitation, and building confidence in every verse.",
       fullDesc: "This course helps students read the Holy Quran fluently and confidently with correct pronunciation. Learners are guided step by step to improve flow, accuracy, and consistency in recitation. Teachers focus on correcting mistakes and strengthening reading skills through regular practice. Ideal for students who can read basic Arabic and want to improve Quran recitation.",
-      image: ".\/Quran.jpg",
+      image: "./Quran.jpg",
       whatYouLearn: [
         "Fluent Quran reading",
         "Correct pronunciation of words",
@@ -156,7 +156,7 @@ ${formData.message ? `💬 *Message:* ${formData.message}` : ''}
       title: "Quran Memorization",
       shortDesc: "A structured course that helps students memorize the Holy Quran with accuracy, daily revision plans, and expert guidance to retain and recite confidently.",
       fullDesc: "This structured course is designed to help students memorize the Holy Quran accurately and effectively. A disciplined system of daily lessons, revision plans, and continuous supervision ensures strong memorization and retention. Emphasis is placed on Tajweed and correct recitation. Suitable for children and adults aspiring to become Hafiz or Hafiza.",
-      image: ".\/Quran2.png",
+      image: "./Quran2.png",
       whatYouLearn: [
         "Systematic Quran memorization",
         "Daily lesson and revision planning",
@@ -173,7 +173,7 @@ ${formData.message ? `💬 *Message:* ${formData.message}` : ''}
       title: "Quran Translation",
       shortDesc: "A comprehensive course designed to help learners understand the meanings of Quranic verses through clear, word-by-word translation and spiritual reflection.",
       fullDesc: "This course helps learners understand the meanings of the Holy Quran through clear and easy word-by-word translation. Students develop an understanding of Quranic vocabulary and sentence structure while reflecting on the message of Allah. Ideal for learners who want to move beyond recitation and understand the Quran deeply.",
-      image: ".\/translation.jpg",
+      image: "./translation.jpg",
       whatYouLearn: [
         "Word-by-word Quran translation",
         "Quranic vocabulary",
@@ -190,7 +190,7 @@ ${formData.message ? `💬 *Message:* ${formData.message}` : ''}
       title: "Tafseer ul Quran",
       shortDesc: "An in-depth course that explores the meanings, context, and wisdom behind Quranic verses helping learners connect deeply with the message of the Holy Quran.",
       fullDesc: "This advanced course provides detailed explanations of Quranic verses, including historical background, context, and wisdom. Students learn how Quranic teachings apply to real life and develop a deeper connection with Allah's message through authentic Tafseer.",
-      image: ".\/Tafseer.jpg",
+      image: "./Tafseer.jpg",
       whatYouLearn: [
         "Detailed explanation of Quranic verses",
         "Shan-e-Nuzool (background of revelation)",
@@ -207,7 +207,7 @@ ${formData.message ? `💬 *Message:* ${formData.message}` : ''}
       title: "Arabic Language",
       shortDesc: "A beginner-friendly course that builds a strong foundation in reading, writing, and understanding Arabic essential for deeper Quranic comprehension and daily use.",
       fullDesc: "This beginner-friendly Arabic language course builds a strong foundation in reading, writing, and understanding Arabic. Lessons are designed in a simple and practical way to help learners understand the Quran and use Arabic in daily Islamic life.",
-      image: ".\/arabic.jpg",
+      image: "./arabic.jpg",
       whatYouLearn: [
         "Arabic reading and writing",
         "Basic grammar rules",
@@ -224,7 +224,7 @@ ${formData.message ? `💬 *Message:* ${formData.message}` : ''}
       title: "New Muslim",
       shortDesc: "A supportive course tailored for new Muslims, covering the basics of Islam, daily prayers, Quran reading, and essential beliefs to help start your spiritual journey.",
       fullDesc: "This supportive course is designed for new Muslims to learn Islam in a clear, simple, and welcoming way. It covers essential beliefs, worship, and daily Islamic practices to help new Muslims feel confident and comfortable in their faith.",
-      image: ".\/muslim.jpg",
+      image: "./muslim.jpg",
       whatYouLearn: [
         "Basic Islamic beliefs",
         "How to pray Salah",
@@ -241,7 +241,7 @@ ${formData.message ? `💬 *Message:* ${formData.message}` : ''}
       title: "Seerat un Nabi",
       shortDesc: "A heart-touching course that explores the life, character, and teachings of Prophet Muhammad (P.B.U.H), offering guidance and inspiration for everyday life.",
       fullDesc: "This course explores the blessed life of Prophet Muhammad ﷺ, highlighting his character, teachings, and struggles. Students learn practical lessons from Seerah that guide moral conduct and daily life while developing love for the Prophet ﷺ.",
-      image: ".\/seeratunnabi.jpg",
+      image: "./seeratunnabi.jpg",
       whatYouLearn: [
         "Life of Prophet Muhammad ﷺ",
         "His character and manners",
@@ -258,7 +258,7 @@ ${formData.message ? `💬 *Message:* ${formData.message}` : ''}
       title: "Tajweed and Tarteel",
       shortDesc: "A detailed course focused on perfecting Quranic pronunciation (Tajweed) and reciting with rhythm and beauty (Tarteel), following the rules of proper recitation.",
       fullDesc: "This course focuses on perfecting Quran recitation by teaching Tajweed rules and the beauty of Tarteel. Students learn correct pronunciation, articulation points, and rhythmic recitation to recite the Quran as it was revealed.",
-      image: ".\/tajweed&tarteel.jpg",
+      image: "./tajweed&tarteel.jpg",
       whatYouLearn: [
         "Rules of Tajweed",
         "Makharij and letter characteristics",
@@ -275,7 +275,7 @@ ${formData.message ? `💬 *Message:* ${formData.message}` : ''}
       title: "Dars e Nizami",
       shortDesc: "A traditional Islamic studies course covering core subjects like Fiqh, Hadith, Tafseer, and Arabic grammar designed to build strong scholarly foundations.",
       fullDesc: "Dars-e-Nizami is a traditional Islamic studies program covering major Islamic sciences. It is designed for serious students seeking scholarly knowledge in Fiqh, Hadith, Tafseer, and Arabic grammar.",
-      image: ".\/darsenizami.jpg",
+      image: "./darsenizami.jpg",
       whatYouLearn: [
         "Fiqh and Islamic rulings",
         "Hadith studies",
@@ -292,7 +292,7 @@ ${formData.message ? `💬 *Message:* ${formData.message}` : ''}
       title: "Short Shariah",
       shortDesc: "A concise course introducing the basic principles of Islamic law, covering daily practices, ethics, and worship according to the teachings of the Quran and Sunnah.",
       fullDesc: "This concise course introduces the basic principles of Islamic law in a simple and practical way. It focuses on daily worship, ethics, and personal responsibilities according to Quran and Sunnah.",
-      image: ".\/shortshariah.jpg",
+      image: "./shortshariah.jpg",
       whatYouLearn: [
         "Basic Shariah principles",
         "Halal and Haram rules",
@@ -309,7 +309,7 @@ ${formData.message ? `💬 *Message:* ${formData.message}` : ''}
       title: "Farz-e-Uloom",
       shortDesc: "An essential course covering the basic Islamic knowledge every Muslim must know like beliefs, prayer, purification, and daily obligations in light of the Shariah.",
       fullDesc: "This essential course covers the basic Islamic knowledge that every Muslim must know. It explains beliefs, worship, and obligations clearly to ensure correct practice in daily life.",
-      image: ".\/farzululoom.png",
+      image: "./farzululoom.png",
       whatYouLearn: [
         "Basic Islamic beliefs",
         "Purification and cleanliness",
@@ -1030,4 +1030,5 @@ ${formData.message ? `💬 *Message:* ${formData.message}` : ''}
 };
 
 export default AlmaasQuranAcademy;
+
 
