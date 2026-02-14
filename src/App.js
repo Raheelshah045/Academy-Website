@@ -63,21 +63,52 @@ const AlmaasQuranAcademy = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // eslint-disable-next-line no-unused-vars
   const [formData, setFormData] = useState({
     firstName: '', lastName: '', email: '', course: '', plan: '', phone: '', message: ''
   });
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Form submitted! We will contact you soon.');
+
+    // Format the message for WhatsApp
+    const whatsappMessage = `
+🌟 *New Student Registration - Almaas Online Quran Academy* 🌟
+
+👤 *Student Name:* ${formData.firstName} ${formData.lastName}
+📧 *Email:* ${formData.email}
+📱 *Phone:* ${formData.phone}
+📚 *Course:* ${formData.course}
+${formData.message ? `💬 *Message:* ${formData.message}` : ''}
+
+---
+*Submitted from Almaas Academy Website*
+    `.trim();
+
+    // Your WhatsApp number (from the contact section)
+    const whatsappNumber = '923350277160';
+
+    // Create WhatsApp URL with pre-filled message
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    // Open WhatsApp in new tab
+    window.open(whatsappURL, '_blank');
+
+    // Show success message
+    alert('Redirecting to WhatsApp! Please send the message to complete your registration.');
+
+    // Reset form and close popup
     setFormData({ firstName: '', lastName: '', email: '', course: '', plan: '', phone: '', message: '' });
     setShowPopup(false);
   };
 
   const LogoImage = ({ className = "h-16 w-16" }) => (
-    <img 
-      src="/logo.png"
+    <img
+      src="./logo.png"
       alt="Almaas Logo"
       className={`${className} object-contain`}
       onError={(e) => {
@@ -91,7 +122,7 @@ const AlmaasQuranAcademy = () => {
       title: "Qaida for Beginners",
       shortDesc: "A foundational course designed to help beginners learn the Arabic alphabet, basic pronunciation, and the rules of Quranic reading step by step, with clarity and ease.",
       fullDesc: "This foundational course is designed for beginners who are starting their Quran learning journey from the very beginning. Students learn Arabic letters, correct pronunciation, and letter formation in a simple, step-by-step manner. Special focus is given to clarity, repetition, and individual attention so learners build confidence before moving on to Quran reading. This course is suitable for children, adults, and new learners with no prior Arabic background.",
-      image: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=600&h=400&fit=crop&q=80",
+      image: "./Quaida.jpg",
       whatYouLearn: [
         "Arabic alphabet (Huroof-e-Hijai)",
         "Correct pronunciation and articulation",
@@ -108,7 +139,7 @@ const AlmaasQuranAcademy = () => {
       title: "Quran Reading",
       shortDesc: "A guided course designed to help learners read the Holy Quran fluently, focusing on correct pronunciation, smooth recitation, and building confidence in every verse.",
       fullDesc: "This course helps students read the Holy Quran fluently and confidently with correct pronunciation. Learners are guided step by step to improve flow, accuracy, and consistency in recitation. Teachers focus on correcting mistakes and strengthening reading skills through regular practice. Ideal for students who can read basic Arabic and want to improve Quran recitation.",
-      image: "https://images.unsplash.com/photo-1584286595398-a59f21d25e0d?w=600&h=400&fit=crop&q=80",
+      image: "./Quran.jpg",
       whatYouLearn: [
         "Fluent Quran reading",
         "Correct pronunciation of words",
@@ -125,7 +156,7 @@ const AlmaasQuranAcademy = () => {
       title: "Quran Memorization",
       shortDesc: "A structured course that helps students memorize the Holy Quran with accuracy, daily revision plans, and expert guidance to retain and recite confidently.",
       fullDesc: "This structured course is designed to help students memorize the Holy Quran accurately and effectively. A disciplined system of daily lessons, revision plans, and continuous supervision ensures strong memorization and retention. Emphasis is placed on Tajweed and correct recitation. Suitable for children and adults aspiring to become Hafiz or Hafiza.",
-      image: "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=600&h=400&fit=crop&q=80",
+      image: "./Quran2.png",
       whatYouLearn: [
         "Systematic Quran memorization",
         "Daily lesson and revision planning",
@@ -142,7 +173,7 @@ const AlmaasQuranAcademy = () => {
       title: "Quran Translation",
       shortDesc: "A comprehensive course designed to help learners understand the meanings of Quranic verses through clear, word-by-word translation and spiritual reflection.",
       fullDesc: "This course helps learners understand the meanings of the Holy Quran through clear and easy word-by-word translation. Students develop an understanding of Quranic vocabulary and sentence structure while reflecting on the message of Allah. Ideal for learners who want to move beyond recitation and understand the Quran deeply.",
-      image: "https://images.unsplash.com/photo-1604519373538-c0127f4d6c3a?w=600&h=400&fit=crop&q=80",
+      image: "./translation.jpg",
       whatYouLearn: [
         "Word-by-word Quran translation",
         "Quranic vocabulary",
@@ -159,7 +190,7 @@ const AlmaasQuranAcademy = () => {
       title: "Tafseer ul Quran",
       shortDesc: "An in-depth course that explores the meanings, context, and wisdom behind Quranic verses helping learners connect deeply with the message of the Holy Quran.",
       fullDesc: "This advanced course provides detailed explanations of Quranic verses, including historical background, context, and wisdom. Students learn how Quranic teachings apply to real life and develop a deeper connection with Allah's message through authentic Tafseer.",
-      image: "https://images.unsplash.com/photo-1585508889824-e2c9b7c97dc5?w=600&h=400&fit=crop&q=80",
+      image: "./Tafseer.jpg",
       whatYouLearn: [
         "Detailed explanation of Quranic verses",
         "Shan-e-Nuzool (background of revelation)",
@@ -176,7 +207,7 @@ const AlmaasQuranAcademy = () => {
       title: "Arabic Language",
       shortDesc: "A beginner-friendly course that builds a strong foundation in reading, writing, and understanding Arabic essential for deeper Quranic comprehension and daily use.",
       fullDesc: "This beginner-friendly Arabic language course builds a strong foundation in reading, writing, and understanding Arabic. Lessons are designed in a simple and practical way to help learners understand the Quran and use Arabic in daily Islamic life.",
-      image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&h=400&fit=crop&q=80",
+      image: "./arabic.jpg",
       whatYouLearn: [
         "Arabic reading and writing",
         "Basic grammar rules",
@@ -193,7 +224,7 @@ const AlmaasQuranAcademy = () => {
       title: "New Muslim",
       shortDesc: "A supportive course tailored for new Muslims, covering the basics of Islam, daily prayers, Quran reading, and essential beliefs to help start your spiritual journey.",
       fullDesc: "This supportive course is designed for new Muslims to learn Islam in a clear, simple, and welcoming way. It covers essential beliefs, worship, and daily Islamic practices to help new Muslims feel confident and comfortable in their faith.",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop&q=80",
+      image: "./muslim.jpg",
       whatYouLearn: [
         "Basic Islamic beliefs",
         "How to pray Salah",
@@ -210,7 +241,7 @@ const AlmaasQuranAcademy = () => {
       title: "Seerat un Nabi",
       shortDesc: "A heart-touching course that explores the life, character, and teachings of Prophet Muhammad (P.B.U.H), offering guidance and inspiration for everyday life.",
       fullDesc: "This course explores the blessed life of Prophet Muhammad ﷺ, highlighting his character, teachings, and struggles. Students learn practical lessons from Seerah that guide moral conduct and daily life while developing love for the Prophet ﷺ.",
-      image: "https://images.unsplash.com/photo-1590650046871-92c887180603?w=600&h=400&fit=crop&q=80",
+      image: "./seeratunnabi.jpg",
       whatYouLearn: [
         "Life of Prophet Muhammad ﷺ",
         "His character and manners",
@@ -227,7 +258,7 @@ const AlmaasQuranAcademy = () => {
       title: "Tajweed and Tarteel",
       shortDesc: "A detailed course focused on perfecting Quranic pronunciation (Tajweed) and reciting with rhythm and beauty (Tarteel), following the rules of proper recitation.",
       fullDesc: "This course focuses on perfecting Quran recitation by teaching Tajweed rules and the beauty of Tarteel. Students learn correct pronunciation, articulation points, and rhythmic recitation to recite the Quran as it was revealed.",
-      image: "https://images.unsplash.com/photo-1476357471311-43c0db9fb2b4?w=600&h=400&fit=crop&q=80",
+      image: "./tajweed&tarteel.jpg",
       whatYouLearn: [
         "Rules of Tajweed",
         "Makharij and letter characteristics",
@@ -244,7 +275,7 @@ const AlmaasQuranAcademy = () => {
       title: "Dars e Nizami",
       shortDesc: "A traditional Islamic studies course covering core subjects like Fiqh, Hadith, Tafseer, and Arabic grammar designed to build strong scholarly foundations.",
       fullDesc: "Dars-e-Nizami is a traditional Islamic studies program covering major Islamic sciences. It is designed for serious students seeking scholarly knowledge in Fiqh, Hadith, Tafseer, and Arabic grammar.",
-      image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=400&fit=crop&q=80",
+      image: "./darsenizami.jpg",
       whatYouLearn: [
         "Fiqh and Islamic rulings",
         "Hadith studies",
@@ -261,7 +292,7 @@ const AlmaasQuranAcademy = () => {
       title: "Short Shariah",
       shortDesc: "A concise course introducing the basic principles of Islamic law, covering daily practices, ethics, and worship according to the teachings of the Quran and Sunnah.",
       fullDesc: "This concise course introduces the basic principles of Islamic law in a simple and practical way. It focuses on daily worship, ethics, and personal responsibilities according to Quran and Sunnah.",
-      image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&h=400&fit=crop&q=80",
+      image: "./shortshariah.jpg",
       whatYouLearn: [
         "Basic Shariah principles",
         "Halal and Haram rules",
@@ -278,7 +309,7 @@ const AlmaasQuranAcademy = () => {
       title: "Farz-e-Uloom",
       shortDesc: "An essential course covering the basic Islamic knowledge every Muslim must know like beliefs, prayer, purification, and daily obligations in light of the Shariah.",
       fullDesc: "This essential course covers the basic Islamic knowledge that every Muslim must know. It explains beliefs, worship, and obligations clearly to ensure correct practice in daily life.",
-      image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=600&h=400&fit=crop&q=80",
+      image: "./farzululoom.png",
       whatYouLearn: [
         "Basic Islamic beliefs",
         "Purification and cleanliness",
@@ -333,8 +364,8 @@ const AlmaasQuranAcademy = () => {
                 <div key={idx} className="bg-white border-2 border-blue-200 rounded-2xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition">
                   <div className="md:flex">
                     <div className="md:w-1/3 h-48 md:h-auto">
-                      <img 
-                        src={course.image} 
+                      <img
+                        src={course.image}
                         alt={course.title}
                         className="w-full h-full object-cover"
                       />
@@ -368,8 +399,8 @@ const AlmaasQuranAcademy = () => {
                       <div className="bg-blue-50 border-l-4 border-blue-900 p-4 mb-4 md:mb-6">
                         <p className="text-slate-800 text-sm md:text-base italic">{course.summary}</p>
                       </div>
-                      <button 
-                        onClick={() => { setShowPopup(true); navigateTo('home'); }} 
+                      <button
+                        onClick={() => { setShowPopup(true); navigateTo('home'); }}
                         className="w-full md:w-auto bg-gradient-to-r from-blue-900 to-blue-800 text-white py-3 px-6 md:px-8 rounded-xl text-sm md:text-base font-bold hover:from-blue-800 hover:to-blue-700 transition shadow-lg flex items-center justify-center gap-2"
                       >
                         <BookOpen className="w-5 h-5" />
@@ -531,16 +562,61 @@ const AlmaasQuranAcademy = () => {
             </div>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-3 md:gap-4">
-                <input type="text" placeholder="First Name" className="px-3 md:px-4 py-2 md:py-3 text-sm md:text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60" required />
-                <input type="text" placeholder="Last Name" className="px-3 md:px-4 py-2 md:py-3 text-sm md:text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60" required />
+                <input
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  placeholder="First Name"
+                  className="px-3 md:px-4 py-2 md:py-3 text-sm md:text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60"
+                  required
+                />
+                <input
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  placeholder="Last Name"
+                  className="px-3 md:px-4 py-2 md:py-3 text-sm md:text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60"
+                  required
+                />
               </div>
-              <input type="email" placeholder="Email" className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60" required />
-              <select className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base rounded-lg bg-white/10 border border-white/20 text-white" required>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="Email"
+                className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60"
+                required
+              />
+              <select
+                name="course"
+                value={formData.course}
+                onChange={handleInputChange}
+                className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base rounded-lg bg-white/10 border border-white/20 text-white"
+                required
+              >
                 <option value="" className="text-gray-900">Select Course</option>
                 {courses.map((c, i) => <option key={i} value={c.value} className="text-gray-900">{c.title}</option>)}
               </select>
-              <input type="tel" placeholder="Phone" className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60" required />
-              <textarea placeholder="Message" rows="3" className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 resize-none"></textarea>
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                placeholder="Phone"
+                className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60"
+                required
+              />
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                placeholder="Message (Optional)"
+                rows="3"
+                className="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 resize-none"
+              ></textarea>
               <button type="submit" className="w-full bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-900 py-3 md:py-4 text-sm md:text-base rounded-lg font-bold">Submit Form</button>
             </form>
           </div>
@@ -589,7 +665,7 @@ const AlmaasQuranAcademy = () => {
       <section id="home" className="pt-24 md:pt-32 pb-12 md:pb-20 px-4 bg-gradient-to-br from-blue-50 to-white">
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-8 md:mb-12">
-            <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4" style={{fontFamily: "'Scheherazade New', 'Noto Naskh Arabic', 'Traditional Arabic', 'Amiri', serif", fontWeight: 700, color: '#1e3a8a', lineHeight: 1.8, letterSpacing: '0.02em'}}>
+            <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4" style={{ fontFamily: "'Scheherazade New', 'Noto Naskh Arabic', 'Traditional Arabic', 'Amiri', serif", fontWeight: 700, color: '#1e3a8a', lineHeight: 1.8, letterSpacing: '0.02em' }}>
               بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ
             </p>
             <p className="text-xs md:text-sm lg:text-base text-slate-700 font-semibold px-4">In the name of Allah, the Most Gracious, the Most Merciful</p>
@@ -600,13 +676,12 @@ const AlmaasQuranAcademy = () => {
               {taglines.map((tagline, idx) => (
                 <div
                   key={idx}
-                  className={`absolute w-full transition-all duration-700 ${
-                    idx === currentTagline 
-                      ? 'opacity-100 translate-y-0' 
-                      : idx < currentTagline 
-                      ? 'opacity-0 -translate-y-full' 
+                  className={`absolute w-full transition-all duration-700 ${idx === currentTagline
+                    ? 'opacity-100 translate-y-0'
+                    : idx < currentTagline
+                      ? 'opacity-0 -translate-y-full'
                       : 'opacity-0 translate-y-full'
-                  }`}
+                    }`}
                 >
                   <span className="text-blue-900 block px-4">{tagline}</span>
                 </div>
@@ -758,8 +833,8 @@ const AlmaasQuranAcademy = () => {
             {coursesDetailed.map((course, idx) => (
               <div key={idx} className="bg-gradient-to-br from-blue-800 to-blue-900 rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border-4 border-white hover:scale-105 transition-transform">
                 <div className="h-40 md:h-48 overflow-hidden relative">
-                  <img 
-                    src={course.image} 
+                  <img
+                    src={course.image}
                     alt={course.title}
                     className="w-full h-full object-cover"
                   />
@@ -769,14 +844,14 @@ const AlmaasQuranAcademy = () => {
                   <h3 className="text-xl md:text-2xl font-black text-yellow-400 mb-3 md:mb-4">{course.title}</h3>
                   <p className="text-white text-xs md:text-sm mb-4 md:mb-6 leading-relaxed line-clamp-2 md:line-clamp-3">{course.shortDesc}</p>
                   <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
-                    <button 
-                      onClick={() => setShowPopup(true)} 
+                    <button
+                      onClick={() => setShowPopup(true)}
                       className="flex-1 bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 text-blue-900 py-2 md:py-3 px-3 md:px-4 rounded-xl text-sm md:text-base font-bold transition shadow-lg"
                     >
                       Start Now
                     </button>
-                    <button 
-                      onClick={() => navigateTo('courses')} 
+                    <button
+                      onClick={() => navigateTo('courses')}
                       className="flex-1 bg-white hover:bg-gray-100 text-blue-900 py-2 md:py-3 px-3 md:px-4 rounded-xl text-sm md:text-base font-bold transition shadow-lg"
                     >
                       Read More
