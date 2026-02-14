@@ -1,5 +1,1 @@
-{
-  "buildCommand": "mkdir public && cp index.html app.js *.png *.jpg public/",
-  "outputDirectory": "public",
-  "installCommand": "echo skip"
-}
+{}
