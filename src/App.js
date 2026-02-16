@@ -676,9 +676,9 @@ const AlmaasQuranAcademy = () => {
               </div>
               <div className="bg-offwhite/50 border-2 border-navy p-8 rounded-2xl">
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <input type="text" placeholder="First Name" className="w-full px-4 py-3 rounded-lg border-2 border-navy" required />
-                  <input type="email" placeholder="Email" className="w-full px-4 py-3 rounded-lg border-2 border-navy" required />
-                  <textarea placeholder="Message" rows="4" className="w-full px-4 py-3 rounded-lg border-2 border-navy" required></textarea>
+                  <input type="text" name="firstName" placeholder="First Name" className="w-full px-4 py-3 rounded-lg border-2 border-navy" required />
+                  <input type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-lg border-2 border-navy" required />
+                  <textarea name="message" placeholder="Message" rows="4" className="w-full px-4 py-3 rounded-lg border-2 border-navy" required></textarea>
                   <button type="submit" className="w-full bg-navy text-white py-4 rounded-lg font-bold">Send Message</button>
                 </form>
               </div>
@@ -718,16 +718,16 @@ const AlmaasQuranAcademy = () => {
             </div>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
-                <input type="text" placeholder="First Name" className="px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60" required />
-                <input type="text" placeholder="Last Name" className="px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60" required />
+                <input type="text" name="firstName" placeholder="First Name" className="px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60" required />
+                <input type="text" name="lastName" placeholder="Last Name" className="px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60" required />
               </div>
-              <input type="email" placeholder="Email" className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60" required />
-              <select className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white" required>
+              <input type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60" required />
+              <select name="course" className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white" required>
                 <option value="" className="text-gray-900">Select Course</option>
                 {courses.map((c, i) => <option key={i} value={c.value} className="text-gray-900">{c.title}</option>)}
               </select>
-              <input type="tel" placeholder="Phone" className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60" required />
-              <textarea placeholder="Message" rows="3" className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60"></textarea>
+              <input type="tel" name="phone" placeholder="Phone" className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60" required />
+              <textarea name="message" placeholder="Message" rows="3" className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60"></textarea>
               <button type="submit" className="w-full bg-gradient-to-r from-gold to-gold text-darkgray/80 py-4 rounded-lg font-bold">Submit Form</button>
             </form>
           </div>
@@ -1101,16 +1101,16 @@ const AlmaasQuranAcademy = () => {
             <div className="bg-offwhite border-2 border-navy p-8 rounded-2xl">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <input type="text" placeholder="First Name" className="px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
-                  <input type="text" placeholder="Last Name" className="px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
+                  <input type="text" name="firstName" placeholder="First Name" className="px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
+                  <input type="text" name="lastName" placeholder="Last Name" className="px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
                 </div>
-                <input type="email" placeholder="Email" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
-                <select className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required>
+                <input type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
+                <select name="course" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required>
                   <option value="">Select Course</option>
                   {courses.map((c, i) => <option key={i} value={c.value}>{c.title}</option>)}
                 </select>
-                <input type="tel" placeholder="Phone" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
-                <textarea placeholder="Message" rows="4" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none resize-none"></textarea>
+                <input type="tel" name="phone" placeholder="Phone" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
+                <textarea name="message" placeholder="Message" rows="4" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none resize-none"></textarea>
                 <button type="submit" className="w-full bg-navy text-white py-4 rounded-lg font-bold text-lg shadow-xl hover:bg-navy/90 transition">
                   Send Message
                 </button>
