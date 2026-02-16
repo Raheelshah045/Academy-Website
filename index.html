@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almaas Online Quran Academy - Learn Quran from Home</title>
+    <meta name="description" content="Learn Quran from home with expert teachers. Online Quran classes for kids and adults with flexible timings and affordable pricing.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel Standalone -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel" src="./src/App.js"></script>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        
+        // Import App component and render
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            React.createElement(AlmaasQuranAcademy)
+        );
+    </script>
+</body>
+</html>
