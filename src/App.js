@@ -79,7 +79,7 @@ const AlmaasQuranAcademy = () => {
     formDataToSubmit.append("_subject", "New Inquiry from Almaas Quran Academy");
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/almaasonlinequranacademy@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/vizisi", {
         method: "POST",
         body: formDataToSubmit
       });
