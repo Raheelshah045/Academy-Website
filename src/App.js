@@ -72,25 +72,30 @@ const AlmaasQuranAcademy = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const currentForm = e.target;
-    const formDataToSubmit = new FormData(currentForm);
+    const formData = new FormData(currentForm);
+    const data = Object.fromEntries(formData.entries());
 
-    // Add the specific email for FormSubmit
-    formDataToSubmit.append("_captcha", "false");
-    formDataToSubmit.append("_subject", "New Inquiry from Almaas Quran Academy");
+    // FormSubmit Configuration
+    data["_captcha"] = "false";
+    data["_template"] = "table"; // Using table template as requested
+    data["_subject"] = "New Inquiry from Almaas Quran Academy";
 
     try {
       const response = await fetch("https://formsubmit.co/ajax/vizisi", {
         method: "POST",
-        body: formDataToSubmit
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
       });
 
       if (response.ok) {
         alert('Thank you! Your message has been sent. We will contact you soon.');
-
         setShowPopup(false);
         currentForm.reset();
       } else {
-        alert('Oops! There was a problem submitting your form.');
+        alert('Oops! There was a problem submitting your form. Please check the email configuration.');
       }
     } catch (error) {
       alert('Error: ' + error.message);
