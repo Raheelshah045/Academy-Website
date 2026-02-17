@@ -81,7 +81,7 @@ const AlmaasQuranAcademy = () => {
     data["_subject"] = "New Inquiry from Almaas Quran Academy";
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/vizisi", {
+      const response = await fetch("https://formsubmit.co/ajax/d8b53fee453ff25c680b3c26371f4346", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
