@@ -353,19 +353,32 @@ const AlmaasQuranAcademy = () => {
   });
 
   const [newReview, setNewReview] = useState({ name: '', rating: 5, text: '' });
+  const [reviewStatus, setReviewStatus] = useState({ submitting: false, success: false });
 
-  const handleReviewSubmit = (e) => {
+  const handleReviewSubmit = async (e) => {
     e.preventDefault();
+    setReviewStatus({ submitting: true, success: false });
+
+    // Simulate a brief delay for better UX
+    await new Promise(resolve => setTimeout(resolve, 800));
+
     const reviewToAdd = {
       ...newReview,
       id: Date.now(),
       date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
     };
-    const updatedReviews = [reviewToAdd, ...reviews];
-    setReviews(updatedReviews);
-    localStorage.setItem('almaas_reviews', JSON.stringify(updatedReviews));
+
+    setReviews(prev => {
+      const updated = [reviewToAdd, ...prev];
+      localStorage.setItem('almaas_reviews', JSON.stringify(updated));
+      return updated;
+    });
+
     setNewReview({ name: '', rating: 5, text: '' });
-    alert('Thank you for your review!');
+    setReviewStatus({ submitting: false, success: true });
+
+    // Hide success message after 5 seconds
+    setTimeout(() => setReviewStatus(prev => ({ ...prev, success: false })), 5000);
   };
 
 
@@ -1222,8 +1235,8 @@ const AlmaasQuranAcademy = () => {
             <p className="text-darkgray text-lg">Real feedback from our global community</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {reviews.slice(0, 3).map((review) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {reviews.slice(0, 6).map((review) => (
               <div key={review.id} className="bg-white p-8 rounded-3xl shadow-xl border border-navy/5 relative">
                 <div className="absolute -top-4 -left-4 bg-gold text-navy p-3 rounded-2xl">
                   <MessageCircle className="w-6 h-6" />
@@ -1283,9 +1296,19 @@ const AlmaasQuranAcademy = () => {
                   onChange={(e) => setNewReview({ ...newReview, text: e.target.value })}
                   required
                 ></textarea>
-                <button type="submit" className="w-full bg-gold text-navy py-5 rounded-xl font-black text-xl hover:bg-gold/90 transition transform hover:-translate-y-1 shadow-2xl">
-                  Post My Review
+                <button
+                  type="submit"
+                  disabled={reviewStatus.submitting}
+                  className="w-full bg-gold text-navy py-5 rounded-xl font-black text-xl hover:bg-gold/90 transition transform hover:-translate-y-1 shadow-2xl disabled:opacity-50"
+                >
+                  {reviewStatus.submitting ? 'Posting...' : 'Post My Review'}
                 </button>
+
+                {reviewStatus.success && (
+                  <div className="p-4 bg-green-500/20 text-green-200 rounded-xl text-center font-bold">
+                    Thank you! Your review has been posted successfully.
+                  </div>
+                )}
               </form>
             </div>
           </div>
