@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Globe, Shield, CreditCard, UserPlus, Newspaper, ChevronDown, Facebook, Instagram, Youtube, ArrowLeft } from 'lucide-react';
+import { createClient } from '@supabase/supabase-js';
+
+// --- DATABASE CONFIG ---
+// Get these from your Supabase dashboard: Settings -> API
+const SUPABASE_URL = 'https://fvyifgusqzlzoolrhpgv.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2eWlmZ3VzcXpsem9vbHJocGd2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE3NzkwNzIsImV4cCI6MjA4NzM1NTA3Mn0.FRWaBEcSQifqO0FGcRvoA1IDtPjUnsQkT2e981gjxFI';
+const supabase = (SUPABASE_URL && SUPABASE_KEY) ? createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
 const AlmaasQuranAcademy = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -347,10 +354,34 @@ const AlmaasQuranAcademy = () => {
     { id: 3, name: "John Doe", rating: 4, text: "Very flexible timings. Perfect for someone with a busy work schedule.", date: "Feb 20, 2026" }
   ];
 
-  const [reviews, setReviews] = useState(() => {
-    const saved = localStorage.getItem('almaas_reviews');
-    return saved ? JSON.parse(saved) : initialReviews;
-  });
+  const [reviews, setReviews] = useState(initialReviews);
+  const [loadingReviews, setLoadingReviews] = useState(false);
+
+  // Fetch reviews from Supabase on load
+  useEffect(() => {
+    const fetchReviews = async () => {
+      if (!supabase) return;
+
+      setLoadingReviews(true);
+      try {
+        const { data, error } = await supabase
+          .from('reviews')
+          .select('*')
+          .order('id', { ascending: false });
+
+        if (error) throw error;
+        if (data && data.length > 0) {
+          setReviews(data);
+        }
+      } catch (err) {
+        console.error('Error fetching reviews:', err.message);
+      } finally {
+        setLoadingReviews(false);
+      }
+    };
+
+    fetchReviews();
+  }, []);
 
   const [newReview, setNewReview] = useState({ name: '', rating: 5, text: '' });
   const [reviewStatus, setReviewStatus] = useState({ submitting: false, success: false });
@@ -359,23 +390,44 @@ const AlmaasQuranAcademy = () => {
     e.preventDefault();
     setReviewStatus({ submitting: true, success: false });
 
-    // Simulate a brief delay for better UX
-    await new Promise(resolve => setTimeout(resolve, 800));
-
     const reviewToAdd = {
-      ...newReview,
-      id: Date.now(),
+      name: newReview.name,
+      rating: newReview.rating,
+      text: newReview.text,
       date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
     };
 
-    setReviews(prev => {
-      const updated = [reviewToAdd, ...prev];
-      localStorage.setItem('almaas_reviews', JSON.stringify(updated));
-      return updated;
-    });
+    try {
+      if (supabase) {
+        // Save to Database
+        const { data, error } = await supabase
+          .from('reviews')
+          .insert([reviewToAdd])
+          .select();
 
-    setNewReview({ name: '', rating: 5, text: '' });
-    setReviewStatus({ submitting: false, success: true });
+        if (error) throw error;
+
+        // Add to local state
+        if (data) {
+          setReviews(prev => [data[0], ...prev]);
+        }
+      } else {
+        // Fallback to local state + localStorage if no database configured
+        const localReview = { ...reviewToAdd, id: Date.now() };
+        setReviews(prev => {
+          const updated = [localReview, ...prev];
+          localStorage.setItem('almaas_reviews', JSON.stringify(updated));
+          return updated;
+        });
+      }
+
+      setNewReview({ name: '', rating: 5, text: '' });
+      setReviewStatus({ submitting: false, success: true });
+    } catch (err) {
+      console.error('Error submitting review:', err.message);
+      setReviewStatus({ submitting: false, success: false });
+      alert("Failed to save review to database. Please check your Supabase setup.");
+    }
 
     // Hide success message after 5 seconds
     setTimeout(() => setReviewStatus(prev => ({ ...prev, success: false })), 5000);
@@ -717,8 +769,14 @@ const AlmaasQuranAcademy = () => {
             <h1 className="text-5xl font-black text-navy mb-4 text-center">Public Reviews</h1>
             <p className="text-darkgray text-lg text-center mb-12">What our students and parents say about Almaas Academy</p>
 
+            {loadingReviews && (
+              <div className="flex justify-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-navy"></div>
+              </div>
+            )}
+
             <div className="grid gap-6">
-              {reviews.map((review) => (
+              {!loadingReviews && reviews.map((review) => (
                 <div key={review.id} className="bg-white p-8 rounded-3xl shadow-lg border border-navy/5">
                   <div className="flex justify-between items-start mb-4">
                     <div>
