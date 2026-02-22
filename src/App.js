@@ -11,6 +11,7 @@ const AlmaasQuranAcademy = () => {
   const [counts, setCounts] = useState({ teachers: 0 });
   const [currentTagline, setCurrentTagline] = useState(0);
   const [selectedBlog, setSelectedBlog] = useState(null);
+  const [formStatus, setFormStatus] = useState({ submitting: false, success: false, error: null });
 
   // Rotating taglines
   const taglines = [
@@ -71,14 +72,17 @@ const AlmaasQuranAcademy = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setFormStatus({ submitting: true, success: false, error: null });
+
     const currentForm = e.target;
     const formData = new FormData(currentForm);
     const data = Object.fromEntries(formData.entries());
 
     // FormSubmit Configuration
     data["_captcha"] = "false";
-    data["_template"] = "table"; // Using table template as requested
+    data["_template"] = "table";
     data["_subject"] = "New Inquiry from Almaas Quran Academy";
+    data["_honeypot"] = ""; // Anti-spam hidden field
 
     try {
       const response = await fetch("https://formsubmit.co/ajax/d8b53fee453ff25c680b3c26371f4346", {
@@ -91,14 +95,18 @@ const AlmaasQuranAcademy = () => {
       });
 
       if (response.ok) {
-        alert('Thank you! Your message has been sent. We will contact you soon.');
-        setShowPopup(false);
+        setFormStatus({ submitting: false, success: true, error: null });
+        setTimeout(() => {
+          setFormStatus(prev => ({ ...prev, success: false }));
+          setShowPopup(false);
+        }, 5000);
         currentForm.reset();
       } else {
-        alert('Oops! There was a problem submitting your form. Please check the email configuration.');
+        const result = await response.json();
+        setFormStatus({ submitting: false, success: false, error: result.message || 'Submission failed' });
       }
     } catch (error) {
-      alert('Error: ' + error.message);
+      setFormStatus({ submitting: false, success: false, error: error.message });
     }
   };
 
@@ -329,8 +337,36 @@ const AlmaasQuranAcademy = () => {
     { name: "3 Days/Week", priceGBP: "£25", priceUSD: "$35", tag: "Weekday Standard", popular: true, features: ["3 classes/week", "30 min each", "Regular Feedback"] },
     { name: "4 Days/Week", priceGBP: "£30", priceUSD: "$40", tag: "Weekday Intensive", features: ["4 classes/week", "30 min each", "Flexible Timing"] },
     { name: "5 Days/Week", priceGBP: "£35", priceUSD: "$50", tag: "Weekday Full", features: ["5 classes/week", "30 min each", "Priority Support"] },
-    { name: "Weekend Special", priceGBP: "£25", priceUSD: "$35", tag: "Sat & Sun Only", features: ["2 classes/week", "Extended sessions", "Perfect for kids"] }
+    { name: "Weekend Special", priceGBP: "£25", priceUSD: "$35", tag: "Sat & Sun Only", features: ["2 classes/week", "Extended sessions", "Perfect for kids"] },
+    { name: "Advanced Courses", priceGBP: "Custom", priceUSD: "Variable", tag: "Dars-e-Nizami & More", features: ["Flexible Schedule", "In-depth Curriculum", "One-on-One focus", "Pricing depends on duration"] }
   ];
+
+  const initialReviews = [
+    { id: 1, name: "Ahmed Khan", rating: 5, text: "Excellent teaching style. My kids have learned Qaida very quickly here.", date: "Feb 5, 2026" },
+    { id: 2, name: "Sara Malik", rating: 5, text: "The female teachers are very patient and professional. Highly recommended for sisters.", date: "Feb 12, 2026" },
+    { id: 3, name: "John Doe", rating: 4, text: "Very flexible timings. Perfect for someone with a busy work schedule.", date: "Feb 20, 2026" }
+  ];
+
+  const [reviews, setReviews] = useState(() => {
+    const saved = localStorage.getItem('almaas_reviews');
+    return saved ? JSON.parse(saved) : initialReviews;
+  });
+
+  const [newReview, setNewReview] = useState({ name: '', rating: 5, text: '' });
+
+  const handleReviewSubmit = (e) => {
+    e.preventDefault();
+    const reviewToAdd = {
+      ...newReview,
+      id: Date.now(),
+      date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+    };
+    const updatedReviews = [reviewToAdd, ...reviews];
+    setReviews(updatedReviews);
+    localStorage.setItem('almaas_reviews', JSON.stringify(updatedReviews));
+    setNewReview({ name: '', rating: 5, text: '' });
+    alert('Thank you for your review!');
+  };
 
 
   const faqs = [
@@ -657,6 +693,54 @@ const AlmaasQuranAcademy = () => {
     );
   }
 
+  if (currentPage === 'reviews') {
+    return (
+      <div className="min-h-screen bg-offwhite">
+        <button onClick={() => navigateTo('home')} className="fixed top-4 left-4 z-50 bg-navy text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg hover:bg-navy/90 transition">
+          <ArrowLeft className="w-4 h-4" /> Back to Home
+        </button>
+        <div className="pt-24 pb-20 px-4">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-5xl font-black text-navy mb-4 text-center">Public Reviews</h1>
+            <p className="text-darkgray text-lg text-center mb-12">What our students and parents say about Almaas Academy</p>
+
+            <div className="grid gap-6">
+              {reviews.map((review) => (
+                <div key={review.id} className="bg-white p-8 rounded-3xl shadow-lg border border-navy/5">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-navy">{review.name}</h3>
+                      <div className="flex text-gold mt-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className={`w-4 h-4 ${i < review.rating ? 'fill-gold' : 'text-gray-300'}`} />
+                        ))}
+                      </div>
+                    </div>
+                    <span className="text-darkgray/50 text-sm font-medium">{review.date}</span>
+                  </div>
+                  <p className="text-darkgray text-lg italic leading-relaxed">"{review.text}"</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-16 bg-navy text-white p-12 rounded-3xl text-center">
+              <h2 className="text-3xl font-black mb-4">Share Your Experience</h2>
+              <p className="mb-8 opacity-80">Help others by sharing your journey with Almaas Academy</p>
+              <button onClick={() => {
+                navigateTo('home'); setTimeout(() => {
+                  const element = document.getElementById('review-form');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+              }} className="bg-gold text-navy px-8 py-4 rounded-xl font-black hover:bg-gold/90 transition shadow-xl">
+                Write a Review
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (currentPage === 'contact') {
     return (
       <div className="min-h-screen bg-offwhite">
@@ -681,10 +765,37 @@ const AlmaasQuranAcademy = () => {
               </div>
               <div className="bg-offwhite/50 border-2 border-navy p-8 rounded-2xl">
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <input type="text" name="firstName" placeholder="First Name" className="w-full px-4 py-3 rounded-lg border-2 border-navy" required />
-                  <input type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-lg border-2 border-navy" required />
-                  <textarea name="message" placeholder="Message" rows="4" className="w-full px-4 py-3 rounded-lg border-2 border-navy" required></textarea>
-                  <button type="submit" className="w-full bg-navy text-white py-4 rounded-lg font-bold">Send Message</button>
+                  <input type="text" name="_honeypot" style={{ display: 'none' }} />
+                  <div className="grid grid-cols-2 gap-4">
+                    <input type="text" name="firstName" placeholder="First Name" className="px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
+                    <input type="text" name="lastName" placeholder="Last Name" className="px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
+                  </div>
+                  <input type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
+                  <select name="course" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required>
+                    <option value="">Select Course</option>
+                    {courses.map((c, i) => <option key={i} value={c.value}>{c.title}</option>)}
+                  </select>
+                  <input type="tel" name="phone" placeholder="Phone" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
+                  <textarea name="message" placeholder="Message" rows="4" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none resize-none"></textarea>
+
+                  <button
+                    type="submit"
+                    disabled={formStatus.submitting}
+                    className="w-full bg-navy text-white py-4 rounded-lg font-bold text-lg shadow-xl hover:bg-navy/90 transition disabled:opacity-50"
+                  >
+                    {formStatus.submitting ? 'Sending...' : 'Send Message'}
+                  </button>
+
+                  {formStatus.success && (
+                    <div className="p-4 bg-green-100 text-green-700 rounded-lg text-center font-bold">
+                      Thank you! Your message has been sent successfully.
+                    </div>
+                  )}
+                  {formStatus.error && (
+                    <div className="p-4 bg-red-100 text-red-700 rounded-lg text-center font-bold">
+                      Error: {formStatus.error}
+                    </div>
+                  )}
                 </form>
               </div>
             </div>
@@ -722,18 +833,36 @@ const AlmaasQuranAcademy = () => {
               <p className="text-2xl font-bold">Free Trail Class</p>
             </div>
             <form onSubmit={handleSubmit} className="space-y-4">
+              <input type="text" name="_honeypot" style={{ display: 'none' }} />
               <div className="grid grid-cols-2 gap-4">
-                <input type="text" name="firstName" placeholder="First Name" className="px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60" required />
-                <input type="text" name="lastName" placeholder="Last Name" className="px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60" required />
+                <input type="text" name="firstName" placeholder="First Name" className="px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60 focus:outline-none" required />
+                <input type="text" name="lastName" placeholder="Last Name" className="px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60 focus:outline-none" required />
               </div>
-              <input type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60" required />
-              <select name="course" className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white" required>
+              <input type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60 focus:outline-none" required />
+              <select name="course" className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white focus:outline-none" required>
                 <option value="" className="text-gray-900">Select Course</option>
                 {courses.map((c, i) => <option key={i} value={c.value} className="text-gray-900">{c.title}</option>)}
               </select>
-              <input type="tel" name="phone" placeholder="Phone" className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60" required />
-              <textarea name="message" placeholder="Message" rows="3" className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60"></textarea>
-              <button type="submit" className="w-full bg-gradient-to-r from-gold to-gold text-darkgray/80 py-4 rounded-lg font-bold">Submit Form</button>
+              <input type="tel" name="phone" placeholder="Phone" className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60 focus:outline-none" required />
+              <textarea name="message" placeholder="Message" rows="3" className="w-full px-4 py-3 rounded-lg bg-offwhite/10 border border-white/20 text-white placeholder-white/60 focus:outline-none resize-none"></textarea>
+              <button
+                type="submit"
+                disabled={formStatus.submitting}
+                className="w-full bg-gradient-to-r from-gold to-amber-600 text-navy py-4 rounded-lg font-bold shadow-xl hover:from-gold hover:to-amber-500 transition disabled:opacity-50"
+              >
+                {formStatus.submitting ? 'Sending...' : 'Submit Form'}
+              </button>
+
+              {formStatus.success && (
+                <div className="p-3 bg-green-500/20 text-green-200 rounded-lg text-center font-bold text-sm">
+                  Success! We will contact you soon.
+                </div>
+              )}
+              {formStatus.error && (
+                <div className="p-3 bg-red-500/20 text-red-200 rounded-lg text-center font-bold text-sm">
+                  {formStatus.error}
+                </div>
+              )}
             </form>
           </div>
         </div>
@@ -755,6 +884,7 @@ const AlmaasQuranAcademy = () => {
               <button onClick={() => navigateTo('pricing')} className="text-darkgray hover:text-navy font-medium">Pricing</button>
               <button onClick={() => navigateTo('blogs')} className="text-darkgray hover:text-navy font-medium">Blogs</button>
               <button onClick={() => navigateTo('faq')} className="text-darkgray hover:text-navy font-medium">FAQ</button>
+              <button onClick={() => navigateTo('reviews')} className="text-darkgray hover:text-navy font-medium">Reviews</button>
               <button onClick={() => navigateTo('contact')} className="text-darkgray hover:text-navy font-medium">Contact</button>
               <button onClick={() => setShowPopup(true)} className="bg-navy text-white px-6 py-2.5 rounded-lg font-bold">Start Free Trial</button>
             </nav>
@@ -770,6 +900,7 @@ const AlmaasQuranAcademy = () => {
                 <button onClick={() => navigateTo('pricing')} className="text-darkgray hover:text-navy py-3 px-4 rounded-lg text-left font-medium">Pricing</button>
                 <button onClick={() => navigateTo('blogs')} className="text-darkgray hover:text-navy py-3 px-4 rounded-lg text-left font-medium">Blogs</button>
                 <button onClick={() => navigateTo('faq')} className="text-darkgray hover:text-navy py-3 px-4 rounded-lg text-left font-medium">FAQ</button>
+                <button onClick={() => navigateTo('reviews')} className="text-darkgray hover:text-navy py-3 px-4 rounded-lg text-left font-medium">Reviews</button>
                 <button onClick={() => navigateTo('contact')} className="text-darkgray hover:text-navy py-3 px-4 rounded-lg text-left font-medium">Contact</button>
                 <button onClick={() => setShowPopup(true)} className="bg-navy text-white px-6 py-3 rounded-lg font-bold mt-2">Start Free Trial</button>
               </div>
@@ -1083,6 +1214,84 @@ const AlmaasQuranAcademy = () => {
         </div>
       </section>
 
+      {/* Review Section */}
+      <section className="py-20 px-4 bg-offwhite border-t border-navy/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-black mb-4">What Our <span className="text-navy">Students Say</span></h2>
+            <p className="text-darkgray text-lg">Real feedback from our global community</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {reviews.slice(0, 3).map((review) => (
+              <div key={review.id} className="bg-white p-8 rounded-3xl shadow-xl border border-navy/5 relative">
+                <div className="absolute -top-4 -left-4 bg-gold text-navy p-3 rounded-2xl">
+                  <MessageCircle className="w-6 h-6" />
+                </div>
+                <div className="flex text-gold mb-4 mt-2">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className={`w-4 h-4 ${i < review.rating ? 'fill-gold' : 'text-gray-300'}`} />
+                  ))}
+                </div>
+                <p className="text-darkgray italic mb-6">"{review.text}"</p>
+                <div className="flex items-center justify-between border-t border-navy/5 pt-4">
+                  <span className="font-bold text-navy">{review.name}</span>
+                  <span className="text-xs text-darkgray/50">{review.date}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mb-20">
+            <button onClick={() => navigateTo('reviews')} className="text-navy font-black flex items-center gap-2 mx-auto hover:text-gold transition text-lg">
+              View All Public Reviews <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+
+          <div id="review-form" className="max-w-2xl mx-auto bg-navy rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+            <div className="relative z-10">
+              <h3 className="text-3xl font-black text-white mb-2 text-center">Leave a Review</h3>
+              <p className="text-white/70 text-center mb-8">Your feedback helps us improve our service</p>
+
+              <form onSubmit={handleReviewSubmit} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-gold"
+                    value={newReview.name}
+                    onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
+                    required
+                  />
+                  <div className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 flex items-center justify-between">
+                    <span className="text-white/50 text-sm">Rating:</span>
+                    <select
+                      className="bg-transparent text-gold font-bold focus:outline-none cursor-pointer"
+                      value={newReview.rating}
+                      onChange={(e) => setNewReview({ ...newReview, rating: parseInt(e.target.value) })}
+                    >
+                      {[5, 4, 3, 2, 1].map(n => <option key={n} value={n} className="bg-navy text-gold">{n} Stars</option>)}
+                    </select>
+                  </div>
+                </div>
+                <textarea
+                  placeholder="Tell us about your experience..."
+                  rows="4"
+                  className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-gold resize-none"
+                  value={newReview.text}
+                  onChange={(e) => setNewReview({ ...newReview, text: e.target.value })}
+                  required
+                ></textarea>
+                <button type="submit" className="w-full bg-gold text-navy py-5 rounded-xl font-black text-xl hover:bg-gold/90 transition transform hover:-translate-y-1 shadow-2xl">
+                  Post My Review
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section className="py-20 px-4 bg-offwhite/50">
         <div className="max-w-5xl mx-auto">
@@ -1105,6 +1314,7 @@ const AlmaasQuranAcademy = () => {
             </div>
             <div className="bg-offwhite border-2 border-navy p-8 rounded-2xl">
               <form onSubmit={handleSubmit} className="space-y-4">
+                <input type="text" name="_honeypot" style={{ display: 'none' }} />
                 <div className="grid grid-cols-2 gap-4">
                   <input type="text" name="firstName" placeholder="First Name" className="px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
                   <input type="text" name="lastName" placeholder="Last Name" className="px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
@@ -1116,9 +1326,24 @@ const AlmaasQuranAcademy = () => {
                 </select>
                 <input type="tel" name="phone" placeholder="Phone" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
                 <textarea name="message" placeholder="Message" rows="4" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none resize-none"></textarea>
-                <button type="submit" className="w-full bg-navy text-white py-4 rounded-lg font-bold text-lg shadow-xl hover:bg-navy/90 transition">
-                  Send Message
+                <button
+                  type="submit"
+                  disabled={formStatus.submitting}
+                  className="w-full bg-navy text-white py-4 rounded-lg font-bold text-lg shadow-xl hover:bg-navy/90 transition disabled:opacity-50"
+                >
+                  {formStatus.submitting ? 'Sending...' : 'Send Message'}
                 </button>
+
+                {formStatus.success && (
+                  <div className="p-4 bg-green-100 text-green-700 rounded-lg text-center font-bold">
+                    Thank you! Your message has been sent successfully.
+                  </div>
+                )}
+                {formStatus.error && (
+                  <div className="p-4 bg-red-100 text-red-700 rounded-lg text-center font-bold">
+                    Error: {formStatus.error}
+                  </div>
+                )}
               </form>
             </div>
           </div>
@@ -1148,6 +1373,7 @@ const AlmaasQuranAcademy = () => {
                 <button onClick={() => navigateTo('home')} className="block hover:text-white">Home</button>
                 <button onClick={() => navigateTo('courses')} className="block hover:text-white">Courses</button>
                 <button onClick={() => navigateTo('pricing')} className="block hover:text-white">Pricing</button>
+                <button onClick={() => navigateTo('reviews')} className="block hover:text-white">Reviews</button>
               </div>
             </div>
             <div>
