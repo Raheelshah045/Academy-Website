@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Globe, Shield, CreditCard, UserPlus, Newspaper, ChevronDown, Facebook, Instagram, Youtube, ArrowLeft } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import { Routes, Route, useNavigate, useLocation, useParams, Navigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 // --- DATABASE CONFIG ---
 // Get these from your Supabase dashboard: Settings -> API
@@ -63,7 +64,8 @@ const COURSES_DETAILED = [
     slug: "qaida-basics",
     shortDesc: "A foundational course designed to help beginners learn the Arabic alphabet, basic pronunciation, and the rules of Quranic reading step by step, with clarity and ease.",
     fullDesc: "This foundational course is designed for beginners who are starting their Quran learning journey from the very beginning. Students learn Arabic letters, correct pronunciation, and letter formation in a simple, step-by-step manner. Special focus is given to clarity, repetition, and individual attention so learners build confidence before moving on to Quran reading. This course is suitable for children, adults, and new learners with no prior Arabic background.",
-    image: "/Quaida.jpg",
+    image: "/quran-qaida-beginners-course.jpg",
+    altText: "Quran Qaida for Beginners – Learn Arabic Letters and Pronunciation Online at Almaas Academy",
     whatYouLearn: [
       "Arabic alphabet (Huroof-e-Hijai)",
       "Correct pronunciation and articulation",
@@ -84,7 +86,8 @@ const COURSES_DETAILED = [
     slug: "quran-reading",
     shortDesc: "A guided course designed to help learners read the Holy Quran fluently, focusing on correct pronunciation, smooth recitation, and building confidence in every verse.",
     fullDesc: "This course helps students read the Holy Quran fluently and confidently with correct pronunciation. Learners are guided step by step to improve flow, accuracy, and consistency in recitation. Teachers focus on correcting mistakes and strengthening reading skills through regular practice. Ideal for students who can read basic Arabic and want to improve Quran recitation.",
-    image: "/Quran.jpg",
+    image: "/online-quran-reading-course.jpg",
+    altText: "Online Quran Reading Course – Fluent and Confident Quran Recitation for Kids and Adults",
     whatYouLearn: [
       "Fluent Quran reading",
       "Correct pronunciation of words",
@@ -105,7 +108,8 @@ const COURSES_DETAILED = [
     slug: "hifz-memorization",
     shortDesc: "A structured course that helps students memorize the Holy Quran with accuracy, daily revision plans, and expert guidance to retain and recite confidently.",
     fullDesc: "This structured course is designed to help students memorize the Holy Quran accurately and effectively. A disciplined system of daily lessons, revision plans, and continuous supervision ensures strong memorization and retention. Emphasis is placed on Tajweed and correct recitation. Suitable for children and adults aspiring to become Hafiz or Hafiza.",
-    image: "/Quran2.png",
+    image: "/online-quran-memorization-hifz-classes.png",
+    altText: "Online Quran Memorization (Hifz) Classes for Kids and Adults at Almaas Online Quran Academy",
     whatYouLearn: [
       "Systematic Quran memorization",
       "Daily lesson and revision planning",
@@ -126,7 +130,8 @@ const COURSES_DETAILED = [
     slug: "quran-translation",
     shortDesc: "A comprehensive course designed to help learners understand the meanings of Quranic verses through clear, word-by-word translation and spiritual reflection.",
     fullDesc: "This course helps learners understand the meanings of the Holy Quran through clear and easy word-by-word translation. Students develop an understanding of Quranic vocabulary and sentence structure while reflecting on the message of Allah. Ideal for learners who want to move beyond recitation and understand the Quran deeply.",
-    image: "/translation.jpg",
+    image: "/quran-translation-course-online.jpg",
+    altText: "Online Quran Translation Course – Learn Word-by-Word Quran Meanings with Expert Teachers",
     whatYouLearn: [
       "Word-by-word Quran translation",
       "Quranic vocabulary",
@@ -147,7 +152,8 @@ const COURSES_DETAILED = [
     slug: "quran-tafseer",
     shortDesc: "An in-depth course that explores the meanings, context, and wisdom behind Quranic verses helping learners connect deeply with the message of the Holy Quran.",
     fullDesc: "This advanced course provides detailed explanations of Quranic verses, including historical background, context, and wisdom. Students learn how Quranic teachings apply to real life and develop a deeper connection with Allah's message through authentic Tafseer.",
-    image: "/Tafseer.jpg",
+    image: "/quran-tafseer-course-online.jpg",
+    altText: "Online Quran Tafseer Course – In-Depth Quranic Explanation and Context by Expert Teachers",
     whatYouLearn: [
       "Detailed explanation of Quranic verses",
       "Shan-e-Nuzool (background of revelation)",
@@ -168,7 +174,8 @@ const COURSES_DETAILED = [
     slug: "arabic-language",
     shortDesc: "A beginner-friendly course that builds a strong foundation in reading, writing, and understanding Arabic essential for deeper Quranic comprehension and daily use.",
     fullDesc: "This beginner-friendly Arabic language course builds a strong foundation in reading, writing, and understanding Arabic. Lessons are designed in a simple and practical way to help learners understand the Quran and use Arabic in daily Islamic life.",
-    image: "/arabic.jpg",
+    image: "/arabic-language-course-online.jpg",
+    altText: "Online Arabic Language Course – Learn Quranic Arabic for Beginners and Intermediate Students",
     whatYouLearn: [
       "Arabic reading and writing",
       "Basic grammar rules",
@@ -189,7 +196,8 @@ const COURSES_DETAILED = [
     slug: "new-muslim-guide",
     shortDesc: "A supportive course tailored for new Muslims, covering the basics of Islam, daily prayers, Quran reading, and essential beliefs to help start your spiritual journey.",
     fullDesc: "This supportive course is designed for new Muslims to learn Islam in a clear, simple, and welcoming way. It covers essential beliefs, worship, and daily Islamic practices to help new Muslims feel confident and comfortable in their faith.",
-    image: "/muslim.jpg",
+    image: "/new-muslim-quran-course-online.jpg",
+    altText: "New Muslim Quran and Islam Course – Start Your Islamic Journey with Expert Guidance Online",
     whatYouLearn: [
       "Basic Islamic beliefs",
       "How to pray Salah",
@@ -210,7 +218,8 @@ const COURSES_DETAILED = [
     slug: "seerat-un-nabi",
     shortDesc: "A heart-touching course that explores the life, character, and teachings of Prophet Muhammad (P.B.U.H), offering guidance and inspiration for everyday life.",
     fullDesc: "This course explores the blessed life of Prophet Muhammad ﷺ, highlighting his character, teachings, and struggles. Students learn practical lessons from Seerah that guide moral conduct and daily life while developing love for the Prophet ﷺ.",
-    image: "/seeratunnabi.jpg",
+    image: "/seerat-un-nabi-course-online.jpg",
+    altText: "Seerat un Nabi Online Course – Life and Teachings of Prophet Muhammad (PBUH) for All Ages",
     whatYouLearn: [
       "Life of Prophet Muhammad ﷺ",
       "His character and manners",
@@ -231,7 +240,8 @@ const COURSES_DETAILED = [
     slug: "tajweed-rules",
     shortDesc: "A detailed course focused on perfecting Quranic pronunciation (Tajweed) and reciting with rhythm and beauty (Tarteel), following the rules of proper recitation.",
     fullDesc: "This course focuses on perfecting Quran recitation by teaching Tajweed rules and the beauty of Tarteel. Students learn correct pronunciation, articulation points, and rhythmic recitation to recite the Quran as it was revealed.",
-    image: "/tajweed&tarteel.jpg",
+    image: "/quran-tajweed-tarteel-course-online.jpg",
+    altText: "Online Quran Tajweed and Tarteel Course – Perfect Your Quran Recitation with Certified Teachers",
     whatYouLearn: [
       "Rules of Tajweed",
       "Makharij and letter characteristics",
@@ -252,7 +262,8 @@ const COURSES_DETAILED = [
     slug: "islamic-scholarship",
     shortDesc: "A traditional Islamic studies course covering core subjects like Fiqh, Hadith, Tafseer, and Arabic grammar designed to build strong scholarly foundations.",
     fullDesc: "Dars-e-Nizami is a traditional Islamic studies program covering major Islamic sciences. It is designed for serious students seeking scholarly knowledge in Fiqh, Hadith, Tafseer, and Arabic grammar.",
-    image: "/darsenizami.jpg",
+    image: "/dars-e-nizami-islamic-scholarship-course.jpg",
+    altText: "Dars e Nizami Islamic Studies Course Online – Traditional Islamic Scholarship with Expert Scholars",
     whatYouLearn: [
       "Fiqh and Islamic rulings",
       "Hadith studies",
@@ -273,7 +284,8 @@ const COURSES_DETAILED = [
     slug: "basic-fiqh",
     shortDesc: "A concise course introducing the basic principles of Islamic law, covering daily practices, ethics, and worship according to the teachings of the Quran and Sunnah.",
     fullDesc: "This concise course introduces the basic principles of Islamic law in a simple and practical way. It focuses on daily worship, ethics, and personal responsibilities according to Quran and Sunnah.",
-    image: "/shortshariah.jpg",
+    image: "/short-shariah-course-online.jpg",
+    altText: "Short Shariah Course Online – Learn Basic Islamic Law and Daily Practices with Qualified Teachers",
     whatYouLearn: [
       "Basic Shariah principles",
       "Halal and Haram rules",
@@ -294,7 +306,8 @@ const COURSES_DETAILED = [
     slug: "essential-knowledge",
     shortDesc: "An essential course covering the basic Islamic knowledge every Muslim must know like beliefs, prayer, purification, and daily obligations in light of the Shariah.",
     fullDesc: "This essential course covers the basic Islamic knowledge that every Muslim must know. It explains beliefs, worship, and obligations clearly to ensure correct practice in daily life.",
-    image: "/farzululoom.png",
+    image: "/farz-e-uloom-essential-islamic-knowledge.png",
+    altText: "Farz-e-Uloom Essential Islamic Knowledge Course – Learn Obligatory Islamic Practices Online",
     whatYouLearn: [
       "Basic Islamic beliefs",
       "Purification and cleanliness",
@@ -386,7 +399,7 @@ const BLOGS = [
 ];
 
 const LogoImage = ({ className }) => (
-  <img src="/logo.png" alt="Almaas Quran Academy" className={className} />
+  <img src="/almaas-online-quran-academy-logo.png" alt="Almaas Online Quran Academy – Best Online Quran Academy for Kids and Adults" className={className} />
 );
 
 const Header = ({ scrolled, menuOpen, setMenuOpen, navigateTo, setShowPopup }) => (
@@ -565,9 +578,6 @@ const ChatWidget = ({ showChat, setShowChat }) => (
 
 const CoursesPage = ({ COURSES_DETAILED, navigateTo }) => (
   <div className="min-h-screen bg-offwhite">
-    <button onClick={() => navigateTo('/')} className="fixed top-4 left-4 z-50 bg-navy text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg hover:bg-navy/90 transition">
-      <ArrowLeft className="w-4 h-4" /> Back to Home
-    </button>
     <div className="pt-24 pb-20 px-4">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-5xl font-black text-navy mb-4 text-center">Our Courses</h1>
@@ -577,7 +587,7 @@ const CoursesPage = ({ COURSES_DETAILED, navigateTo }) => (
             <div key={idx} className="bg-offwhite border-2 border-navy/10 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition">
               <div className="md:flex">
                 <div className="md:w-1/3 h-64 md:h-auto">
-                  <img src={course.image} alt={course.title} className="w-full h-full object-cover" />
+                  <img src={course.image} alt={course.altText} className="w-full h-full object-cover" />
                 </div>
                 <div className="md:w-2/3 p-8">
                   <div className="flex items-start justify-between mb-4">
@@ -614,6 +624,10 @@ const CoursesPage = ({ COURSES_DETAILED, navigateTo }) => (
 
 const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigateTo, setShowPopup, pricingPlans, FAQS, BLOGS, reviews, activeFaq, setActiveFaq, handleReviewSubmit, newReview, setNewReview, reviewStatus, handleSubmit, formStatus }) => (
   <div className="min-h-screen">
+    <Helmet>
+      <title>Online Quran Academy | Learn Quran with Tajweed &amp; Hifz for Kids &amp; Adults – Almaas Online Quran Academy</title>
+      <meta name="description" content="Learn Quran from home with Almaas Online Quran Academy. We provide Online Quran classes, Tajweed, and Hifz for Kids &amp; Adults through personalized one-on-one sessions with expert teachers." />
+    </Helmet>
     {/* Hero Section */}
     <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-br from-offwhite to-white">
       <div className="max-w-7xl mx-auto text-center">
@@ -759,7 +773,7 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
           {COURSES_DETAILED.slice(0, 6).map((course, idx) => (
             <div key={idx} className="bg-gradient-to-br from-navy/90 to-navy rounded-3xl overflow-hidden shadow-2xl border-4 border-white hover:scale-105 transition-transform">
               <div className="h-48 overflow-hidden relative">
-                <img src={course.image} alt={course.title} className="w-full h-full object-cover" />
+                <img src={course.image} alt={course.altText} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy to-transparent"></div>
               </div>
               <div className="p-6">
@@ -947,7 +961,6 @@ const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
 
 const PricingPage = ({ pricingPlans, navigateTo, setShowPopup }) => (
   <div className="min-h-screen bg-offwhite">
-    <button onClick={() => navigateTo('/')} className="fixed top-4 left-4 z-50 bg-navy text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg hover:bg-navy/90 transition"><ArrowLeft className="w-4 h-4" /> Back</button>
     <div className="pt-24 pb-20 px-4">
       <div className="max-w-5xl mx-auto text-center">
         <h1 className="text-5xl font-black text-navy mb-4">Pricing Plans</h1>
@@ -974,7 +987,6 @@ const PricingPage = ({ pricingPlans, navigateTo, setShowPopup }) => (
 
 const FAQPage = ({ FAQS, activeFaq, setActiveFaq, navigateTo }) => (
   <div className="min-h-screen bg-offwhite">
-    <button onClick={() => navigateTo('/')} className="fixed top-4 left-4 z-50 bg-navy text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg"><ArrowLeft className="w-4 h-4" /> Back</button>
     <div className="pt-24 pb-20 px-4">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-5xl font-black text-navy mb-12 text-center">Frequently Asked Questions</h1>
@@ -993,7 +1005,6 @@ const FAQPage = ({ FAQS, activeFaq, setActiveFaq, navigateTo }) => (
 
 const BlogPage = ({ BLOGS, navigateTo }) => (
   <div className="min-h-screen bg-offwhite">
-    <button onClick={() => navigateTo('/')} className="fixed top-4 left-4 z-50 bg-navy text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg"><ArrowLeft className="w-4 h-4" /> Back</button>
     <div className="pt-24 pb-20 px-4">
       <div className="max-w-5xl mx-auto">
         <h1 className="text-5xl font-black text-navy mb-4 text-center">Latest Articles</h1>
@@ -1046,9 +1057,6 @@ const BlogDetailPage = ({ BLOGS, navigateTo, setShowPopup }) => {
 };
 const ReviewsPage = ({ reviews, loadingReviews, navigateTo }) => (
   <div className="min-h-screen bg-offwhite">
-    <button onClick={() => navigateTo('home')} className="fixed top-4 left-4 z-50 bg-navy text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg hover:bg-navy/90 transition">
-      <ArrowLeft className="w-4 h-4" /> Back to Home
-    </button>
     <div className="pt-24 pb-20 px-4">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-5xl font-black text-navy mb-4 text-center">Public Reviews</h1>
@@ -1084,7 +1092,6 @@ const ReviewsPage = ({ reviews, loadingReviews, navigateTo }) => (
 
 const ContactPage = ({ handleSubmit, formStatus, courses, navigateTo }) => (
   <div className="min-h-screen bg-offwhite">
-    <button onClick={() => navigateTo('/')} className="fixed top-4 left-4 z-50 bg-navy text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg hover:bg-navy/90 transition"><ArrowLeft className="w-4 h-4" /> Back</button>
     <div className="pt-24 pb-20 px-4">
       <div className="max-w-5xl mx-auto">
         <h1 className="text-5xl font-black text-navy mb-8 text-center">Contact Us</h1>
@@ -1171,6 +1178,8 @@ const AlmaasQuranAcademy = () => {
   const [counts, setCounts] = useState({ teachers: 15 });
   const [currentTagline, setCurrentTagline] = useState(0);
   const [selectedRegion, setSelectedRegion] = useState('USA'); // Default
+  const [locationData, setLocationData] = useState(null);
+  const [exchangeRates, setExchangeRates] = useState(null);
   const [formStatus, setFormStatus] = useState({ submitting: false, success: false, error: null });
 
 
@@ -1207,26 +1216,49 @@ const AlmaasQuranAcademy = () => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
 
-    // Detect Region from URL or Timezone
-    const detectRegion = () => {
-      const path = window.location.pathname;
-      if (path.includes('quran-classes-usa')) return 'USA';
-      if (path.includes('quran-classes-uk')) return 'UK';
-      if (path.includes('quran-classes-canada')) return 'Canada';
-      if (path.includes('quran-classes-australia')) return 'Australia';
+    // Dynamic Location and Currency Detection
+    const initDynamicPricing = async () => {
+      try {
+        // 1. Detect Location via IP (ipapi.co is free for 1k req/day)
+        const ipRes = await fetch('https://ipapi.co/json/');
+        const ipData = await ipRes.json();
 
-      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      if (tz.includes('London') || tz.includes('Europe/London')) return 'UK';
-      if (tz.includes('America/New_York') || tz.includes('America/Chicago') || tz.includes('America/Los_Angeles')) return 'USA';
-      if (tz.includes('America/Toronto') || tz.includes('America/Vancouver')) return 'Canada';
-      if (tz.includes('Australia')) return 'Australia';
-      if (tz.includes('Europe')) return 'Europe';
+        if (ipData && !ipData.error) {
+          setLocationData(ipData);
 
-      return 'USA';
+          // Determine region based on country
+          const country = ipData.country_name;
+          // const currency = ipData.currency; // reserved for future currency display
+
+          if (country === 'United Kingdom') setSelectedRegion('UK');
+          else if (country === 'Canada') setSelectedRegion('Canada');
+          else if (country === 'Australia') setSelectedRegion('Australia');
+          else if (ipData.continent_code === 'EU') setSelectedRegion('Europe');
+          else setSelectedRegion('USA');
+
+          // 2. Fetch Real-time Exchange Rates (exchangerate-api is free/no-key for v4)
+          const rateRes = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+          const rateData = await rateRes.json();
+          if (rateData && rateData.rates) {
+            setExchangeRates(rateData.rates);
+          }
+        } else {
+          throw new Error('IP detection failed');
+        }
+      } catch (err) {
+        console.error('Dynamic pricing init failed, using fallbacks:', err);
+        // Fallback: Timezone-based detection
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        if (tz.includes('London') || tz.includes('Europe/London')) setSelectedRegion('UK');
+        else if (tz.includes('America/New_York') || tz.includes('America/Chicago') || tz.includes('America/Los_Angeles')) setSelectedRegion('USA');
+        else if (tz.includes('America/Toronto') || tz.includes('America/Vancouver')) setSelectedRegion('Canada');
+        else if (tz.includes('Australia')) setSelectedRegion('Australia');
+        else if (tz.includes('Europe')) setSelectedRegion('Europe');
+        else setSelectedRegion('USA');
+      }
     };
 
-    const detected = detectRegion();
-    setSelectedRegion(detected);
+    initDynamicPricing();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -1345,6 +1377,23 @@ const AlmaasQuranAcademy = () => {
 
 
   const getPrice = (gbp, usd) => {
+    // If we have dynamic location data and exchange rates, use them!
+    if (locationData && exchangeRates) {
+      const currency = locationData.currency; // e.g., 'GBP', 'CAD', 'PKR'
+      const symbol = locationData.currency_symbol || '$';
+      const rate = exchangeRates[currency] || 1;
+
+      // We use USD as the base price for conversion
+      const convertedPrice = Math.round(usd * rate);
+
+      // Special case for regions we have explicit configs for (to keep symbols nice)
+      const specialSymbols = { 'GBP': '£', 'CAD': 'C$', 'AUD': 'A$', 'EUR': '€', 'USD': '$' };
+      const displaySymbol = specialSymbols[currency] || symbol;
+
+      return `${displaySymbol}${convertedPrice}`;
+    }
+
+    // Fallback to static selection logic if API fails or is loading
     if (selectedRegion === 'UK') return `£${gbp}`;
     if (selectedRegion === 'USA') return `$${usd}`;
 
