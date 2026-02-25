@@ -64,7 +64,7 @@ const COURSES_DETAILED = [
     slug: "qaida-basics",
     shortDesc: "A foundational course designed to help beginners learn the Arabic alphabet, basic pronunciation, and the rules of Quranic reading step by step, with clarity and ease.",
     fullDesc: "This foundational course is designed for beginners who are starting their Quran learning journey from the very beginning. Students learn Arabic letters, correct pronunciation, and letter formation in a simple, step-by-step manner. Special focus is given to clarity, repetition, and individual attention so learners build confidence before moving on to Quran reading. This course is suitable for children, adults, and new learners with no prior Arabic background.",
-    image: "/quran-qaida-beginners-course.jpg",
+    image: "/quran-qaida-beginners-course.webp",
     altText: "Quran Qaida for Beginners – Learn Arabic Letters and Pronunciation Online at Almaas Academy",
     whatYouLearn: [
       "Arabic alphabet (Huroof-e-Hijai)",
@@ -86,7 +86,7 @@ const COURSES_DETAILED = [
     slug: "quran-reading",
     shortDesc: "A guided course designed to help learners read the Holy Quran fluently, focusing on correct pronunciation, smooth recitation, and building confidence in every verse.",
     fullDesc: "This course helps students read the Holy Quran fluently and confidently with correct pronunciation. Learners are guided step by step to improve flow, accuracy, and consistency in recitation. Teachers focus on correcting mistakes and strengthening reading skills through regular practice. Ideal for students who can read basic Arabic and want to improve Quran recitation.",
-    image: "/online-quran-reading-course.jpg",
+    image: "/online-quran-reading-course.webp",
     altText: "Online Quran Reading Course – Fluent and Confident Quran Recitation for Kids and Adults",
     whatYouLearn: [
       "Fluent Quran reading",
@@ -108,7 +108,7 @@ const COURSES_DETAILED = [
     slug: "hifz-memorization",
     shortDesc: "A structured course that helps students memorize the Holy Quran with accuracy, daily revision plans, and expert guidance to retain and recite confidently.",
     fullDesc: "This structured course is designed to help students memorize the Holy Quran accurately and effectively. A disciplined system of daily lessons, revision plans, and continuous supervision ensures strong memorization and retention. Emphasis is placed on Tajweed and correct recitation. Suitable for children and adults aspiring to become Hafiz or Hafiza.",
-    image: "/online-quran-memorization-hifz-classes.png",
+    image: "/online-quran-memorization-hifz-classes.webp",
     altText: "Online Quran Memorization (Hifz) Classes for Kids and Adults at Almaas Online Quran Academy",
     whatYouLearn: [
       "Systematic Quran memorization",
@@ -130,7 +130,7 @@ const COURSES_DETAILED = [
     slug: "quran-translation",
     shortDesc: "A comprehensive course designed to help learners understand the meanings of Quranic verses through clear, word-by-word translation and spiritual reflection.",
     fullDesc: "This course helps learners understand the meanings of the Holy Quran through clear and easy word-by-word translation. Students develop an understanding of Quranic vocabulary and sentence structure while reflecting on the message of Allah. Ideal for learners who want to move beyond recitation and understand the Quran deeply.",
-    image: "/quran-translation-course-online.jpg",
+    image: "/quran-translation-course-online.webp",
     altText: "Online Quran Translation Course – Learn Word-by-Word Quran Meanings with Expert Teachers",
     whatYouLearn: [
       "Word-by-word Quran translation",
@@ -152,7 +152,7 @@ const COURSES_DETAILED = [
     slug: "quran-tafseer",
     shortDesc: "An in-depth course that explores the meanings, context, and wisdom behind Quranic verses helping learners connect deeply with the message of the Holy Quran.",
     fullDesc: "This advanced course provides detailed explanations of Quranic verses, including historical background, context, and wisdom. Students learn how Quranic teachings apply to real life and develop a deeper connection with Allah's message through authentic Tafseer.",
-    image: "/quran-tafseer-course-online.jpg",
+    image: "/quran-tafseer-course-online.webp",
     altText: "Online Quran Tafseer Course – In-Depth Quranic Explanation and Context by Expert Teachers",
     whatYouLearn: [
       "Detailed explanation of Quranic verses",
@@ -174,7 +174,7 @@ const COURSES_DETAILED = [
     slug: "arabic-language",
     shortDesc: "A beginner-friendly course that builds a strong foundation in reading, writing, and understanding Arabic essential for deeper Quranic comprehension and daily use.",
     fullDesc: "This beginner-friendly Arabic language course builds a strong foundation in reading, writing, and understanding Arabic. Lessons are designed in a simple and practical way to help learners understand the Quran and use Arabic in daily Islamic life.",
-    image: "/arabic-language-course-online.jpg",
+    image: "/arabic-language-course-online.webp",
     altText: "Online Arabic Language Course – Learn Quranic Arabic for Beginners and Intermediate Students",
     whatYouLearn: [
       "Arabic reading and writing",
@@ -196,7 +196,7 @@ const COURSES_DETAILED = [
     slug: "new-muslim-guide",
     shortDesc: "A supportive course tailored for new Muslims, covering the basics of Islam, daily prayers, Quran reading, and essential beliefs to help start your spiritual journey.",
     fullDesc: "This supportive course is designed for new Muslims to learn Islam in a clear, simple, and welcoming way. It covers essential beliefs, worship, and daily Islamic practices to help new Muslims feel confident and comfortable in their faith.",
-    image: "/new-muslim-quran-course-online.jpg",
+    image: "/new-muslim-quran-course-online.webp",
     altText: "New Muslim Quran and Islam Course – Start Your Islamic Journey with Expert Guidance Online",
     whatYouLearn: [
       "Basic Islamic beliefs",
@@ -218,7 +218,7 @@ const COURSES_DETAILED = [
     slug: "seerat-un-nabi",
     shortDesc: "A heart-touching course that explores the life, character, and teachings of Prophet Muhammad (P.B.U.H), offering guidance and inspiration for everyday life.",
     fullDesc: "This course explores the blessed life of Prophet Muhammad ﷺ, highlighting his character, teachings, and struggles. Students learn practical lessons from Seerah that guide moral conduct and daily life while developing love for the Prophet ﷺ.",
-    image: "/seerat-un-nabi-course-online.jpg",
+    image: "/seerat-un-nabi-course-online.webp",
     altText: "Seerat un Nabi Online Course – Life and Teachings of Prophet Muhammad (PBUH) for All Ages",
     whatYouLearn: [
       "Life of Prophet Muhammad ﷺ",
@@ -240,7 +240,7 @@ const COURSES_DETAILED = [
     slug: "tajweed-rules",
     shortDesc: "A detailed course focused on perfecting Quranic pronunciation (Tajweed) and reciting with rhythm and beauty (Tarteel), following the rules of proper recitation.",
     fullDesc: "This course focuses on perfecting Quran recitation by teaching Tajweed rules and the beauty of Tarteel. Students learn correct pronunciation, articulation points, and rhythmic recitation to recite the Quran as it was revealed.",
-    image: "/quran-tajweed-tarteel-course-online.jpg",
+    image: "/quran-tajweed-tarteel-course-online.webp",
     altText: "Online Quran Tajweed and Tarteel Course – Perfect Your Quran Recitation with Certified Teachers",
     whatYouLearn: [
       "Rules of Tajweed",
@@ -262,7 +262,7 @@ const COURSES_DETAILED = [
     slug: "islamic-scholarship",
     shortDesc: "A traditional Islamic studies course covering core subjects like Fiqh, Hadith, Tafseer, and Arabic grammar designed to build strong scholarly foundations.",
     fullDesc: "Dars-e-Nizami is a traditional Islamic studies program covering major Islamic sciences. It is designed for serious students seeking scholarly knowledge in Fiqh, Hadith, Tafseer, and Arabic grammar.",
-    image: "/dars-e-nizami-islamic-scholarship-course.jpg",
+    image: "/dars-e-nizami-islamic-scholarship-course.webp",
     altText: "Dars e Nizami Islamic Studies Course Online – Traditional Islamic Scholarship with Expert Scholars",
     whatYouLearn: [
       "Fiqh and Islamic rulings",
@@ -284,7 +284,7 @@ const COURSES_DETAILED = [
     slug: "basic-fiqh",
     shortDesc: "A concise course introducing the basic principles of Islamic law, covering daily practices, ethics, and worship according to the teachings of the Quran and Sunnah.",
     fullDesc: "This concise course introduces the basic principles of Islamic law in a simple and practical way. It focuses on daily worship, ethics, and personal responsibilities according to Quran and Sunnah.",
-    image: "/short-shariah-course-online.jpg",
+    image: "/short-shariah-course-online.webp",
     altText: "Short Shariah Course Online – Learn Basic Islamic Law and Daily Practices with Qualified Teachers",
     whatYouLearn: [
       "Basic Shariah principles",
@@ -306,7 +306,7 @@ const COURSES_DETAILED = [
     slug: "essential-knowledge",
     shortDesc: "An essential course covering the basic Islamic knowledge every Muslim must know like beliefs, prayer, purification, and daily obligations in light of the Shariah.",
     fullDesc: "This essential course covers the basic Islamic knowledge that every Muslim must know. It explains beliefs, worship, and obligations clearly to ensure correct practice in daily life.",
-    image: "/farz-e-uloom-essential-islamic-knowledge.png",
+    image: "/farz-e-uloom-essential-islamic-knowledge.webp",
     altText: "Farz-e-Uloom Essential Islamic Knowledge Course – Learn Obligatory Islamic Practices Online",
     whatYouLearn: [
       "Basic Islamic beliefs",
@@ -399,7 +399,7 @@ const BLOGS = [
 ];
 
 const LogoImage = ({ className }) => (
-  <img src="/almaas-online-quran-academy-logo.png" alt="Almaas Online Quran Academy – Best Online Quran Academy for Kids and Adults" className={className} />
+  <img src="/almaas-online-quran-academy-logo.webp" alt="Almaas Online Quran Academy – Best Online Quran Academy for Kids and Adults" className={className} />
 );
 
 const Header = ({ scrolled, menuOpen, setMenuOpen, navigateTo, setShowPopup }) => (
@@ -915,45 +915,315 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
 );
 
 
+// --- Per-course SEO metadata ---
+const COURSE_SEO = {
+  'qaida-basics': {
+    title: 'Quran Qaida for Beginners Online | Learn Arabic Letters & Pronunciation – Almaas Academy',
+    description: 'Start your Quran journey with our Qaida for Beginners course. Learn Arabic letters, correct pronunciation, and Quranic reading step-by-step with expert teachers. Free trial available.',
+    faqs: [
+      { q: 'How old should a child be to start Qaida?', a: 'Children as young as 4 years old can start our Qaida course. We have specialized teachers trained in teaching young learners with patience and interactive methods.' },
+      { q: 'How long does the Qaida course take to complete?', a: 'Typically 2–3 months depending on the student\'s age, learning pace, and frequency of classes per week.' },
+      { q: 'Do I need any prior knowledge to enroll in Qaida?', a: 'No prior knowledge is required. This course is designed for absolute beginners starting from zero.' },
+    ],
+    syllabus: ['Arabic alphabet recognition (Huroof-e-Hijai)', 'Makharij – correct articulation points', 'Harakaat: Fatha, Kasra, Damma', 'Tanween, Sukoon, Shaddah', 'Joining letters to form words', 'Reading complete sentences from Noorani Qaida'],
+  },
+  'quran-reading': {
+    title: 'Online Quran Reading Course | Fluent & Confident Recitation – Almaas Academy',
+    description: 'Improve your Quran reading with our guided online course. Learn fluent, accurate recitation with correct pronunciation from certified teachers. One-on-one classes for kids and adults.',
+    faqs: [
+      { q: 'What is the prerequisite for the Quran Reading course?', a: 'Students should have completed the Qaida or already be able to recognize Arabic letters and basic vowel signs.' },
+      { q: 'How many classes per week are recommended?', a: 'We recommend at least 3 classes per week for steady progress. Weekend-only plans are also available.' },
+      { q: 'Will I learn Tajweed in this course?', a: 'Basic Tajweed rules are introduced as they appear in the text. For full Tajweed mastery, our dedicated Tajweed & Tarteel course is recommended.' },
+    ],
+    syllabus: ['Review of Qaida fundamentals', 'Juz Amma – short Surahs for fluency', 'Pause (Waqf) and continuation rules', 'Basic Tajweed as applied in text', 'Confidence building in recitation', 'Consistent reading speed (Tarteel)'],
+  },
+  'hifz-memorization': {
+    title: 'Online Quran Memorization (Hifz) Classes | Become Hafiz/Hafiza – Almaas Academy',
+    description: 'Structured Quran Hifz classes online for kids and adults. Memorize the Quran with daily revision plans, expert teachers, and Tajweed focus. Start your Hafiz journey with 3 free trial classes.',
+    faqs: [
+      { q: 'Can adults memorize the Quran online?', a: 'Absolutely. Many adults successfully complete Hifz through our structured program. We provide customized plans based on your schedule and memorization speed.' },
+      { q: 'What is the daily commitment required for Hifz?', a: 'A minimum of 30–60 minutes of new memorization and 30 minutes of revision daily is recommended for consistent progress.' },
+      { q: 'How do you ensure the memorization is retained long-term?', a: 'We use a structured 3-part system: new lesson (Sabaq), recent revision (Sabqi), and old revision (Manzil). This is the proven classical method used globally.' },
+    ],
+    syllabus: ['Tajweed correction before starting Hifz', 'Daily new lesson (Sabaq): 5–10 lines', 'Recent revision (Sabqi): last 7 days', 'Old revision (Manzil): full Quran cycle', 'Teacher-supervised recitation testing', 'Completion certificate upon Khatam'],
+  },
+  'quran-translation': {
+    title: 'Online Quran Translation Course | Word-by-Word Meaning – Almaas Academy',
+    description: 'Learn the meaning of the Quran with our word-by-word translation course. Understand every verse with clarity under expert guidance. Online classes for kids and adults worldwide.',
+    faqs: [
+      { q: 'What language is the translation taught in?', a: 'Translation is primarily taught in English and Urdu, catering to our global student base.' },
+      { q: 'Will I be able to understand Salah after this course?', a: 'Yes. A core goal of this course is that you understand the Surahs and duas recited in daily prayers, greatly improving your Khushu (focus) in Salah.' },
+      { q: 'Is Arabic grammar taught in the Translation course?', a: 'Basic Quranic vocabulary is covered. For in-depth Arabic grammar, our Arabic Language course is the natural next step.' },
+    ],
+    syllabus: ['Core Quranic vocabulary (80% of repeated words)', 'Word-by-word breakdown of Juz Amma', 'Understanding Quranic sentence structure', 'Reflection exercises on key verses', 'Contextual meaning (Tafseer lite)', 'Application of meanings in daily Salah'],
+  },
+  'quran-tafseer': {
+    title: 'Online Quran Tafseer Course | In-Depth Quranic Commentary – Almaas Academy',
+    description: 'Study Quran Tafseer online with certified scholars. Explore the historical context, wisdom, and guidance of Quranic verses. Advanced course for dedicated learners seeking deep understanding.',
+    faqs: [
+      { q: 'Which Tafseer sources do you use?', a: 'We primarily use Tafseer ibn Kathir and Tafseer al-Jalalayn, supplemented with modern explanations to relate Quranic wisdom to contemporary life.' },
+      { q: 'What level should I be before joining Tafseer?', a: 'Students should be fluent in reading the Quran and ideally have some understanding of basic Arabic vocabulary (Translation level).' },
+      { q: 'Does the Tafseer course increase faith?', a: 'Almost universally, yes. Understanding the context and wisdom of the words of Allah directly strengthens Iman (faith) and provides clarity on complex Islamic concepts.' },
+    ],
+    syllabus: ['Shan-e-Nuzool (context of revelation)', 'Linguistic analysis of key Arabic terms', 'Cross-referencing Ayahs with Hadith', 'Ahkam (legal rulings) derived from verses', 'Overarching themes of selected Surahs', 'Applying Quranic guidance to modern life'],
+  },
+  'arabic-language': {
+    title: 'Online Arabic Language Course | Learn Quranic Arabic – Almaas Academy',
+    description: 'Learn Arabic online with our structured Quranic Arabic course. Master reading, writing, grammar (Nahw & Sarf) and vocabulary. Beginner to intermediate classes for all ages.',
+    faqs: [
+      { q: 'Is this Modern Standard Arabic or Quranic Arabic?', a: 'Our focus is Quranic Arabic (Classical Arabic), which is the language of the Holy Quran and the primary goal for Muslim students. Modern Standard Arabic elements are included where relevant.' },
+      { q: 'How is Quranic Arabic different from conversational Arabic?', a: 'Quranic Arabic is the classical form of the language. While learning it improves overall comprehension, the primary goal is understanding the Quran, not everyday conversation.' },
+      { q: 'How long before I can read the Quran with understanding?', a: 'After 6 months of consistent study, most students gain the ability to recognize a significant portion of Quranic vocabulary and understand basic sentence structures.' },
+    ],
+    syllabus: ['Arabic alphabet and script mastery', 'Nahw (Syntax) – sentence structure', 'Sarf (Morphology) – verb conjugation', 'Quranic vocabulary (top 500 words)', 'Reading and parsing Quranic verses', 'Building sentences in Classical Arabic'],
+  },
+  'new-muslim-guide': {
+    title: 'Online Quran & Islam Course for New Muslims | Almaas Academy',
+    description: 'A welcoming, step-by-step Islamic course for new Muslims. Learn Salah, Quran basics, Islamic beliefs, and daily practices with a patient certified teacher. Free trial available.',
+    faqs: [
+      { q: 'Is this course only for people who recently converted?', a: 'This course is primarily designed for reverts (new Muslims), but anyone seeking to learn the fundamentals of Islam from scratch is welcome.' },
+      { q: 'Will I feel judged or rushed in this course?', a: 'Absolutely not. Our teachers are trained to provide a completely safe, non-judgmental, and welcoming environment. We go at your pace.' },
+      { q: 'Do you have teachers who speak my language?', a: 'We have teachers fluent in English and Urdu. Please contact us to arrange a teacher based on your language preference.' },
+    ],
+    syllabus: ['The Five Pillars of Islam', 'The Six Articles of Faith (Aqeedah)', 'How to perform Wudu (ablution)', 'Step-by-step method of Salah', 'Basic Quranic recitation (Qaida)', 'Halal/Haram basics and Islamic ethics'],
+  },
+  'seerat-un-nabi': {
+    title: 'Seerat un Nabi Course Online | Life of Prophet Muhammad (PBUH) – Almaas',
+    description: 'Study the life and character of Prophet Muhammad (PBUH) online. Learn from his biography, moral teachings, and key events. A spiritually enriching course for Muslims of all ages.',
+    faqs: [
+      { q: 'Why should I study Seerah?', a: 'The Prophet Muhammad (PBUH) is the ultimate role model for every Muslim. Studying his life gives us practical guidance on character, leadership, family, and faith.' },
+      { q: 'Is this course suitable for children?', a: 'Yes. We have age-appropriate versions of this course specifically tailored for younger students, making the stories of the Prophet (PBUH) engaging and inspiring.' },
+      { q: 'What time period does the Seerah course cover?', a: 'The course covers the Prophet\'s life chronologically from his birth in Makkah, through the years of revelation, migration to Madinah, and the establishment of the Islamic state.' },
+    ],
+    syllabus: ['Early life of the Prophet (PBUH) in Makkah', 'The beginning of revelation (Wahy)', 'Persecution and patience of early Muslims', 'Hijrah (Migration) to Madinah', 'Key battles and Islamic constitution', 'Final sermon and the Prophet\'s legacy'],
+  },
+  'tajweed-rules': {
+    title: 'Online Quran Tajweed Course | Perfect Your Recitation – Almaas Academy',
+    description: 'Master Tajweed and Tarteel with certified online teachers. Learn Makharij, Sifaat, Ghunna, Madd rules, and more. Beautify your Quran recitation for kids and adults worldwide.',
+    faqs: [
+      { q: 'Is learning Tajweed obligatory (Fard)?', a: 'Scholars agree that applying Tajweed to avoid changing the meaning of words is obligatory (Fard al-Ayn) for every Muslim who recites the Quran.' },
+      { q: 'I can already read Quran. Why do I need a Tajweed course?', a: 'Most self-taught reciters have pronunciation habits that need correction. A Tajweed course provides live feedback from a trained teacher to correct these errors systematically.' },
+      { q: 'What is the difference between Tajweed and Tarteel?', a: 'Tajweed refers to the rules of pronunciation. Tarteel refers to the measured, rhythmic, and beautiful style of recitation. Both are covered in this course.' },
+    ],
+    syllabus: ['Makharij al-Huroof (articulation points)', 'Sifaat (characteristics of letters)', 'Rules of Noon & Meem Sakinah', 'Madd (elongation) rules', 'Waqf (pause) and Ibtida (resumption)', 'Tarteel practice with Quranic passages'],
+  },
+  'islamic-scholarship': {
+    title: 'Dars e Nizami Online | Islamic Scholarship Program – Almaas Academy',
+    description: 'Study Dars e Nizami online – the classical Islamic scholarship curriculum covering Fiqh, Hadith, Tafseer, and Arabic grammar. For dedicated students of Islamic sciences.',
+    faqs: [
+      { q: 'How long does the full Dars e Nizami program take?', a: 'The complete Dars e Nizami curriculum traditionally spans 7–8 years. We offer it in modular levels so students can progress at their own pace.' },
+      { q: 'What career paths does this open?', a: 'Graduates of Dars e Nizami can become qualified scholars, Imams, Qadis, teachers, and community leaders with recognized Islamic authority.' },
+      { q: 'Do I need to know Arabic before enrolling?', a: 'A strong foundation in Arabic grammar (Nahw & Sarf) is required before the advanced levels. We can help assess and build your readiness.' },
+    ],
+    syllabus: ['Nahw (Arabic Syntax) & Sarf (Morphology)', 'Mantiq (Islamic Logic)', 'Usul al-Fiqh (Principles of Islamic Law)', 'Fiqh (Islamic Jurisprudence)', 'Hadith studies (Sihah al-Sittah)', 'Tafseer methodology and application'],
+  },
+  'basic-fiqh': {
+    title: 'Short Shariah Course Online | Basic Islamic Law & Daily Rulings – Almaas',
+    description: 'Learn essential Shariah rulings for daily Muslim life. Our concise Short Shariah online course covers Salah, Zakat, fasting, Halal/Haram, and Islamic ethics. Beginner friendly.',
+    faqs: [
+      { q: 'Who is this Short Shariah course designed for?', a: 'This course is designed for busy Muslims who want clear, practical answers on essential Islamic rulings without committing to a long scholarly program.' },
+      { q: 'What Madhab (school of thought) do you teach?', a: 'We primarily follow the Hanafi madhab but we make students aware of other scholarly opinions where they are commonly followed.' },
+      { q: 'How quickly can I complete this course?', a: 'The course can be completed in 1–2 months with 2–3 classes per week, making it one of our most accessible programs.' },
+    ],
+    syllabus: ['Fiqh of Taharah (Purification)', 'Fiqh of Salah (Prayer rules & conditions)', 'Fiqh of Zakat (Charity obligations)', 'Fiqh of Fasting (Ramadan rules)', 'Halal & Haram in food and business', 'Rights of family, neighbors & community'],
+  },
+  'essential-knowledge': {
+    title: 'Farz e Uloom Course Online | Essential Islamic Knowledge for Every Muslim',
+    description: 'Learn the essential Islamic knowledge (Farz-e-Uloom) every Muslim must have. Covers Aqeedah, Salah, purification, and daily Islamic obligations. Beginner-friendly online course.',
+    faqs: [
+      { q: 'What is Farz-e-Uloom?', a: 'Farz-e-Uloom (obligatory knowledge) refers to the minimum Islamic knowledge that is an individual duty (Farz al-Ayn) upon every Muslim to learn, such as correct Aqeedah, how to pray, and basic Islamic duties.' },
+      { q: 'Is this course suitable for someone who grew up Muslim but never learned formally?', a: 'This is the most common student for this course. Many Muslims who grew up in the faith have gaps in foundational knowledge that this course addresses comprehensively.' },
+      { q: 'How is this different from the Short Shariah course?', a: 'Farz-e-Uloom focuses specifically on the obligatory minimum knowledge, with more emphasis on Aqeedah (beliefs). Short Shariah is broader in its coverage of legal rulings.' },
+    ],
+    syllabus: ["Aqeedah (Islamic Beliefs) – the Six Pillars", 'Correct method of Wudu and Ghusl', 'Complete method of Salah (all 5 prayers)', 'Essentials of Fasting in Ramadan', 'Rights of parents, neighbors & Muslims', "Sins of the heart to avoid (Kibr, Hasad, etc.)"],
+  },
+};
+
 const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
   const { slug } = useParams();
-  const selectedCourse = COURSES_DETAILED.find(c => c.slug === slug);
-  if (!selectedCourse) return <Navigate to="/courses" />;
+  const course = COURSES_DETAILED.find(c => c.slug === slug);
+  if (!course) return <Navigate to="/courses" />;
+
+  const seo = COURSE_SEO[slug] || {
+    title: `${course.title} | Online Course – Almaas Online Quran Academy`,
+    description: course.shortDesc,
+    faqs: [],
+    syllabus: course.whatYouLearn,
+  };
+
+  const related = COURSES_DETAILED.filter(c => c.slug !== slug).slice(0, 3);
+
+  // JSON-LD structured data for Google
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": course.title,
+    "description": course.shortDesc,
+    "provider": {
+      "@type": "Organization",
+      "name": "Almaas Online Quran Academy",
+      "sameAs": "https://almaasonlinequranacademy.online"
+    },
+    "educationalLevel": course.level,
+    "timeRequired": course.duration,
+    "url": `https://almaasonlinequranacademy.online/courses/${slug}`,
+    "image": `https://almaasonlinequranacademy.online${course.image}`,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "3 Free Trial Classes Available"
+    }
+  };
+
   return (
     <div className="min-h-screen bg-offwhite">
-      <button onClick={() => navigateTo('/courses')} className="fixed top-4 left-4 z-50 bg-navy text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg hover:bg-navy/90 transition"><ArrowLeft className="w-4 h-4" /> Back to Courses</button>
-      <div className="pt-24 pb-20 px-4">
-        <div className="max-w-4xl mx-auto bg-white rounded-3xl overflow-hidden shadow-2xl border border-navy/5">
-          <div className="h-64 md:h-96 relative">
-            <img src={selectedCourse.image} alt={selectedCourse.title} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy to-transparent flex items-end p-8 md:p-12">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight">{selectedCourse.title}</h1>
-            </div>
-          </div>
-          <div className="p-8 md:p-12">
-            <div className="flex flex-wrap gap-4 mb-8">
-              <div className="bg-navy/5 text-navy px-4 py-2 rounded-full font-bold flex items-center gap-2"><Clock className="w-5 h-5" /> {selectedCourse.duration}</div>
-              <div className="bg-navy/5 text-navy px-4 py-2 rounded-full font-bold flex items-center gap-2"><Award className="w-5 h-5" /> {selectedCourse.level}</div>
-            </div>
-            <div className="prose prose-lg max-w-none text-darkgray space-y-6">
-              <p className="text-xl font-medium italic text-navy/80">{selectedCourse.shortDesc}</p>
-              <div className="space-y-12 mt-8">
-                <section><h2 className="text-3xl font-black text-navy mb-4">Who This Course Is For</h2><p className="leading-relaxed whitespace-pre-line">{selectedCourse.whoFor}</p></section>
-                <section>
-                  <h2 className="text-3xl font-black text-navy mb-4">Course Curriculum</h2>
-                  <ul className="grid md:grid-cols-2 gap-4">
-                    {selectedCourse.whatYouLearn.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 bg-offwhite p-4 rounded-xl border border-navy/10"><CheckCircle className="w-6 h-6 text-gold flex-shrink-0" /> <span className="font-medium">{item}</span></li>
-                    ))}
-                  </ul>
-                  <div className="mt-6 p-6 bg-navy/5 rounded-2xl whitespace-pre-line">{selectedCourse.curriculumDepth}</div>
-                </section>
-                <section><h2 className="text-3xl font-black text-navy mb-4">Benefits & Outcomes</h2><p className="leading-relaxed whitespace-pre-line">{selectedCourse.benefitsExt}</p></section>
-              </div>
-            </div>
-            <div className="mt-16 bg-navy p-10 rounded-3xl text-center"><h3 className="text-3xl font-black text-white mb-4">Ready to Start?</h3><button onClick={() => setShowPopup(true)} className="bg-gold text-navy px-12 py-4 rounded-xl font-black text-xl hover:scale-105 transition shadow-2xl">Book 3 Free Classes</button></div>
+      <Helmet>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <link rel="canonical" href={`https://almaasonlinequranacademy.online/courses/${slug}`} />
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
+
+      {/* Hero Banner */}
+      <div className="relative h-72 md:h-[420px]">
+        <img src={course.image} alt={course.altText} className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent" />
+        <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-16">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-white/60 text-sm mb-4">
+            <button onClick={() => navigateTo('/')} className="hover:text-gold transition">Home</button>
+            <span>/</span>
+            <button onClick={() => navigateTo('/courses')} className="hover:text-gold transition">Courses</button>
+            <span>/</span>
+            <span className="text-gold font-semibold">{course.title}</span>
+          </nav>
+          <h1 className="text-4xl md:text-6xl font-black text-white leading-tight mb-4">{course.title}</h1>
+          <div className="flex flex-wrap gap-3">
+            <span className="bg-white/15 backdrop-blur text-white px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2"><Clock className="w-4 h-4" />{course.duration}</span>
+            <span className="bg-white/15 backdrop-blur text-white px-4 py-1.5 rounded-full text-sm font-semibold flex items-center gap-2"><Award className="w-4 h-4" />{course.level}</span>
+            <span className="bg-gold text-navy px-4 py-1.5 rounded-full text-sm font-bold flex items-center gap-2"><Star className="w-4 h-4 fill-navy" />3 Free Trial Classes</span>
           </div>
         </div>
+        <button onClick={() => navigateTo('/courses')} className="absolute top-6 left-6 bg-white/20 backdrop-blur text-white px-4 py-2 rounded-xl flex items-center gap-2 hover:bg-white/30 transition font-semibold text-sm">
+          <ArrowLeft className="w-4 h-4" /> All Courses
+        </button>
+      </div>
+
+      <div className="max-w-5xl mx-auto px-4 py-16 space-y-16">
+
+        {/* Introduction */}
+        <section className="bg-white rounded-3xl p-8 md:p-12 shadow-lg border border-navy/5">
+          <h2 className="text-3xl font-black text-navy mb-4">About This Course</h2>
+          <p className="text-xl text-navy/80 italic font-medium mb-6 leading-relaxed">{course.shortDesc}</p>
+          <p className="text-darkgray leading-relaxed text-lg">{course.fullDesc}</p>
+        </section>
+
+        {/* Who It's For */}
+        <section className="bg-gradient-to-br from-navy to-navy/90 rounded-3xl p-8 md:p-12 text-white shadow-2xl">
+          <h2 className="text-3xl font-black mb-6 flex items-center gap-3"><Users className="w-8 h-8 text-gold" />Who This Course Is For</h2>
+          <p className="text-white/85 leading-relaxed text-lg whitespace-pre-line">{course.whoFor}</p>
+        </section>
+
+        {/* Syllabus */}
+        <section>
+          <h2 className="text-3xl font-black text-navy mb-8 text-center">Course Syllabus & What You'll Learn</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {(seo.syllabus || course.whatYouLearn).map((item, i) => (
+              <div key={i} className="flex items-start gap-4 bg-white p-5 rounded-2xl border-2 border-navy/8 shadow-sm hover:border-gold/50 transition group">
+                <div className="w-9 h-9 bg-navy rounded-xl flex items-center justify-center text-gold font-black text-sm flex-shrink-0 group-hover:bg-gold group-hover:text-navy transition">{i + 1}</div>
+                <span className="text-darkgray font-medium leading-snug mt-1">{item}</span>
+              </div>
+            ))}
+          </div>
+          {course.curriculumDepth && (
+            <div className="mt-6 p-6 bg-navy/5 border-l-4 border-navy rounded-2xl">
+              <p className="text-darkgray leading-relaxed whitespace-pre-line">{course.curriculumDepth}</p>
+            </div>
+          )}
+        </section>
+
+        {/* Benefits */}
+        <section className="bg-white rounded-3xl p-8 md:p-12 shadow-lg border border-navy/5">
+          <h2 className="text-3xl font-black text-navy mb-6 flex items-center gap-3"><CheckCircle className="w-8 h-8 text-gold" />Benefits & Outcomes</h2>
+          <p className="text-darkgray leading-relaxed text-lg whitespace-pre-line">{course.benefitsExt}</p>
+        </section>
+
+        {/* Teacher Info */}
+        <section className="bg-offwhite border-2 border-navy/10 rounded-3xl p-8 md:p-12">
+          <h2 className="text-3xl font-black text-navy mb-8 text-center">Your Teachers at Almaas Academy</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { icon: Award, title: "Ijazah Certified", desc: "All teachers hold authentic Ijazah (chain of transmission) in Quran recitation and Tajweed." },
+              { icon: Globe, title: "Global Experience", desc: "Experienced in teaching students from the USA, UK, Canada, Australia, and 30+ countries worldwide." },
+              { icon: Users, title: "Male & Female Teachers", desc: "Both male and female certified teachers available. Sisters and children can request female-only sessions." },
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <div key={i} className="text-center p-6 bg-white rounded-2xl shadow-sm border border-navy/5">
+                  <div className="w-16 h-16 bg-navy rounded-2xl flex items-center justify-center mx-auto mb-4"><Icon className="w-8 h-8 text-gold" /></div>
+                  <h3 className="font-black text-navy text-lg mb-2">{item.title}</h3>
+                  <p className="text-darkgray text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Course-specific FAQ */}
+        {seo.faqs && seo.faqs.length > 0 && (
+          <section>
+            <h2 className="text-3xl font-black text-navy mb-8 text-center">Frequently Asked Questions</h2>
+            <div className="space-y-4">
+              {seo.faqs.map((faq, i) => (
+                <details key={i} className="group bg-white border-2 border-navy/10 rounded-2xl overflow-hidden shadow-sm hover:border-navy/30 transition">
+                  <summary className="p-6 text-navy font-bold text-lg cursor-pointer flex justify-between items-center list-none">
+                    <span>{faq.q}</span>
+                    <ChevronDown className="w-5 h-5 flex-shrink-0 group-open:rotate-180 transition-transform" />
+                  </summary>
+                  <div className="px-6 pb-6 text-darkgray leading-relaxed border-t border-navy/5 pt-4">{faq.a}</div>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* CTA */}
+        <section className="bg-navy rounded-3xl p-10 md:p-16 text-center shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full -mr-32 -mt-32 blur-3xl" />
+          <div className="relative z-10">
+            <h3 className="text-4xl font-black text-white mb-4">Ready to Start {course.title}?</h3>
+            <p className="text-white/70 mb-8 text-lg">{course.cta}</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button onClick={() => setShowPopup(true)} className="bg-gold text-navy px-12 py-4 rounded-xl font-black text-xl hover:scale-105 transition shadow-2xl">
+                Book 3 Free Trial Classes
+              </button>
+              <a href="https://wa.me/923350277160" target="_blank" rel="noopener noreferrer" className="bg-white/10 border-2 border-white/20 px-12 py-4 rounded-xl font-black text-xl text-white hover:bg-white/20 transition flex items-center justify-center gap-3">
+                <MessageCircle className="w-6 h-6" /> WhatsApp Us
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Related Courses */}
+        <section>
+          <h2 className="text-3xl font-black text-navy mb-8 text-center">Explore More Courses</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {related.map((rc, i) => (
+              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-navy/8 hover:border-gold/50 hover:shadow-xl transition group cursor-pointer" onClick={() => navigateTo(`/courses/${rc.slug}`)}>
+                <div className="h-40 overflow-hidden">
+                  <img src={rc.image} alt={rc.altText} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-black text-navy text-lg mb-2">{rc.title}</h3>
+                  <p className="text-darkgray text-sm line-clamp-2 mb-4">{rc.shortDesc}</p>
+                  <span className="text-gold font-bold text-sm flex items-center gap-1">Learn More <ChevronRight className="w-4 h-4" /></span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
       </div>
     </div>
   );

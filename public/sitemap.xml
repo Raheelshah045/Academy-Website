@@ -3,92 +3,154 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  
-  <!-- Main Pages -->
+
+  <!-- ===== MAIN PAGES ===== -->
+
   <url>
     <loc>https://almaasonlinequranacademy.online/</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+
   <url>
     <loc>https://almaasonlinequranacademy.online/courses</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+
   <url>
     <loc>https://almaasonlinequranacademy.online/pricing</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://almaasonlinequranacademy.online/blogs</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://almaasonlinequranacademy.online/faq</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://almaasonlinequranacademy.online/reviews</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://almaasonlinequranacademy.online/contact</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Detailed Course Content Sections (Conceptual) -->
   <url>
-    <loc>https://almaasonlinequranacademy.online/courses/hifz</loc>
-    <lastmod>2026-02-25</lastmod>
+    <loc>https://almaasonlinequranacademy.online/faq</loc>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://almaasonlinequranacademy.online/courses/tajweed</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://almaasonlinequranacademy.online/blogs</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
+
+  <url>
+    <loc>https://almaasonlinequranacademy.online/reviews</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://almaasonlinequranacademy.online/contact</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ===== INDIVIDUAL COURSE PAGES (High Priority — SEO Authority) ===== -->
+
+  <!-- 1. Qaida for Beginners -->
+  <url>
+    <loc>https://almaasonlinequranacademy.online/courses/qaida-basics</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 2. Quran Reading -->
+  <url>
+    <loc>https://almaasonlinequranacademy.online/courses/quran-reading</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 3. Hifz / Quran Memorization -->
+  <url>
+    <loc>https://almaasonlinequranacademy.online/courses/hifz-memorization</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 4. Quran Translation -->
+  <url>
+    <loc>https://almaasonlinequranacademy.online/courses/quran-translation</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 5. Quran Tafseer -->
+  <url>
+    <loc>https://almaasonlinequranacademy.online/courses/quran-tafseer</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 6. Arabic Language -->
   <url>
     <loc>https://almaasonlinequranacademy.online/courses/arabic-language</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
+
+  <!-- 7. New Muslim Guide -->
   <url>
-    <loc>https://almaasonlinequranacademy.online/courses/qaida</loc>
-    <lastmod>2026-02-25</lastmod>
+    <loc>https://almaasonlinequranacademy.online/courses/new-muslim-guide</loc>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://almaasonlinequranacademy.online/courses/tafseer</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://almaasonlinequranacademy.online/courses/new-muslim</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
+  <!-- 8. Seerat un Nabi -->
   <url>
     <loc>https://almaasonlinequranacademy.online/courses/seerat-un-nabi</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- 9. Tajweed & Tarteel -->
+  <url>
+    <loc>https://almaasonlinequranacademy.online/courses/tajweed-rules</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 10. Dars e Nizami (Islamic Scholarship) -->
+  <url>
+    <loc>https://almaasonlinequranacademy.online/courses/islamic-scholarship</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 11. Short Shariah / Basic Fiqh -->
+  <url>
+    <loc>https://almaasonlinequranacademy.online/courses/basic-fiqh</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 12. Farz e Uloom / Essential Islamic Knowledge -->
+  <url>
+    <loc>https://almaasonlinequranacademy.online/courses/essential-knowledge</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
