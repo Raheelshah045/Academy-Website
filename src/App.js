@@ -30,11 +30,17 @@ const REGION_CONFIGS = {
 
 const COURSES = [
   { title: "Qaida for Beginners", value: "qaida" },
-  { title: "Quran Reading", value: "reading" },
-  { title: "Quran Memorization", value: "hifz" },
+  { title: "Quran Reading", value: "quran-reading" },
+  { title: "Quran Memorization (Hifz)", value: "hifz" },
+  { title: "Quran Translation", value: "translation" },
+  { title: "Quran Tafseer", value: "tafseer" },
   { title: "Tajweed & Tarteel", value: "tajweed" },
   { title: "Arabic Language", value: "arabic" },
-  { title: "Islamic Studies", value: "studies" }
+  { title: "New Muslim Guide", value: "new-muslim" },
+  { title: "Seerat un Nabi", value: "seerat-un-nabi" },
+  { title: "Dars e Nizami (Scholarship)", value: "dars-e-nizami" },
+  { title: "Short Shariah Course", value: "short-shariah" },
+  { title: "Farz e Uloom", value: "farz-e-uloom" },
 ];
 
 const FAQS = [
