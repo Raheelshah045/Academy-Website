@@ -12,34 +12,62 @@
   <link rel="apple-touch-icon" href="/logo.png" />
   <title>Almaas Online Quran Academy - Learn Quran from Home</title>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            offwhite: '#FDFBF7',
-            navy: '#0A1D37',
-            gold: '#C5A059',
-            darkgray: '#374151',
-          }
-        }
-      }
-    }
-  </script>
-
-
-
-  <!-- Google Fonts for Arabic -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap"
-    rel="stylesheet">
+  <!-- Tailwind CSS is now handled via src/index.css and build process -->
+  <link rel="stylesheet" href="/tailwind.css">
+  <!-- Google Fonts are now hosted locally in /public/fonts/ -->
 
   <!-- Supabase JS -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    @font-face {
+      font-family: 'Amiri';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/fonts/Amiri-Regular.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'Amiri';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('/fonts/Amiri-Bold.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'Noto Naskh Arabic';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/fonts/NotoNaskhArabic-Regular.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'Noto Naskh Arabic';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('/fonts/NotoNaskhArabic-Bold.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'Scheherazade New';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/fonts/ScheherazadeNew-Regular.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'Scheherazade New';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('/fonts/ScheherazadeNew-Bold.ttf') format('truetype');
+    }
+  </style>
 </head>
 
 <body>

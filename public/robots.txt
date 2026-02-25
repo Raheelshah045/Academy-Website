@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Allow: /static/
+Allow: /fonts/
 
+# Sitemaps
 Sitemap: https://almaasonlinequranacademy.online/sitemap.xml
+
+# Slow down bots if necessary
+Crawl-delay: 10
