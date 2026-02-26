@@ -26,7 +26,8 @@ const REGION_CONFIGS = {
   'UK': { name: 'UK', currency: 'GBP', symbol: '£', timezones: 'GMT/BST', paymentMethods: 'Direct Transfer/Stripe', multiplier: 0.8 },
   'Canada': { name: 'Canada', currency: 'CAD', symbol: 'C$', timezones: 'EST/MST/PST', paymentMethods: 'Interac/Stripe', multiplier: 1.1 },
   'Australia': { name: 'Australia', currency: 'AUD', symbol: 'A$', timezones: 'AEST/AWST', paymentMethods: 'Stripe/PayPal', multiplier: 1.2 },
-  'Europe': { name: 'Europe', currency: 'EUR', symbol: '€', timezones: 'CET/EET', paymentMethods: 'IBAN/Stripe', multiplier: 0.9 }
+  'Europe': { name: 'Europe', currency: 'EUR', symbol: '€', timezones: 'CET/EET', paymentMethods: 'IBAN/Stripe', multiplier: 0.9 },
+  'Pakistan': { name: 'Pakistan', currency: 'PKR', symbol: 'Rs ', timezones: 'PKT', paymentMethods: 'EasyPaisa/JazzCash/Bank', multiplier: 0.2 }
 };
 
 const COURSES = [
@@ -633,8 +634,18 @@ const CoursesPage = ({ COURSES_DETAILED, navigateTo }) => (
 const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigateTo, setShowPopup, pricingPlans, FAQS, BLOGS, reviews, activeFaq, setActiveFaq, handleReviewSubmit, newReview, setNewReview, reviewStatus, handleSubmit, formStatus }) => (
   <div className="min-h-screen">
     <Helmet>
-      <title>Online Quran Academy | Learn Quran with Tajweed &amp; Hifz for Kids &amp; Adults – Almaas Online Quran Academy</title>
-      <meta name="description" content="Learn Quran from home with Almaas Online Quran Academy. We provide Online Quran classes, Tajweed, and Hifz for Kids &amp; Adults through personalized one-on-one sessions with expert teachers." />
+      <title>Online Quran Academy | Learn Quran with Tajweed &amp; Hifz</title>
+      <meta name="description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults. Tajweed, Hifz &amp; more. Start your 3-day free trial today!" />
+      <link rel="canonical" href="https://almaasonlinequranacademy.online/" />
+      <meta name="robots" content="index, follow" />
+      <meta property="og:title" content="Online Quran Academy | Learn Quran with Tajweed &amp; Hifz" />
+      <meta property="og:description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults. Tajweed, Hifz &amp; more." />
+      <meta property="og:image" content="https://almaasonlinequranacademy.online/almaas-online-quran-academy-logo.webp" />
+      <meta property="og:url" content="https://almaasonlinequranacademy.online/" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Online Quran Academy | Learn Quran with Tajweed &amp; Hifz" />
+      <meta name="twitter:description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults." />
+      <meta name="twitter:image" content="https://almaasonlinequranacademy.online/almaas-online-quran-academy-logo.webp" />
     </Helmet>
     {/* Hero Section */}
     <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-br from-offwhite to-white">
@@ -646,7 +657,7 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
           <p className="text-base text-darkgray font-semibold">In the name of Allah, the Most Gracious, the Most Merciful</p>
         </div>
 
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
           <div className="overflow-hidden h-24 md:h-20 lg:h-24 relative mb-4">
             {TAGLINES.map((tagline, idx) => (
               <div key={idx} className={`absolute w-full transition-all duration-700 ${idx === currentTagline ? 'opacity-100 translate-y-0' : idx < currentTagline ? 'opacity-0 -translate-y-full' : 'opacity-0 translate-y-full'}`}>
@@ -654,8 +665,12 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
               </div>
             ))}
           </div>
-          <span className="text-navy/90 block text-3xl md:text-4xl lg:text-5xl mb-4">With</span>
-          <span className="bg-gradient-to-r from-gold via-gold to-amber-600 bg-clip-text text-transparent block text-4xl md:text-5xl lg:text-6xl">Almaas Online Quran Academy</span>
+        </h1>
+
+        <h2 className="text-navy/90 block text-3xl md:text-4xl lg:text-5xl mb-4 font-bold">With</h2>
+
+        <h1 className="bg-gradient-to-r from-gold via-gold to-amber-600 bg-clip-text text-transparent block text-4xl md:text-5xl lg:text-6xl font-black mb-6">
+          Almaas Online Quran Academy
         </h1>
 
         <p className="text-lg text-navy mb-4 font-bold max-w-3xl mx-auto">One-on-one and group classes are available for kids and adults.</p>
@@ -1095,6 +1110,15 @@ const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
         <title>{seo.title}</title>
         <meta name="description" content={seo.description} />
         <link rel="canonical" href={`https://almaasonlinequranacademy.online/courses/${slug}`} />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:image" content={`https://almaasonlinequranacademy.online${course.image}`} />
+        <meta property="og:url" content={`https://almaasonlinequranacademy.online/courses/${slug}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seo.title} />
+        <meta name="twitter:description" content={seo.description} />
+        <meta name="twitter:image" content={`https://almaasonlinequranacademy.online${course.image}`} />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
 
@@ -1524,6 +1548,7 @@ const AlmaasQuranAcademy = () => {
           if (country === 'United Kingdom') setSelectedRegion('UK');
           else if (country === 'Canada') setSelectedRegion('Canada');
           else if (country === 'Australia') setSelectedRegion('Australia');
+          else if (country === 'Pakistan') setSelectedRegion('Pakistan');
           else if (ipData.continent_code === 'EU') setSelectedRegion('Europe');
           else setSelectedRegion('USA');
 
@@ -1541,6 +1566,8 @@ const AlmaasQuranAcademy = () => {
         // Fallback: Timezone-based detection
         const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
         if (tz.includes('London') || tz.includes('Europe/London')) setSelectedRegion('UK');
+        else if (tz.includes('Karachi') || tz.includes('Islamabad') || tz.includes('Asia/Karachi')) setSelectedRegion('Pakistan');
+        else if (tz.includes('Dubai') || tz.includes('Riyadh') || tz.includes('Qatar') || tz.includes('Asia/Dubai')) setSelectedRegion('Europe'); // Middle East often grouped or uses USD/EUR pricing patterns 
         else if (tz.includes('America/New_York') || tz.includes('America/Chicago') || tz.includes('America/Los_Angeles')) setSelectedRegion('USA');
         else if (tz.includes('America/Toronto') || tz.includes('America/Vancouver')) setSelectedRegion('Canada');
         else if (tz.includes('Australia')) setSelectedRegion('Australia');
@@ -1703,8 +1730,9 @@ const AlmaasQuranAcademy = () => {
     // Fallback to static selection logic if API fails or is loading
     if (selectedRegion === 'UK') return `£${gbp}`;
     if (selectedRegion === 'USA') return `$${usd}`;
+    if (selectedRegion === 'Pakistan') return `Rs ${Math.round(usd * 280)}`; // Corrected rate: $50 = 14,000 PKR
 
-    const multipliers = { Canada: 1.35, Australia: 1.5, Europe: 0.92 };
+    const multipliers = { Canada: 1.36, Australia: 1.55, Europe: 0.95 };
     const symbols = { Canada: 'C$', Australia: 'A$', Europe: '€' };
 
     const mult = multipliers[selectedRegion] || 1;
@@ -1811,6 +1839,11 @@ const AlmaasQuranAcademy = () => {
   // RENDER MAIN LAYOUT
   return (
     <div className="min-h-screen bg-offwhite">
+      <Helmet>
+        <meta name="robots" content="index, follow" />
+        <meta property="og:site_name" content="Almaas Online Quran Academy" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Header scrolled={scrolled} menuOpen={menuOpen} setMenuOpen={setMenuOpen} navigateTo={navigateTo} setShowPopup={setShowPopup} />
 
       <main>
