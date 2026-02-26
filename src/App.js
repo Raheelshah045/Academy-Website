@@ -631,316 +631,338 @@ const CoursesPage = ({ COURSES_DETAILED, navigateTo }) => (
 
 // --- PAGE COMPONENTS ---
 
-const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigateTo, setShowPopup, pricingPlans, FAQS, BLOGS, reviews, activeFaq, setActiveFaq, handleReviewSubmit, newReview, setNewReview, reviewStatus, handleSubmit, formStatus }) => (
-  <div className="min-h-screen">
-    <Helmet>
-      <title>Online Quran Academy | Learn Quran with Tajweed &amp; Hifz</title>
-      <meta name="description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults. Tajweed, Hifz &amp; more. Start your 3-day free trial today!" />
-      <link rel="canonical" href="https://almaasonlinequranacademy.online/" />
-      <meta name="robots" content="index, follow" />
-      <meta property="og:title" content="Online Quran Academy | Learn Quran with Tajweed &amp; Hifz" />
-      <meta property="og:description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults. Tajweed, Hifz &amp; more." />
-      <meta property="og:image" content="https://almaasonlinequranacademy.online/almaas-online-quran-academy-logo.webp" />
-      <meta property="og:url" content="https://almaasonlinequranacademy.online/" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Online Quran Academy | Learn Quran with Tajweed &amp; Hifz" />
-      <meta name="twitter:description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults." />
-      <meta name="twitter:image" content="https://almaasonlinequranacademy.online/almaas-online-quran-academy-logo.webp" />
-    </Helmet>
-    {/* Hero Section */}
-    <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-br from-offwhite to-white">
-      <div className="max-w-7xl mx-auto text-center">
-        <div className="mb-12">
-          <p className="text-4xl md:text-7xl mb-4" style={{ fontFamily: "'Scheherazade New', 'Noto Naskh Arabic', 'Traditional Arabic', 'Amiri', serif", fontWeight: 700, color: '#0A1D37', lineHeight: 1.4, letterSpacing: '0.02em' }}>
-            بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ
-          </p>
-          <p className="text-base text-darkgray font-semibold">In the name of Allah, the Most Gracious, the Most Merciful</p>
-        </div>
+const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigateTo, setShowPopup, pricingPlans, FAQS, BLOGS, reviews, activeFaq, setActiveFaq, handleReviewSubmit, newReview, setNewReview, reviewStatus, handleSubmit, formStatus }) => {
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Almaas Online Quran Academy",
+    "url": "https://almaasonlinequranacademy.online",
+    "logo": "https://almaasonlinequranacademy.online/logo_v2.webp",
+    "description": "Learn Quran online with expert teachers. Tajweed, Hifz, and Islamic courses for kids and adults worldwide.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+92-315-2267416",
+      "contactType": "customer service"
+    },
+    "sameAs": [
+      "https://www.facebook.com/almaasonlinequranacademy",
+      "https://www.instagram.com/almaasonlinequranacademy",
+      "https://twitter.com/almaasacademy"
+    ]
+  };
 
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-          <div className="overflow-hidden h-24 md:h-20 lg:h-24 relative mb-4">
-            {TAGLINES.map((tagline, idx) => (
-              <div key={idx} className={`absolute w-full transition-all duration-700 ${idx === currentTagline ? 'opacity-100 translate-y-0' : idx < currentTagline ? 'opacity-0 -translate-y-full' : 'opacity-0 translate-y-full'}`}>
-                <span className="text-navy block">{tagline}</span>
-              </div>
-            ))}
+  return (
+    <div className="min-h-screen">
+      <Helmet>
+        <title>Online Quran Academy | Learn Quran with Tajweed &amp; Hifz</title>
+        <meta name="description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults. Tajweed, Hifz &amp; more. Start your 3-day free trial today!" />
+        <link rel="canonical" href="https://almaasonlinequranacademy.online/" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Online Quran Academy | Learn Quran with Tajweed &amp; Hifz" />
+        <meta property="og:description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults. Tajweed, Hifz &amp; more." />
+        <meta property="og:image" content="https://almaasonlinequranacademy.online/almaas-online-quran-academy-logo.webp" />
+        <meta property="og:url" content="https://almaasonlinequranacademy.online/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Online Quran Academy | Learn Quran with Tajweed &amp; Hifz" />
+        <meta name="twitter:description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults." />
+        <meta name="twitter:image" content="https://almaasonlinequranacademy.online/almaas-online-quran-academy-logo.webp" />
+        <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>
+      </Helmet>
+      {/* Hero Section */}
+      <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-br from-offwhite to-white">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="mb-12">
+            <p className="text-4xl md:text-7xl mb-4" style={{ fontFamily: "'Scheherazade New', 'Noto Naskh Arabic', 'Traditional Arabic', 'Amiri', serif", fontWeight: 700, color: '#0A1D37', lineHeight: 1.4, letterSpacing: '0.02em' }}>
+              بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ
+            </p>
+            <p className="text-base text-darkgray font-semibold">In the name of Allah, the Most Gracious, the Most Merciful</p>
           </div>
-        </h1>
 
-        <h2 className="text-navy/90 block text-3xl md:text-4xl lg:text-5xl mb-4 font-bold">With</h2>
-
-        <h1 className="bg-gradient-to-r from-gold via-gold to-amber-600 bg-clip-text text-transparent block text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-          Almaas Online Quran Academy
-        </h1>
-
-        <p className="text-lg text-navy mb-4 font-bold max-w-3xl mx-auto">One-on-one and group classes are available for kids and adults.</p>
-        <p className="text-darkgray mb-8 font-medium max-w-3xl mx-auto">Expert teachers • Flexible timings • Affordable pricing • 24/7 availability</p>
-
-        <button onClick={() => setShowPopup(true)} className="bg-navy hover:bg-navy/90 text-white px-8 py-4 rounded-lg font-bold text-lg inline-flex items-center gap-2 shadow-xl">
-          Get 3 FREE Demo Classes <ChevronRight className="w-5 h-5" />
-        </button>
-
-        <div className="mt-12 flex items-center justify-center gap-3 bg-green-50 border-2 border-green-600 px-6 py-3 rounded-xl max-w-md mx-auto">
-          <Shield className="w-8 h-8 text-green-600" />
-          <div className="text-left">
-            <p className="text-darkgray/80 font-bold">7-Day Money-Back Guarantee</p>
-            <p className="text-green-700 text-sm font-semibold">100% Risk-Free Trial</p>
-          </div>
-        </div>
-
-        <div className="mt-8 bg-offwhite border-2 border-navy/10 px-6 py-4 rounded-xl max-w-2xl mx-auto">
-          <p className="text-darkgray text-sm mb-3 font-semibold">We Accept:</p>
-          <div className="flex gap-4 items-center justify-center flex-wrap">
-            <CreditCard className="w-8 h-8 text-navy" />
-            <span className="text-darkgray/90 font-bold">Visa</span>
-            <span className="text-darkgray/90 font-bold">Mastercard</span>
-            <span className="text-darkgray/90 font-bold">PayPal</span>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-3 gap-4 mt-8 max-w-2xl mx-auto">
-          {[{ num: `${counts.teachers}+`, label: "Teachers" }, { num: "🌍", label: "Worldwide" }, { num: "24/7", label: "Available" }].map((stat, idx) => (
-            <div key={idx} className="bg-offwhite border-2 border-navy/10 hover:border-navy p-4 rounded-xl transition">
-              <div className="text-3xl font-black text-navy">{stat.num}</div>
-              <div className="text-xs text-navy/90 font-bold mt-1">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* Why Choose Us */}
-    <section className="py-20 px-4 bg-offwhite">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-black text-center mb-4">Why Choose <span className="text-navy">Almaas Academy</span></h2>
-        <p className="text-darkgray text-lg text-center mb-12">What makes us different from others</p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            { icon: Award, title: "Certified Teachers", desc: "All teachers certified with Ijazah and years of experience" },
-            { icon: Shield, title: "Money-Back Guarantee", desc: "100% satisfaction guaranteed or money back within 7 days" },
-            { icon: Clock, title: "Flexible Schedule", desc: "Choose your own time slots - available 24/7 worldwide" },
-            { icon: Users, title: "One-on-One Attention", desc: "Personal attention with customized learning plans" },
-            { icon: Globe, title: "Learn from Anywhere", desc: "Access classes from any device, anywhere in the world" },
-            { icon: CheckCircle, title: "Proven Results", desc: "Thousands of successful students achieved their goals" }
-          ].map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <div key={idx} className="bg-offwhite/50 border-2 border-navy/10 hover:border-navy p-6 rounded-2xl transition">
-                <div className="w-16 h-16 bg-navy rounded-xl flex items-center justify-center mb-4"><Icon className="w-8 h-8 text-white" /></div>
-                <h3 className="text-xl font-bold text-navy mb-3">{item.title}</h3>
-                <p className="text-darkgray">{item.desc}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-
-    {/* How It Works */}
-    <section className="py-20 px-4 bg-offwhite/50">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-black text-center mb-4">How It <span className="text-navy">Works</span></h2>
-        <p className="text-darkgray text-lg text-center mb-12">Get started in 4 simple steps</p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {[
-            { num: "1", title: "Register Free", desc: "Fill form and book free demo classes", icon: UserPlus },
-            { num: "2", title: "Choose Course", desc: "Select course matching your goals", icon: BookOpen },
-            { num: "3", title: "Schedule Class", desc: "Pick convenient time with teacher", icon: Clock },
-            { num: "4", title: "Start Learning", desc: "Begin Quran learning journey", icon: Star }
-          ].map((step, idx) => {
-            const Icon = step.icon;
-            return (
-              <div key={idx} className="bg-offwhite border-2 border-navy p-6 rounded-2xl text-center">
-                <div className="w-16 h-16 bg-navy rounded-full flex items-center justify-center text-white text-2xl font-black mx-auto mb-4">{step.num}</div>
-                <Icon className="w-12 h-12 text-navy mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-navy mb-3">{step.title}</h3>
-                <p className="text-darkgray text-sm">{step.desc}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-
-    {/* Offering Section */}
-    <section className="py-20 px-4 bg-offwhite">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-black text-center mb-4">We Are <span className="text-navy">Offering</span></h2>
-        <p className="text-darkgray text-lg text-center mb-12">Comprehensive features for effective learning</p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { icon: Clock, title: "Flexibility of Time", desc: "Classes 24/7 according to your convenience" },
-            { icon: Users, title: "Weekend Classes", desc: "Special weekend batches available" },
-            { icon: Award, title: "3 Demo Classes", desc: "Try 3 free classes before enrollment" },
-            { icon: Globe, title: "Easily Accessible", desc: "Learn from anywhere with internet" }
-          ].map((feature, idx) => {
-            const Icon = feature.icon;
-            return (
-              <div key={idx} className="bg-offwhite/50 border-2 border-navy/10 hover:border-navy p-6 rounded-2xl transition">
-                <div className="w-14 h-14 bg-navy rounded-xl flex items-center justify-center mb-4"><Icon className="w-7 h-7 text-white" /></div>
-                <h3 className="text-lg font-bold text-navy mb-2">{feature.title}</h3>
-                <p className="text-darkgray text-sm">{feature.desc}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-
-    {/* Courses Section */}
-    <section className="py-20 px-4 bg-offwhite/50">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-black text-center mb-4">Our <span className="text-navy">Courses</span></h2>
-        <p className="text-darkgray text-lg text-center mb-12">Comprehensive Quran learning programs</p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {COURSES_DETAILED.slice(0, 6).map((course, idx) => (
-            <div key={idx} className="bg-gradient-to-br from-navy/90 to-navy rounded-3xl overflow-hidden shadow-2xl border-4 border-white hover:scale-105 transition-transform">
-              <div className="h-48 overflow-hidden relative">
-                <img src={course.image} alt={course.altText} loading="lazy" decoding="async" style={{ backgroundColor: '#0A1D37' }} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy to-transparent"></div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-black text-gold/80 mb-4">{course.title}</h3>
-                <p className="text-white text-sm mb-6 leading-relaxed line-clamp-3">{course.shortDesc}</p>
-                <div className="flex gap-3">
-                  <button onClick={() => setShowPopup(true)} className="flex-1 bg-gradient-to-r from-gold to-amber-600 hover:from-gold hover:to-amber-700 text-navy py-3 px-4 rounded-xl font-bold transition shadow-lg">Start Now</button>
-                  <button onClick={() => navigateTo(`/courses/${course.slug}`)} className="flex-1 bg-offwhite hover:bg-gray-100 text-navy py-3 px-4 rounded-xl font-bold transition shadow-lg">Read More</button>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+            <div className="overflow-hidden h-24 md:h-20 lg:h-24 relative mb-4">
+              {TAGLINES.map((tagline, idx) => (
+                <div key={idx} className={`absolute w-full transition-all duration-700 ${idx === currentTagline ? 'opacity-100 translate-y-0' : idx < currentTagline ? 'opacity-0 -translate-y-full' : 'opacity-0 translate-y-full'}`}>
+                  <span className="text-navy block">{tagline}</span>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="text-center mt-12">
-          <button onClick={() => navigateTo('/courses')} className="text-navy font-black flex items-center gap-2 mx-auto hover:text-gold transition text-lg">
-            View All Courses <ChevronRight className="w-6 h-6" />
+          </h1>
+
+          <h2 className="text-navy/90 block text-3xl md:text-4xl lg:text-5xl mb-4 font-bold">With</h2>
+
+          <h1 className="bg-gradient-to-r from-gold via-gold to-amber-600 bg-clip-text text-transparent block text-4xl md:text-5xl lg:text-6xl font-black mb-6">
+            Almaas Online Quran Academy
+          </h1>
+
+          <p className="text-lg text-navy mb-4 font-bold max-w-3xl mx-auto">One-on-one and group classes are available for kids and adults.</p>
+          <p className="text-darkgray mb-8 font-medium max-w-3xl mx-auto">Expert teachers • Flexible timings • Affordable pricing • 24/7 availability</p>
+
+          <button onClick={() => setShowPopup(true)} className="bg-navy hover:bg-navy/90 text-white px-8 py-4 rounded-lg font-bold text-lg inline-flex items-center gap-2 shadow-xl">
+            Get 3 FREE Demo Classes <ChevronRight className="w-5 h-5" />
           </button>
-        </div>
-      </div>
-    </section>
 
-    {/* ===== BELOW-THE-FOLD: All wrapped in LazySection — only renders when user scrolls near ===== */}
-    <LazySection rootMargin="150px">
-
-      {/* Pricing Section */}
-      <section className="py-20 px-4 bg-offwhite">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black text-center mb-4">Affordable <span className="text-navy">Pricing</span></h2>
-          <p className="text-darkgray text-lg text-center mb-12">Choose the plan that fits your schedule</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {pricingPlans.map((plan, idx) => (
-              <div key={idx} className="rounded-3xl p-8 transition-transform hover:scale-105 bg-navy text-white shadow-2xl relative border-2 border-gold/10">
-                {plan.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-navy px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">Most Popular</span>}
-                <div className="text-sm font-bold opacity-80 mb-2 uppercase tracking-widest text-center">{plan.tag}</div>
-                <h3 className="text-2xl font-black text-center mb-6">{plan.name}</h3>
-                <div className="flex flex-col items-center gap-2 mb-8 py-6 border-y border-white/10">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-black">{plan.price}</span>
-                    <span className="text-xl font-medium opacity-70">/mo</span>
-                  </div>
-                </div>
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((f, i) => (
-                    <li key={i} className="flex items-center gap-3"><CheckCircle className="w-5 h-5 flex-shrink-0 text-gold" /> <span className="text-sm font-medium">{f}</span></li>
-                  ))}
-                </ul>
-                <button onClick={() => setShowPopup(true)} className="w-full py-4 rounded-xl font-black text-lg transition-all shadow-xl bg-gold text-navy hover:transform hover:-translate-y-1">Get Started Now</button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Excerpt Section */}
-      <section className="py-20 px-4 bg-offwhite/50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-navy mb-12">Got Questions?</h2>
-          <div className="space-y-4 text-left">
-            {FAQS.slice(0, 4).map((faq, idx) => (
-              <div key={idx} className="bg-white border-2 border-navy/10 rounded-2xl overflow-hidden shadow-sm">
-                <button onClick={() => setActiveFaq(activeFaq === idx ? null : idx)} className="w-full p-6 text-left flex justify-between items-center hover:bg-navy/5 transition"><span className="text-navy font-bold text-lg">{faq.q}</span> <ChevronDown className={`w-6 h-6 transform transition ${activeFaq === idx ? 'rotate-180' : ''}`} /></button>
-                {activeFaq === idx && <div className="px-6 pb-6 text-darkgray leading-relaxed border-t border-navy/5 pt-4">{faq.a}</div>}
-              </div>
-            ))}
-          </div>
-          <button onClick={() => navigateTo('/faq')} className="mt-12 text-navy font-black flex items-center gap-2 mx-auto hover:text-gold transition text-lg">View All FAQs <ChevronRight className="w-6 h-6" /></button>
-        </div>
-      </section>
-
-      {/* Blog Excerpt Section */}
-      <section className="py-20 px-4 bg-offwhite">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black text-center mb-12">Latest <span className="text-navy">Insights</span></h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {BLOGS.map(blog => (
-              <div key={blog.id} className="bg-white border-2 border-navy/10 hover:border-gold rounded-3xl overflow-hidden transition group shadow-lg flex flex-col">
-                <div className="h-48 bg-navy flex items-center justify-center group-hover:bg-gold transition-colors aspect-video"><Newspaper className="w-16 h-16 text-white" /></div>
-                <div className="p-8 flex flex-col flex-1">
-                  <span className="text-gold font-bold text-xs uppercase tracking-widest mb-2">{blog.date}</span>
-                  <h3 className="text-xl font-black text-navy mb-4 group-hover:text-gold transition-colors">{blog.title}</h3>
-                  <p className="text-darkgray text-sm mb-6 line-clamp-3">{blog.excerpt}</p>
-                  <div className="mt-auto">
-                    <button onClick={() => navigateTo(`/blog/${blog.id}`)} className="text-navy font-black flex items-center gap-2 hover:text-gold transition">Read More <ChevronRight className="w-4 h-4" /></button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Reviews Section */}
-      <section className="py-20 px-4 bg-offwhite/50 border-t border-navy/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-4">What Our <span className="text-navy">Students Say</span></h2>
-            <div className="flex justify-center text-gold gap-1 mb-4">{[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-gold" />)}</div>
-            <p className="text-darkgray text-lg font-medium">Real feedback from our global community</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {reviews.slice(0, 6).map((review) => (
-              <div key={review.id} className="bg-white p-8 rounded-3xl shadow-xl border border-navy/5 flex flex-col">
-                <div className="flex text-gold mb-4">{[...Array(5)].map((_, i) => <Star key={i} className={`w-4 h-4 ${i < review.rating ? 'fill-gold' : 'text-gray-300'}`} />)}</div>
-                <p className="text-darkgray italic mb-6 flex-1 text-lg">"{review.text}"</p>
-                <div className="flex items-center justify-between border-t border-navy/5 pt-4"><span className="font-bold text-navy">{review.name}</span> <span className="text-xs text-darkgray/50">{review.date}</span></div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mb-20"><button onClick={() => navigateTo('/reviews')} className="text-navy font-black flex items-center gap-2 mx-auto hover:text-gold transition text-lg">View All Reviews <ChevronRight className="w-6 h-6" /></button></div>
-          {/* Inline Review Form */}
-          <div id="review-form" className="max-w-2xl mx-auto bg-navy rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
-            <div className="relative z-10">
-              <h3 className="text-3xl font-black text-white mb-2 text-center">Leave a Review</h3>
-              <p className="text-white/70 text-center mb-8">Your feedback helps us improve our service</p>
-              <form onSubmit={handleReviewSubmit} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <input type="text" placeholder="Your Name" className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-gold" value={newReview.name} onChange={(e) => setNewReview({ ...newReview, name: e.target.value })} required />
-                  <div className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 flex items-center justify-between"><span className="text-white/50 text-sm">Rating:</span><select className="bg-transparent text-gold font-bold focus:outline-none cursor-pointer" value={newReview.rating} onChange={(e) => setNewReview({ ...newReview, rating: parseInt(e.target.value) })}>{[5, 4, 3, 2, 1].map(n => <option key={n} value={n} className="bg-navy text-gold">{n} Stars</option>)}</select></div>
-                </div>
-                <textarea placeholder="Tell us about your experience..." rows="4" className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-gold resize-none" value={newReview.text} onChange={(e) => setNewReview({ ...newReview, text: e.target.value })} required></textarea>
-                <button type="submit" disabled={reviewStatus.submitting} className="w-full bg-gold text-navy py-5 rounded-xl font-black text-xl hover:bg-gold/90 transition transform hover:-translate-y-1 shadow-2xl disabled:opacity-50">{reviewStatus.submitting ? 'Posting...' : 'Post My Review'}</button>
-                {reviewStatus.success && <div className="p-4 bg-green-500/20 text-green-200 rounded-xl text-center font-bold">Thank you! Your review has been posted successfully.</div>}
-              </form>
+          <div className="mt-12 flex items-center justify-center gap-3 bg-green-50 border-2 border-green-600 px-6 py-3 rounded-xl max-w-md mx-auto">
+            <Shield className="w-8 h-8 text-green-600" />
+            <div className="text-left">
+              <p className="text-darkgray/80 font-bold">7-Day Money-Back Guarantee</p>
+              <p className="text-green-700 text-sm font-semibold">100% Risk-Free Trial</p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Final CTA Section */}
-      <section className="py-24 px-4 bg-navy text-white text-center">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">Start Your Quran Learning Journey Today</h2>
-          <p className="text-xl mb-12 opacity-80 leading-relaxed">Join thousands of students worldwide and learn with expert teachers from the comfort of your home.</p>
-          <div className="flex flex-col md:flex-row gap-6 justify-center">
-            <button onClick={() => setShowPopup(true)} className="bg-gold text-navy px-12 py-5 rounded-2xl font-black text-2xl hover:scale-105 transition shadow-2xl">Book 3 Free Classes</button>
-            <a href="https://wa.me/923350277160" target="_blank" rel="noopener noreferrer" className="bg-white/10 border-2 border-white/20 px-12 py-5 rounded-2xl font-black text-2xl hover:bg-white/20 transition flex items-center justify-center gap-3"><MessageCircle className="w-8 h-8" /> WhatsApp Us</a>
+          <div className="mt-8 bg-offwhite border-2 border-navy/10 px-6 py-4 rounded-xl max-w-2xl mx-auto">
+            <p className="text-darkgray text-sm mb-3 font-semibold">We Accept:</p>
+            <div className="flex gap-4 items-center justify-center flex-wrap">
+              <CreditCard className="w-8 h-8 text-navy" />
+              <span className="text-darkgray/90 font-bold">Visa</span>
+              <span className="text-darkgray/90 font-bold">Mastercard</span>
+              <span className="text-darkgray/90 font-bold">PayPal</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4 mt-8 max-w-2xl mx-auto">
+            {[{ num: `${counts.teachers}+`, label: "Teachers" }, { num: "🌍", label: "Worldwide" }, { num: "24/7", label: "Available" }].map((stat, idx) => (
+              <div key={idx} className="bg-offwhite border-2 border-navy/10 hover:border-navy p-4 rounded-xl transition">
+                <div className="text-3xl font-black text-navy">{stat.num}</div>
+                <div className="text-xs text-navy/90 font-bold mt-1">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-    </LazySection>
-  </div>
-);
+      {/* Why Choose Us */}
+      <section className="py-20 px-4 bg-offwhite">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-black text-center mb-4">Why Choose <span className="text-navy">Almaas Academy</span></h2>
+          <p className="text-darkgray text-lg text-center mb-12">What makes us different from others</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { icon: Award, title: "Certified Teachers", desc: "All teachers certified with Ijazah and years of experience" },
+              { icon: Shield, title: "Money-Back Guarantee", desc: "100% satisfaction guaranteed or money back within 7 days" },
+              { icon: Clock, title: "Flexible Schedule", desc: "Choose your own time slots - available 24/7 worldwide" },
+              { icon: Users, title: "One-on-One Attention", desc: "Personal attention with customized learning plans" },
+              { icon: Globe, title: "Learn from Anywhere", desc: "Access classes from any device, anywhere in the world" },
+              { icon: CheckCircle, title: "Proven Results", desc: "Thousands of successful students achieved their goals" }
+            ].map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div key={idx} className="bg-offwhite/50 border-2 border-navy/10 hover:border-navy p-6 rounded-2xl transition">
+                  <div className="w-16 h-16 bg-navy rounded-xl flex items-center justify-center mb-4"><Icon className="w-8 h-8 text-white" /></div>
+                  <h3 className="text-xl font-bold text-navy mb-3">{item.title}</h3>
+                  <p className="text-darkgray">{item.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-20 px-4 bg-offwhite/50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-black text-center mb-4">How It <span className="text-navy">Works</span></h2>
+          <p className="text-darkgray text-lg text-center mb-12">Get started in 4 simple steps</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { num: "1", title: "Register Free", desc: "Fill form and book free demo classes", icon: UserPlus },
+              { num: "2", title: "Choose Course", desc: "Select course matching your goals", icon: BookOpen },
+              { num: "3", title: "Schedule Class", desc: "Pick convenient time with teacher", icon: Clock },
+              { num: "4", title: "Start Learning", desc: "Begin Quran learning journey", icon: Star }
+            ].map((step, idx) => {
+              const Icon = step.icon;
+              return (
+                <div key={idx} className="bg-offwhite border-2 border-navy p-6 rounded-2xl text-center">
+                  <div className="w-16 h-16 bg-navy rounded-full flex items-center justify-center text-white text-2xl font-black mx-auto mb-4">{step.num}</div>
+                  <Icon className="w-12 h-12 text-navy mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-navy mb-3">{step.title}</h3>
+                  <p className="text-darkgray text-sm">{step.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Offering Section */}
+      <section className="py-20 px-4 bg-offwhite">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-black text-center mb-4">We Are <span className="text-navy">Offering</span></h2>
+          <p className="text-darkgray text-lg text-center mb-12">Comprehensive features for effective learning</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: Clock, title: "Flexibility of Time", desc: "Classes 24/7 according to your convenience" },
+              { icon: Users, title: "Weekend Classes", desc: "Special weekend batches available" },
+              { icon: Award, title: "3 Demo Classes", desc: "Try 3 free classes before enrollment" },
+              { icon: Globe, title: "Easily Accessible", desc: "Learn from anywhere with internet" }
+            ].map((feature, idx) => {
+              const Icon = feature.icon;
+              return (
+                <div key={idx} className="bg-offwhite/50 border-2 border-navy/10 hover:border-navy p-6 rounded-2xl transition">
+                  <div className="w-14 h-14 bg-navy rounded-xl flex items-center justify-center mb-4"><Icon className="w-7 h-7 text-white" /></div>
+                  <h3 className="text-lg font-bold text-navy mb-2">{feature.title}</h3>
+                  <p className="text-darkgray text-sm">{feature.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Courses Section */}
+      <section className="py-20 px-4 bg-offwhite/50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-black text-center mb-4">Our <span className="text-navy">Courses</span></h2>
+          <p className="text-darkgray text-lg text-center mb-12">Comprehensive Quran learning programs</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {COURSES_DETAILED.slice(0, 6).map((course, idx) => (
+              <div key={idx} className="bg-gradient-to-br from-navy/90 to-navy rounded-3xl overflow-hidden shadow-2xl border-4 border-white hover:scale-105 transition-transform">
+                <div className="h-48 overflow-hidden relative">
+                  <img src={course.image} alt={course.altText} loading="lazy" decoding="async" style={{ backgroundColor: '#0A1D37' }} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy to-transparent"></div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-black text-gold/80 mb-4">{course.title}</h3>
+                  <p className="text-white text-sm mb-6 leading-relaxed line-clamp-3">{course.shortDesc}</p>
+                  <div className="flex gap-3">
+                    <button onClick={() => setShowPopup(true)} className="flex-1 bg-gradient-to-r from-gold to-amber-600 hover:from-gold hover:to-amber-700 text-navy py-3 px-4 rounded-xl font-bold transition shadow-lg">Start Now</button>
+                    <button onClick={() => navigateTo(`/courses/${course.slug}`)} className="flex-1 bg-offwhite hover:bg-gray-100 text-navy py-3 px-4 rounded-xl font-bold transition shadow-lg">Read More</button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <button onClick={() => navigateTo('/courses')} className="text-navy font-black flex items-center gap-2 mx-auto hover:text-gold transition text-lg">
+              View All Courses <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== BELOW-THE-FOLD: All wrapped in LazySection — only renders when user scrolls near ===== */}
+      <LazySection rootMargin="150px">
+
+        {/* Pricing Section */}
+        <section className="py-20 px-4 bg-offwhite">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-black text-center mb-4">Affordable <span className="text-navy">Pricing</span></h2>
+            <p className="text-darkgray text-lg text-center mb-12">Choose the plan that fits your schedule</p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {pricingPlans.map((plan, idx) => (
+                <div key={idx} className="rounded-3xl p-8 transition-transform hover:scale-105 bg-navy text-white shadow-2xl relative border-2 border-gold/10">
+                  {plan.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-navy px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">Most Popular</span>}
+                  <div className="text-sm font-bold opacity-80 mb-2 uppercase tracking-widest text-center">{plan.tag}</div>
+                  <h3 className="text-2xl font-black text-center mb-6">{plan.name}</h3>
+                  <div className="flex flex-col items-center gap-2 mb-8 py-6 border-y border-white/10">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-5xl font-black">{plan.price}</span>
+                      <span className="text-xl font-medium opacity-70">/mo</span>
+                    </div>
+                  </div>
+                  <ul className="space-y-4 mb-8">
+                    {plan.features.map((f, i) => (
+                      <li key={i} className="flex items-center gap-3"><CheckCircle className="w-5 h-5 flex-shrink-0 text-gold" /> <span className="text-sm font-medium">{f}</span></li>
+                    ))}
+                  </ul>
+                  <button onClick={() => setShowPopup(true)} className="w-full py-4 rounded-xl font-black text-lg transition-all shadow-xl bg-gold text-navy hover:transform hover:-translate-y-1">Get Started Now</button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Excerpt Section */}
+        <section className="py-20 px-4 bg-offwhite/50">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-black text-navy mb-12">Got Questions?</h2>
+            <div className="space-y-4 text-left">
+              {FAQS.slice(0, 4).map((faq, idx) => (
+                <div key={idx} className="bg-white border-2 border-navy/10 rounded-2xl overflow-hidden shadow-sm">
+                  <button onClick={() => setActiveFaq(activeFaq === idx ? null : idx)} className="w-full p-6 text-left flex justify-between items-center hover:bg-navy/5 transition"><span className="text-navy font-bold text-lg">{faq.q}</span> <ChevronDown className={`w-6 h-6 transform transition ${activeFaq === idx ? 'rotate-180' : ''}`} /></button>
+                  {activeFaq === idx && <div className="px-6 pb-6 text-darkgray leading-relaxed border-t border-navy/5 pt-4">{faq.a}</div>}
+                </div>
+              ))}
+            </div>
+            <button onClick={() => navigateTo('/faq')} className="mt-12 text-navy font-black flex items-center gap-2 mx-auto hover:text-gold transition text-lg">View All FAQs <ChevronRight className="w-6 h-6" /></button>
+          </div>
+        </section>
+
+        {/* Blog Excerpt Section */}
+        <section className="py-20 px-4 bg-offwhite">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-black text-center mb-12">Latest <span className="text-navy">Insights</span></h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {BLOGS.map(blog => (
+                <div key={blog.id} className="bg-white border-2 border-navy/10 hover:border-gold rounded-3xl overflow-hidden transition group shadow-lg flex flex-col">
+                  <div className="h-48 bg-navy flex items-center justify-center group-hover:bg-gold transition-colors aspect-video"><Newspaper className="w-16 h-16 text-white" /></div>
+                  <div className="p-8 flex flex-col flex-1">
+                    <span className="text-gold font-bold text-xs uppercase tracking-widest mb-2">{blog.date}</span>
+                    <h3 className="text-xl font-black text-navy mb-4 group-hover:text-gold transition-colors">{blog.title}</h3>
+                    <p className="text-darkgray text-sm mb-6 line-clamp-3">{blog.excerpt}</p>
+                    <div className="mt-auto">
+                      <button onClick={() => navigateTo(`/blog/${blog.id}`)} className="text-navy font-black flex items-center gap-2 hover:text-gold transition">Read More <ChevronRight className="w-4 h-4" /></button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Reviews Section */}
+        <section className="py-20 px-4 bg-offwhite/50 border-t border-navy/5">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-black mb-4">What Our <span className="text-navy">Students Say</span></h2>
+              <div className="flex justify-center text-gold gap-1 mb-4">{[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-gold" />)}</div>
+              <p className="text-darkgray text-lg font-medium">Real feedback from our global community</p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              {reviews.slice(0, 6).map((review) => (
+                <div key={review.id} className="bg-white p-8 rounded-3xl shadow-xl border border-navy/5 flex flex-col">
+                  <div className="flex text-gold mb-4">{[...Array(5)].map((_, i) => <Star key={i} className={`w-4 h-4 ${i < review.rating ? 'fill-gold' : 'text-gray-300'}`} />)}</div>
+                  <p className="text-darkgray italic mb-6 flex-1 text-lg">"{review.text}"</p>
+                  <div className="flex items-center justify-between border-t border-navy/5 pt-4"><span className="font-bold text-navy">{review.name}</span> <span className="text-xs text-darkgray/50">{review.date}</span></div>
+                </div>
+              ))}
+            </div>
+            <div className="text-center mb-20"><button onClick={() => navigateTo('/reviews')} className="text-navy font-black flex items-center gap-2 mx-auto hover:text-gold transition text-lg">View All Reviews <ChevronRight className="w-6 h-6" /></button></div>
+            {/* Inline Review Form */}
+            <div id="review-form" className="max-w-2xl mx-auto bg-navy rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+              <div className="relative z-10">
+                <h3 className="text-3xl font-black text-white mb-2 text-center">Leave a Review</h3>
+                <p className="text-white/70 text-center mb-8">Your feedback helps us improve our service</p>
+                <form onSubmit={handleReviewSubmit} className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <input type="text" placeholder="Your Name" className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-gold" value={newReview.name} onChange={(e) => setNewReview({ ...newReview, name: e.target.value })} required />
+                    <div className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 flex items-center justify-between"><span className="text-white/50 text-sm">Rating:</span><select className="bg-transparent text-gold font-bold focus:outline-none cursor-pointer" value={newReview.rating} onChange={(e) => setNewReview({ ...newReview, rating: parseInt(e.target.value) })}>{[5, 4, 3, 2, 1].map(n => <option key={n} value={n} className="bg-navy text-gold">{n} Stars</option>)}</select></div>
+                  </div>
+                  <textarea placeholder="Tell us about your experience..." rows="4" className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-gold resize-none" value={newReview.text} onChange={(e) => setNewReview({ ...newReview, text: e.target.value })} required></textarea>
+                  <button type="submit" disabled={reviewStatus.submitting} className="w-full bg-gold text-navy py-5 rounded-xl font-black text-xl hover:bg-gold/90 transition transform hover:-translate-y-1 shadow-2xl disabled:opacity-50">{reviewStatus.submitting ? 'Posting...' : 'Post My Review'}</button>
+                  {reviewStatus.success && <div className="p-4 bg-green-500/20 text-green-200 rounded-xl text-center font-bold">Thank you! Your review has been posted successfully.</div>}
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA Section */}
+        <section className="py-24 px-4 bg-navy text-white text-center">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">Start Your Quran Learning Journey Today</h2>
+            <p className="text-xl mb-12 opacity-80 leading-relaxed">Join thousands of students worldwide and learn with expert teachers from the comfort of your home.</p>
+            <div className="flex flex-col md:flex-row gap-6 justify-center">
+              <button onClick={() => setShowPopup(true)} className="bg-gold text-navy px-12 py-5 rounded-2xl font-black text-2xl hover:scale-105 transition shadow-2xl">Book 3 Free Classes</button>
+              <a href="https://wa.me/923350277160" target="_blank" rel="noopener noreferrer" className="bg-white/10 border-2 border-white/20 px-12 py-5 rounded-2xl font-black text-2xl hover:bg-white/20 transition flex items-center justify-center gap-3"><MessageCircle className="w-8 h-8" /> WhatsApp Us</a>
+            </div>
+          </div>
+        </section>
+
+      </LazySection>
+    </div>
+  );
+};
 
 
 // --- Per-course SEO metadata ---
@@ -1098,9 +1120,15 @@ const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
     "image": `https://almaasonlinequranacademy.online${course.image}`,
     "offers": {
       "@type": "Offer",
-      "price": "0",
+      "category": "Education",
+      "price": "25.00",
       "priceCurrency": "USD",
       "description": "3 Free Trial Classes Available"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "24"
     }
   };
 
