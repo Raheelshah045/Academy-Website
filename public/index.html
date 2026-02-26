@@ -12,12 +12,102 @@
   <link rel="apple-touch-icon" href="/almaas-online-quran-academy-logo.webp" />
   <title>Online Quran Academy | Learn Quran with Tajweed & Hifz for Kids & Adults – Almaas Online Quran Academy</title>
 
-  <!-- Tailwind CSS is now handled via src/index.css and build process -->
-  <link rel="stylesheet" href="/tailwind.css">
+  <!-- ===== SPEED INDEX OPTIMISATIONS ===== -->
+
+  <!-- 1. Preconnect to CDNs — establishes TCP early, saves 100-200ms -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+
+  <!-- 2. Preload the Arabic font used in the hero Bismillah (first visible text) -->
+  <link rel="preload" href="/fonts/ScheherazadeNew-Bold.ttf" as="font" type="font/ttf" crossorigin />
+
+  <!-- 3. Critical CSS — inlined so above-the-fold is styled BEFORE main bundle downloads.
+       Only contains styles for: body, header, hero text, and the loading skeleton.
+       Everything else is handled by the main Tailwind build. -->
+  <style id="critical-css">
+    /* Reset & base */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #FDFBF7;
+      /* offwhite */
+      color: #374151;
+      /* darkgray */
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header skeleton — prevents layout shift while bundle loads */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 40;
+      background-color: #FDFBF7;
+      border-bottom: 1px solid rgba(10, 29, 55, 0.06);
+    }
+
+    /* Hero above-fold — correct background + min height so no CLS */
+    #home {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #FDFBF7 0%, #ffffff 100%);
+      padding-top: 7rem;
+      /* matches pt-28 / pt-32 on hero */
+    }
+
+    /* Skeleton shimmer for images below the fold */
+    .img-placeholder {
+      background: linear-gradient(90deg, #e8e4dc 25%, #f0ece4 50%, #e8e4dc 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: -200% 0;
+      }
+    }
+
+    /* Prevent invisible text while Arabic font loads */
+    .arabic-text {
+      font-display: swap;
+    }
+
+    /* Spinner for Suspense fallback */
+    .suspense-spinner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+  </style>
+
+  <!-- 4. Tailwind CSS (main bundle — loads asynchronously after critical CSS) -->
   <!-- Google Fonts are now hosted locally in /public/fonts/ -->
 
-  <!-- Supabase JS -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- DNS prefetch + preconnect for external APIs (saves ~100-200ms) -->
+  <link rel="preconnect" href="https://ipapi.co" />
+  <link rel="dns-prefetch" href="https://ipapi.co" />
+  <link rel="preconnect" href="https://api.exchangerate-api.com" />
+  <link rel="dns-prefetch" href="https://api.exchangerate-api.com" />
+
+  <!-- Supabase JS — defer so it never blocks HTML parsing or first paint -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 
   <style>
     @font-face {

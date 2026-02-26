@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Globe, Shield, CreditCard, UserPlus, Newspaper, ChevronDown, Facebook, Instagram, Youtube, ArrowLeft } from 'lucide-react';
+import React, { useState, useEffect, Suspense } from 'react';
+import LazySection from './components/LazySection';
+import { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Globe, Shield, CreditCard, UserPlus, Newspaper, ChevronDown, Facebook, Instagram, Youtube, Linkedin, ArrowLeft } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import { Routes, Route, useNavigate, useLocation, useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -38,7 +39,7 @@ const COURSES = [
   { title: "Arabic Language", value: "arabic" },
   { title: "New Muslim Guide", value: "new-muslim" },
   { title: "Seerat un Nabi", value: "seerat-un-nabi" },
-  { title: "Dars e Nizami (Scholarship)", value: "dars-e-nizami" },
+  { title: "Dars e Nizami", value: "dars-e-nizami" },
   { title: "Short Shariah Course", value: "short-shariah" },
   { title: "Farz e Uloom", value: "farz-e-uloom" },
 ];
@@ -466,7 +467,8 @@ const Footer = ({ navigateTo }) => (
           <div className="flex gap-3">
             <a href="https://www.facebook.com/share/1QTAHW4p7t/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="w-10 h-10 bg-darkgray/90 hover:bg-blue-600 rounded-full flex items-center justify-center"><Facebook className="w-5 h-5" /></a>
             <a href="https://www.instagram.com/almaasonlinequranacademy" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="w-10 h-10 bg-darkgray/90 hover:bg-pink-600 rounded-full flex items-center justify-center"><Instagram className="w-5 h-5" /></a>
-            <a href="https://youtube.com/@hafizraheelshah" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to our YouTube channel" className="w-10 h-10 bg-darkgray/90 hover:bg-red-600 rounded-full flex items-center justify-center"><Youtube className="w-5 h-5" /></a>
+            <a href="https://youtube.com/@almaasonlinequranacademy" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to our YouTube channel" className="w-10 h-10 bg-darkgray/90 hover:bg-red-600 rounded-full flex items-center justify-center"><Youtube className="w-5 h-5" /></a>
+            <a href="https://www.linkedin.com/company/almaas-online-quran-academy/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" className="w-10 h-10 bg-darkgray/90 hover:bg-blue-700 rounded-full flex items-center justify-center"><Linkedin className="w-5 h-5" /></a>
           </div>
         </div>
         <div>
@@ -779,7 +781,7 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
           {COURSES_DETAILED.slice(0, 6).map((course, idx) => (
             <div key={idx} className="bg-gradient-to-br from-navy/90 to-navy rounded-3xl overflow-hidden shadow-2xl border-4 border-white hover:scale-105 transition-transform">
               <div className="h-48 overflow-hidden relative">
-                <img src={course.image} alt={course.altText} className="w-full h-full object-cover" />
+                <img src={course.image} alt={course.altText} loading="lazy" decoding="async" style={{ backgroundColor: '#0A1D37' }} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy to-transparent"></div>
               </div>
               <div className="p-6">
@@ -801,122 +803,127 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
       </div>
     </section>
 
-    {/* Pricing Section */}
-    <section className="py-20 px-4 bg-offwhite">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-black text-center mb-4">Affordable <span className="text-navy">Pricing</span></h2>
-        <p className="text-darkgray text-lg text-center mb-12">Choose the plan that fits your schedule</p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {pricingPlans.map((plan, idx) => (
-            <div key={idx} className="rounded-3xl p-8 transition-transform hover:scale-105 bg-navy text-white shadow-2xl relative border-2 border-gold/10">
-              {plan.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-navy px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">Most Popular</span>}
-              <div className="text-sm font-bold opacity-80 mb-2 uppercase tracking-widest text-center">{plan.tag}</div>
-              <h3 className="text-2xl font-black text-center mb-6">{plan.name}</h3>
-              <div className="flex flex-col items-center gap-2 mb-8 py-6 border-y border-white/10">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-black">{plan.price}</span>
-                  <span className="text-xl font-medium opacity-70">/mo</span>
+    {/* ===== BELOW-THE-FOLD: All wrapped in LazySection — only renders when user scrolls near ===== */}
+    <LazySection rootMargin="150px">
+
+      {/* Pricing Section */}
+      <section className="py-20 px-4 bg-offwhite">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-black text-center mb-4">Affordable <span className="text-navy">Pricing</span></h2>
+          <p className="text-darkgray text-lg text-center mb-12">Choose the plan that fits your schedule</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {pricingPlans.map((plan, idx) => (
+              <div key={idx} className="rounded-3xl p-8 transition-transform hover:scale-105 bg-navy text-white shadow-2xl relative border-2 border-gold/10">
+                {plan.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-navy px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">Most Popular</span>}
+                <div className="text-sm font-bold opacity-80 mb-2 uppercase tracking-widest text-center">{plan.tag}</div>
+                <h3 className="text-2xl font-black text-center mb-6">{plan.name}</h3>
+                <div className="flex flex-col items-center gap-2 mb-8 py-6 border-y border-white/10">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-5xl font-black">{plan.price}</span>
+                    <span className="text-xl font-medium opacity-70">/mo</span>
+                  </div>
                 </div>
+                <ul className="space-y-4 mb-8">
+                  {plan.features.map((f, i) => (
+                    <li key={i} className="flex items-center gap-3"><CheckCircle className="w-5 h-5 flex-shrink-0 text-gold" /> <span className="text-sm font-medium">{f}</span></li>
+                  ))}
+                </ul>
+                <button onClick={() => setShowPopup(true)} className="w-full py-4 rounded-xl font-black text-lg transition-all shadow-xl bg-gold text-navy hover:transform hover:-translate-y-1">Get Started Now</button>
               </div>
-              <ul className="space-y-4 mb-8">
-                {plan.features.map((f, i) => (
-                  <li key={i} className="flex items-center gap-3"><CheckCircle className="w-5 h-5 flex-shrink-0 text-gold" /> <span className="text-sm font-medium">{f}</span></li>
-                ))}
-              </ul>
-              <button onClick={() => setShowPopup(true)} className="w-full py-4 rounded-xl font-black text-lg transition-all shadow-xl bg-gold text-navy hover:transform hover:-translate-y-1">Get Started Now</button>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* FAQ Excerpt Section */}
-    <section className="py-20 px-4 bg-offwhite/50">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-black text-navy mb-12">Got Questions?</h2>
-        <div className="space-y-4 text-left">
-          {FAQS.slice(0, 4).map((faq, idx) => (
-            <div key={idx} className="bg-white border-2 border-navy/10 rounded-2xl overflow-hidden shadow-sm">
-              <button onClick={() => setActiveFaq(activeFaq === idx ? null : idx)} className="w-full p-6 text-left flex justify-between items-center hover:bg-navy/5 transition"><span className="text-navy font-bold text-lg">{faq.q}</span> <ChevronDown className={`w-6 h-6 transform transition ${activeFaq === idx ? 'rotate-180' : ''}`} /></button>
-              {activeFaq === idx && <div className="px-6 pb-6 text-darkgray leading-relaxed border-t border-navy/5 pt-4">{faq.a}</div>}
-            </div>
-          ))}
-        </div>
-        <button onClick={() => navigateTo('/faq')} className="mt-12 text-navy font-black flex items-center gap-2 mx-auto hover:text-gold transition text-lg">View All FAQs <ChevronRight className="w-6 h-6" /></button>
-      </div>
-    </section>
-
-    {/* Blog Excerpt Section */}
-    <section className="py-20 px-4 bg-offwhite">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-black text-center mb-12">Latest <span className="text-navy">Insights</span></h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {BLOGS.map(blog => (
-            <div key={blog.id} className="bg-white border-2 border-navy/10 hover:border-gold rounded-3xl overflow-hidden transition group shadow-lg flex flex-col">
-              <div className="h-48 bg-navy flex items-center justify-center group-hover:bg-gold transition-colors aspect-video"><Newspaper className="w-16 h-16 text-white" /></div>
-              <div className="p-8 flex flex-col flex-1">
-                <span className="text-gold font-bold text-xs uppercase tracking-widest mb-2">{blog.date}</span>
-                <h3 className="text-xl font-black text-navy mb-4 group-hover:text-gold transition-colors">{blog.title}</h3>
-                <p className="text-darkgray text-sm mb-6 line-clamp-3">{blog.excerpt}</p>
-                <div className="mt-auto">
-                  <button onClick={() => navigateTo(`/blog/${blog.id}`)} className="text-navy font-black flex items-center gap-2 hover:text-gold transition">Read More <ChevronRight className="w-4 h-4" /></button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* Reviews Section */}
-    <section className="py-20 px-4 bg-offwhite/50 border-t border-navy/5">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-black mb-4">What Our <span className="text-navy">Students Say</span></h2>
-          <div className="flex justify-center text-gold gap-1 mb-4">{[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-gold" />)}</div>
-          <p className="text-darkgray text-lg font-medium">Real feedback from our global community</p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {reviews.slice(0, 6).map((review) => (
-            <div key={review.id} className="bg-white p-8 rounded-3xl shadow-xl border border-navy/5 flex flex-col">
-              <div className="flex text-gold mb-4">{[...Array(5)].map((_, i) => <Star key={i} className={`w-4 h-4 ${i < review.rating ? 'fill-gold' : 'text-gray-300'}`} />)}</div>
-              <p className="text-darkgray italic mb-6 flex-1 text-lg">"{review.text}"</p>
-              <div className="flex items-center justify-between border-t border-navy/5 pt-4"><span className="font-bold text-navy">{review.name}</span> <span className="text-xs text-darkgray/50">{review.date}</span></div>
-            </div>
-          ))}
-        </div>
-        <div className="text-center mb-20"><button onClick={() => navigateTo('/reviews')} className="text-navy font-black flex items-center gap-2 mx-auto hover:text-gold transition text-lg">View All Reviews <ChevronRight className="w-6 h-6" /></button></div>
-        {/* Inline Review Form */}
-        <div className="max-w-2xl mx-auto bg-navy rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
-          <div className="relative z-10">
-            <h3 className="text-3xl font-black text-white mb-2 text-center">Leave a Review</h3>
-            <p className="text-white/70 text-center mb-8">Your feedback helps us improve our service</p>
-            <form onSubmit={handleReviewSubmit} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <input type="text" placeholder="Your Name" className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-gold" value={newReview.name} onChange={(e) => setNewReview({ ...newReview, name: e.target.value })} required />
-                <div className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 flex items-center justify-between"><span className="text-white/50 text-sm">Rating:</span><select className="bg-transparent text-gold font-bold focus:outline-none cursor-pointer" value={newReview.rating} onChange={(e) => setNewReview({ ...newReview, rating: parseInt(e.target.value) })}>{[5, 4, 3, 2, 1].map(n => <option key={n} value={n} className="bg-navy text-gold">{n} Stars</option>)}</select></div>
-              </div>
-              <textarea placeholder="Tell us about your experience..." rows="4" className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-gold resize-none" value={newReview.text} onChange={(e) => setNewReview({ ...newReview, text: e.target.value })} required></textarea>
-              <button type="submit" disabled={reviewStatus.submitting} className="w-full bg-gold text-navy py-5 rounded-xl font-black text-xl hover:bg-gold/90 transition transform hover:-translate-y-1 shadow-2xl disabled:opacity-50">{reviewStatus.submitting ? 'Posting...' : 'Post My Review'}</button>
-              {reviewStatus.success && <div className="p-4 bg-green-500/20 text-green-200 rounded-xl text-center font-bold">Thank you! Your review has been posted successfully.</div>}
-            </form>
+            ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    {/* Final CTA Section */}
-    <section className="py-24 px-4 bg-navy text-white text-center">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">Start Your Quran Learning Journey Today</h2>
-        <p className="text-xl mb-12 opacity-80 leading-relaxed">Join thousands of students worldwide and learn with expert teachers from the comfort of your home.</p>
-        <div className="flex flex-col md:flex-row gap-6 justify-center">
-          <button onClick={() => setShowPopup(true)} className="bg-gold text-navy px-12 py-5 rounded-2xl font-black text-2xl hover:scale-105 transition shadow-2xl">Book 3 Free Classes</button>
-          <a href="https://wa.me/923350277160" target="_blank" rel="noopener noreferrer" className="bg-white/10 border-2 border-white/20 px-12 py-5 rounded-2xl font-black text-2xl hover:bg-white/20 transition flex items-center justify-center gap-3"><MessageCircle className="w-8 h-8" /> WhatsApp Us</a>
+      {/* FAQ Excerpt Section */}
+      <section className="py-20 px-4 bg-offwhite/50">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-black text-navy mb-12">Got Questions?</h2>
+          <div className="space-y-4 text-left">
+            {FAQS.slice(0, 4).map((faq, idx) => (
+              <div key={idx} className="bg-white border-2 border-navy/10 rounded-2xl overflow-hidden shadow-sm">
+                <button onClick={() => setActiveFaq(activeFaq === idx ? null : idx)} className="w-full p-6 text-left flex justify-between items-center hover:bg-navy/5 transition"><span className="text-navy font-bold text-lg">{faq.q}</span> <ChevronDown className={`w-6 h-6 transform transition ${activeFaq === idx ? 'rotate-180' : ''}`} /></button>
+                {activeFaq === idx && <div className="px-6 pb-6 text-darkgray leading-relaxed border-t border-navy/5 pt-4">{faq.a}</div>}
+              </div>
+            ))}
+          </div>
+          <button onClick={() => navigateTo('/faq')} className="mt-12 text-navy font-black flex items-center gap-2 mx-auto hover:text-gold transition text-lg">View All FAQs <ChevronRight className="w-6 h-6" /></button>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Blog Excerpt Section */}
+      <section className="py-20 px-4 bg-offwhite">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-black text-center mb-12">Latest <span className="text-navy">Insights</span></h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {BLOGS.map(blog => (
+              <div key={blog.id} className="bg-white border-2 border-navy/10 hover:border-gold rounded-3xl overflow-hidden transition group shadow-lg flex flex-col">
+                <div className="h-48 bg-navy flex items-center justify-center group-hover:bg-gold transition-colors aspect-video"><Newspaper className="w-16 h-16 text-white" /></div>
+                <div className="p-8 flex flex-col flex-1">
+                  <span className="text-gold font-bold text-xs uppercase tracking-widest mb-2">{blog.date}</span>
+                  <h3 className="text-xl font-black text-navy mb-4 group-hover:text-gold transition-colors">{blog.title}</h3>
+                  <p className="text-darkgray text-sm mb-6 line-clamp-3">{blog.excerpt}</p>
+                  <div className="mt-auto">
+                    <button onClick={() => navigateTo(`/blog/${blog.id}`)} className="text-navy font-black flex items-center gap-2 hover:text-gold transition">Read More <ChevronRight className="w-4 h-4" /></button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews Section */}
+      <section className="py-20 px-4 bg-offwhite/50 border-t border-navy/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-black mb-4">What Our <span className="text-navy">Students Say</span></h2>
+            <div className="flex justify-center text-gold gap-1 mb-4">{[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-gold" />)}</div>
+            <p className="text-darkgray text-lg font-medium">Real feedback from our global community</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {reviews.slice(0, 6).map((review) => (
+              <div key={review.id} className="bg-white p-8 rounded-3xl shadow-xl border border-navy/5 flex flex-col">
+                <div className="flex text-gold mb-4">{[...Array(5)].map((_, i) => <Star key={i} className={`w-4 h-4 ${i < review.rating ? 'fill-gold' : 'text-gray-300'}`} />)}</div>
+                <p className="text-darkgray italic mb-6 flex-1 text-lg">"{review.text}"</p>
+                <div className="flex items-center justify-between border-t border-navy/5 pt-4"><span className="font-bold text-navy">{review.name}</span> <span className="text-xs text-darkgray/50">{review.date}</span></div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mb-20"><button onClick={() => navigateTo('/reviews')} className="text-navy font-black flex items-center gap-2 mx-auto hover:text-gold transition text-lg">View All Reviews <ChevronRight className="w-6 h-6" /></button></div>
+          {/* Inline Review Form */}
+          <div id="review-form" className="max-w-2xl mx-auto bg-navy rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+            <div className="relative z-10">
+              <h3 className="text-3xl font-black text-white mb-2 text-center">Leave a Review</h3>
+              <p className="text-white/70 text-center mb-8">Your feedback helps us improve our service</p>
+              <form onSubmit={handleReviewSubmit} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <input type="text" placeholder="Your Name" className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-gold" value={newReview.name} onChange={(e) => setNewReview({ ...newReview, name: e.target.value })} required />
+                  <div className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 flex items-center justify-between"><span className="text-white/50 text-sm">Rating:</span><select className="bg-transparent text-gold font-bold focus:outline-none cursor-pointer" value={newReview.rating} onChange={(e) => setNewReview({ ...newReview, rating: parseInt(e.target.value) })}>{[5, 4, 3, 2, 1].map(n => <option key={n} value={n} className="bg-navy text-gold">{n} Stars</option>)}</select></div>
+                </div>
+                <textarea placeholder="Tell us about your experience..." rows="4" className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-gold resize-none" value={newReview.text} onChange={(e) => setNewReview({ ...newReview, text: e.target.value })} required></textarea>
+                <button type="submit" disabled={reviewStatus.submitting} className="w-full bg-gold text-navy py-5 rounded-xl font-black text-xl hover:bg-gold/90 transition transform hover:-translate-y-1 shadow-2xl disabled:opacity-50">{reviewStatus.submitting ? 'Posting...' : 'Post My Review'}</button>
+                {reviewStatus.success && <div className="p-4 bg-green-500/20 text-green-200 rounded-xl text-center font-bold">Thank you! Your review has been posted successfully.</div>}
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-24 px-4 bg-navy text-white text-center">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">Start Your Quran Learning Journey Today</h2>
+          <p className="text-xl mb-12 opacity-80 leading-relaxed">Join thousands of students worldwide and learn with expert teachers from the comfort of your home.</p>
+          <div className="flex flex-col md:flex-row gap-6 justify-center">
+            <button onClick={() => setShowPopup(true)} className="bg-gold text-navy px-12 py-5 rounded-2xl font-black text-2xl hover:scale-105 transition shadow-2xl">Book 3 Free Classes</button>
+            <a href="https://wa.me/923350277160" target="_blank" rel="noopener noreferrer" className="bg-white/10 border-2 border-white/20 px-12 py-5 rounded-2xl font-black text-2xl hover:bg-white/20 transition flex items-center justify-center gap-3"><MessageCircle className="w-8 h-8" /> WhatsApp Us</a>
+          </div>
+        </div>
+      </section>
+
+    </LazySection>
   </div>
 );
 
@@ -1093,7 +1100,15 @@ const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
 
       {/* Hero Banner */}
       <div className="relative h-72 md:h-[420px]">
-        <img src={course.image} alt={course.altText} className="w-full h-full object-cover" />
+        {/* Navy placeholder shown instantly while WebP downloads */}
+        <img
+          src={course.image}
+          alt={course.altText}
+          loading="eager"
+          decoding="async"
+          style={{ backgroundColor: '#0A1D37' }}
+          className="w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent" />
         <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-16">
           {/* Breadcrumb */}
@@ -1493,6 +1508,7 @@ const AlmaasQuranAcademy = () => {
     window.addEventListener('scroll', handleScroll);
 
     // Dynamic Location and Currency Detection
+    // Deferred via requestIdleCallback so it NEVER blocks initial paint
     const initDynamicPricing = async () => {
       try {
         // 1. Detect Location via IP (ipapi.co is free for 1k req/day)
@@ -1504,7 +1520,6 @@ const AlmaasQuranAcademy = () => {
 
           // Determine region based on country
           const country = ipData.country_name;
-          // const currency = ipData.currency; // reserved for future currency display
 
           if (country === 'United Kingdom') setSelectedRegion('UK');
           else if (country === 'Canada') setSelectedRegion('Canada');
@@ -1534,7 +1549,13 @@ const AlmaasQuranAcademy = () => {
       }
     };
 
-    initDynamicPricing();
+    // Use requestIdleCallback so pricing fetch never competes with initial render
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => initDynamicPricing(), { timeout: 3000 });
+    } else {
+      // Fallback for Safari: 2s delay keeps first paint unblocked
+      setTimeout(initDynamicPricing, 2000);
+    }
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -1783,45 +1804,47 @@ const AlmaasQuranAcademy = () => {
       <Header scrolled={scrolled} menuOpen={menuOpen} setMenuOpen={setMenuOpen} navigateTo={navigateTo} setShowPopup={setShowPopup} />
 
       <main>
-        <Routes>
-          <Route path="/" element={
-            <HomePage
-              TAGLINES={TAGLINES}
-              currentTagline={currentTagline}
-              counts={counts}
-              COURSES_DETAILED={COURSES_DETAILED}
-              navigateTo={navigateTo}
-              setShowPopup={setShowPopup}
-              pricingPlans={pricingPlans}
-              FAQS={FAQS}
-              BLOGS={BLOGS}
-              reviews={reviews}
-              activeFaq={activeFaq}
-              setActiveFaq={setActiveFaq}
-              handleReviewSubmit={handleReviewSubmit}
-              newReview={newReview}
-              setNewReview={setNewReview}
-              reviewStatus={reviewStatus}
-              handleSubmit={handleSubmit}
-              formStatus={formStatus}
-            />
-          } />
-          <Route path="/courses" element={<CoursesPage COURSES_DETAILED={COURSES_DETAILED} navigateTo={navigateTo} />} />
-          <Route path="/courses/:slug" element={<CourseDetailPage COURSES_DETAILED={COURSES_DETAILED} navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
-          <Route path="/pricing" element={<PricingPage pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
-          <Route path="/faq" element={<FAQPage FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} navigateTo={navigateTo} />} />
-          <Route path="/blogs" element={<BlogPage BLOGS={BLOGS} navigateTo={navigateTo} />} />
-          <Route path="/blog/:id" element={<BlogDetailPage BLOGS={BLOGS} navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
-          <Route path="/reviews" element={<ReviewsPage reviews={reviews} loadingReviews={loadingReviews} navigateTo={navigateTo} />} />
-          <Route path="/contact" element={<ContactPage handleSubmit={handleSubmit} formStatus={formStatus} courses={COURSES} navigateTo={navigateTo} />} />
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-navy"></div></div>}>
+          <Routes>
+            <Route path="/" element={
+              <HomePage
+                TAGLINES={TAGLINES}
+                currentTagline={currentTagline}
+                counts={counts}
+                COURSES_DETAILED={COURSES_DETAILED}
+                navigateTo={navigateTo}
+                setShowPopup={setShowPopup}
+                pricingPlans={pricingPlans}
+                FAQS={FAQS}
+                BLOGS={BLOGS}
+                reviews={reviews}
+                activeFaq={activeFaq}
+                setActiveFaq={setActiveFaq}
+                handleReviewSubmit={handleReviewSubmit}
+                newReview={newReview}
+                setNewReview={setNewReview}
+                reviewStatus={reviewStatus}
+                handleSubmit={handleSubmit}
+                formStatus={formStatus}
+              />
+            } />
+            <Route path="/courses" element={<CoursesPage COURSES_DETAILED={COURSES_DETAILED} navigateTo={navigateTo} />} />
+            <Route path="/courses/:slug" element={<CourseDetailPage COURSES_DETAILED={COURSES_DETAILED} navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
+            <Route path="/pricing" element={<PricingPage pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
+            <Route path="/faq" element={<FAQPage FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} navigateTo={navigateTo} />} />
+            <Route path="/blogs" element={<BlogPage BLOGS={BLOGS} navigateTo={navigateTo} />} />
+            <Route path="/blog/:id" element={<BlogDetailPage BLOGS={BLOGS} navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
+            <Route path="/reviews" element={<ReviewsPage reviews={reviews} loadingReviews={loadingReviews} navigateTo={navigateTo} />} />
+            <Route path="/contact" element={<ContactPage handleSubmit={handleSubmit} formStatus={formStatus} courses={COURSES} navigateTo={navigateTo} />} />
 
-          <Route path="/quran-classes-usa" element={<RegionalLandingPage selectedRegion="USA" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} />} />
-          <Route path="/quran-classes-uk" element={<RegionalLandingPage selectedRegion="UK" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} />} />
-          <Route path="/quran-classes-canada" element={<RegionalLandingPage selectedRegion="Canada" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} />} />
-          <Route path="/quran-classes-australia" element={<RegionalLandingPage selectedRegion="Australia" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} />} />
+            <Route path="/quran-classes-usa" element={<RegionalLandingPage selectedRegion="USA" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} />} />
+            <Route path="/quran-classes-uk" element={<RegionalLandingPage selectedRegion="UK" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} />} />
+            <Route path="/quran-classes-canada" element={<RegionalLandingPage selectedRegion="Canada" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} />} />
+            <Route path="/quran-classes-australia" element={<RegionalLandingPage selectedRegion="Australia" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} />} />
 
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Suspense>
       </main>
 
       <Footer navigateTo={navigateTo} />
