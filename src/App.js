@@ -1549,12 +1549,13 @@ const AlmaasQuranAcademy = () => {
       }
     };
 
-    // Use requestIdleCallback so pricing fetch never competes with initial render
+    // Minimal delay — just enough to not block the first paint,
+    // but fast enough that users see local currency almost immediately.
     if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => initDynamicPricing(), { timeout: 3000 });
+      requestIdleCallback(() => initDynamicPricing(), { timeout: 300 });
     } else {
-      // Fallback for Safari: 2s delay keeps first paint unblocked
-      setTimeout(initDynamicPricing, 2000);
+      // Fallback for Safari: very short delay
+      setTimeout(initDynamicPricing, 300);
     }
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -1683,8 +1684,17 @@ const AlmaasQuranAcademy = () => {
       // We use USD as the base price for conversion
       const convertedPrice = Math.round(usd * rate);
 
-      // Special case for regions we have explicit configs for (to keep symbols nice)
-      const specialSymbols = { 'GBP': '£', 'CAD': 'C$', 'AUD': 'A$', 'EUR': '€', 'USD': '$' };
+      // Currency symbol map — covers all major regions our students come from
+      const specialSymbols = {
+        // Western
+        'GBP': '£', 'USD': '$', 'CAD': 'C$', 'AUD': 'A$', 'EUR': '€', 'NZD': 'NZ$',
+        // South Asia
+        'PKR': 'Rs ', 'INR': '₹', 'BDT': '৳',
+        // Middle East
+        'AED': 'AED ', 'SAR': 'SAR ', 'QAR': 'QAR ', 'KWD': 'KD ', 'OMR': 'OMR ', 'BHD': 'BD ',
+        // South-East Asia
+        'MYR': 'RM ', 'IDR': 'Rp ',
+      };
       const displaySymbol = specialSymbols[currency] || symbol;
 
       return `${displaySymbol}${convertedPrice}`;
