@@ -631,6 +631,25 @@ const CoursesPage = ({ COURSES_DETAILED, navigateTo }) => (
 
 // --- PAGE COMPONENTS ---
 
+const ReviewForm = ({ handleReviewSubmit, newReview, setNewReview, reviewStatus }) => (
+  <div id="review-form" className="max-w-2xl mx-auto bg-navy rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+    <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+    <div className="relative z-10">
+      <h3 className="text-3xl font-black text-white mb-2 text-center">Leave a Review</h3>
+      <p className="text-white/70 text-center mb-8">Your feedback helps us improve our service</p>
+      <form onSubmit={handleReviewSubmit} className="space-y-4">
+        <div className="grid grid-cols-2 gap-4">
+          <input type="text" placeholder="Your Name" className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-gold" value={newReview.name} onChange={(e) => setNewReview({ ...newReview, name: e.target.value })} required />
+          <div className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 flex items-center justify-between"><span className="text-white/50 text-sm">Rating:</span><select className="bg-transparent text-gold font-bold focus:outline-none cursor-pointer" value={newReview.rating} onChange={(e) => setNewReview({ ...newReview, rating: parseInt(e.target.value) })}>{[5, 4, 3, 2, 1].map(n => <option key={n} value={n} className="bg-navy text-gold">{n} Stars</option>)}</select></div>
+        </div>
+        <textarea placeholder="Tell us about your experience..." rows="4" className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-gold resize-none" value={newReview.text} onChange={(e) => setNewReview({ ...newReview, text: e.target.value })} required></textarea>
+        <button type="submit" disabled={reviewStatus.submitting} className="w-full bg-gold text-navy py-5 rounded-xl font-black text-xl hover:bg-gold/90 transition transform hover:-translate-y-1 shadow-2xl disabled:opacity-50">{reviewStatus.submitting ? 'Posting...' : 'Post My Review'}</button>
+        {reviewStatus.success && <div className="p-4 bg-green-500/20 text-green-200 rounded-xl text-center font-bold">Thank you! Your review has been posted successfully.</div>}
+      </form>
+    </div>
+  </div>
+);
+
 const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigateTo, setShowPopup, pricingPlans, FAQS, BLOGS, reviews, activeFaq, setActiveFaq, handleReviewSubmit, newReview, setNewReview, reviewStatus, handleSubmit, formStatus }) => {
   const orgSchema = {
     "@context": "https://schema.org",
@@ -928,22 +947,7 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
             </div>
             <div className="text-center mb-20"><button onClick={() => navigateTo('/reviews')} className="text-navy font-black flex items-center gap-2 mx-auto hover:text-gold transition text-lg">View All Reviews <ChevronRight className="w-6 h-6" /></button></div>
             {/* Inline Review Form */}
-            <div id="review-form" className="max-w-2xl mx-auto bg-navy rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
-              <div className="relative z-10">
-                <h3 className="text-3xl font-black text-white mb-2 text-center">Leave a Review</h3>
-                <p className="text-white/70 text-center mb-8">Your feedback helps us improve our service</p>
-                <form onSubmit={handleReviewSubmit} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <input type="text" placeholder="Your Name" className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-gold" value={newReview.name} onChange={(e) => setNewReview({ ...newReview, name: e.target.value })} required />
-                    <div className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 flex items-center justify-between"><span className="text-white/50 text-sm">Rating:</span><select className="bg-transparent text-gold font-bold focus:outline-none cursor-pointer" value={newReview.rating} onChange={(e) => setNewReview({ ...newReview, rating: parseInt(e.target.value) })}>{[5, 4, 3, 2, 1].map(n => <option key={n} value={n} className="bg-navy text-gold">{n} Stars</option>)}</select></div>
-                  </div>
-                  <textarea placeholder="Tell us about your experience..." rows="4" className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-gold resize-none" value={newReview.text} onChange={(e) => setNewReview({ ...newReview, text: e.target.value })} required></textarea>
-                  <button type="submit" disabled={reviewStatus.submitting} className="w-full bg-gold text-navy py-5 rounded-xl font-black text-xl hover:bg-gold/90 transition transform hover:-translate-y-1 shadow-2xl disabled:opacity-50">{reviewStatus.submitting ? 'Posting...' : 'Post My Review'}</button>
-                  {reviewStatus.success && <div className="p-4 bg-green-500/20 text-green-200 rounded-xl text-center font-bold">Thank you! Your review has been posted successfully.</div>}
-                </form>
-              </div>
-            </div>
+            <ReviewForm handleReviewSubmit={handleReviewSubmit} newReview={newReview} setNewReview={setNewReview} reviewStatus={reviewStatus} />
           </div>
         </section>
 
@@ -1398,7 +1402,7 @@ const BlogDetailPage = ({ BLOGS, navigateTo, setShowPopup }) => {
     </div>
   );
 };
-const ReviewsPage = ({ reviews, loadingReviews, navigateTo }) => (
+const ReviewsPage = ({ reviews, loadingReviews, navigateTo, handleReviewSubmit, newReview, setNewReview, reviewStatus }) => (
   <div className="min-h-screen bg-offwhite">
     <div className="pt-24 pb-20 px-4">
       <div className="max-w-4xl mx-auto">
@@ -1423,11 +1427,14 @@ const ReviewsPage = ({ reviews, loadingReviews, navigateTo }) => (
             </div>
           ))}
         </div>
-        <div className="mt-16 bg-navy text-white p-12 rounded-3xl text-center">
+        <div className="mt-16 bg-navy text-white p-12 rounded-3xl text-center mb-12">
           <h2 className="text-3xl font-black mb-4">Share Your Experience</h2>
           <p className="mb-8 opacity-80">Help others by sharing your journey with Almaas Academy</p>
-          <button onClick={() => { navigateTo('home'); setTimeout(() => { const element = document.getElementById('review-form'); if (element) element.scrollIntoView({ behavior: 'smooth' }); }, 100); }} className="bg-gold text-navy px-8 py-4 rounded-xl font-black hover:bg-gold/90 transition shadow-xl">Write a Review</button>
+          <button onClick={() => { const element = document.getElementById('review-form'); if (element) element.scrollIntoView({ behavior: 'smooth' }); }} className="bg-gold text-navy px-8 py-4 rounded-xl font-black hover:bg-gold/90 transition shadow-xl">Write a Review</button>
         </div>
+
+        {/* Review Form right here on the reviews page */}
+        <ReviewForm handleReviewSubmit={handleReviewSubmit} newReview={newReview} setNewReview={setNewReview} reviewStatus={reviewStatus} />
       </div>
     </div>
   </div>
@@ -1905,7 +1912,7 @@ const AlmaasQuranAcademy = () => {
             <Route path="/faq" element={<FAQPage FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} navigateTo={navigateTo} />} />
             <Route path="/blogs" element={<BlogPage BLOGS={BLOGS} navigateTo={navigateTo} />} />
             <Route path="/blog/:id" element={<BlogDetailPage BLOGS={BLOGS} navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
-            <Route path="/reviews" element={<ReviewsPage reviews={reviews} loadingReviews={loadingReviews} navigateTo={navigateTo} />} />
+            <Route path="/reviews" element={<ReviewsPage reviews={reviews} loadingReviews={loadingReviews} navigateTo={navigateTo} handleReviewSubmit={handleReviewSubmit} newReview={newReview} setNewReview={setNewReview} reviewStatus={reviewStatus} />} />
             <Route path="/contact" element={<ContactPage handleSubmit={handleSubmit} formStatus={formStatus} courses={COURSES} navigateTo={navigateTo} />} />
 
             <Route path="/quran-classes-usa" element={<RegionalLandingPage selectedRegion="USA" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} />} />
