@@ -410,6 +410,12 @@ const LogoImage = ({ className }) => (
   <img src="/almaas-online-quran-academy-logo.webp" alt="Almaas Online Quran Academy – Best Online Quran Academy for Kids and Adults" className={className} />
 );
 
+const XLogo = ({ className }) => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+  </svg>
+);
+
 const Header = ({ scrolled, menuOpen, setMenuOpen, navigateTo, setShowPopup }) => (
   <header className={`fixed w-full top-0 z-40 transition ${scrolled ? 'bg-offwhite shadow-lg' : 'bg-offwhite/95'}`}>
     <div className="max-w-7xl mx-auto px-4 py-4">
@@ -454,50 +460,107 @@ const Header = ({ scrolled, menuOpen, setMenuOpen, navigateTo, setShowPopup }) =
 );
 
 const Footer = ({ navigateTo }) => (
-  <footer className="bg-darkgray/80 text-gray-400 py-12 px-4">
+  <footer className="bg-navy text-white/70 py-16 px-4 border-t border-gold/10">
     <div className="max-w-7xl mx-auto">
-      <div className="grid md:grid-cols-4 gap-8 mb-8">
-        <div>
-          <div className="flex items-center gap-3 mb-4">
-            <LogoImage className="h-12 w-12" />
+      <div className="grid md:grid-cols-4 gap-12 mb-12">
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <LogoImage className="h-14 w-14" />
             <div>
-              <div className="text-white font-bold">ALMAAS ONLINE</div>
-              <div className="text-xs text-gray-500">QURAN ACADEMY</div>
+              <div className="text-white font-black text-lg leading-none">ALMAAS ONLINE</div>
+              <div className="text-gold text-[10px] font-bold tracking-[0.2em] mt-1">QURAN ACADEMY</div>
             </div>
           </div>
+          <p className="text-sm leading-relaxed opacity-80">
+            Empowering the next generation with divine knowledge through personalized online Quranic education.
+          </p>
           <div className="flex gap-3">
-            <a href="https://www.facebook.com/share/1QTAHW4p7t/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="w-10 h-10 bg-darkgray/90 hover:bg-blue-600 rounded-full flex items-center justify-center"><Facebook className="w-5 h-5" /></a>
-            <a href="https://www.instagram.com/almaasonlinequranacademy" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="w-10 h-10 bg-darkgray/90 hover:bg-pink-600 rounded-full flex items-center justify-center"><Instagram className="w-5 h-5" /></a>
-            <a href="https://youtube.com/@almaasonlinequranacademy" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to our YouTube channel" className="w-10 h-10 bg-darkgray/90 hover:bg-red-600 rounded-full flex items-center justify-center"><Youtube className="w-5 h-5" /></a>
-            <a href="https://www.linkedin.com/company/almaas-online-quran-academy/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" className="w-10 h-10 bg-darkgray/90 hover:bg-blue-700 rounded-full flex items-center justify-center"><Linkedin className="w-5 h-5" /></a>
+            {[
+              { icon: Facebook, href: "https://www.facebook.com/share/1QTAHW4p7t/", label: "Facebook", hover: "hover:bg-blue-600" },
+              { icon: XLogo, href: "https://x.com/Almaas_Academy?s=20", label: "X (Twitter)", hover: "hover:bg-black" },
+              { icon: Instagram, href: "https://www.instagram.com/almaasonlinequranacademy", label: "Instagram", hover: "hover:bg-pink-600" },
+              { icon: Youtube, href: "https://youtube.com/@almaasonlinequranacademy", label: "YouTube", hover: "hover:bg-red-600" },
+              { icon: Linkedin, href: "https://www.linkedin.com/company/almaas-online-quran-academy/", label: "LinkedIn", hover: "hover:bg-blue-700" }
+            ].map((social, i) => (
+              <a
+                key={i}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className={`w-10 h-10 bg-white/5 ${social.hover} text-white rounded-xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1 border border-white/10`}
+              >
+                <social.icon className="w-5 h-5" />
+              </a>
+            ))}
           </div>
         </div>
+
         <div>
-          <h4 className="text-white font-semibold mb-3">Quick Links</h4>
-          <div className="space-y-2 text-sm">
-            <button onClick={() => navigateTo('/')} className="block hover:text-white">Home</button>
-            <button onClick={() => navigateTo('/courses')} className="block hover:text-white">Courses</button>
-            <button onClick={() => navigateTo('/pricing')} className="block hover:text-white">Pricing</button>
-            <button onClick={() => navigateTo('/reviews')} className="block hover:text-white">Reviews</button>
+          <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Quick Navigation</h4>
+          <div className="flex flex-col gap-3">
+            {['Home', 'Courses', 'Pricing', 'Reviews', 'Blogs', 'Contact'].map((item) => (
+              <button
+                key={item}
+                onClick={() => navigateTo(item === 'Home' ? '/' : `/${item.toLowerCase()}`)}
+                className="text-sm hover:text-gold text-left transition-colors w-fit"
+              >
+                {item}
+              </button>
+            ))}
           </div>
         </div>
+
         <div>
-          <h4 className="text-white font-semibold mb-3">Legal</h4>
-          <div className="space-y-2 text-sm">
-            <button className="block hover:text-white text-left">Privacy Policy</button>
-            <button className="block hover:text-white text-left">Terms & Conditions</button>
+          <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Legal & Support</h4>
+          <div className="flex flex-col gap-3">
+            {[
+              { name: 'Privacy Policy', path: '/privacy-policy' },
+              { name: 'Terms & Conditions', path: '/terms-and-conditions' },
+              { name: 'FAQ', path: '/faq' },
+              { name: 'Support Center', path: '/contact' }
+            ].map((item) => (
+              <button
+                key={item.name}
+                onClick={() => navigateTo(item.path)}
+                className="text-sm hover:text-gold text-left transition-colors w-fit"
+              >
+                {item.name}
+              </button>
+            ))}
           </div>
         </div>
+
         <div>
-          <h4 className="text-white font-semibold mb-3">Contact</h4>
-          <div className="space-y-2 text-sm">
-            <p>📞 +92 315 2267416</p>
-            <p>💬 +92 335 0277160</p>
+          <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Get In Touch</h4>
+          <div className="space-y-4">
+            <a href="tel:+923152267416" className="flex items-center gap-3 text-sm hover:text-gold transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-gold border border-white/10">
+                <Phone className="w-4 h-4" />
+              </div>
+              +92 315 2267416
+            </a>
+            <a href="https://wa.me/923350277160" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm hover:text-gold transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-gold border border-white/10">
+                <MessageCircle className="w-4 h-4" />
+              </div>
+              +92 335 0277160
+            </a>
+            <div className="flex items-center gap-3 text-sm">
+              <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-gold border border-white/10">
+                <Globe className="w-4 h-4" />
+              </div>
+              Available 24/7 Worldwide
+            </div>
           </div>
         </div>
       </div>
-      <div className="border-t border-slate-800 pt-8 text-center text-sm">
-        © 2026 Almaas Online Quran Academy. All rights reserved.
+
+      <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium tracking-wide">
+        <p>© 2026 ALMAAS ONLINE QURAN ACADEMY</p>
+        <div className="flex gap-6">
+          <span className="text-gold/60">FOR THE SERVICE OF UMMAH</span>
+        </div>
       </div>
     </div>
   </footer>
@@ -552,38 +615,6 @@ const EnrollPopup = ({ showPopup, setShowPopup, handleSubmit, formStatus, COURSE
   );
 };
 
-const ChatWidget = ({ showChat, setShowChat }) => (
-  <div className="fixed bottom-6 right-6 z-40">
-    <button onClick={() => setShowChat(!showChat)} className="bg-gold text-navy p-4 rounded-full shadow-2xl hover:scale-110 transition active:scale-95">
-      {showChat ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6" />}
-    </button>
-    {showChat && (
-      <div className="absolute bottom-20 right-0 w-80 bg-white rounded-3xl shadow-2xl border border-navy/10 overflow-hidden animate-in slide-in-from-bottom-5">
-        <div className="bg-navy p-6 text-white text-center">
-          <h3 className="font-bold text-lg mb-1">Assalamu Alaikum!</h3>
-          <p className="text-xs opacity-70">How can we help you today?</p>
-        </div>
-        <div className="p-4 space-y-3">
-          <a href="https://wa.me/923350277160" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 bg-green-50 rounded-xl hover:bg-green-100 transition border border-green-100">
-            <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white"><MessageCircle className="w-5 h-5" /></div>
-            <div>
-              <div className="font-bold text-sm text-green-900">WhatsApp Support</div>
-              <div className="text-xs text-green-700">Quick response</div>
-            </div>
-          </a>
-          <a href="tel:+923152267416" className="flex items-center gap-3 p-3 bg-navy/5 rounded-xl hover:bg-navy/10 transition border border-navy/5">
-            <div className="w-10 h-10 bg-navy rounded-full flex items-center justify-center text-white"><Phone className="w-5 h-5" /></div>
-            <div>
-              <div className="font-bold text-sm text-navy">Direct Call</div>
-              <div className="text-xs text-navy/70">24/7 Availability</div>
-            </div>
-          </a>
-        </div>
-      </div>
-    )
-    }
-  </div >
-);
 
 const CoursesPage = ({ COURSES_DETAILED, navigateTo }) => (
   <div className="min-h-screen bg-offwhite">
@@ -666,7 +697,7 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
     "sameAs": [
       "https://www.facebook.com/almaasonlinequranacademy",
       "https://www.instagram.com/almaasonlinequranacademy",
-      "https://twitter.com/almaasacademy"
+      "https://x.com/Almaas_Academy?s=20"
     ]
   };
 
@@ -1442,28 +1473,202 @@ const ReviewsPage = ({ reviews, loadingReviews, navigateTo, handleReviewSubmit, 
 
 const ContactPage = ({ handleSubmit, formStatus, courses, navigateTo }) => (
   <div className="min-h-screen bg-offwhite">
-    <div className="pt-24 pb-20 px-4">
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-5xl font-black text-navy mb-8 text-center">Contact Us</h1>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-6">
-            <div className="bg-offwhite/50 border-2 border-navy p-6 rounded-xl"><Phone className="w-10 h-10 text-navy mb-4" /><h3 className="text-navy font-bold text-lg mb-2">Call Us</h3><p className="text-darkgray/90">+92 315 2267416</p></div>
-            <div className="bg-offwhite/50 border-2 border-navy p-6 rounded-xl"><MessageCircle className="w-10 h-10 text-navy mb-4" /><h3 className="text-navy font-bold text-lg mb-2">WhatsApp</h3><p className="text-darkgray/90">+92 335 0277160</p></div>
-          </div>
-          <div className="bg-offwhite/50 border-2 border-navy p-8 rounded-2xl">
-            <form onSubmit={handleSubmit} className="space-y-4">
+    {/* Page Header */}
+    <section className="pt-32 pb-16 bg-navy text-white relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold/5 rounded-full -ml-32 -mb-32 blur-2xl"></div>
+      <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
+        <h1 className="text-5xl md:text-6xl font-black mb-4">Contact Us</h1>
+        <p className="text-xl text-white/70 max-w-2xl mx-auto">Have questions? We're here to help you start your Quranic journey. Reach out to us anytime.</p>
+      </div>
+    </section>
+
+    <div className="max-w-6xl mx-auto px-4 py-20">
+      <div className="grid lg:grid-cols-3 gap-8">
+        {/* Contact Info Sidebar */}
+        <div className="lg:col-span-1 space-y-6">
+          <a href="tel:+923152267416" className="block bg-white p-8 rounded-3xl shadow-xl border border-navy/5 transition hover:border-gold group">
+            <div className="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-navy group-hover:text-gold transition-colors">
+              <Phone className="w-8 h-8 text-navy group-hover:text-gold" />
+            </div>
+            <h3 className="text-xl font-black text-navy mb-2">Call Us</h3>
+            <p className="text-darkgray mb-4">Available for direct inquiries 24/7.</p>
+            <span className="text-lg font-bold text-navy group-hover:text-gold transition">+92 315 2267416</span>
+          </a>
+
+          <a href="https://wa.me/923350277160" target="_blank" rel="noopener noreferrer" className="block bg-white p-8 rounded-3xl shadow-xl border border-navy/5 transition hover:border-gold group">
+            <div className="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors">
+              <MessageCircle className="w-8 h-8 text-navy group-hover:text-white" />
+            </div>
+            <h3 className="text-xl font-black text-navy mb-2">WhatsApp</h3>
+            <p className="text-darkgray mb-4">Swift support via text or voice.</p>
+            <span className="text-lg font-bold text-navy group-hover:text-green-600 transition">+92 335 0277160</span>
+          </a>
+        </div>
+
+        {/* Contact Form */}
+        <div className="lg:col-span-2">
+          <div className="bg-white p-8 md:p-12 rounded-[40px] shadow-2xl border border-navy/5">
+            <div className="mb-10">
+              <h2 className="text-3xl font-black text-navy mb-2">Send a Message</h2>
+              <p className="text-darkgray">Book your 3 free classes or ask any questions.</p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
               <input type="text" name="_honeypot" style={{ display: 'none' }} />
-              <div className="grid grid-cols-2 gap-4"><input type="text" name="firstName" placeholder="First Name" className="px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required /><input type="text" name="lastName" placeholder="Last Name" className="px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required /></div>
-              <input type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
-              <select name="course" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required><option value="">Select Course</option>{courses.map((c, i) => <option key={i} value={c.value}>{c.title}</option>)}</select>
-              <input type="tel" name="phone" placeholder="Phone" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none" required />
-              <textarea name="message" placeholder="Message" rows="4" className="w-full px-4 py-3 rounded-lg border-2 border-navy/10 focus:border-navy focus:outline-none resize-none"></textarea>
-              <button type="submit" disabled={formStatus.submitting} className="w-full bg-navy text-white py-4 rounded-lg font-bold text-lg shadow-xl hover:bg-navy/90 transition disabled:opacity-50">{formStatus.submitting ? 'Sending...' : 'Send Message'}</button>
-              {formStatus.success && <div className="p-4 bg-green-100 text-green-700 rounded-lg text-center font-bold">Thank you! Your message has been sent successfully.</div>}
-              {formStatus.error && <div className="p-4 bg-red-100 text-red-700 rounded-lg text-center font-bold">Error: {formStatus.error}</div>}
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-navy/60 ml-1">First Name</label>
+                  <input type="text" name="firstName" placeholder="Ex: Ali" className="w-full px-6 py-4 rounded-2xl bg-offwhite border-2 border-transparent focus:border-navy focus:bg-white focus:outline-none transition font-medium" required />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-navy/60 ml-1">Last Name</label>
+                  <input type="text" name="lastName" placeholder="Ex: Ahmed" className="w-full px-6 py-4 rounded-2xl bg-offwhite border-2 border-transparent focus:border-navy focus:bg-white focus:outline-none transition font-medium" required />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-navy/60 ml-1">Email Address</label>
+                  <input type="email" name="email" placeholder="example@email.com" className="w-full px-6 py-4 rounded-2xl bg-offwhite border-2 border-transparent focus:border-navy focus:bg-white focus:outline-none transition font-medium" required />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-navy/60 ml-1">Phone Number</label>
+                  <input type="tel" name="phone" placeholder="+1..." className="w-full px-6 py-4 rounded-2xl bg-offwhite border-2 border-transparent focus:border-navy focus:bg-white focus:outline-none transition font-medium" required />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-navy/60 ml-1">Select Interested Course</label>
+                <select name="course" className="w-full px-6 py-4 rounded-2xl bg-offwhite border-2 border-transparent focus:border-navy focus:bg-white focus:outline-none transition font-medium appearance-none" required>
+                  <option value="">Choose a course</option>
+                  {courses.map((c, i) => <option key={i} value={c.value}>{c.title}</option>)}
+                </select>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-navy/60 ml-1">Your Message</label>
+                <textarea name="message" placeholder="As-salaamu alaykum, I would like to..." rows="4" className="w-full px-6 py-4 rounded-2xl bg-offwhite border-2 border-transparent focus:border-navy focus:bg-white focus:outline-none transition font-medium resize-none"></textarea>
+              </div>
+
+              <button
+                type="submit"
+                disabled={formStatus.submitting}
+                className="w-full bg-navy text-white py-5 rounded-2xl font-black text-xl shadow-2xl hover:bg-navy/90 hover:scale-[1.02] active:scale-[0.98] transition disabled:opacity-50 flex items-center justify-center gap-3"
+              >
+                {formStatus.submitting ? 'Sending...' : (
+                  <>Send Message <ChevronRight className="w-6 h-6 text-gold" /></>
+                )}
+              </button>
+
+              {formStatus.success && (
+                <div className="p-4 bg-green-50 text-green-700 rounded-2xl text-center font-bold border border-green-200 animate-in slide-in-from-top-2">
+                  JazakAllah Khayr! Your message has been sent successfully.
+                </div>
+              )}
+              {formStatus.error && (
+                <div className="p-4 bg-red-50 text-red-700 rounded-2xl text-center font-bold border border-red-200">
+                  Oops! {formStatus.error}
+                </div>
+              )}
             </form>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+);
+
+const PrivacyPolicyPage = () => (
+  <div className="min-h-screen bg-offwhite py-32 px-4">
+    <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-navy/5">
+      <h1 className="text-4xl font-black text-navy mb-2">Privacy Policy</h1>
+      <p className="text-gold font-bold mb-8">Last Updated: February 2026</p>
+
+      <div className="space-y-8 text-darkgray leading-relaxed">
+        <section>
+          <h2 className="text-2xl font-bold text-navy mb-4 border-b-2 border-gold/20 pb-2">1. Information We Collect</h2>
+          <p>We collect only the information necessary to provide you with the best educational experience. This includes:</p>
+          <ul className="list-disc ml-6 mt-3 space-y-2">
+            <li>Parent/Guardian Name and contact details</li>
+            <li>Student Name and Age (for age-appropriate teaching)</li>
+            <li>Email Address and WhatsApp Number for class coordination</li>
+            <li>Timezone information to ensure accurate scheduling</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-bold text-navy mb-4 border-b-2 border-gold/20 pb-2">2. Child Safety & Protection</h2>
+          <p>As an academy catering to minors, safety is our top priority. We implement strict protocols:</p>
+          <ul className="list-disc ml-6 mt-3 space-y-2">
+            <li>All teachers undergo thorough background checks and training.</li>
+            <li>We do not share student data with any third-party marketing agencies.</li>
+            <li>We maintain a modest online environment consistent with Islamic values.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-bold text-navy mb-4 border-b-2 border-gold/20 pb-2">3. Class Recordings</h2>
+          <p>Sessions may be recorded for quality control, teacher evaluation, and student safety. These recordings are:</p>
+          <ul className="list-disc ml-6 mt-3 space-y-2">
+            <li>Stored securely on encrypted servers.</li>
+            <li>Accessed only by authorized management personnel.</li>
+            <li>Never used for promotional purposes without written parental consent.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-bold text-navy mb-4 border-b-2 border-gold/20 pb-2">4. Data Security</h2>
+          <p><strong>Payments:</strong> We use industry-standard encrypted processors (PayPal/Stripe). Your full credit card details are never stored on our servers.</p>
+          <p className="mt-4"><strong>Cookies:</strong> We use minimal functional cookies to improve your user experience and remember your preferences.</p>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-bold text-navy mb-4 border-b-2 border-gold/20 pb-2">5. Your Rights</h2>
+          <p>You have the right to access, update, or request the deletion of your personal data. Contact us at <span className="text-navy font-bold">support@almaasonlinequranacademy.online</span> for any privacy-related requests.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+);
+
+const TermsConditionsPage = () => (
+  <div className="min-h-screen bg-offwhite py-32 px-4">
+    <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-navy/5">
+      <h1 className="text-4xl font-black text-navy mb-2">Terms & Conditions</h1>
+      <p className="text-gold font-bold mb-8">Last Updated: February 2026</p>
+
+      <div className="space-y-8 text-darkgray leading-relaxed">
+        <section>
+          <h2 className="text-2xl font-bold text-navy mb-4 border-b-2 border-gold/20 pb-2">1. Enrollment & Trial Period</h2>
+          <ul className="list-disc ml-6 space-y-2">
+            <li><strong>3 Free Demo Classes:</strong> Every new student is entitled to three trial sessions to evaluate our teaching.</li>
+            <li><strong>Advance Payment:</strong> Following the trial, monthly fees must be paid in advance before the start of the billing cycle.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-bold text-navy mb-4 border-b-2 border-gold/20 pb-2">2. Attendance & Rescheduling</h2>
+          <ul className="list-disc ml-6 space-y-3">
+            <li><strong>6-Hour Notice:</strong> Students must provide at least 6 hours' notice for rescheduling. Failure to do so will result in the class being counted as conducted.</li>
+            <li><strong>Teacher Absence:</strong> If a teacher is unavailable, a make-up class or substitute will be provided.</li>
+            <li><strong>Punctuality:</strong> Teachers will wait for 10 minutes. If the student does not join, the session is forfeited.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-bold text-navy mb-4 border-b-2 border-gold/20 pb-2">3. Refund Policy</h2>
+          <p>We offer a <strong>7-Day Money-Back Guarantee</strong>. If you are not satisfied with your experience during the first week of your paid subscription, we will issue a full refund, no questions asked.</p>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-bold text-navy mb-4 border-b-2 border-gold/20 pb-2">4. Code of Conduct</h2>
+          <ul className="list-disc ml-6 space-y-3">
+            <li><strong>Professional Boundaries:</strong> Exchanging personal contact information (WhatsApp, personal email) between teachers and students is strictly prohibited.</li>
+            <li><strong>Respect:</strong> Users must maintain a respectful environment. Any misconduct will result in immediate termination of services.</li>
+          </ul>
+        </section>
       </div>
     </div>
   </div>
@@ -1524,7 +1729,6 @@ const AlmaasQuranAcademy = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
-  const [showChat, setShowChat] = useState(false);
   const [counts, setCounts] = useState({ teachers: 15 });
   const [currentTagline, setCurrentTagline] = useState(0);
   const [selectedRegion, setSelectedRegion] = useState('USA'); // Default
@@ -1920,6 +2124,8 @@ const AlmaasQuranAcademy = () => {
             <Route path="/quran-classes-canada" element={<RegionalLandingPage selectedRegion="Canada" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} />} />
             <Route path="/quran-classes-australia" element={<RegionalLandingPage selectedRegion="Australia" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} />} />
 
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
@@ -1927,7 +2133,6 @@ const AlmaasQuranAcademy = () => {
 
       <Footer navigateTo={navigateTo} />
       <EnrollPopup showPopup={showPopup} setShowPopup={setShowPopup} handleSubmit={handleSubmit} formStatus={formStatus} COURSES={COURSES} />
-      <ChatWidget showChat={showChat} setShowChat={setShowChat} />
     </div>
   );
 };
