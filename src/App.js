@@ -435,7 +435,7 @@ const Header = ({ scrolled, menuOpen, setMenuOpen, navigateTo, setShowPopup }) =
           <button onClick={() => navigateTo('/faq')} className="text-darkgray hover:text-navy font-medium">FAQ</button>
           <button onClick={() => navigateTo('/reviews')} className="text-darkgray hover:text-navy font-medium">Reviews</button>
           <button onClick={() => navigateTo('/contact')} className="text-darkgray hover:text-navy font-medium">Contact</button>
-          <button onClick={() => setShowPopup(true)} className="bg-navy text-white px-6 py-2.5 rounded-lg font-bold">Start Free Trial</button>
+          <button onClick={() => setShowPopup(true)} className="bg-navy text-white px-6 py-3.5 md:py-2.5 rounded-lg font-bold">Start Free Trial</button>
         </nav>
         <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden text-navy p-2">
           {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -476,7 +476,7 @@ const Footer = ({ navigateTo }) => (
           </p>
           <div className="flex gap-3">
             {[
-              { icon: Facebook, href: "https://www.facebook.com/share/1QTAHW4p7t/", label: "Facebook", hover: "hover:bg-blue-600" },
+              { icon: Facebook, href: "https://www.facebook.com/almaasonlinequranacademy", label: "Facebook", hover: "hover:bg-blue-600" },
               { icon: XLogo, href: "https://x.com/Almaas_Academy?s=20", label: "X (Twitter)", hover: "hover:bg-black" },
               { icon: Instagram, href: "https://www.instagram.com/almaasonlinequranacademy", label: "Instagram", hover: "hover:bg-pink-600" },
               { icon: Youtube, href: "https://youtube.com/@almaasonlinequranacademy", label: "YouTube", hover: "hover:bg-red-600" },
@@ -595,7 +595,7 @@ const EnrollPopup = ({ showPopup, setShowPopup, handleSubmit, formStatus, COURSE
           <button
             type="submit"
             disabled={formStatus.submitting}
-            className="w-full bg-gradient-to-r from-gold to-amber-600 text-navy py-4 rounded-lg font-bold shadow-xl hover:from-gold hover:to-amber-500 transition disabled:opacity-50"
+            className="w-full bg-navy text-white md:bg-gradient-to-r md:from-gold md:to-amber-600 md:text-navy py-5 md:py-4 rounded-lg font-bold shadow-xl hover:from-gold hover:to-amber-500 transition disabled:opacity-50"
           >
             {formStatus.submitting ? 'Sending...' : 'Submit Form'}
           </button>
@@ -701,6 +701,18 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
     ]
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": FAQS.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
+      }
+    }))
+  };
   return (
     <div className="min-h-screen">
       <Helmet>
@@ -717,6 +729,7 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
         <meta name="twitter:description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults." />
         <meta name="twitter:image" content="https://almaasonlinequranacademy.online/almaas-online-quran-academy-logo.webp" />
         <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
       {/* Hero Section */}
       <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-br from-offwhite to-white">
@@ -728,7 +741,7 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
             <p className="text-base text-darkgray font-semibold">In the name of Allah, the Most Gracious, the Most Merciful</p>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
             <div className="overflow-hidden h-24 md:h-20 lg:h-24 relative mb-4">
               {TAGLINES.map((tagline, idx) => (
                 <div key={idx} className={`absolute w-full transition-all duration-700 ${idx === currentTagline ? 'opacity-100 translate-y-0' : idx < currentTagline ? 'opacity-0 -translate-y-full' : 'opacity-0 translate-y-full'}`}>
@@ -736,9 +749,9 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
                 </div>
               ))}
             </div>
-          </h1>
+          </h2>
 
-          <h2 className="text-navy/90 block text-3xl md:text-4xl lg:text-5xl mb-4 font-bold">With</h2>
+          <p className="text-navy/90 block text-3xl md:text-4xl lg:text-5xl mb-4 font-bold">With</p>
 
           <h1 className="bg-gradient-to-r from-gold via-gold to-amber-600 bg-clip-text text-transparent block text-4xl md:text-5xl lg:text-6xl font-black mb-6">
             Almaas Online Quran Academy
@@ -777,6 +790,36 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* About Section for SEO Expansion */}
+      <section className="py-12 bg-white px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-black text-navy mb-6">About Almaas Online Quran Academy</h2>
+          <p className="text-darkgray text-lg leading-relaxed mb-6">
+            Almaas Online Quran Academy is a premier global educational platform dedicated to providing high-quality Quranic education.
+            We bridge the gap between traditional learning and modern convenience, offering specialized one-on-one sessions for students of all ages.
+          </p>
+
+          <details className="group">
+            <summary className="text-navy font-bold cursor-pointer hover:text-gold transition-colors list-none flex items-center justify-center gap-2">
+              <span className="group-open:hidden">Read More About Our Mission</span>
+              <span className="hidden group-open:inline">Show Less</span>
+              <ChevronDown className="w-5 h-5 group-open:rotate-180 transition-transform" />
+            </summary>
+            <div className="mt-8 text-left space-y-4 text-darkgray animate-in fade-in slide-in-from-top-4 duration-500">
+              <p>
+                Our mission is to spread the light of the Holy Quran to every corner of the world. At Almaas Academy, we understand that every student has a unique learning pace. That's why we focus on personalized education where certified teachers provide individual attention to ensure proper Tajweed (pronunciation) and deep understanding.
+              </p>
+              <p>
+                With a roster of highly qualified male and female teachers, we cater to a diverse global community. Whether you are a parent looking for a safe and engaging environment for your child to learn Qaida, or an adult seeking to perfect your recitation or memorize the Quran (Hifz), we have a structured curriculum tailored for you.
+              </p>
+              <p>
+                We utilize the latest online teaching tools to make lessons interactive and effective. Our 24/7 availability ensures that you can fit your spiritual growth into your busy lifestyle, no matter where you are in the world. Join thousands of satisfied students and start your journey with the Book of Allah today.
+              </p>
+            </div>
+          </details>
         </div>
       </section>
 
@@ -873,14 +916,43 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
                 <div className="p-6">
                   <h3 className="text-2xl font-black text-gold/80 mb-4">{course.title}</h3>
                   <p className="text-white text-sm mb-6 leading-relaxed line-clamp-3">{course.shortDesc}</p>
-                  <div className="flex gap-3">
-                    <button onClick={() => setShowPopup(true)} className="flex-1 bg-gradient-to-r from-gold to-amber-600 hover:from-gold hover:to-amber-700 text-navy py-3 px-4 rounded-xl font-bold transition shadow-lg">Start Now</button>
-                    <button onClick={() => navigateTo(`/courses/${course.slug}`)} className="flex-1 bg-offwhite hover:bg-gray-100 text-navy py-3 px-4 rounded-xl font-bold transition shadow-lg">Read More</button>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <button onClick={() => setShowPopup(true)} className="flex-1 bg-gradient-to-r from-gold to-amber-600 hover:from-gold hover:to-amber-700 text-navy py-4 px-4 rounded-xl font-bold transition shadow-lg">Start Now</button>
+                    <button onClick={() => navigateTo(`/courses/${course.slug}`)} className="flex-1 bg-offwhite hover:bg-gray-100 text-navy py-4 px-4 rounded-xl font-bold transition shadow-lg">Read More</button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* SEO Expansion for Lessons */}
+          <div className="max-w-4xl mx-auto mt-16 p-8 bg-white/30 backdrop-blur rounded-[32px] border-2 border-navy/5">
+            <details className="group">
+              <summary className="text-xl font-bold text-navy cursor-pointer list-none flex items-center justify-between">
+                <span>Detailed Curriculum Overview & Learning Philosophy</span>
+                <ChevronDown className="w-6 h-6 group-open:rotate-180 transition-transform" />
+              </summary>
+              <div className="mt-8 space-y-4 text-darkgray leading-relaxed">
+                <p>
+                  At Almaas Online Quran Academy, our lessons are carefully structured to take a student from the very basics of Arabic phonetics to the advanced levels of Quranic scholarship. Each lesson is designed to be engaging, age-appropriate, and spiritually uplifting.
+                </p>
+                <div className="grid md:grid-cols-2 gap-6 pt-4">
+                  <div>
+                    <h4 className="font-black text-navy mb-2 uppercase text-xs tracking-widest">For Beginners</h4>
+                    <p className="text-sm">We focus on the 'Noorani Qaida' method, which is the most effective way to learn Arabic reading. Our teachers emphasize 'Makharij' (articulation points) from day one, ensuring a solid foundation for Tajweed.</p>
+                  </div>
+                  <div>
+                    <h4 className="font-black text-navy mb-2 uppercase text-xs tracking-widest">For Advanced Students</h4>
+                    <p className="text-sm">Our Hifz (Memorization) program uses the classical 'Dauri' method, combining new memorization with rigorous revision of previous parts to ensure long-term retention of the Holy Quran.</p>
+                  </div>
+                </div>
+                <p className="pt-4 italic">
+                  "Our goal is not just to teach reading, but to instill a lifelong love for the Word of Allah in the hearts of our students."
+                </p>
+              </div>
+            </details>
+          </div>
+
           <div className="text-center mt-12">
             <button onClick={() => navigateTo('/courses')} className="text-navy font-black flex items-center gap-2 mx-auto hover:text-gold transition text-lg">
               View All Courses <ChevronRight className="w-6 h-6" />
@@ -899,7 +971,7 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
             <p className="text-darkgray text-lg text-center mb-12">Choose the plan that fits your schedule</p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {pricingPlans.map((plan, idx) => (
-                <div key={idx} className="rounded-3xl p-8 transition-transform hover:scale-105 bg-navy text-white shadow-2xl relative border-2 border-gold/10">
+                <div key={idx} className="rounded-3xl p-8 transition-transform hover:scale-105 bg-navy text-white shadow-2xl relative border-2 border-gold/10 flex flex-col h-full">
                   {plan.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-navy px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">Most Popular</span>}
                   <div className="text-sm font-bold opacity-80 mb-2 uppercase tracking-widest text-center">{plan.tag}</div>
                   <h3 className="text-2xl font-black text-center mb-6">{plan.name}</h3>
@@ -909,12 +981,12 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
                       <span className="text-xl font-medium opacity-70">/mo</span>
                     </div>
                   </div>
-                  <ul className="space-y-4 mb-8">
+                  <ul className="space-y-4 mb-8 flex-1">
                     {plan.features.map((f, i) => (
                       <li key={i} className="flex items-center gap-3"><CheckCircle className="w-5 h-5 flex-shrink-0 text-gold" /> <span className="text-sm font-medium">{f}</span></li>
                     ))}
                   </ul>
-                  <button onClick={() => setShowPopup(true)} className="w-full py-4 rounded-xl font-black text-lg transition-all shadow-xl bg-gold text-navy hover:transform hover:-translate-y-1">Get Started Now</button>
+                  <button onClick={() => setShowPopup(true)} className="w-full py-4 rounded-xl font-black text-lg transition-all shadow-xl bg-gold text-navy hover:transform hover:-translate-y-1 mt-auto">Get Started Now</button>
                 </div>
               ))}
             </div>
@@ -1300,7 +1372,7 @@ const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
         <section className="bg-navy rounded-3xl p-10 md:p-16 text-center shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full -mr-32 -mt-32 blur-3xl" />
           <div className="relative z-10">
-            <h3 className="text-4xl font-black text-white mb-4">Ready to Start {course.title}?</h3>
+            <h2 className="text-4xl font-black text-white mb-4">Ready to Start {course.title}?</h2>
             <p className="text-white/70 mb-8 text-lg">{course.cta}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button onClick={() => setShowPopup(true)} className="bg-gold text-navy px-12 py-4 rounded-xl font-black text-xl hover:scale-105 transition shadow-2xl">
@@ -1345,16 +1417,16 @@ const PricingPage = ({ pricingPlans, navigateTo, setShowPopup }) => (
         <p className="text-darkgray text-lg mb-12">Flexible schedules for every student</p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {pricingPlans.map((plan, idx) => (
-            <div key={idx} className="rounded-3xl p-8 bg-navy text-white shadow-2xl relative border-2 border-gold/10 hover:scale-105 transition">
+            <div key={idx} className="rounded-3xl p-8 bg-navy text-white shadow-2xl relative border-2 border-gold/10 hover:scale-105 transition flex flex-col h-full">
               {plan.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-navy px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">Most Popular</span>}
               <h3 className="text-3xl font-black mb-6">{plan.name}</h3>
               <div className="text-5xl font-black mb-8">{plan.price}<span className="text-xl opacity-70">/mo</span></div>
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-8 flex-1">
                 {plan.features.map((f, i) => (
                   <li key={i} className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-gold" /> <span className="text-sm">{f}</span></li>
                 ))}
               </ul>
-              <button onClick={() => setShowPopup(true)} className="w-full py-4 rounded-xl font-black bg-gold text-navy">Select Plan</button>
+              <button onClick={() => setShowPopup(true)} className="w-full py-4 rounded-xl font-black bg-gold text-navy mt-auto">Select Plan</button>
             </div>
           ))}
         </div>
@@ -1705,14 +1777,14 @@ const RegionalLandingPage = ({ selectedRegion, REGION_CONFIGS, pricingPlans, nav
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {pricingPlans.slice(0, 3).map((plan, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-3xl shadow-xl border border-navy/5 relative hover:border-gold transition">
+              <div key={idx} className="bg-white p-8 rounded-3xl shadow-xl border border-navy/5 relative hover:border-gold transition flex flex-col h-full">
                 {plan.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-navy text-white px-4 py-1 rounded-full text-sm font-bold">Best Value</span>}
                 <h3 className="text-xl font-black text-navy mb-4">{plan.name}</h3>
                 <div className="text-4xl font-black text-navy mb-6">{plan.price}<span className="text-sm opacity-60">/mo</span></div>
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 mb-8 flex-1">
                   {plan.features.map((f, i) => <li key={i} className="flex items-center gap-2 text-darkgray text-sm"><CheckCircle className="w-4 h-4 text-gold" /> {f}</li>)}
                 </ul>
-                <button onClick={() => setShowPopup(true)} className="w-full py-3 rounded-xl font-black bg-navy text-white">Join in {currentRegion.name}</button>
+                <button onClick={() => setShowPopup(true)} className="w-full py-3 rounded-xl font-black bg-navy text-white mt-auto">Join in {currentRegion.name}</button>
               </div>
             ))}
           </div>

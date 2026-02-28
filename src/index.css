@@ -4,7 +4,20 @@
 
 @layer base {
   body {
-    @apply bg-offwhite text-darkgray;
+    @apply bg-offwhite text-darkgray text-base md:text-lg;
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-8 py-4 md:py-3.5 rounded-xl font-bold transition-all duration-300 shadow-xl;
+  }
+  
+  /* Tap target improvement for mobile */
+  button, a {
+    @apply min-h-[44px] min-w-[44px];
   }
 }
 
