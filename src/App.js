@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import LazySection from './components/LazySection';
-import { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Globe, Shield, CreditCard, UserPlus, Newspaper, ChevronDown, Facebook, Instagram, Youtube, Linkedin, ArrowLeft } from 'lucide-react';
+import { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Mail, Globe, Shield, CreditCard, UserPlus, Newspaper, ChevronDown, Facebook, Instagram, Youtube, Linkedin, ArrowLeft } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import { Routes, Route, useNavigate, useLocation, useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -72,7 +72,7 @@ const COURSES_DETAILED = [
     slug: "qaida-basics",
     shortDesc: "A foundational course designed to help beginners learn the Arabic alphabet, basic pronunciation, and the rules of Quranic reading step by step, with clarity and ease.",
     fullDesc: "This foundational course is designed for beginners who are starting their Quran learning journey from the very beginning. Students learn Arabic letters, correct pronunciation, and letter formation in a simple, step-by-step manner. Special focus is given to clarity, repetition, and individual attention so learners build confidence before moving on to Quran reading. This course is suitable for children, adults, and new learners with no prior Arabic background.",
-    image: "/quran-qaida-beginners-course.webp",
+    image: "/images/quran-qaida-beginners-course.webp",
     altText: "Quran Qaida for Beginners – Learn Arabic Letters and Pronunciation Online at Almaas Academy",
     whatYouLearn: [
       "Arabic alphabet (Huroof-e-Hijai)",
@@ -94,7 +94,7 @@ const COURSES_DETAILED = [
     slug: "quran-reading",
     shortDesc: "A guided course designed to help learners read the Holy Quran fluently, focusing on correct pronunciation, smooth recitation, and building confidence in every verse.",
     fullDesc: "This course helps students read the Holy Quran fluently and confidently with correct pronunciation. Learners are guided step by step to improve flow, accuracy, and consistency in recitation. Teachers focus on correcting mistakes and strengthening reading skills through regular practice. Ideal for students who can read basic Arabic and want to improve Quran recitation.",
-    image: "/online-quran-reading-course.webp",
+    image: "/images/online-quran-reading-course.webp",
     altText: "Online Quran Reading Course – Fluent and Confident Quran Recitation for Kids and Adults",
     whatYouLearn: [
       "Fluent Quran reading",
@@ -116,7 +116,7 @@ const COURSES_DETAILED = [
     slug: "hifz-memorization",
     shortDesc: "A structured course that helps students memorize the Holy Quran with accuracy, daily revision plans, and expert guidance to retain and recite confidently.",
     fullDesc: "This structured course is designed to help students memorize the Holy Quran accurately and effectively. A disciplined system of daily lessons, revision plans, and continuous supervision ensures strong memorization and retention. Emphasis is placed on Tajweed and correct recitation. Suitable for children and adults aspiring to become Hafiz or Hafiza.",
-    image: "/online-quran-memorization-hifz-classes.webp",
+    image: "/images/online-quran-memorization-hifz-classes.webp",
     altText: "Online Quran Memorization (Hifz) Classes for Kids and Adults at Almaas Online Quran Academy",
     whatYouLearn: [
       "Systematic Quran memorization",
@@ -138,7 +138,7 @@ const COURSES_DETAILED = [
     slug: "quran-translation",
     shortDesc: "A comprehensive course designed to help learners understand the meanings of Quranic verses through clear, word-by-word translation and spiritual reflection.",
     fullDesc: "This course helps learners understand the meanings of the Holy Quran through clear and easy word-by-word translation. Students develop an understanding of Quranic vocabulary and sentence structure while reflecting on the message of Allah. Ideal for learners who want to move beyond recitation and understand the Quran deeply.",
-    image: "/quran-translation-course-online.webp",
+    image: "/images/quran-translation-course-online.webp",
     altText: "Online Quran Translation Course – Learn Word-by-Word Quran Meanings with Expert Teachers",
     whatYouLearn: [
       "Word-by-word Quran translation",
@@ -160,7 +160,7 @@ const COURSES_DETAILED = [
     slug: "quran-tafseer",
     shortDesc: "An in-depth course that explores the meanings, context, and wisdom behind Quranic verses helping learners connect deeply with the message of the Holy Quran.",
     fullDesc: "This advanced course provides detailed explanations of Quranic verses, including historical background, context, and wisdom. Students learn how Quranic teachings apply to real life and develop a deeper connection with Allah's message through authentic Tafseer.",
-    image: "/quran-tafseer-course-online.webp",
+    image: "/images/quran-tafseer-course-online.webp",
     altText: "Online Quran Tafseer Course – In-Depth Quranic Explanation and Context by Expert Teachers",
     whatYouLearn: [
       "Detailed explanation of Quranic verses",
@@ -182,7 +182,7 @@ const COURSES_DETAILED = [
     slug: "arabic-language",
     shortDesc: "A beginner-friendly course that builds a strong foundation in reading, writing, and understanding Arabic essential for deeper Quranic comprehension and daily use.",
     fullDesc: "This beginner-friendly Arabic language course builds a strong foundation in reading, writing, and understanding Arabic. Lessons are designed in a simple and practical way to help learners understand the Quran and use Arabic in daily Islamic life.",
-    image: "/arabic-language-course-online.webp",
+    image: "/images/arabic-language-course-online.webp",
     altText: "Online Arabic Language Course – Learn Quranic Arabic for Beginners and Intermediate Students",
     whatYouLearn: [
       "Arabic reading and writing",
@@ -204,7 +204,7 @@ const COURSES_DETAILED = [
     slug: "new-muslim-guide",
     shortDesc: "A supportive course tailored for new Muslims, covering the basics of Islam, daily prayers, Quran reading, and essential beliefs to help start your spiritual journey.",
     fullDesc: "This supportive course is designed for new Muslims to learn Islam in a clear, simple, and welcoming way. It covers essential beliefs, worship, and daily Islamic practices to help new Muslims feel confident and comfortable in their faith.",
-    image: "/new-muslim-quran-course-online.webp",
+    image: "/images/new-muslim-quran-course-online.webp",
     altText: "New Muslim Quran and Islam Course – Start Your Islamic Journey with Expert Guidance Online",
     whatYouLearn: [
       "Basic Islamic beliefs",
@@ -226,7 +226,7 @@ const COURSES_DETAILED = [
     slug: "seerat-un-nabi",
     shortDesc: "A heart-touching course that explores the life, character, and teachings of Prophet Muhammad (P.B.U.H), offering guidance and inspiration for everyday life.",
     fullDesc: "This course explores the blessed life of Prophet Muhammad ﷺ, highlighting his character, teachings, and struggles. Students learn practical lessons from Seerah that guide moral conduct and daily life while developing love for the Prophet ﷺ.",
-    image: "/seerat-un-nabi-course-online.webp",
+    image: "/images/seerat-un-nabi-course-online.webp",
     altText: "Seerat un Nabi Online Course – Life and Teachings of Prophet Muhammad (PBUH) for All Ages",
     whatYouLearn: [
       "Life of Prophet Muhammad ﷺ",
@@ -248,7 +248,7 @@ const COURSES_DETAILED = [
     slug: "tajweed-rules",
     shortDesc: "A detailed course focused on perfecting Quranic pronunciation (Tajweed) and reciting with rhythm and beauty (Tarteel), following the rules of proper recitation.",
     fullDesc: "This course focuses on perfecting Quran recitation by teaching Tajweed rules and the beauty of Tarteel. Students learn correct pronunciation, articulation points, and rhythmic recitation to recite the Quran as it was revealed.",
-    image: "/quran-tajweed-tarteel-course-online.webp",
+    image: "/images/quran-tajweed-tarteel-course-online.webp",
     altText: "Online Quran Tajweed and Tarteel Course – Perfect Your Quran Recitation with Certified Teachers",
     whatYouLearn: [
       "Rules of Tajweed",
@@ -270,7 +270,7 @@ const COURSES_DETAILED = [
     slug: "islamic-scholarship",
     shortDesc: "A traditional Islamic studies course covering core subjects like Fiqh, Hadith, Tafseer, and Arabic grammar designed to build strong scholarly foundations.",
     fullDesc: "Dars-e-Nizami is a traditional Islamic studies program covering major Islamic sciences. It is designed for serious students seeking scholarly knowledge in Fiqh, Hadith, Tafseer, and Arabic grammar.",
-    image: "/dars-e-nizami-islamic-scholarship-course.webp",
+    image: "/images/dars-e-nizami-islamic-scholarship-course.webp",
     altText: "Dars e Nizami Islamic Studies Course Online – Traditional Islamic Scholarship with Expert Scholars",
     whatYouLearn: [
       "Fiqh and Islamic rulings",
@@ -292,7 +292,7 @@ const COURSES_DETAILED = [
     slug: "basic-fiqh",
     shortDesc: "A concise course introducing the basic principles of Islamic law, covering daily practices, ethics, and worship according to the teachings of the Quran and Sunnah.",
     fullDesc: "This concise course introduces the basic principles of Islamic law in a simple and practical way. It focuses on daily worship, ethics, and personal responsibilities according to Quran and Sunnah.",
-    image: "/short-shariah-course-online.webp",
+    image: "/images/short-shariah-course-online.webp",
     altText: "Short Shariah Course Online – Learn Basic Islamic Law and Daily Practices with Qualified Teachers",
     whatYouLearn: [
       "Basic Shariah principles",
@@ -314,7 +314,7 @@ const COURSES_DETAILED = [
     slug: "essential-knowledge",
     shortDesc: "An essential course covering the basic Islamic knowledge every Muslim must know like beliefs, prayer, purification, and daily obligations in light of the Shariah.",
     fullDesc: "This essential course covers the basic Islamic knowledge that every Muslim must know. It explains beliefs, worship, and obligations clearly to ensure correct practice in daily life.",
-    image: "/farz-e-uloom-essential-islamic-knowledge.webp",
+    image: "/images/farz-e-uloom-essential-islamic-knowledge.webp",
     altText: "Farz-e-Uloom Essential Islamic Knowledge Course – Learn Obligatory Islamic Practices Online",
     whatYouLearn: [
       "Basic Islamic beliefs",
@@ -407,7 +407,7 @@ const BLOGS = [
 ];
 
 const LogoImage = ({ className }) => (
-  <img src="/almaas-online-quran-academy-logo.webp" alt="Almaas Online Quran Academy – Best Online Quran Academy for Kids and Adults" className={className} />
+  <img src="/images/almaas-online-quran-academy-logo.webp" alt="Almaas Online Quran Academy – Best Online Quran Academy for Kids and Adults" className={className} />
 );
 
 const XLogo = ({ className }) => (
@@ -687,7 +687,7 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
     "@type": "EducationalOrganization",
     "name": "Almaas Online Quran Academy",
     "url": "https://almaasonlinequranacademy.online",
-    "logo": "https://almaasonlinequranacademy.online/logo_v2.webp",
+    "logo": "https://almaasonlinequranacademy.online/images/logo_v2.webp",
     "description": "Learn Quran online with expert teachers. Tajweed, Hifz, and Islamic courses for kids and adults worldwide.",
     "contactPoint": {
       "@type": "ContactPoint",
@@ -722,12 +722,12 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Online Quran Academy | Learn Quran with Tajweed &amp; Hifz" />
         <meta property="og:description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults. Tajweed, Hifz &amp; more." />
-        <meta property="og:image" content="https://almaasonlinequranacademy.online/almaas-online-quran-academy-logo.webp" />
+        <meta property="og:image" content="https://almaasonlinequranacademy.online/images/almaas-online-quran-academy-logo.webp" />
         <meta property="og:url" content="https://almaasonlinequranacademy.online/" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Online Quran Academy | Learn Quran with Tajweed &amp; Hifz" />
         <meta name="twitter:description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults." />
-        <meta name="twitter:image" content="https://almaasonlinequranacademy.online/almaas-online-quran-academy-logo.webp" />
+        <meta name="twitter:image" content="https://almaasonlinequranacademy.online/images/almaas-online-quran-academy-logo.webp" />
         <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
@@ -1794,6 +1794,72 @@ const RegionalLandingPage = ({ selectedRegion, REGION_CONFIGS, pricingPlans, nav
   );
 };
 
+const FloatingContact = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const contacts = [
+    {
+      icon: Phone,
+      label: "Direct Call",
+      href: "tel:+923152267416",
+      color: "bg-blue-600"
+    },
+    {
+      icon: MessageCircle,
+      label: "WhatsApp",
+      href: "https://wa.me/923350277160",
+      color: "bg-green-600"
+    },
+    {
+      icon: Mail,
+      label: "Email",
+      href: "mailto:contact@almaasonlinequranacademy.online",
+      color: "bg-red-600"
+    }
+  ];
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
+      <div
+        className={`flex flex-col items-end gap-3 mb-2 transition-all duration-300 transform ${isOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-90 pointer-events-none'
+          }`}
+      >
+        {contacts.map((contact, index) => (
+          <a
+            key={index}
+            href={contact.href}
+            target={contact.href.startsWith('http') ? "_blank" : undefined}
+            rel={contact.href.startsWith('http') ? "noopener noreferrer" : undefined}
+            className="flex items-center gap-3 group"
+          >
+            <span className="bg-white text-navy px-3 py-1.5 rounded-lg shadow-lg text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity border border-navy/10 whitespace-nowrap">
+              {contact.label}
+            </span>
+            <div className={`${contact.color} text-white p-3 rounded-full shadow-xl hover:scale-110 transition-transform`}>
+              <contact.icon className="w-6 h-6" />
+            </div>
+          </a>
+        ))}
+      </div>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="bg-gold text-navy p-5 rounded-full shadow-2xl hover:scale-110 transition-transform border-2 border-navy/20 ring-4 ring-gold/10"
+        aria-label="Contact options"
+      >
+        {isOpen ? <X className="w-8 h-8" /> : (
+          <div className="relative">
+            <MessageCircle className="w-8 h-8" />
+            <span className="absolute -top-1 -right-1 flex h-4 w-4">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-navy opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-4 w-4 bg-navy"></span>
+            </span>
+          </div>
+        )}
+      </button>
+    </div>
+  );
+};
+
 const AlmaasQuranAcademy = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -2204,6 +2270,7 @@ const AlmaasQuranAcademy = () => {
       </main>
 
       <Footer navigateTo={navigateTo} />
+      <FloatingContact />
       <EnrollPopup showPopup={showPopup} setShowPopup={setShowPopup} handleSubmit={handleSubmit} formStatus={formStatus} COURSES={COURSES} />
     </div>
   );
