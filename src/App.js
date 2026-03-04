@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import LazySection from './components/LazySection';
-import { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Mail, Globe, Shield, CreditCard, UserPlus, Newspaper, ChevronDown, Facebook, Instagram, Youtube, Linkedin, ArrowLeft } from 'lucide-react';
+import { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Mail, Globe, Shield, CreditCard, UserPlus, Newspaper, ChevronDown, Facebook, Instagram, Youtube, Linkedin, ArrowLeft, Bot, Sparkles, Send } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import { Routes, Route, useNavigate, useLocation, useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -1794,8 +1794,173 @@ const RegionalLandingPage = ({ selectedRegion, REGION_CONFIGS, pricingPlans, nav
   );
 };
 
-const FloatingContact = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const QuickChat = ({ navigateTo, setShowPopup, isOpen, onToggle }) => {
+  const [messages, setMessages] = useState([
+    { id: 1, type: 'bot', text: 'As-salaamu alaykum! Welcome to Almaas Academy. How can I assist you today?' }
+  ]);
+  const [isTyping, setIsTyping] = useState(false);
+
+  const quickActions = [
+    { label: 'Book Free Demo', action: () => { setShowPopup(true); onToggle(); } },
+    { label: 'View Courses', action: () => { navigateTo('/courses'); onToggle(); } },
+    { label: 'Check Pricing', action: () => { navigateTo('/pricing'); onToggle(); } }
+  ];
+
+  const handleUserInput = (text) => {
+    const input = text.toLowerCase().trim();
+    if (!input) return;
+
+    setMessages(prev => [...prev, { id: Date.now(), type: 'user', text }]);
+    setIsTyping(true);
+
+    setTimeout(() => {
+      // Structure: Higher priority patterns first
+      const knowledgeBase = [
+        {
+          category: 'greetings',
+          patterns: ['hi', 'hello', 'salam', 'hey', 'asalamualaikum', 'assalam', 'aoa'],
+          response: "Wa alaykum as-salaam! Welcome to Almaas Academy. I am your digital assistant. How can I help you today? You can ask about our courses, fees, demo classes, or schedules."
+        },
+        {
+          category: 'demo',
+          patterns: ['demo', 'trial', 'free', 'test', 'how to join', 'how to start', 'register', 'enroll'],
+          response: "Starting is easy! We offer **3 Free Demo Classes** with no commitment. You can click the 'Book Free Demo' button at the top of the chat, fill out our contact form, or message us on WhatsApp to schedule your first session today."
+        },
+        {
+          category: 'pricing',
+          patterns: ['price', 'fee', 'charge', 'cost', 'pay', 'package', 'monthly', 'dollar'],
+          response: "Our pricing is very affordable. Standard plans start from **$25/month** (2 days/week). We also have plans for 3 days ($35/mo) and 5 days ($50/mo). We offer special discounts for multiple family members! Would you like me to guide you to the Pricing page?"
+        },
+        {
+          category: 'courses',
+          patterns: ['course', 'subject', 'what you teach', 'curriculum', 'qaida', 'reading', 'translation', 'tafseer', 'hadith', 'grammar', 'arabic'],
+          response: "We offer 12+ specialized courses: Noorani Qaida (Beginners), Quran Reading (Fluent), Hifz (Memorization), Tajweed, Quran Translation, Tafseer, Arabic Grammar, Hadith, and Essential Islamic Knowledge for kids and adults."
+        },
+        {
+          category: 'gender',
+          patterns: ['female', 'lady', 'woman', 'girl', 'sister', 'male', 'man', 'boy', 'shaikh', 'teacher gender'],
+          response: "Yes! We have both highly qualified **Male and Female teachers**. Sisters can specifically request female teachers for their comfort, and we also provide female staff for children."
+        },
+        {
+          category: 'timing',
+          patterns: ['time', 'schedule', 'when', 'hour', 'duration', 'available', 'holiday', 'weekend'],
+          response: "We are **available 24/7**! Since we have students and teachers globally, you can choose any time slot that suits your local timezone. Classes are typically 30 minutes long, but can be adjusted."
+        },
+        {
+          category: 'hifz',
+          patterns: ['hifz', 'memorize', 'hafiz', 'retention', 'memory'],
+          response: "Our Hifz program is one of our most popular. We follow a proven 3-step method: Sabaq (New Lesson), Sabqi (Recent Revision), and Manzil (Old Revision) to ensure 100% retention. Our teachers track daily progress."
+        },
+        {
+          category: 'tajweed',
+          patterns: ['tajweed', 'tarteel', 'pronunciation', 'makhraj', 'rules'],
+          response: "Perfecting recitation is our specialty. Our Tajweed course covers all rules (Idgham, Ikhfa, Qalqala, etc.) and focuses on the correct articulation (Makharij) of every Arabic letter."
+        },
+        {
+          category: 'kids',
+          patterns: ['kid', 'child', 'son', 'daughter', 'age', 'young', 'baby'],
+          response: "We teach children as young as **4 years old**! Our teachers use interactive methods, games, and rewards to keep young hearts engaged and excited about learning the Quran."
+        },
+        {
+          category: 'location',
+          patterns: ['where', 'location', 'office', 'country', 'usa', 'uk', 'canada', 'australia', 'online'],
+          response: "Almaas Academy is a **100% Online Academy**. We serve students across the USA, UK, Canada, Australia, and Europe. You can learn from the comfort and safety of your own home via Zoom or Skype."
+        },
+        {
+          category: 'contact',
+          patterns: ['contact', 'whatsapp', 'phone', 'call', 'number', 'email', 'talk to human', 'support'],
+          response: "To speak with a human representative, you can call us at **+92 315 2267416** or message us on WhatsApp at **+92 335 0277160**. We are here to help you 24/7!"
+        },
+        {
+          category: 'thank_you',
+          patterns: ['thank', 'jazakallah', 'thanks', 'ok', 'good', 'nice', 'clear'],
+          response: "You're very welcome! If you have any more questions, feel free to ask. May Allah bless your journey of learning the Quran."
+        }
+      ];
+
+      // Smart matching algorithm
+      let bestMatch = null;
+      let highestScore = 0;
+
+      for (const item of knowledgeBase) {
+        let score = 0;
+        for (const p of item.patterns) {
+          if (input.includes(p)) {
+            // Give higher score for longer pattern matches to avoid false positives
+            score += p.length;
+          }
+        }
+        if (score > highestScore) {
+          highestScore = score;
+          bestMatch = item.response;
+        }
+      }
+
+      const finalResponse = bestMatch || "JazakAllah for your message! I'm still learning, but I can help you with Demo classes, Fees, Courses, or Teacher details. For anything specific, would you like to speak to our team on WhatsApp?";
+
+      setMessages(prev => [...prev, { id: Date.now() + 1, type: 'bot', text: finalResponse }]);
+      setIsTyping(false);
+    }, 800);
+  };
+
+  return (
+    <div className="relative pointer-events-auto">
+      {/* Chat Window */}
+      <div className={`absolute bottom-full right-0 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col transition-all duration-300 transform origin-bottom-right z-10 ${isOpen ? 'w-[320px] h-[380px] opacity-100 scale-100 mb-4' : 'w-0 h-0 opacity-0 scale-95 pointer-events-none'}`}>
+        <div className="bg-navy p-4 text-white flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-gold rounded-full flex items-center justify-center"><Bot className="w-5 h-5 text-navy" /></div>
+            <div>
+              <p className="font-bold text-sm">Almaas Assistant</p>
+              <div className="flex items-center gap-1.5"><span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span><span className="text-[10px] opacity-70">Online</span></div>
+            </div>
+          </div>
+          <button onClick={onToggle}><X className="w-5 h-5" /></button>
+        </div>
+
+        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-offwhite/50">
+          {messages.map((msg) => (
+            <div key={msg.id} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
+              <div className={`max-w-[80%] p-3 rounded-2xl text-sm ${msg.type === 'user' ? 'bg-gold text-navy font-medium rounded-tr-none' : 'bg-white text-darkgray shadow-sm rounded-tl-none'}`}>
+                {msg.text}
+              </div>
+            </div>
+          ))}
+          {isTyping && <div className="flex justify-start"><div className="bg-white p-3 rounded-2xl shadow-sm rounded-tl-none flex gap-1"><span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></span><span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce delay-150"></span><span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce delay-300"></span></div></div>}
+        </div>
+
+        <div className="p-4 bg-white border-t border-navy/5 space-y-2">
+          <div className="flex flex-wrap gap-2">
+            {quickActions.map((btn, i) => (
+              <button key={i} onClick={btn.action} className="text-[10px] bg-navy/5 hover:bg-gold hover:text-navy px-3 py-1.5 rounded-full transition-colors font-bold text-navy">{btn.label}</button>
+            ))}
+          </div>
+          <div className="flex gap-2">
+            <input
+              onKeyPress={(e) => e.key === 'Enter' && e.target.value.trim() && (handleUserInput(e.target.value), e.target.value = '')}
+              type="text"
+              placeholder="Ask anything..."
+              className="flex-1 bg-offwhite px-4 py-2 rounded-xl text-sm outline-none focus:ring-2 ring-gold/50"
+            />
+            <button className="bg-navy p-2 rounded-xl text-gold"><Send className="w-4 h-4" /></button>
+          </div>
+        </div>
+      </div>
+
+      {/* Floating Button */}
+      <button
+        onClick={onToggle}
+        className="bg-navy text-gold p-5 rounded-full shadow-2xl hover:scale-105 transition-transform border-2 border-gold/20 ring-4 ring-navy/10 relative group"
+        aria-label="Quick chat"
+      >
+        <Sparkles className="w-7 h-7 animate-pulse" />
+        <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-navy text-white px-3 py-1.5 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Quick Chat</span>
+      </button>
+    </div>
+  );
+};
+
+const FloatingContact = ({ isOpen, onToggle }) => {
 
   const contacts = [
     {
@@ -1819,9 +1984,9 @@ const FloatingContact = () => {
   ];
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
+    <div className="relative pointer-events-auto">
       <div
-        className={`flex flex-col items-end gap-3 mb-2 transition-all duration-300 transform ${isOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-90 pointer-events-none'
+        className={`absolute right-full top-1/2 -translate-y-1/2 flex flex-row-reverse items-center gap-3 transition-all duration-300 transform origin-right z-10 ${isOpen ? 'opacity-100 translate-x-0 scale-100 mr-4' : 'w-0 opacity-0 translate-x-10 scale-90 pointer-events-none overflow-hidden'
           }`}
       >
         {contacts.map((contact, index) => (
@@ -1830,30 +1995,33 @@ const FloatingContact = () => {
             href={contact.href}
             target={contact.href.startsWith('http') ? "_blank" : undefined}
             rel={contact.href.startsWith('http') ? "noopener noreferrer" : undefined}
-            className="flex items-center gap-3 group"
+            className="flex flex-col items-center gap-2 group relative"
           >
-            <span className="bg-white text-navy px-3 py-1.5 rounded-lg shadow-lg text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity border border-navy/10 whitespace-nowrap">
+            <div className={`${contact.color} text-white p-2.5 rounded-full shadow-xl hover:scale-110 transition-transform`}>
+              <contact.icon className="w-5 h-5" />
+            </div>
+            <span className="absolute bottom-full mb-2 bg-white text-navy px-2 py-1 rounded shadow-lg text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity border border-navy/10 whitespace-nowrap pointer-events-none">
               {contact.label}
             </span>
-            <div className={`${contact.color} text-white p-3 rounded-full shadow-xl hover:scale-110 transition-transform`}>
-              <contact.icon className="w-6 h-6" />
-            </div>
           </a>
         ))}
       </div>
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="bg-gold text-navy p-5 rounded-full shadow-2xl hover:scale-110 transition-transform border-2 border-navy/20 ring-4 ring-gold/10"
+        onClick={onToggle}
+        className="bg-gold text-navy p-5 rounded-full shadow-2xl hover:scale-110 transition-transform border-2 border-navy/20 ring-4 ring-gold/10 group relative"
         aria-label="Contact options"
       >
-        {isOpen ? <X className="w-8 h-8" /> : (
+        {isOpen ? <X className="w-7 h-7" /> : (
           <div className="relative">
-            <MessageCircle className="w-8 h-8" />
-            <span className="absolute -top-1 -right-1 flex h-4 w-4">
+            <MessageCircle className="w-7 h-7" />
+            <span className="absolute -top-1 -right-1 flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-navy opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-4 w-4 bg-navy"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-navy"></span>
             </span>
           </div>
+        )}
+        {!isOpen && (
+          <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-white text-navy px-3 py-1.5 rounded-lg shadow-lg text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity border border-navy/10 whitespace-nowrap pointer-events-none">Contact Us</span>
         )}
       </button>
     </div>
@@ -1873,6 +2041,7 @@ const AlmaasQuranAcademy = () => {
   const [locationData, setLocationData] = useState(null);
   const [exchangeRates, setExchangeRates] = useState(null);
   const [formStatus, setFormStatus] = useState({ submitting: false, success: false, error: null });
+  const [activeFloating, setActiveFloating] = useState(null); // 'chat' or 'contact'
 
 
   // Rotate taglines every 3.5 seconds
@@ -2270,7 +2439,18 @@ const AlmaasQuranAcademy = () => {
       </main>
 
       <Footer navigateTo={navigateTo} />
-      <FloatingContact />
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4 pointer-events-none">
+        <QuickChat
+          navigateTo={navigateTo}
+          setShowPopup={setShowPopup}
+          isOpen={activeFloating === 'chat'}
+          onToggle={() => setActiveFloating(activeFloating === 'chat' ? null : 'chat')}
+        />
+        <FloatingContact
+          isOpen={activeFloating === 'contact'}
+          onToggle={() => setActiveFloating(activeFloating === 'contact' ? null : 'contact')}
+        />
+      </div>
       <EnrollPopup showPopup={showPopup} setShowPopup={setShowPopup} handleSubmit={handleSubmit} formStatus={formStatus} COURSES={COURSES} />
     </div>
   );
