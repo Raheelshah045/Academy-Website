@@ -420,11 +420,11 @@ const Header = ({ scrolled, menuOpen, setMenuOpen, navigateTo, setShowPopup }) =
   <header className={`fixed w-full top-0 z-40 transition ${scrolled ? 'bg-offwhite shadow-lg' : 'bg-offwhite/95'}`}>
     <div className="max-w-7xl mx-auto px-4 py-4">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <LogoImage className="h-16 w-16" />
+        <div className="flex items-center gap-3 sm:gap-4">
+          <LogoImage className="h-12 w-12 sm:h-16 sm:w-16" />
           <div>
-            <div className="text-xl font-bold text-navy">ALMAAS ONLINE</div>
-            <p className="text-sm text-darkgray font-medium">QURAN ACADEMY</p>
+            <div className="text-lg sm:text-xl font-bold text-navy">ALMAAS ONLINE</div>
+            <p className="text-xs sm:text-sm text-darkgray font-medium">QURAN ACADEMY</p>
           </div>
         </div>
         <nav className="hidden lg:flex items-center gap-8">
@@ -728,6 +728,8 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
         <meta name="twitter:title" content="Online Quran Academy | Learn Quran with Tajweed &amp; Hifz" />
         <meta name="twitter:description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults." />
         <meta name="twitter:image" content="https://almaasonlinequranacademy.online/images/almaas-online-quran-academy-logo.webp" />
+        <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/images/almaas-online-quran-academy-logo.webp?v=2" />
         <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
@@ -735,14 +737,14 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
       <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-br from-offwhite to-white">
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-12">
-            <p className="text-4xl md:text-7xl mb-4" style={{ fontFamily: "'Scheherazade New', 'Noto Naskh Arabic', 'Traditional Arabic', 'Amiri', serif", fontWeight: 700, color: '#0A1D37', lineHeight: 1.4, letterSpacing: '0.02em' }}>
+            <p className="text-3xl sm:text-4xl md:text-7xl mb-4" style={{ fontFamily: "'Scheherazade New', 'Noto Naskh Arabic', 'Traditional Arabic', 'Amiri', serif", fontWeight: 700, color: '#0A1D37', lineHeight: 1.4, letterSpacing: '0.02em' }}>
               بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ
             </p>
             <p className="text-base text-darkgray font-semibold">In the name of Allah, the Most Gracious, the Most Merciful</p>
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-            <div className="overflow-hidden h-24 md:h-20 lg:h-24 relative mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+            <div className="overflow-hidden h-20 sm:h-24 md:h-20 lg:h-24 relative mb-4">
               {TAGLINES.map((tagline, idx) => (
                 <div key={idx} className={`absolute w-full transition-all duration-700 ${idx === currentTagline ? 'opacity-100 translate-y-0' : idx < currentTagline ? 'opacity-0 -translate-y-full' : 'opacity-0 translate-y-full'}`}>
                   <span className="text-navy block">{tagline}</span>
@@ -751,9 +753,9 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
             </div>
           </h2>
 
-          <p className="text-navy/90 block text-3xl md:text-4xl lg:text-5xl mb-4 font-bold">With</p>
+          <p className="text-navy/90 block text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 font-bold">With</p>
 
-          <h1 className="bg-gradient-to-r from-gold via-gold to-amber-600 bg-clip-text text-transparent block text-4xl md:text-5xl lg:text-6xl font-black mb-6">
+          <h1 className="bg-gradient-to-r from-gold via-gold to-amber-600 bg-clip-text text-transparent block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6">
             Almaas Online Quran Academy
           </h1>
 
@@ -1254,6 +1256,8 @@ const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
         <meta name="twitter:title" content={seo.title} />
         <meta name="twitter:description" content={seo.description} />
         <meta name="twitter:image" content={`https://almaasonlinequranacademy.online${course.image}`} />
+        <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/images/almaas-online-quran-academy-logo.webp?v=2" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
 
@@ -1906,7 +1910,7 @@ const QuickChat = ({ navigateTo, setShowPopup, isOpen, onToggle }) => {
   return (
     <div className="relative pointer-events-auto">
       {/* Chat Window */}
-      <div className={`absolute bottom-full right-0 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col transition-all duration-300 transform origin-bottom-right z-10 ${isOpen ? 'w-[320px] h-[380px] opacity-100 scale-100 mb-4' : 'w-0 h-0 opacity-0 scale-95 pointer-events-none'}`}>
+      <div className={`absolute bottom-full right-0 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col transition-all duration-300 transform origin-bottom-right z-10 ${isOpen ? 'w-[85vw] sm:w-[320px] h-[60vh] sm:h-[380px] opacity-100 scale-100 mb-4' : 'w-0 h-0 opacity-0 scale-95 pointer-events-none'}`}>
         <div className="bg-navy p-4 text-white flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-gold rounded-full flex items-center justify-center"><Bot className="w-5 h-5 text-navy" /></div>
@@ -1950,10 +1954,10 @@ const QuickChat = ({ navigateTo, setShowPopup, isOpen, onToggle }) => {
       {/* Floating Button */}
       <button
         onClick={onToggle}
-        className="bg-navy text-gold p-5 rounded-full shadow-2xl hover:scale-105 transition-transform border-2 border-gold/20 ring-4 ring-navy/10 relative group"
+        className="bg-navy text-gold p-4 sm:p-5 rounded-full shadow-2xl hover:scale-105 transition-transform border-2 border-gold/20 ring-4 ring-navy/10 relative group"
         aria-label="Quick chat"
       >
-        <Sparkles className="w-7 h-7 animate-pulse" />
+        <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 animate-pulse" />
         <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-navy text-white px-3 py-1.5 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Quick Chat</span>
       </button>
     </div>
@@ -1986,7 +1990,7 @@ const FloatingContact = ({ isOpen, onToggle }) => {
   return (
     <div className="relative pointer-events-auto">
       <div
-        className={`absolute right-full top-1/2 -translate-y-1/2 flex flex-row-reverse items-center gap-3 transition-all duration-300 transform origin-right z-10 ${isOpen ? 'opacity-100 translate-x-0 scale-100 mr-4' : 'w-0 opacity-0 translate-x-10 scale-90 pointer-events-none overflow-hidden'
+        className={`absolute right-full top-1/2 -translate-y-1/2 flex flex-row-reverse items-center gap-2 sm:gap-3 transition-all duration-300 transform origin-right z-10 ${isOpen ? 'opacity-100 translate-x-0 scale-100 mr-4' : 'w-0 opacity-0 translate-x-10 scale-90 pointer-events-none overflow-hidden'
           }`}
       >
         {contacts.map((contact, index) => (
@@ -2008,12 +2012,12 @@ const FloatingContact = ({ isOpen, onToggle }) => {
       </div>
       <button
         onClick={onToggle}
-        className="bg-gold text-navy p-5 rounded-full shadow-2xl hover:scale-110 transition-transform border-2 border-navy/20 ring-4 ring-gold/10 group relative"
+        className="bg-gold text-navy p-4 sm:p-5 rounded-full shadow-2xl hover:scale-110 transition-transform border-2 border-navy/20 ring-4 ring-gold/10 group relative"
         aria-label="Contact options"
       >
-        {isOpen ? <X className="w-7 h-7" /> : (
+        {isOpen ? <X className="w-6 h-6 sm:w-7 sm:h-7" /> : (
           <div className="relative">
-            <MessageCircle className="w-7 h-7" />
+            <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
             <span className="absolute -top-1 -right-1 flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-navy opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-navy"></span>
@@ -2389,6 +2393,8 @@ const AlmaasQuranAcademy = () => {
         <meta name="robots" content="index, follow" />
         <meta property="og:site_name" content="Almaas Online Quran Academy" />
         <meta property="og:type" content="website" />
+        <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/images/almaas-online-quran-academy-logo.webp?v=2" />
       </Helmet>
       <Header scrolled={scrolled} menuOpen={menuOpen} setMenuOpen={setMenuOpen} navigateTo={navigateTo} setShowPopup={setShowPopup} />
 
