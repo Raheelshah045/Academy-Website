@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import LazySection from './components/LazySection';
+import HeroCarousel from './components/HeroCarousel';
 import { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Mail, Globe, Shield, CreditCard, UserPlus, Newspaper, ChevronDown, Facebook, Instagram, Youtube, Linkedin, ArrowLeft, Bot, Sparkles, Send } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import { Routes, Route, useNavigate, useLocation, useParams, Navigate } from 'react-router-dom';
@@ -417,7 +418,7 @@ const XLogo = ({ className }) => (
 );
 
 const Header = ({ scrolled, menuOpen, setMenuOpen, navigateTo, setShowPopup }) => (
-  <header className={`fixed w-full top-0 z-40 transition ${scrolled ? 'bg-offwhite shadow-lg' : 'bg-offwhite/95'}`}>
+  <header className={`fixed w-full top-0 z-40 transition ${scrolled ? 'bg-offwhite shadow-sm' : 'bg-offwhite/95'}`}>
     <div className="max-w-7xl mx-auto px-4 py-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3 sm:gap-4">
@@ -681,7 +682,7 @@ const ReviewForm = ({ handleReviewSubmit, newReview, setNewReview, reviewStatus 
   </div>
 );
 
-const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigateTo, setShowPopup, pricingPlans, FAQS, BLOGS, reviews, activeFaq, setActiveFaq, handleReviewSubmit, newReview, setNewReview, reviewStatus, handleSubmit, formStatus }) => {
+const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigateTo, setShowPopup, pricingPlans, FAQS, BLOGS, reviews, activeFaq, setActiveFaq, handleReviewSubmit, newReview, setNewReview, reviewStatus, handleSubmit, formStatus, COURSES, selectedPricingCourse, setSelectedPricingCourse }) => {
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
@@ -733,67 +734,8 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
         <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
-      {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 px-4 bg-gradient-to-br from-offwhite to-white">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="mb-12">
-            <p className="text-3xl sm:text-4xl md:text-7xl mb-4" style={{ fontFamily: "'Scheherazade New', 'Noto Naskh Arabic', 'Traditional Arabic', 'Amiri', serif", fontWeight: 700, color: '#0A1D37', lineHeight: 1.4, letterSpacing: '0.02em' }}>
-              بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ
-            </p>
-            <p className="text-base text-darkgray font-semibold">In the name of Allah, the Most Gracious, the Most Merciful</p>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-            <div className="overflow-hidden h-20 sm:h-24 md:h-20 lg:h-24 relative mb-4">
-              {TAGLINES.map((tagline, idx) => (
-                <div key={idx} className={`absolute w-full transition-all duration-700 ${idx === currentTagline ? 'opacity-100 translate-y-0' : idx < currentTagline ? 'opacity-0 -translate-y-full' : 'opacity-0 translate-y-full'}`}>
-                  <span className="text-navy block">{tagline}</span>
-                </div>
-              ))}
-            </div>
-          </h2>
-
-          <p className="text-navy/90 block text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 font-bold">With</p>
-
-          <h1 className="bg-gradient-to-r from-gold via-gold to-amber-600 bg-clip-text text-transparent block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-            Almaas Online Quran Academy
-          </h1>
-
-          <p className="text-lg text-navy mb-4 font-bold max-w-3xl mx-auto">One-on-one and group classes are available for kids and adults.</p>
-          <p className="text-darkgray mb-8 font-medium max-w-3xl mx-auto">Expert teachers • Flexible timings • Affordable pricing • 24/7 availability</p>
-
-          <button onClick={() => setShowPopup(true)} className="bg-navy hover:bg-navy/90 text-white px-8 py-4 rounded-lg font-bold text-lg inline-flex items-center gap-2 shadow-xl">
-            Get 3 FREE Demo Classes <ChevronRight className="w-5 h-5" />
-          </button>
-
-          <div className="mt-12 flex items-center justify-center gap-3 bg-green-50 border-2 border-green-600 px-6 py-3 rounded-xl max-w-md mx-auto">
-            <Shield className="w-8 h-8 text-green-600" />
-            <div className="text-left">
-              <p className="text-darkgray/80 font-bold">7-Day Money-Back Guarantee</p>
-              <p className="text-green-700 text-sm font-semibold">100% Risk-Free Trial</p>
-            </div>
-          </div>
-
-          <div className="mt-8 bg-offwhite border-2 border-navy/10 px-6 py-4 rounded-xl max-w-2xl mx-auto">
-            <p className="text-darkgray text-sm mb-3 font-semibold">We Accept:</p>
-            <div className="flex gap-4 items-center justify-center flex-wrap">
-              <CreditCard className="w-8 h-8 text-navy" />
-              <span className="text-darkgray/90 font-bold">Visa</span>
-              <span className="text-darkgray/90 font-bold">Mastercard</span>
-              <span className="text-darkgray/90 font-bold">PayPal</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-3 gap-4 mt-8 max-w-2xl mx-auto">
-            {[{ num: `${counts.teachers}+`, label: "Teachers" }, { num: "🌍", label: "Worldwide" }, { num: "24/7", label: "Available" }].map((stat, idx) => (
-              <div key={idx} className="bg-offwhite border-2 border-navy/10 hover:border-navy p-4 rounded-xl transition">
-                <div className="text-3xl font-black text-navy">{stat.num}</div>
-                <div className="text-xs text-navy/90 font-bold mt-1">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Hero Section – Dynamic Carousel */}
+      <HeroCarousel setShowPopup={setShowPopup} navigateTo={navigateTo} />
 
       {/* About Section for SEO Expansion */}
       <section className="py-12 bg-white px-4">
@@ -970,7 +912,23 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
         <section className="py-20 px-4 bg-offwhite">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-black text-center mb-4">Affordable <span className="text-navy">Pricing</span></h2>
-            <p className="text-darkgray text-lg text-center mb-12">Choose the plan that fits your schedule</p>
+            <p className="text-darkgray text-lg text-center mb-8">Choose the plan that fits your schedule</p>
+
+            <div className="max-w-md mx-auto mb-16 px-4">
+              <div className="bg-navy rounded-2xl p-6 shadow-xl border-2 border-gold/20">
+                <label className="block text-gold text-xs font-black uppercase tracking-widest mb-3 text-center">Select Your Course for Pricing</label>
+                <div className="relative">
+                  <select
+                    value={selectedPricingCourse}
+                    onChange={(e) => setSelectedPricingCourse(e.target.value)}
+                    className="w-full bg-offwhite/10 border-2 border-white/20 rounded-xl px-5 py-3 text-white font-bold focus:outline-none focus:border-gold appearance-none cursor-pointer"
+                  >
+                    {COURSES.map(course => <option key={course.value} value={course.value} className="bg-navy text-white">{course.title}</option>)}
+                  </select>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gold"><ChevronDown className="w-5 h-5" /></div>
+                </div>
+              </div>
+            </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {pricingPlans.map((plan, idx) => (
                 <div key={idx} className="rounded-3xl p-8 transition-transform hover:scale-105 bg-navy text-white shadow-2xl relative border-2 border-gold/10 flex flex-col h-full">
@@ -1413,27 +1371,49 @@ const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
   );
 };
 
-const PricingPage = ({ pricingPlans, navigateTo, setShowPopup }) => (
-  <div className="min-h-screen bg-offwhite">
-    <div className="pt-24 pb-20 px-4">
-      <div className="max-w-5xl mx-auto text-center">
-        <h1 className="text-5xl font-black text-navy mb-4">Pricing Plans</h1>
-        <p className="text-darkgray text-lg mb-12">Flexible schedules for every student</p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {pricingPlans.map((plan, idx) => (
-            <div key={idx} className="rounded-3xl p-8 bg-navy text-white shadow-2xl relative border-2 border-gold/10 hover:scale-105 transition flex flex-col h-full">
-              {plan.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-navy px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">Most Popular</span>}
-              <h3 className="text-3xl font-black mb-6">{plan.name}</h3>
-              <div className="text-5xl font-black mb-8">{plan.price}<span className="text-xl opacity-70">/mo</span></div>
-              <ul className="space-y-4 mb-8 flex-1">
-                {plan.features.map((f, i) => (
-                  <li key={i} className="flex items-center gap-3"><CheckCircle className="w-5 h-5 text-gold" /> <span className="text-sm">{f}</span></li>
-                ))}
-              </ul>
-              <button onClick={() => setShowPopup(true)} className="w-full py-4 rounded-xl font-black bg-gold text-navy mt-auto">Select Plan</button>
-            </div>
-          ))}
+const PricingPage = ({ pricingPlans, navigateTo, setShowPopup, COURSES, selectedPricingCourse, setSelectedPricingCourse }) => (
+  <div className="min-h-screen bg-offwhite pt-24 pb-20 px-4">
+    <div className="max-w-7xl mx-auto">
+      <h1 className="text-5xl font-black text-navy text-center mb-4">Tuition Fees</h1>
+      <p className="text-darkgray text-lg text-center mb-8">Invest in your spiritual future with our flexible plans</p>
+
+      {/* Course Selection for Pricing */}
+      <div className="max-w-md mx-auto mb-16 px-4">
+        <div className="bg-navy rounded-2xl p-6 shadow-xl border-2 border-gold/20">
+          <label className="block text-gold text-xs font-black uppercase tracking-widest mb-3 text-center text-white/90">Select Your Course for Pricing</label>
+          <div className="relative">
+            <select
+              value={selectedPricingCourse}
+              onChange={(e) => setSelectedPricingCourse(e.target.value)}
+              className="w-full bg-offwhite/10 border-2 border-white/20 rounded-xl px-5 py-3 text-white font-bold focus:outline-none focus:border-gold appearance-none cursor-pointer"
+            >
+              {COURSES.map(course => <option key={course.value} value={course.value} className="bg-navy text-white font-medium">{course.title}</option>)}
+            </select>
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gold"><ChevronDown className="w-5 h-5" /></div>
+          </div>
         </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {pricingPlans.map((plan, idx) => (
+          <div key={idx} className={`rounded-3xl p-8 transition bg-navy text-white shadow-2xl relative border-2 border-gold/10 flex flex-col h-full ${plan.popular ? 'scale-105' : ''}`}>
+            {plan.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-navy px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">Most Popular</span>}
+            <div className="text-sm font-bold opacity-80 mb-2 uppercase tracking-widest text-center">{plan.tag}</div>
+            <h3 className="text-2xl font-black text-center mb-6">{plan.name}</h3>
+            <div className="flex flex-col items-center gap-2 mb-8 py-6 border-y border-white/10">
+              <div className="flex items-baseline gap-2">
+                <span className="text-5xl font-black">{plan.price}</span>
+                <span className="text-xl font-medium opacity-70">/mo</span>
+              </div>
+            </div>
+            <ul className="space-y-4 mb-8 flex-1">
+              {plan.features.map((f, i) => (
+                <li key={i} className="flex items-center gap-3"><CheckCircle className="w-5 h-5 flex-shrink-0 text-gold" /> <span className="text-sm font-medium">{f}</span></li>
+              ))}
+            </ul>
+            <button onClick={() => setShowPopup(true)} className="w-full py-4 rounded-xl font-black text-lg transition-all shadow-xl bg-gold text-navy hover:transform hover:-translate-y-1">Get Started Now</button>
+          </div>
+        ))}
       </div>
     </div>
   </div>
@@ -1954,7 +1934,7 @@ const QuickChat = ({ navigateTo, setShowPopup, isOpen, onToggle }) => {
       {/* Floating Button */}
       <button
         onClick={onToggle}
-        className="bg-navy text-gold p-4 sm:p-5 rounded-full shadow-2xl hover:scale-105 transition-transform border-2 border-gold/20 ring-4 ring-navy/10 relative group"
+        className="bg-navy text-gold p-4 sm:p-5 rounded-full shadow-2xl hover:scale-105 transition-transform border-2 border-gold/20 ring-4 ring-navy/10 relative group animate-floating"
         aria-label="Quick chat"
       >
         <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 animate-pulse" />
@@ -2012,7 +1992,7 @@ const FloatingContact = ({ isOpen, onToggle }) => {
       </div>
       <button
         onClick={onToggle}
-        className="bg-gold text-navy p-4 sm:p-5 rounded-full shadow-2xl hover:scale-110 transition-transform border-2 border-navy/20 ring-4 ring-gold/10 group relative"
+        className="bg-gold text-navy p-4 sm:p-5 rounded-full shadow-2xl hover:scale-110 transition-transform border-2 border-navy/20 ring-4 ring-gold/10 group relative animate-floating-delayed"
         aria-label="Contact options"
       >
         {isOpen ? <X className="w-6 h-6 sm:w-7 sm:h-7" /> : (
@@ -2046,6 +2026,7 @@ const AlmaasQuranAcademy = () => {
   const [exchangeRates, setExchangeRates] = useState(null);
   const [formStatus, setFormStatus] = useState({ submitting: false, success: false, error: null });
   const [activeFloating, setActiveFloating] = useState(null); // 'chat' or 'contact'
+  const [showFloating, setShowFloating] = useState(false);
 
 
   // Rotate taglines every 3.5 seconds
@@ -2078,7 +2059,10 @@ const AlmaasQuranAcademy = () => {
   };
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+      setShowFloating(window.scrollY > 400);
+    };
     window.addEventListener('scroll', handleScroll);
 
     // Dynamic Location and Currency Detection
@@ -2103,7 +2087,8 @@ const AlmaasQuranAcademy = () => {
           else setSelectedRegion('USA');
 
           // 2. Fetch Real-time Exchange Rates (exchangerate-api is free/no-key for v4)
-          const rateRes = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+          // We now use GBP as the base as per the new pricing tiers
+          const rateRes = await fetch('https://api.exchangerate-api.com/v4/latest/GBP');
           const rateData = await rateRes.json();
           if (rateData && rateData.rates) {
             setExchangeRates(rateData.rates);
@@ -2251,25 +2236,35 @@ const AlmaasQuranAcademy = () => {
   };
 
 
-  const getPrice = (gbp, usd) => {
+  const [selectedPricingCourse, setSelectedPricingCourse] = useState('qaida');
+
+  const COURSE_TIER_MAPPING = {
+    'qaida': 1, 'quran-reading': 1, 'tajweed': 1, 'hifz': 1,
+    'translation': 2, 'tafseer': 2, 'arabic': 2, 'seerat-un-nabi': 2, 'new-muslim': 2, 'farz-e-uloom': 2, 'short-shariah': 2,
+    'dars-e-nizami': 3
+  };
+
+  const TIER_PRICES_GBP = {
+    1: { "2 Days/Week": 20, "3 Days/Week": 25, "4 Days/Week": 30, "5 Days/Week": 35, "Weekend Special": 25 },
+    2: { "2 Days/Week": 25, "3 Days/Week": 30, "4 Days/Week": 35, "5 Days/Week": 40, "Weekend Special": 30 },
+    3: { "2 Days/Week": 50, "3 Days/Week": 60, "4 Days/Week": 70, "5 Days/Week": 80, "Weekend Special": 60 }
+  };
+
+  const getPrice = (gbpPrice) => {
     // If we have dynamic location data and exchange rates, use them!
     if (locationData && exchangeRates) {
       const currency = locationData.currency; // e.g., 'GBP', 'CAD', 'PKR'
-      const symbol = locationData.currency_symbol || '$';
+      const symbol = locationData.currency_symbol || '£';
       const rate = exchangeRates[currency] || 1;
 
-      // We use USD as the base price for conversion
-      const convertedPrice = Math.round(usd * rate);
+      // Exchange rates are now based on GBP
+      const convertedPrice = Math.round(gbpPrice * rate);
 
       // Currency symbol map — covers all major regions our students come from
       const specialSymbols = {
-        // Western
         'GBP': '£', 'USD': '$', 'CAD': 'C$', 'AUD': 'A$', 'EUR': '€', 'NZD': 'NZ$',
-        // South Asia
         'PKR': 'Rs ', 'INR': '₹', 'BDT': '৳',
-        // Middle East
         'AED': 'AED ', 'SAR': 'SAR ', 'QAR': 'QAR ', 'KWD': 'KD ', 'OMR': 'OMR ', 'BHD': 'BD ',
-        // South-East Asia
         'MYR': 'RM ', 'IDR': 'Rp ',
       };
       const displaySymbol = specialSymbols[currency] || symbol;
@@ -2278,27 +2273,35 @@ const AlmaasQuranAcademy = () => {
     }
 
     // Fallback to static selection logic if API fails or is loading
-    if (selectedRegion === 'UK') return `£${gbp}`;
-    if (selectedRegion === 'USA') return `$${usd}`;
-    if (selectedRegion === 'Pakistan') return `Rs ${Math.round(usd * 280)}`; // Corrected rate: $50 = 14,000 PKR
+    if (selectedRegion === 'UK') return `£${gbpPrice}`;
+    if (selectedRegion === 'USA') {
+      const usdRate = exchangeRates ? (exchangeRates['USD'] || 1.25) : 1.25;
+      return `$${Math.round(gbpPrice * usdRate)}`;
+    }
+    if (selectedRegion === 'Pakistan') {
+      const pkrRate = exchangeRates ? (exchangeRates['PKR'] || 350) : 350;
+      return `Rs ${Math.round(gbpPrice * pkrRate)}`;
+    }
 
-    const multipliers = { Canada: 1.36, Australia: 1.55, Europe: 0.95 };
+    const multipliers = { Canada: 1.7, Australia: 1.9, Europe: 1.15 };
     const symbols = { Canada: 'C$', Australia: 'A$', Europe: '€' };
 
     const mult = multipliers[selectedRegion] || 1;
-    const sym = symbols[selectedRegion] || '$';
-    const price = Math.round(usd * mult);
+    const sym = symbols[selectedRegion] || '£';
+    const price = Math.round(gbpPrice * mult);
 
     return `${sym}${price}`;
   };
 
+  const currentTier = COURSE_TIER_MAPPING[selectedPricingCourse] || 1;
+  const tierRates = TIER_PRICES_GBP[currentTier];
+
   const pricingPlans = [
-    { name: "2 Days/Week", price: getPrice(20, 25), tag: "Weekday Lite", features: ["2 classes/week", "30 min each", "One-on-One"] },
-    { name: "3 Days/Week", price: getPrice(25, 35), tag: "Weekday Standard", popular: true, features: ["3 classes/week", "30 min each", "Regular Feedback"] },
-    { name: "4 Days/Week", price: getPrice(30, 40), tag: "Weekday Intensive", features: ["4 classes/week", "30 min each", "Flexible Timing"] },
-    { name: "5 Days/Week", price: getPrice(35, 50), tag: "Weekday Full", features: ["5 classes/week", "30 min each", "Priority Support"] },
-    { name: "Weekend Special", price: getPrice(25, 35), tag: "Sat & Sun Only", features: ["2 classes/week", "Extended sessions", "Perfect for kids"] },
-    { name: "Advanced Courses", price: "Custom", tag: "Dars-e-Nizami & More", features: ["Flexible Schedule", "In-depth Curriculum", "One-on-One focus", "Pricing depends on duration"] }
+    { id: "2-days", name: "2 Days/Week", price: getPrice(tierRates["2 Days/Week"]), tag: "Weekday Lite", features: ["2 classes/week", "30 min each", "One-on-One"] },
+    { id: "3-days", name: "3 Days/Week", price: getPrice(tierRates["3 Days/Week"]), tag: "Weekday Standard", popular: true, features: ["3 classes/week", "30 min each", "Regular Feedback"] },
+    { id: "4-days", name: "4 Days/Week", price: getPrice(tierRates["4 Days/Week"]), tag: "Weekday Intensive", features: ["4 classes/week", "30 min each", "Flexible Timing"] },
+    { id: "5-days", name: "5 Days/Week", price: getPrice(tierRates["5 Days/Week"]), tag: "Weekday Full", features: ["5 classes/week", "30 min each", "Priority Support"] },
+    { id: "weekend", name: "Weekend Special", price: getPrice(tierRates["Weekend Special"]), tag: "Sat & Sun Only", features: ["2 classes/week", "Extended sessions", "Perfect for kids"] }
   ];
 
   const initialReviews = [
@@ -2421,11 +2424,14 @@ const AlmaasQuranAcademy = () => {
                 reviewStatus={reviewStatus}
                 handleSubmit={handleSubmit}
                 formStatus={formStatus}
+                COURSES={COURSES}
+                selectedPricingCourse={selectedPricingCourse}
+                setSelectedPricingCourse={setSelectedPricingCourse}
               />
             } />
             <Route path="/courses" element={<CoursesPage COURSES_DETAILED={COURSES_DETAILED} navigateTo={navigateTo} />} />
             <Route path="/courses/:slug" element={<CourseDetailPage COURSES_DETAILED={COURSES_DETAILED} navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
-            <Route path="/pricing" element={<PricingPage pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
+            <Route path="/pricing" element={<PricingPage pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} COURSES={COURSES} selectedPricingCourse={selectedPricingCourse} setSelectedPricingCourse={setSelectedPricingCourse} />} />
             <Route path="/faq" element={<FAQPage FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} navigateTo={navigateTo} />} />
             <Route path="/blogs" element={<BlogPage BLOGS={BLOGS} navigateTo={navigateTo} />} />
             <Route path="/blog/:id" element={<BlogDetailPage BLOGS={BLOGS} navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
@@ -2445,7 +2451,7 @@ const AlmaasQuranAcademy = () => {
       </main>
 
       <Footer navigateTo={navigateTo} />
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4 pointer-events-none">
+      <div className={`fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4 transition-all duration-500 transform ${showFloating ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
         <QuickChat
           navigateTo={navigateTo}
           setShowPopup={setShowPopup}
