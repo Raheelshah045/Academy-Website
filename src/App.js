@@ -1081,9 +1081,11 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
           <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-black text-center mb-12">Latest <span className="text-navy">Insights</span></h2>
             <div className="grid md:grid-cols-3 gap-8">
-              {BLOGS.map(blog => (
+              {BLOGS.slice(0, 3).map(blog => (
                 <div key={blog.id} className="bg-white border-2 border-navy/10 hover:border-gold rounded-3xl overflow-hidden transition group shadow-lg flex flex-col">
-                  <div className="h-48 bg-navy flex items-center justify-center group-hover:bg-gold transition-colors aspect-video"><Newspaper className="w-16 h-16 text-white" /></div>
+                  <div className="h-56 bg-navy overflow-hidden transition-all aspect-video border-b-2 border-navy/5">
+                    <img src={blog.image} alt={blog.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                  </div>
                   <div className="p-8 flex flex-col flex-1">
                     <span className="text-gold font-bold text-xs uppercase tracking-widest mb-2">{blog.date}</span>
                     <h3 className="text-xl font-black text-navy mb-4 group-hover:text-gold transition-colors">{blog.title}</h3>
@@ -1094,6 +1096,9 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="text-center mt-12">
+              <button onClick={() => navigateTo('/blogs')} className="bg-navy/5 text-navy px-8 py-3 rounded-xl font-black hover:bg-navy hover:text-white transition inline-flex items-center gap-2">Explore All Articles <ChevronRight className="w-5 h-5" /></button>
             </div>
           </div>
         </section>
