@@ -30,11 +30,12 @@ const REGION_CONFIGS = {
     timezones: 'EST/PST',
     paymentMethods: 'Stripe/PayPal',
     multiplier: 1.25,
-    h1: "Best Online Quran Classes in the USA",
-    seoTitle: "Online Quran Classes USA | Learn Quran with Tajweed USA",
+    h1: "Best Online Quran Academy USA",
+    seoTitle: "Best Online Quran Academy USA - Almaas Online Quran Academy",
     seoDesc: "Searching for the best online Quran classes for kids in the USA? We offer 1-on-1 sessions scheduled for EST/PST with expert tutors. Start your 3-day free trial!",
-    keywords: ["online quran classes usa", "learn quran online with tajweed usa", "one on one quran lessons usa"],
-    langCode: "en-us"
+    keywords: ["online quran academy usa", "learn quran online usa", "hifz classes online usa", "online quran classes for kids in usa with tajweed", "best online quran tutor new york", "affordable quran classes monthly fee usd"],
+    langCode: "en-us",
+    slug: "usa"
   },
   'UK': {
     name: 'UK',
@@ -43,24 +44,26 @@ const REGION_CONFIGS = {
     timezones: 'GMT',
     paymentMethods: 'Direct Transfer/Stripe',
     multiplier: 1,
-    h1: "Best Online Quran Classes in the UK",
-    seoTitle: "Online Quran Classes UK | Professional Quran Tutor UK",
+    h1: "Best Online Quran Classes UK",
+    seoTitle: "Best Online Quran Classes UK - Almaas Online Quran Academy",
     seoDesc: "Struggling to find a reliable Quran tutor in the UK? We offer 1-on-1 classes scheduled around school hours with background-checked teachers. Book a free trial today!",
-    keywords: ["online quran classes uk fees", "quran lessons online uk", "female quran teacher uk"],
-    langCode: "en-gb"
+    keywords: ["online quran classes uk", "quran teacher london", "quran classes for kids uk", "online quran classes uk fees", "female quran teacher uk for sisters", "one to one quran lessons manchester"],
+    langCode: "en-gb",
+    slug: "uk"
   },
   'UAE': {
     name: 'UAE',
     currency: 'AED',
-    symbol: 'AED ',
+    symbol: 'Dhs ',
     timezones: 'GST',
     paymentMethods: 'Stripe/Bank Transfer',
     multiplier: 4.6,
-    h1: "Professional Quran Tutor UAE",
-    seoTitle: "Online Quran Classes UAE | Learn Quran with Tajweed Dubai",
-    seoDesc: "Need a professional Quran tutor in Dubai or Abu Dhabi? Our GST-aligned classes offer flexible timing and expert Tajweed guidance. Start your 3-day free trial!",
-    keywords: ["online quran tutor uae", "learn quran with tajweed dubai", "quran classes for kids abu dhabi"],
-    langCode: "en-ae"
+    h1: "Professional Online Quran Classes UAE",
+    seoTitle: "Professional Online Quran Classes UAE - Almaas Online Quran Academy",
+    seoDesc: "Join Almaas Online Quran Academy in UAE. Expert tutors for Dubai, Abu Dhabi, and Sharjah. Flexible timings and expert teachers from the comfort of home.",
+    keywords: ["online quran classes uae", "quran tutor dubai", "learn quran with tajweed abu dhabi", "personalized quran classes dubai for adults", "online quran teacher sharjah", "quran and islamic studies for kids uae"],
+    langCode: "en-ae",
+    slug: "uae"
   },
   'Canada': { name: 'Canada', currency: 'CAD', symbol: 'C$', timezones: 'EST/MST/PST', paymentMethods: 'Interac/Stripe', multiplier: 1.7, langCode: "en-ca" },
   'Australia': { name: 'Australia', currency: 'AUD', symbol: 'A$', timezones: 'AEST/AWST', paymentMethods: 'Stripe/PayPal', multiplier: 1.9, langCode: "en-au" },
@@ -84,15 +87,14 @@ const COURSES = [
 ];
 
 const FAQS = [
-  { q: "What is an online Quran academy?", a: "An online Quran academy is a platform where students learn the Quran through live classes using the internet. Students can learn from qualified teachers from the comfort of their homes." },
-  { q: "Who can enroll in online Quran classes?", a: "Our classes are suitable for everyone including kids (4+ years), adults, beginners, advanced learners, and both sisters and brothers." },
-  { q: "Do I need prior knowledge to start learning?", a: "No. Beginners can start from Noorani Qaida and basic Arabic letters. We guide students step by step through Tajweed rules and beyond." },
-  { q: "What courses do you offer?", a: "We offer Nazira Quran with Tajweed, Madni Qaida, Hifz-ul-Quran, Quran Translation, Basic Islamic Studies, Salah, and Duas." },
-  { q: "How long does it take to complete a course?", a: "Duration depends on student’s age, learning speed, and consistency. Typically: Qaida (3–6 months), Nazira (6–12 months), and Hifz (2–4 years)." },
-  { q: "Do you offer one-on-one classes?", a: "Yes, personalized one-on-one sessions are available to ensure proper attention and correction for every student." },
-  { q: "Are your teachers qualified?", a: "Our teachers are certified in Tajweed, experienced in Quran teaching, and trained to teach children and adults across various languages." },
-  { q: "Do you provide female teachers for sisters and kids?", a: "Yes, qualified female teachers are available upon request for sisters and children to ensure a comfortable learning environment." },
-  { q: "What do I need for online classes?", a: "You need a stable internet connection, a laptop/tablet/smartphone, headphones with a mic, and a preferred meeting app like Zoom." },
+  { q: "How can I find a female Quran teacher in London for my daughter?", a: "We have a dedicated team of qualified female Quran teachers from the UK and around the world. Every teacher is background-checked and trained specifically to teach young girls and sisters in a safe, comfortable environment. You can request a female teacher during your free trial sign-up." },
+  { q: "What are the best online Quran classes for kids in the USA?", a: "The best classes are those that combine expert Tajweed instruction with engaging, child-friendly methods. At Almaas Academy, our USA-focused program offers 1-on-1 sessions scheduled for EST/PST, ensuring your child learns at their own pace without the pressure of a group setting." },
+  { q: "Is learning Quran online effective for adults in Dubai?", a: "Absolutely. Our online platform provides high-quality video and audio, making it feel like the teacher is right next to you. For busy professionals in UAE, we offer flexible timings that work around work schedules and GST time zones." },
+  { q: "What is the best way to choose an online Quran academy?", a: "Look for academies that offer qualified teachers with Ijazah, flexible scheduling in your local time zone, and a transparent pricing structure. Always start with a free trial to ensure the teaching style matches your learning needs." },
+  { q: "Who can enroll in our online Quran lessons?", a: "Our classes are open to everyone, including toddlers (starting age 4), school-going children, university students, and busy adults. We have specialized modules for both beginners and advanced students." },
+  { q: "How do I schedule classes around my UK school or work hours?", a: "We adapt to your schedule. Whether you need classes on weekend mornings (GMT) or weekday evenings after school, our tutors are available 24/7 to accommodate your specific routine." },
+  { q: "Are your teachers qualified to teach Tajweed and Tarteel?", a: "Yes, all our teachers have completed formal training and hold certifications (Ijazah) in Tajweed. They are experts in correcting pronunciation (Makharij) and helping students reach a professional level of recitation." },
+  { q: "Do I need a laptop for my online Quran classes?", a: "You can join using any device—laptop, tablet, or smartphone. However, for the best learning experience, we recommend a tablet or laptop with a stable internet connection and a pair of headphones." },
   { q: "What if I miss a class?", a: "Missed classes can be rescheduled depending on prior notice provided to the teacher or academy." },
   { q: "What time zones do you cover?", a: "Classes are available worldwide including the USA, UK, Canada, Australia, and Middle East. We adapt to your local time zone." },
   { q: "Do you offer a free trial class?", a: "Yes, we offer a free trial class so students can experience our teaching method before committing to enrollment." },
@@ -1716,6 +1718,38 @@ const ReviewsPage = ({ reviews, loadingReviews, navigateTo, handleReviewSubmit, 
           <button onClick={() => { const element = document.getElementById('review-form'); if (element) element.scrollIntoView({ behavior: 'smooth' }); }} className="bg-gold text-navy px-8 py-4 rounded-xl font-black hover:bg-gold/90 transition shadow-xl">Write a Review</button>
         </div>
 
+        {/* Reviews Section */}
+        <section className="py-24 px-4 bg-offwhite/50 border-t border-navy/5">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black mb-4">What Students in <span className="text-navy">{currentRegion.name}</span> Say</h2>
+              <div className="flex justify-center text-gold gap-1 mb-4">
+                {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-gold" />)}
+              </div>
+              <p className="text-darkgray text-lg font-medium">Real feedback from your local community</p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              {[...reviews]
+                .sort((a, b) => (a.location === currentRegion.name ? -1 : b.location === currentRegion.name ? 1 : 0))
+                .slice(0, 3)
+                .map((review) => (
+                  <div key={review.id} className="bg-white p-8 rounded-3xl shadow-xl border border-navy/5 flex flex-col hover:border-gold transition-colors duration-300">
+                    <div className="flex text-gold mb-4">
+                      {[...Array(5)].map((_, i) => <Star key={i} className={`w-4 h-4 ${i < review.rating ? 'fill-gold' : 'text-gray-300'}`} />)}
+                    </div>
+                    <p className="text-darkgray italic mb-6 flex-1 text-lg">"{review.text}"</p>
+                    <div className="flex items-center justify-between border-t border-navy/5 pt-4">
+                      <div>
+                        <span className="font-bold text-navy block">{review.name}</span>
+                        <span className="text-xs text-gold font-bold">{review.location || 'Student'}</span>
+                      </div>
+                      <span className="text-xs text-darkgray/50">{review.date}</span>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </section>
         {/* Review Form right here on the reviews page */}
         <ReviewForm handleReviewSubmit={handleReviewSubmit} newReview={newReview} setNewReview={setNewReview} reviewStatus={reviewStatus} />
       </div>
@@ -1926,14 +1960,21 @@ const TermsConditionsPage = () => (
   </div>
 );
 
-const RegionalLandingPage = ({ selectedRegion, REGION_CONFIGS, pricingPlans, navigateTo, setShowPopup, FAQS, activeFaq, setActiveFaq, reviews, COURSES_DETAILED }) => {
+const RegionalLandingPage = ({ selectedRegion, REGION_CONFIGS, pricingPlans: globalPricing, navigateTo, setShowPopup, FAQS, activeFaq, setActiveFaq, reviews, COURSES_DETAILED, exchangeRates }) => {
   const currentRegion = REGION_CONFIGS[selectedRegion] || REGION_CONFIGS['USA'];
+
+  const tierRates = TIER_PRICES_GBP[1];
+  const pricingPlans = [
+    { id: "2-days", name: "2 Days/Week", price: getRegionalPrice(tierRates["2 Days/Week"], selectedRegion, exchangeRates, REGION_CONFIGS), tag: "Weekday Lite", features: ["2 classes/week", "30 min each", "One-on-One"] },
+    { id: "3-days", name: "3 Days/Week", price: getRegionalPrice(tierRates["3 Days/Week"], selectedRegion, exchangeRates, REGION_CONFIGS), tag: "Weekday Standard", popular: true, features: ["3 classes/week", "30 min each", "Regular Feedback"] },
+    { id: "4-days", name: "4 Days/Week", price: getRegionalPrice(tierRates["4 Days/Week"], selectedRegion, exchangeRates, REGION_CONFIGS), tag: "Weekday Intensive", features: ["4 classes/week", "30 min each", "Flexible Timing"] }
+  ];
 
   const regionalSchema = {
     "@context": "https://schema.org",
     "@type": "EducationOrganization",
     "name": `Almaas Online Quran Academy - ${currentRegion.name}`,
-    "url": `https://www.almaasonlinequranacademy.online/quran-classes-${currentRegion.name.toLowerCase()}/`,
+    "url": `https://www.almaasonlinequranacademy.online/${currentRegion.slug}/`,
     "description": currentRegion.seoDesc,
     "address": {
       "@type": "PostalAddress",
@@ -1946,12 +1987,12 @@ const RegionalLandingPage = ({ selectedRegion, REGION_CONFIGS, pricingPlans, nav
       <Helmet>
         <title>{currentRegion.seoTitle || `Online Quran Classes in ${currentRegion.name} | Almaas Academy`}</title>
         <meta name="description" content={currentRegion.seoDesc || `Join Almaas Academy for online Quran classes in ${currentRegion.name}. Flexible timings and expert teachers.`} />
-        <link rel="canonical" href={`https://www.almaasonlinequranacademy.online/quran-classes-${currentRegion.name.toLowerCase()}/`} />
+        <link rel="canonical" href={`https://www.almaasonlinequranacademy.online/${currentRegion.slug}/`} />
 
         {/* Advanced Hreflang Implementation */}
-        <link rel="alternate" hreflang="en-gb" href="https://www.almaasonlinequranacademy.online/quran-classes-uk/" />
-        <link rel="alternate" hreflang="en-us" href="https://www.almaasonlinequranacademy.online/quran-classes-usa/" />
-        <link rel="alternate" hreflang="en-ae" href="https://www.almaasonlinequranacademy.online/quran-classes-uae/" />
+        <link rel="alternate" hreflang="en-gb" href="https://www.almaasonlinequranacademy.online/uk/" />
+        <link rel="alternate" hreflang="en-us" href="https://www.almaasonlinequranacademy.online/usa/" />
+        <link rel="alternate" hreflang="en-ae" href="https://www.almaasonlinequranacademy.online/uae/" />
         <link rel="alternate" hreflang="x-default" href="https://www.almaasonlinequranacademy.online/" />
 
         <script type="application/ld+json">{JSON.stringify(regionalSchema)}</script>
@@ -2690,18 +2731,16 @@ const AlmaasQuranAcademy = () => {
   const getPrice = (gbpPrice) => {
     // If we have dynamic location data and exchange rates, use them!
     if (locationData && exchangeRates) {
-      const currency = locationData.currency; // e.g., 'GBP', 'CAD', 'PKR'
+      const currency = locationData.currency;
       const symbol = locationData.currency_symbol || '£';
       const rate = exchangeRates[currency] || 1;
 
-      // Exchange rates are now based on GBP
       const convertedPrice = Math.round(gbpPrice * rate);
 
-      // Currency symbol map — covers all major regions our students come from
       const specialSymbols = {
         'GBP': '£', 'USD': '$', 'CAD': 'C$', 'AUD': 'A$', 'EUR': '€', 'NZD': 'NZ$',
         'PKR': 'Rs ', 'INR': '₹', 'BDT': '৳',
-        'AED': 'AED ', 'SAR': 'SAR ', 'QAR': 'QAR ', 'KWD': 'KD ', 'OMR': 'OMR ', 'BHD': 'BD ',
+        'AED': 'Dhs ', 'SAR': 'SAR ', 'QAR': 'QAR ', 'KWD': 'KD ', 'OMR': 'OMR ', 'BHD': 'BD ',
         'MYR': 'RM ', 'IDR': 'Rp ',
       };
       const displaySymbol = specialSymbols[currency] || symbol;
@@ -2709,11 +2748,8 @@ const AlmaasQuranAcademy = () => {
       return `${displaySymbol}${convertedPrice}`;
     }
 
-    // Fallback to static selection logic if API fails or is loading
-    const config = REGION_CONFIGS[selectedRegion] || REGION_CONFIGS['USA'];
-    const rate = exchangeRates ? (exchangeRates[config.currency] || config.multiplier) : config.multiplier;
-    const price = Math.round(gbpPrice * rate);
-    return `${config.symbol}${price}`;
+    // Fallback to static selection logic
+    return getRegionalPrice(gbpPrice, selectedRegion, exchangeRates, REGION_CONFIGS);
   };
 
   const currentTier = COURSE_TIER_MAPPING[selectedPricingCourse] || 1;
@@ -2728,9 +2764,10 @@ const AlmaasQuranAcademy = () => {
   ];
 
   const initialReviews = [
-    { id: 1, name: "Ahmed Khan", rating: 5, text: "Excellent teaching style. My kids have learned Qaida very quickly here.", date: "Feb 5, 2026" },
-    { id: 2, name: "Sara Malik", rating: 5, text: "The female teachers are very patient and professional. Highly recommended for sisters.", date: "Feb 12, 2026" },
-    { id: 3, name: "John Doe", rating: 4, text: "Very flexible timings. Perfect for someone with a busy work schedule.", date: "Feb 20, 2026" }
+    { id: 1, name: "Ahmed Khan", location: "UK", rating: 5, text: "Excellent teaching style for kids in London. My kids have learned Qaida very quickly here.", date: "Feb 5, 2026" },
+    { id: 2, name: "Sara Malik", location: "USA", rating: 5, text: "The female teachers are very patient with my daughters here in Texas. Highly recommended.", date: "Feb 12, 2026" },
+    { id: 3, name: "Dr Junaid", location: "UAE", rating: 5, text: "Very flexible timings that fit my busy Dubai hospital schedule. Perfect Quran academy.", date: "Feb 20, 2026" },
+    { id: 4, name: "Fatima Zahra", location: "UK", rating: 5, text: "Found the best female Quran teacher in Manchester for my online classes. Excellent Tajweed.", date: "Feb 25, 2026" }
   ];
 
   const [reviews, setReviews] = useState(initialReviews);
@@ -2823,10 +2860,10 @@ const AlmaasQuranAcademy = () => {
         <link rel="apple-touch-icon" href="/images/almaas-online-quran-academy-logo.webp?v=2" />
 
         {/* Global Hreflang Tags for SEO */}
-        <link rel="alternate" hreflang="en-us" href="https://almaasonlinequranacademy.online/online-quran-classes-usa/" />
-        <link rel="alternate" hreflang="en-gb" href="https://almaasonlinequranacademy.online/online-quran-classes-uk/" />
-        <link rel="alternate" hreflang="en-ae" href="https://almaasonlinequranacademy.online/online-quran-classes-uae/" />
-        <link rel="alternate" hreflang="x-default" href="https://almaasonlinequranacademy.online/" />
+        <link rel="alternate" hreflang="en-us" href="https://www.almaasonlinequranacademy.online/usa/" />
+        <link rel="alternate" hreflang="en-gb" href="https://www.almaasonlinequranacademy.online/uk/" />
+        <link rel="alternate" hreflang="en-ae" href="https://www.almaasonlinequranacademy.online/uae/" />
+        <link rel="alternate" hreflang="x-default" href="https://www.almaasonlinequranacademy.online/" />
       </Helmet>
       <Header scrolled={scrolled} menuOpen={menuOpen} setMenuOpen={setMenuOpen} navigateTo={navigateTo} setShowPopup={setShowPopup} />
 
@@ -2869,14 +2906,17 @@ const AlmaasQuranAcademy = () => {
             <Route path="/ramadan-quran-classes" element={<RamadanPage navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
 
             {/* Legacy Redirects for Regional Pages */}
-            <Route path="/online-quran-classes-usa" element={<Navigate to="/quran-classes-usa/" replace />} />
-            <Route path="/online-quran-classes-uk" element={<Navigate to="/quran-classes-uk/" replace />} />
-            <Route path="/online-quran-classes-uae" element={<Navigate to="/quran-classes-uae/" replace />} />
+            <Route path="/online-quran-classes-usa" element={<Navigate to="/usa/" replace />} />
+            <Route path="/online-quran-classes-uk" element={<Navigate to="/uk/" replace />} />
+            <Route path="/online-quran-classes-uae" element={<Navigate to="/uae/" replace />} />
+            <Route path="/quran-classes-usa" element={<Navigate to="/usa/" replace />} />
+            <Route path="/quran-classes-uk" element={<Navigate to="/uk/" replace />} />
+            <Route path="/quran-classes-uae" element={<Navigate to="/uae/" replace />} />
 
             {/* Localized Landing Pages */}
-            <Route path="/quran-classes-usa/" element={<RegionalLandingPage selectedRegion="USA" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} COURSES_DETAILED={COURSES_DETAILED} />} />
-            <Route path="/quran-classes-uk/" element={<RegionalLandingPage selectedRegion="UK" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} COURSES_DETAILED={COURSES_DETAILED} />} />
-            <Route path="/quran-classes-uae/" element={<RegionalLandingPage selectedRegion="UAE" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} COURSES_DETAILED={COURSES_DETAILED} />} />
+            <Route path="/usa/" element={<RegionalLandingPage selectedRegion="USA" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} COURSES_DETAILED={COURSES_DETAILED} exchangeRates={exchangeRates} />} />
+            <Route path="/uk/" element={<RegionalLandingPage selectedRegion="UK" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} COURSES_DETAILED={COURSES_DETAILED} exchangeRates={exchangeRates} />} />
+            <Route path="/uae/" element={<RegionalLandingPage selectedRegion="UAE" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} COURSES_DETAILED={COURSES_DETAILED} exchangeRates={exchangeRates} />} />
 
             {/* Legacy/Other Regional Routes */}
             <Route path="/quran-classes-usa" element={<Navigate to="/online-quran-classes-usa" replace />} />
