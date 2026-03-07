@@ -23,12 +23,49 @@ const TAGLINES = [
 
 
 const REGION_CONFIGS = {
-  'USA': { name: 'USA', currency: 'USD', symbol: '$', timezones: 'EST/CST/PST', paymentMethods: 'Stripe/PayPal', multiplier: 1 },
-  'UK': { name: 'UK', currency: 'GBP', symbol: '£', timezones: 'GMT/BST', paymentMethods: 'Direct Transfer/Stripe', multiplier: 0.8 },
-  'Canada': { name: 'Canada', currency: 'CAD', symbol: 'C$', timezones: 'EST/MST/PST', paymentMethods: 'Interac/Stripe', multiplier: 1.1 },
-  'Australia': { name: 'Australia', currency: 'AUD', symbol: 'A$', timezones: 'AEST/AWST', paymentMethods: 'Stripe/PayPal', multiplier: 1.2 },
-  'Europe': { name: 'Europe', currency: 'EUR', symbol: '€', timezones: 'CET/EET', paymentMethods: 'IBAN/Stripe', multiplier: 0.9 },
-  'Pakistan': { name: 'Pakistan', currency: 'PKR', symbol: 'Rs ', timezones: 'PKT', paymentMethods: 'EasyPaisa/JazzCash/Bank', multiplier: 0.2 }
+  'USA': {
+    name: 'USA',
+    currency: 'USD',
+    symbol: '$',
+    timezones: 'EST/PST',
+    paymentMethods: 'Stripe/PayPal',
+    multiplier: 1.25,
+    h1: "Best Online Quran Classes in the USA",
+    seoTitle: "Online Quran Classes USA | Learn Quran with Tajweed USA",
+    seoDesc: "Searching for the best online Quran classes for kids in the USA? We offer 1-on-1 sessions scheduled for EST/PST with expert tutors. Start your 3-day free trial!",
+    keywords: ["online quran classes usa", "learn quran online with tajweed usa", "one on one quran lessons usa"],
+    langCode: "en-us"
+  },
+  'UK': {
+    name: 'UK',
+    currency: 'GBP',
+    symbol: '£',
+    timezones: 'GMT',
+    paymentMethods: 'Direct Transfer/Stripe',
+    multiplier: 1,
+    h1: "Best Online Quran Classes in the UK",
+    seoTitle: "Online Quran Classes UK | Professional Quran Tutor UK",
+    seoDesc: "Struggling to find a reliable Quran tutor in the UK? We offer 1-on-1 classes scheduled around school hours with background-checked teachers. Book a free trial today!",
+    keywords: ["online quran classes uk fees", "quran lessons online uk", "female quran teacher uk"],
+    langCode: "en-gb"
+  },
+  'UAE': {
+    name: 'UAE',
+    currency: 'AED',
+    symbol: 'AED ',
+    timezones: 'GST',
+    paymentMethods: 'Stripe/Bank Transfer',
+    multiplier: 4.6,
+    h1: "Professional Quran Tutor UAE",
+    seoTitle: "Online Quran Classes UAE | Learn Quran with Tajweed Dubai",
+    seoDesc: "Need a professional Quran tutor in Dubai or Abu Dhabi? Our GST-aligned classes offer flexible timing and expert Tajweed guidance. Start your 3-day free trial!",
+    keywords: ["online quran tutor uae", "learn quran with tajweed dubai", "quran classes for kids abu dhabi"],
+    langCode: "en-ae"
+  },
+  'Canada': { name: 'Canada', currency: 'CAD', symbol: 'C$', timezones: 'EST/MST/PST', paymentMethods: 'Interac/Stripe', multiplier: 1.7, langCode: "en-ca" },
+  'Australia': { name: 'Australia', currency: 'AUD', symbol: 'A$', timezones: 'AEST/AWST', paymentMethods: 'Stripe/PayPal', multiplier: 1.9, langCode: "en-au" },
+  'Europe': { name: 'Europe', currency: 'EUR', symbol: '€', timezones: 'CET/EET', paymentMethods: 'IBAN/Stripe', multiplier: 1.15, langCode: "en-eu" },
+  'Pakistan': { name: 'Pakistan', currency: 'PKR', symbol: 'Rs ', timezones: 'PKT', paymentMethods: 'EasyPaisa/JazzCash/Bank', multiplier: 350, langCode: "en-pk" }
 };
 
 const COURSES = [
@@ -72,7 +109,7 @@ const COURSES_DETAILED = [
     title: "Qaida for Beginners",
     slug: "qaida-basics",
     shortDesc: "A foundational course designed to help beginners learn the Arabic alphabet, basic pronunciation, and the rules of Quranic reading step by step, with clarity and ease.",
-    fullDesc: "This foundational course is designed for beginners who are starting their Quran learning journey from the very beginning. Students learn Arabic letters, correct pronunciation, and letter formation in a simple, step-by-step manner. Special focus is given to clarity, repetition, and individual attention so learners build confidence before moving on to Quran reading. This course is suitable for children, adults, and new learners with no prior Arabic background.",
+    fullDesc: "This foundational course is designed for beginners who are starting their Quran learning journey from the very beginning. Students learn Arabic letters, correct pronunciation, and letter formation in a simple, step-by-step manner. Special focus is given to clarity, repetition, and individual attention so learners build confidence before moving on to Quran reading. This course is suitable for children, adults, and new learners with no prior Arabic background.\n\n**Learning Guides:** Explore our latest resource on [10 Benefits of Learning the Quran](/blog/1) to understand why starting today is the best decision for your child.",
     image: "/images/quran-qaida-beginners-course.webp",
     altText: "Quran Qaida for Beginners – Learn Arabic Letters and Pronunciation Online at Almaas Academy",
     whatYouLearn: [
@@ -116,7 +153,7 @@ const COURSES_DETAILED = [
     title: "Quran Memorization (Hifz)",
     slug: "hifz-memorization",
     shortDesc: "A structured course that helps students memorize the Holy Quran with accuracy, daily revision plans, and expert guidance to retain and recite confidently.",
-    fullDesc: "This structured course is designed to help students memorize the Holy Quran accurately and effectively. A disciplined system of daily lessons, revision plans, and continuous supervision ensures strong memorization and retention. Emphasis is placed on Tajweed and correct recitation. Suitable for children and adults aspiring to become Hafiz or Hafiza.",
+    fullDesc: "This structured course is designed to help students memorize the Holy Quran accurately and effectively. A disciplined system of daily lessons, revision plans, and continuous supervision ensures strong memorization and retention. Suitable for children and adults aspiring to become Hafiz or Hafiza.\n\n**Learning Guides:** Discover our proven [Memorizing Quran: Complete Step-by-Step Guide](/blog/3) to fast-track your Hifz journey.",
     image: "/images/online-quran-memorization-hifz-classes.webp",
     altText: "Online Quran Memorization (Hifz) Classes for Kids and Adults at Almaas Online Quran Academy",
     whatYouLearn: [
@@ -248,7 +285,7 @@ const COURSES_DETAILED = [
     title: "Tajweed and Tarteel",
     slug: "tajweed-rules",
     shortDesc: "A detailed course focused on perfecting Quranic pronunciation (Tajweed) and reciting with rhythm and beauty (Tarteel), following the rules of proper recitation.",
-    fullDesc: "This course focuses on perfecting Quran recitation by teaching Tajweed rules and the beauty of Tarteel. Students learn correct pronunciation, articulation points, and rhythmic recitation to recite the Quran as it was revealed.",
+    fullDesc: "This course focuses on perfecting Quran recitation by teaching Tajweed rules and the beauty of Tarteel. Students learn correct pronunciation, articulation points, and rhythmic recitation. Recite the Quran as it was revealed.\n\n**Learning Guides:** Deep dive into our expert guide on [How to Improve Your Tajweed (Practical Tips)](/blog/2) or explore [Makharij for Beginners](/blog/2).",
     image: "/images/quran-tajweed-tarteel-course-online.webp",
     altText: "Online Quran Tajweed and Tarteel Course – Perfect Your Quran Recitation with Certified Teachers",
     whatYouLearn: [
@@ -338,7 +375,9 @@ const BLOGS = [
   {
     id: 1,
     title: "10 Benefits of Learning the Quran (According to Quran & Hadith)",
+    image: "/images/blog-benefits-quran.webp",
     date: "Feb 15, 2026",
+    seoDesc: "Discover the 10 spiritual and worldly benefits of learning the Quran. From peace of mind to eternal rewards, read our complete guide.",
     excerpt: "The Quran is not just a book — it is the divine guidance sent by Allah ﷻ for all of humanity. Discover the eternal rewards.",
     content: [
       { type: "p", text: "The Quran is not just a book — it is the divine guidance sent by Allah ﷻ for all of humanity. Learning the Quran is one of the greatest acts of worship a Muslim can perform. Its benefits are not limited to this world; they extend into the Hereafter." },
@@ -362,16 +401,23 @@ const BLOGS = [
       { type: "h3", text: "9. Status of Individuals and Nations" },
       { type: "p", text: "“Indeed, Allah raises some people by this Book and lowers others by it.” (Sahih Muslim)" },
       { type: "h3", text: "10. A Continuous Source of Reward" },
-      { type: "p", text: "Teaching or learning the Quran is beneficial knowledge that continues to bring reward even after death." }
+      { type: "p", text: "Teaching or learning the Quran is beneficial knowledge that continues to bring reward even after death. Start your journey today with our [Online Quran classes in the UK](/quran-classes-uk/)." }
+    ],
+    faqs: [
+      { q: "Is learning Quran online effective?", a: "Yes, online classes provide 1-on-1 attention, which is often more effective than traditional crowded classrooms for individual progress." },
+      { q: "What age should kids start learning?", a: "Children can start as early as 4 or 5 years old with Noorani Qaida to build a strong foundation." },
+      { q: "Do you offer Tajweed for adults?", a: "Yes, we have specialized Tajweed courses for brothers and sisters designed for adult learners." }
     ]
   },
   {
     id: 2,
     title: "How to Improve Your Tajweed (Practical Tips)",
+    image: "/images/blog-tajweed-tips.webp",
     date: "Feb 12, 2026",
+    seoDesc: "Master the rules of Tajweed with our practical tips. Learn correct pronunciation (Makharij) and improve your recitation today.",
     excerpt: "Learning Tajweed is about reciting the words of Allah ﷻ correctly, the way they were revealed to the Prophet ﷺ.",
     content: [
-      { type: "p", text: "Learning Tajweed is not just about beautifying your voice — it is about reciting the words of Allah ﷻ correctly. Proper Tajweed protects the meaning of the Quran." },
+      { type: "p", text: "Learning Tajweed is not just about beautifying your voice — it is about reciting the words of Allah ﷻ correctly. Proper Tajweed protects the meaning of the Quran. If you want to master these rules, sign up for our [Tajweed & Tarteel course](/courses/tajweed-rules)." },
       { type: "quran", text: "“And recite the Qur’an with measured recitation.”", ref: "Surah Al-Muzzammil 73:4" },
       { type: "h3", text: "1. Correct Your Intention First" },
       { type: "p", text: "Tajweed is an act of worship. You are not learning to impress others — you are learning to please Allah." },
@@ -385,14 +431,22 @@ const BLOGS = [
       { type: "p", text: "Follow consistent masters like Alafasy or Al-Sudais. Repeat after them to imitate flow." },
       { type: "h3", text: "6. Record Your Recitation" },
       { type: "p", text: "Listen to yourself to identify where you rush or mispronounce. Self-review is powerful." }
+    ],
+    faqs: [
+      { q: "What is the best way to learn Tajweed?", a: "The best way is through a qualified teacher who can listen to your recitation and provide immediate correction." },
+      { q: "How long does it take to learn Tajweed rules?", a: "Basic Tajweed can be learned in 4-6 months with consistent practice of 2-3 sessions per week." },
+      { q: "Can I learn Tajweed online?", a: "Absolutely. High-quality audio and video software make online Tajweed classes highly effective." }
     ]
   },
   {
     id: 3,
     title: "Memorizing Quran: Complete Step-by-Step Guide",
+    image: "/images/blog-hifz-guide.webp",
     date: "Feb 10, 2026",
+    seoDesc: "Want to become a Hafiz? Follow our 10-step guide to successful Quran memorization with revision strategies and best practices.",
     excerpt: "Hifz is one of the greatest honors. Discover our structured 10-step plan to preserve the Quran in your heart.",
     content: [
+      { type: "p", text: "Hifz is a sacred journey that requires patience and a structured approach. To get professional guidance, consider our [Quran Memorization (Hifz) Course](/courses/hifz-memorization)." },
       { type: "h3", text: "Virtues of Memorizing" },
       { type: "p", text: "Every ayah memorized raises your rank in Paradise. It also brings immense honor to your parents in the afterlife." },
       { type: "h3", text: "The Complete Plan" },
@@ -402,13 +456,64 @@ const BLOGS = [
       { type: "p", text: "4. Follow a realistic daily plan (5-10 lines)." },
       { type: "p", text: "5. Use the 3x Method: Read 10x looking, 10x without, then connect." },
       { type: "h3", text: "The Golden Rule" },
-      { type: "p", text: "Revision is more important than new memorization. Without it, the Quran fades like untied camels." }
+      { type: "p", text: "Revision is more important than new memorization. Without it, the Quran fades like untied camels. Maintain your Hifz with the best [Online Quran classes in the USA](/quran-classes-usa/)." }
+    ],
+    faqs: [
+      { q: "What is the best age for Hifz?", a: "Between 7 and 13 is often considered the 'golden age' for memorization, but adults can also successfully complete Hifz with dedication." },
+      { q: "How much should I memorize daily?", a: "Start small with 3-5 lines per day and gradually increase as your memory strength grows." },
+      { q: "Is daily revision necessary?", a: "Yes, 'Sabqi' and 'Manzil' (revision) are critical to ensuring you don't forget previously memorized verses." }
+    ]
+  },
+  {
+    id: 4,
+    title: "How to Choose the Best Online Quran Academy (Parent's Guide)",
+    image: "/images/blog-choose-academy.webp",
+    date: "March 5, 2026",
+    seoDesc: "Choosing the right Quran school is critical for your child's success. Learn the 5 key factors every parent must check before enrolling.",
+    excerpt: "Finding the right academy for your child can be overwhelming. We break down the absolute essentials you must verify.",
+    content: [
+      { type: "p", text: "Choosing an online Quran academy is one of the most important decisions you will make for your child's spiritual education. How do you find the best [Online Quran classes for kids](/courses/qaida-basics)? Here is your checklist." },
+      { type: "h3", text: "1. Teacher Qualifications and Vetting" },
+      { type: "p", text: "Look for teachers with Ijazah and experience in teaching children. Ask if the academy does background checks." },
+      { type: "h2", text: "2. Trial Classes and Methodology" },
+      { type: "p", text: "Never pay upfront without a trial. See if the teacher is patient and uses engaging methods for kids." },
+      { type: "h2", text: "3. Flexibility vs consistency" },
+      { type: "p", text: "Ensure the academy can match your time zone (e.g., GST for UAE or GMT for UK) while maintaining a strict schedule." },
+      { type: "p", text: "Join the best [Online Quran classes in UAE](/quran-classes-uae/) and see the difference today." }
+    ],
+    faqs: [
+      { q: "What should I look for in a Quran teacher?", a: "Proper Tajweed certification (Ijazah), experience with the student's age group, and a patient teaching style." },
+      { q: "Are online Quran classes safe for children?", a: "Yes, reputable academies use secure platforms and many allow parents to monitor sessions." },
+      { q: "How much do online Quran classes cost?", a: "Prices typically range from $25 to $60 per month depending on the frequency of classes." }
+    ]
+  },
+  {
+    id: 5,
+    title: "The Ultimate Guide to Learning Quran for Adults",
+    image: "/images/blog-adult-quran.webp",
+    date: "March 8, 2026",
+    seoDesc: "Adults often hesitate to start learning Quran from basics. Our guide shows you why it's never too late and how to start effectively.",
+    excerpt: "It is never too late to learn the Book of Allah. This guide is tailored specifically for the challenges and strengths of adult learners.",
+    content: [
+      { type: "p", text: "Many adults feel shy or think it's 'too late' to learn Quran from scratch. In reality, adult learners often have better focus and dedication than children. Whether you want to learn [Quran Reading](/courses/quran-reading) or master Tajweed, we have a path for you." },
+      { type: "h2", text: "Overcoming the Psychological Barrier" },
+      { type: "p", text: "The Prophet (SAW) received revelation in his 40s. Age is a number, but sincerity is the key. Allah rewards the effort you put in." },
+      { type: "h3", text: "Step 1: Start with Noorani Qaida" },
+      { type: "p", text: "Don't rush to read verses. Master the alphabet and basic pronunciation (Makharij) first. This is the foundation of everything." },
+      { type: "h2", text: "Step 2: Consistent Small Windows" },
+      { type: "p", text: "Adults are busy. Instead of one long session, try 20-30 minutes of focused learning 3 times a week." },
+      { type: "p", text: "Start your journey today with our specialized [Online Quran classes for adults](/courses/quran-reading)." }
+    ],
+    faqs: [
+      { q: "Is it too late for an adult to start learning Quran?", a: "Never. Many of the Sahaba (companions) embraced Islam and learned the Quran in their adulthood." },
+      { q: "How often should adults have Quran lessons?", a: "3 days per week is ideal to maintain momentum while managing work and family life." },
+      { q: "Can I learn Tajweed while working a full-time job?", a: "Yes, our online classes are available 24/7 to fit any professional schedule." }
     ]
   }
 ];
 
 const LogoImage = ({ className }) => (
-  <img src="/images/almaas-online-quran-academy-logo.webp" alt="Almaas Online Quran Academy – Best Online Quran Academy for Kids and Adults" className={className} />
+  <img src="/images/almaas-online-quran-academy-logo.webp" alt="Almaas Online Quran Academy – Best Online Quran Academy for Kids and Adults" className={className} width="64" height="64" />
 );
 
 const XLogo = ({ className }) => (
@@ -685,11 +790,11 @@ const ReviewForm = ({ handleReviewSubmit, newReview, setNewReview, reviewStatus 
 const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigateTo, setShowPopup, pricingPlans, FAQS, BLOGS, reviews, activeFaq, setActiveFaq, handleReviewSubmit, newReview, setNewReview, reviewStatus, handleSubmit, formStatus, COURSES, selectedPricingCourse, setSelectedPricingCourse }) => {
   const orgSchema = {
     "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
+    "@type": "EducationOrganization",
     "name": "Almaas Online Quran Academy",
-    "url": "https://almaasonlinequranacademy.online",
-    "logo": "https://almaasonlinequranacademy.online/images/logo_v2.webp",
-    "description": "Learn Quran online with expert teachers. Tajweed, Hifz, and Islamic courses for kids and adults worldwide.",
+    "url": "https://www.almaasonlinequranacademy.online/",
+    "logo": "https://www.almaasonlinequranacademy.online/images/logo_v2.webp",
+    "description": "Almaas Online Quran Academy is a premier educational institution specialized in Tajweed, Hifz, and comprehensive Islamic studies for children and adults worldwide.",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+92-315-2267416",
@@ -718,19 +823,21 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
     <div className="min-h-screen">
       <Helmet>
         <title>Online Quran Academy | Learn Quran with Tajweed &amp; Hifz</title>
-        <meta name="description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults. Tajweed, Hifz &amp; more. Start your 3-day free trial today!" />
-        <link rel="canonical" href="https://almaasonlinequranacademy.online/" />
+        <meta name="description" content="Learn Quran online with expert teachers. Online quran classes for adults, quran reading for beginners, and tajweed course for ladies. Start your 3-day free trial today!" />
+        <link rel="canonical" href="https://www.almaasonlinequranacademy.online/" />
         <meta name="robots" content="index, follow" />
+        <meta name="keywords" content="online quran classes, learn quran online, quran classes for kids, online quran classes for adults, quran reading for beginners, tajweed course for ladies" />
         <meta property="og:title" content="Online Quran Academy | Learn Quran with Tajweed &amp; Hifz" />
-        <meta property="og:description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults. Tajweed, Hifz &amp; more." />
-        <meta property="og:image" content="https://almaasonlinequranacademy.online/images/almaas-online-quran-academy-logo.webp" />
-        <meta property="og:url" content="https://almaasonlinequranacademy.online/" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Online Quran Academy | Learn Quran with Tajweed &amp; Hifz" />
-        <meta name="twitter:description" content="Learn Quran online with expert teachers. One-on-one classes for kids &amp; adults." />
-        <meta name="twitter:image" content="https://almaasonlinequranacademy.online/images/almaas-online-quran-academy-logo.webp" />
-        <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="/images/almaas-online-quran-academy-logo.webp?v=2" />
+        <meta property="og:description" content="Expert online Quran classes for kids and adults. One-on-one sessions, Tajweed, Hifz &amp; more. Flexible timings globaly." />
+        <meta property="og:image" content="https://www.almaasonlinequranacademy.online/images/almaas-online-quran-academy-logo.webp" />
+        <meta property="og:url" content="https://www.almaasonlinequranacademy.online/" />
+
+        {/* Advanced Hreflang Implementation */}
+        <link rel="alternate" hreflang="en-gb" href="https://www.almaasonlinequranacademy.online/online-quran-classes-uk/" />
+        <link rel="alternate" hreflang="en-us" href="https://www.almaasonlinequranacademy.online/online-quran-classes-usa/" />
+        <link rel="alternate" hreflang="en-ae" href="https://www.almaasonlinequranacademy.online/online-quran-classes-uae/" />
+        <link rel="alternate" hreflang="x-default" href="https://www.almaasonlinequranacademy.online/" />
+
         <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
@@ -1258,7 +1365,23 @@ const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
         <section className="bg-white rounded-3xl p-8 md:p-12 shadow-lg border border-navy/5">
           <h2 className="text-3xl font-black text-navy mb-4">About This Course</h2>
           <p className="text-xl text-navy/80 italic font-medium mb-6 leading-relaxed">{course.shortDesc}</p>
-          <p className="text-darkgray leading-relaxed text-lg">{course.fullDesc}</p>
+          <div className="text-darkgray leading-relaxed text-lg">
+            {course.fullDesc.split(/(\[.*?\]\(.*?\))/g).map((part, i) => {
+              const match = part.match(/\[(.*?)\]\((.*?)\)/);
+              if (match) {
+                return (
+                  <button
+                    key={i}
+                    onClick={() => navigateTo(match[2])}
+                    className="text-navy font-bold underline decoration-gold/50 hover:text-gold transition-all"
+                  >
+                    {match[1]}
+                  </button>
+                );
+              }
+              return part;
+            })}
+          </div>
         </section>
 
         {/* Who It's For */}
@@ -1419,23 +1542,42 @@ const PricingPage = ({ pricingPlans, navigateTo, setShowPopup, COURSES, selected
   </div>
 );
 
-const FAQPage = ({ FAQS, activeFaq, setActiveFaq, navigateTo }) => (
-  <div className="min-h-screen bg-offwhite">
-    <div className="pt-24 pb-20 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-5xl font-black text-navy mb-12 text-center">Frequently Asked Questions</h1>
-        <div className="space-y-4">
-          {FAQS.map((faq, idx) => (
-            <div key={idx} className="bg-white border-2 border-navy/10 rounded-2xl overflow-hidden shadow-sm">
-              <button onClick={() => setActiveFaq(activeFaq === idx ? null : idx)} className="w-full p-6 text-left flex justify-between items-center hover:bg-navy/5 transition"><span className="text-navy font-bold text-lg">{faq.q}</span> <ChevronDown className={`w-6 h-6 transform transition ${activeFaq === idx ? 'rotate-180' : ''}`} /></button>
-              {activeFaq === idx && <div className="px-6 pb-6 text-darkgray leading-relaxed border-t border-navy/5 pt-4">{faq.a}</div>}
-            </div>
-          ))}
+const FAQPage = ({ FAQS, activeFaq, setActiveFaq, navigateTo }) => {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": FAQS.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
+      }
+    }))
+  };
+
+  return (
+    <div className="min-h-screen bg-offwhite">
+      <Helmet>
+        <title>Frequently Asked Questions | Almaas Online Quran Academy</title>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
+      <div className="pt-24 pb-20 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-5xl font-black text-navy mb-12 text-center">Frequently Asked Questions</h1>
+          <div className="space-y-4">
+            {FAQS.map((faq, idx) => (
+              <div key={idx} className="bg-white border-2 border-navy/10 rounded-2xl overflow-hidden shadow-sm">
+                <button onClick={() => setActiveFaq(activeFaq === idx ? null : idx)} className="w-full p-6 text-left flex justify-between items-center hover:bg-navy/5 transition"><span className="text-navy font-bold text-lg">{faq.q}</span> <ChevronDown className={`w-6 h-6 transform transition ${activeFaq === idx ? 'rotate-180' : ''}`} /></button>
+                {activeFaq === idx && <div className="px-6 pb-6 text-darkgray leading-relaxed border-t border-navy/5 pt-4">{faq.a}</div>}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const BlogPage = ({ BLOGS, navigateTo }) => (
   <div className="min-h-screen bg-offwhite">
@@ -1447,7 +1589,9 @@ const BlogPage = ({ BLOGS, navigateTo }) => (
           {BLOGS.map(blog => (
             <article key={blog.id} className="bg-white border-2 border-navy/10 rounded-3xl p-8 hover:border-gold transition group shadow-lg">
               <div className="flex flex-col md:flex-row gap-8">
-                <div className="md:w-1/4 bg-navy rounded-2xl flex items-center justify-center group-hover:bg-gold transition-colors aspect-square"><Newspaper className="w-16 h-16 text-white" /></div>
+                <div className="md:w-1/4 bg-navy rounded-2xl overflow-hidden group-hover:shadow-2xl transition-all aspect-square border-4 border-navy/5">
+                  <img src={blog.image} alt={blog.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                </div>
                 <div className="md:w-3/4">
                   <span className="text-gold font-bold text-sm tracking-widest uppercase mb-2 block">{blog.date}</span>
                   <h2 className="text-3xl font-black text-navy mb-4 group-hover:text-gold transition-colors">{blog.title}</h2>
@@ -1468,21 +1612,68 @@ const BlogDetailPage = ({ BLOGS, navigateTo, setShowPopup }) => {
   const blog = BLOGS.find(b => b.id === parseInt(id));
   if (!blog) return <Navigate to="/blogs" />;
 
+  const faqSchema = blog.faqs ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": blog.faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.a
+      }
+    }))
+  } : null;
+
   return (
     <div className="min-h-screen bg-offwhite">
+      <Helmet>
+        <title>{blog.title} | Almaas Online Quran Academy</title>
+        <meta name="description" content={blog.seoDesc || blog.excerpt} />
+        <meta property="og:title" content={blog.title} />
+        <meta property="og:description" content={blog.excerpt} />
+        <meta property="og:image" content="https://www.almaasonlinequranacademy.online/images/almaas-online-quran-academy-logo.webp" />
+        {faqSchema && <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>}
+      </Helmet>
       <button onClick={() => navigateTo('/blogs')} className="fixed top-4 left-4 z-50 bg-navy text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg"><ArrowLeft className="w-4 h-4" /> Back to Blogs</button>
       <div className="pt-24 pb-20 px-4">
         <article className="max-w-3xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-2xl">
           <header className="mb-12 border-b pb-8"><span className="text-gold font-bold uppercase tracking-widest block mb-4">{blog.date}</span><h1 className="text-4xl md:text-5xl font-black text-navy leading-tight">{blog.title}</h1></header>
-          <div className="space-y-8">
+
+          <div className="space-y-8 blog-content">
             {blog.content.map((block, idx) => {
-              if (block.type === 'p') return <p key={idx} className="text-darkgray text-lg leading-relaxed">{block.text}</p>;
+              if (block.type === 'p') return (
+                <p key={idx} className="text-darkgray text-lg leading-relaxed">
+                  {block.text.split(/(\[.*?\]\(.*?\))/g).map((part, i) => {
+                    const match = part.match(/\[(.*?)\]\((.*?)\)/);
+                    if (match) return <button key={i} onClick={() => navigateTo(match[2])} className="text-navy font-bold underline decoration-gold/50 hover:text-gold transition-all">{match[1]}</button>;
+                    return part;
+                  })}
+                </p>
+              );
+              if (block.type === 'h2') return <h2 key={idx} className="text-3xl font-black text-navy mt-16 mb-6 pb-2 border-b-2 border-navy/5">{block.text}</h2>;
               if (block.type === 'h3') return <h3 key={idx} className="text-2xl font-black text-navy mt-12 mb-4">{block.text}</h3>;
               if (block.type === 'quote') return <div key={idx} className="bg-navy/5 border-l-4 border-gold p-8 my-8 italic"><p className="text-navy text-xl font-medium mb-2">{block.text}</p><cite className="text-darkgray/70 text-sm font-bold">— {block.source}</cite></div>;
               if (block.type === 'quran') return <div key={idx} className="bg-offwhite border-2 border-navy/10 rounded-2xl p-8 my-8 text-center"><p className="text-2xl font-black text-navy mb-4 italic" style={{ fontFamily: "'Amiri', serif" }}>“{block.text}”</p><p className="text-gold font-bold text-sm uppercase">{block.ref}</p></div>;
               return null;
             })}
           </div>
+
+          {/* Blog FAQs for Featured Snippets */}
+          {blog.faqs && (
+            <div className="mt-20 pt-12 border-t-2 border-navy/5">
+              <h2 className="text-3xl font-black text-navy mb-10 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                {blog.faqs.map((faq, i) => (
+                  <div key={i} className="bg-offwhite/50 p-8 rounded-2xl border border-navy/5">
+                    <h3 className="text-xl font-bold text-navy mb-4 flex gap-3"><span className="text-gold">Q:</span> {faq.q}</h3>
+                    <p className="text-darkgray leading-relaxed text-sm"><span className="text-navy font-bold">A:</span> {faq.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           <footer className="mt-16 pt-8 border-t text-center"><button onClick={() => setShowPopup(true)} className="bg-navy text-white px-10 py-4 rounded-xl font-black hover:scale-105 transition shadow-xl">Get Started with Your Demo</button></footer>
         </article>
       </div>
@@ -1730,10 +1921,37 @@ const TermsConditionsPage = () => (
   </div>
 );
 
-const RegionalLandingPage = ({ selectedRegion, REGION_CONFIGS, pricingPlans, navigateTo, setShowPopup, FAQS, activeFaq, setActiveFaq, reviews }) => {
+const RegionalLandingPage = ({ selectedRegion, REGION_CONFIGS, pricingPlans, navigateTo, setShowPopup, FAQS, activeFaq, setActiveFaq, reviews, COURSES_DETAILED }) => {
   const currentRegion = REGION_CONFIGS[selectedRegion] || REGION_CONFIGS['USA'];
+
+  const regionalSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationOrganization",
+    "name": `Almaas Online Quran Academy - ${currentRegion.name}`,
+    "url": `https://www.almaasonlinequranacademy.online/quran-classes-${currentRegion.name.toLowerCase()}/`,
+    "description": currentRegion.seoDesc,
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": currentRegion.name
+    }
+  };
+
   return (
     <div className="min-h-screen bg-offwhite">
+      <Helmet>
+        <title>{currentRegion.seoTitle || `Online Quran Classes in ${currentRegion.name} | Almaas Academy`}</title>
+        <meta name="description" content={currentRegion.seoDesc || `Join Almaas Academy for online Quran classes in ${currentRegion.name}. Flexible timings and expert teachers.`} />
+        <link rel="canonical" href={`https://www.almaasonlinequranacademy.online/quran-classes-${currentRegion.name.toLowerCase()}/`} />
+
+        {/* Advanced Hreflang Implementation */}
+        <link rel="alternate" hreflang="en-gb" href="https://www.almaasonlinequranacademy.online/quran-classes-uk/" />
+        <link rel="alternate" hreflang="en-us" href="https://www.almaasonlinequranacademy.online/quran-classes-usa/" />
+        <link rel="alternate" hreflang="en-ae" href="https://www.almaasonlinequranacademy.online/quran-classes-uae/" />
+        <link rel="alternate" hreflang="x-default" href="https://www.almaasonlinequranacademy.online/" />
+
+        <script type="application/ld+json">{JSON.stringify(regionalSchema)}</script>
+      </Helmet>
+
       {/* Hero Section */}
       <div className="pt-32 pb-20 px-4 bg-navy text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
@@ -1741,36 +1959,250 @@ const RegionalLandingPage = ({ selectedRegion, REGION_CONFIGS, pricingPlans, nav
           <div className="md:flex items-center gap-12">
             <div className="md:w-3/5">
               <div className="inline-block bg-gold text-navy px-4 py-1 rounded-full text-sm font-bold mb-6">Expert Quran Teachers available in {currentRegion.name}</div>
-              <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">Online Quran Classes in <span className="text-gold">{currentRegion.name}</span></h1>
-              <p className="text-xl mb-8 opacity-80 leading-relaxed max-w-2xl">One-on-one sessions, flexible timings for {currentRegion.timezones} time zones, and affordable pricing in {currentRegion.currency}.</p>
+              <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
+                {currentRegion.h1 || `Online Quran Classes in ${currentRegion.name}`}
+              </h1>
+              <p className="text-xl mb-8 opacity-80 leading-relaxed max-w-2xl">
+                Classes are scheduled according to your local <strong>{currentRegion.timezones}</strong> time zone. One-on-one sessions with affordable pricing in {currentRegion.currency}.
+              </p>
               <div className="flex flex-wrap gap-4 mb-10">
-                <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl backdrop-blur-sm border border-white/10"><Globe className="w-5 h-5 text-gold" /> <span>{currentRegion.timezones}</span></div>
-                <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl backdrop-blur-sm border border-white/10"><CreditCard className="w-5 h-5 text-gold" /> <span>Paid via {currentRegion.paymentMethods}</span></div>
+                <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl backdrop-blur-sm border border-white/10"><Globe className="w-5 h-5 text-gold" /> <span>Local Time: {currentRegion.timezones}</span></div>
+                <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl backdrop-blur-sm border border-white/10"><CreditCard className="w-5 h-5 text-gold" /> <span>Payment via {currentRegion.paymentMethods}</span></div>
               </div>
-              <button onClick={() => setShowPopup(true)} className="bg-gold text-navy px-8 py-4 rounded-xl font-black text-xl hover:scale-105 transition shadow-2xl">Get Your 3 Free Classes</button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button onClick={() => setShowPopup(true)} className="bg-gold text-navy px-8 py-4 rounded-xl font-black text-xl hover:scale-105 transition shadow-2xl">Start Your 3-Day Free Trial</button>
+                <a href="https://wa.me/923350277160" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-green-600 text-white px-8 py-4 rounded-xl font-black text-xl hover:scale-105 transition shadow-2xl">
+                  <MessageCircle className="w-6 h-6" /> WhatsApp Us
+                </a>
+              </div>
+            </div>
+            <div className="hidden md:block md:w-2/5 animate-floating">
+              <img src="/images/online-quran-reading-course.webp" alt={`Student in ${currentRegion.name} taking online Quran class`} className="rounded-3xl shadow-2xl border-4 border-gold/20" />
             </div>
           </div>
         </div>
       </div>
+
+      {/* Topic Cluster Resource Link */}
+      <div className="bg-gold/10 py-6 border-y border-gold/20">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+          <span className="text-navy font-bold flex items-center gap-2">
+            <Newspaper className="w-5 h-5 text-gold" />
+            New Learning Resource:
+          </span>
+          <p className="text-darkgray font-medium">
+            Discover the eternal rewards: <button onClick={() => navigateTo('/blog/1')} className="text-navy font-black underline decoration-gold/50 hover:text-gold transition-all cursor-pointer">10 Benefits of Learning the Quran (According to Quran & Hadith)</button>
+          </p>
+        </div>
+      </div>
+
       {/* Pricing Section */}
-      <div className="py-24 px-4">
+      <div className="py-24 px-4 bg-offwhite">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-black text-navy mb-4">Affordable Pricing for {currentRegion.name}</h2>
-            <p className="text-darkgray text-lg">Premium Quran education at local rates in {currentRegion.currency}</p>
+            <p className="text-darkgray text-lg">Premium Quran education at competitive rates in {currentRegion.currency}</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {pricingPlans.slice(0, 3).map((plan, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-3xl shadow-xl border border-navy/5 relative hover:border-gold transition flex flex-col h-full">
+              <div key={idx} className="bg-white p-8 rounded-3xl shadow-xl border border-navy/5 relative hover:border-gold transition flex flex-col h-full transform hover:-translate-y-2 duration-300">
                 {plan.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-navy text-white px-4 py-1 rounded-full text-sm font-bold">Best Value</span>}
                 <h3 className="text-xl font-black text-navy mb-4">{plan.name}</h3>
                 <div className="text-4xl font-black text-navy mb-6">{plan.price}<span className="text-sm opacity-60">/mo</span></div>
                 <ul className="space-y-3 mb-8 flex-1">
                   {plan.features.map((f, i) => <li key={i} className="flex items-center gap-2 text-darkgray text-sm"><CheckCircle className="w-4 h-4 text-gold" /> {f}</li>)}
+                  <li className="flex items-center gap-2 text-darkgray text-sm font-bold"><Clock className="w-4 h-4 text-navy" /> {currentRegion.timezones} Adjusted</li>
                 </ul>
-                <button onClick={() => setShowPopup(true)} className="w-full py-3 rounded-xl font-black bg-navy text-white mt-auto">Join in {currentRegion.name}</button>
+                <button onClick={() => setShowPopup(true)} className="w-full py-4 rounded-xl font-black bg-navy text-white mt-auto hover:bg-gold hover:text-navy transition-colors">Start Free Trial in {currentRegion.name}</button>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Courses Sneak Peek */}
+      <div className="py-24 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div className="max-w-2xl">
+              <h2 className="text-4xl font-black text-navy mb-4">Popular Courses in {currentRegion.name}</h2>
+              <p className="text-darkgray text-lg">From basic Qaida to advanced Tajweed and Hifz, we cover it all.</p>
+            </div>
+            <button onClick={() => navigateTo('/courses')} className="bg-navy/5 text-navy px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-navy hover:text-white transition">View All Courses <ChevronRight className="w-5 h-5" /></button>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {COURSES_DETAILED.slice(0, 4).map((course, idx) => (
+              <div key={idx} className="bg-offwhite rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition group pointer-events-auto cursor-pointer" onClick={() => navigateTo(`/courses/${course.slug}`)}>
+                <div className="h-48 overflow-hidden relative">
+                  <img src={course.image} alt={course.altText} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                  <div className="absolute top-4 right-4 bg-gold text-navy text-[10px] font-bold px-2 py-1 rounded uppercase">{course.level}</div>
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-navy mb-2 group-hover:text-gold transition-colors">{course.title}</h3>
+                  <div className="flex items-center gap-4 text-xs text-darkgray/70">
+                    <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {course.duration}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Regional Social Proof */}
+      <div className="py-24 px-4 bg-offwhite">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-black text-navy text-center mb-12">What Students in {currentRegion.name} Say</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {reviews.slice(0, 3).map((review, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-3xl shadow-lg border border-navy/5">
+                <div className="flex text-gold mb-4">
+                  {[...Array(review.rating)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
+                </div>
+                <p className="text-darkgray italic mb-6 leading-relaxed">"{review.text}"</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-navy/5 rounded-full flex items-center justify-center font-bold text-navy">{review.name[0]}</div>
+                  <div>
+                    <div className="font-bold text-navy">{review.name}</div>
+                    <div className="text-xs text-darkgray opacity-60">Verified Student • {currentRegion.name}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Regional FAQ */}
+      <div className="py-24 px-4 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-4xl font-black text-navy text-center mb-12">FAQs for Students in {currentRegion.name}</h2>
+          <div className="space-y-4">
+            {FAQS.slice(0, 6).map((faq, idx) => (
+              <div key={idx} className="border-2 border-navy/5 rounded-2xl overflow-hidden">
+                <button
+                  onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
+                  className="w-full flex items-center justify-between p-6 text-left hover:bg-navy/5 transition"
+                >
+                  <span className="font-bold text-navy pr-4">{faq.q}</span>
+                  <ChevronDown className={`w-5 h-5 text-gold transition-transform ${activeFaq === idx ? 'rotate-180' : ''}`} />
+                </button>
+                {activeFaq === idx && (
+                  <div className="p-6 bg-navy/5 border-t-2 border-white text-darkgray leading-relaxed">
+                    {faq.a.replace('available worldwide', `available in ${currentRegion.name}`).replace('local time zone', `${currentRegion.timezones} time zone`)}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Conversational FAQ for Voice Search */}
+        <div className="py-24 px-4 bg-offwhite">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-black text-navy mb-12 text-center underline decoration-gold/30">Common Questions from Parents & Students</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-white p-8 rounded-2xl shadow-sm border border-navy/5">
+                <h3 className="text-xl font-bold text-navy mb-4">What are the best online Quran classes for kids in the {currentRegion.name}?</h3>
+                <p className="text-darkgray leading-relaxed text-sm">Almaas Academy offers the highest-rated Quran classes for children in the {currentRegion.name}, featuring interactive lessons, progress tracking, and specialized child-friendly teaching methods.</p>
+              </div>
+              <div className="bg-white p-8 rounded-2xl shadow-sm border border-navy/5">
+                <h3 className="text-xl font-bold text-navy mb-4">How can I find a female Quran teacher in the {currentRegion.name} for my daughter?</h3>
+                <p className="text-darkgray leading-relaxed text-sm">We provide background-checked, highly qualified female Quran tutors for sisters and kids in the {currentRegion.name}. Classes are conducted in a secure and comfortable online environment.</p>
+              </div>
+              <div className="bg-white p-8 rounded-2xl shadow-sm border border-navy/5">
+                <h3 className="text-xl font-bold text-navy mb-4">How do I schedule Quran lessons around school hours in {currentRegion.timezones}?</h3>
+                <p className="text-darkgray leading-relaxed text-sm">Our academy operates 24/7, allowing you to book classes precisely during the evening or weekends in the {currentRegion.timezones} time zone, ensuring zero conflict with school or work.</p>
+              </div>
+              <div className="bg-white p-8 rounded-2xl shadow-sm border border-navy/5">
+                <h3 className="text-xl font-bold text-navy mb-4">Can adults start learning Quran from the basics in the {currentRegion.name}?</h3>
+                <p className="text-darkgray leading-relaxed text-sm">Yes, we have specialized 'New Muslim' and beginner courses designed specifically for adults in the {currentRegion.name} who wish to start their journey from Noorani Qaida.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Sticky CTA */}
+        <div className="lg:hidden fixed bottom-24 left-4 right-4 z-40">
+          <button
+            onClick={() => setShowPopup(true)}
+            className="w-full bg-gold text-navy py-4 rounded-xl font-black text-lg shadow-2xl flex items-center justify-center gap-2 animate-bounce border-2 border-navy/10"
+          >
+            <Star className="w-5 h-5 fill-current" /> Start 3-Day Free Trial
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const RamadanPage = ({ navigateTo, setShowPopup }) => {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const targetDate = new Date('March 18, 2026 00:00:00').getTime();
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      if (distance < 0) {
+        clearInterval(timer);
+        return;
+      }
+      setTimeLeft({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000)
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-offwhite pt-24 pb-20 px-4">
+      <Helmet>
+        <title>Intensive Online Ramadan Quran Classes 2026 – Register Now</title>
+        <meta name="description" content="Join our intensive online Ramadan Quran classes 2026. Special focus on Tajweed, Hifz, and spiritual growth. Online courses for kids and adults. 3-day free trial!" />
+        <link rel="canonical" href="https://almaasonlinequranacademy.online/ramadan-quran-classes/" />
+      </Helmet>
+
+      <div className="max-w-4xl mx-auto text-center">
+        <div className="bg-navy text-white rounded-3xl p-8 md:p-16 shadow-2xl relative overflow-hidden mb-12">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full -mr-32 -mt-32 blur-3xl opacity-50" />
+          <h1 className="text-4xl md:text-6xl font-black mb-6">Ramadan Intensive Program 2026</h1>
+          <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto italic font-medium">Capture the massive spike in search traffic during the Islamic holy months with our specialized intensive courses.</p>
+
+          <div className="grid grid-cols-4 gap-2 md:gap-4 max-w-xl mx-auto mb-12">
+            {Object.entries(timeLeft).map(([label, value]) => (
+              <div key={label} className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
+                <div className="text-2xl md:text-4xl font-black text-gold uppercase">{value}</div>
+                <div className="text-[8px] md:text-xs font-bold uppercase tracking-widest text-white/60 mt-1">{label}</div>
+              </div>
+            ))}
+          </div>
+
+          <button onClick={() => setShowPopup(true)} className="bg-gold text-navy px-8 py-4 md:px-12 md:py-5 rounded-xl font-black text-xl md:text-2xl hover:scale-105 transition shadow-2xl flex items-center gap-3 mx-auto">
+            Book Ramadan Free Trial
+          </button>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 text-left">
+          <div className="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm">
+            <h3 className="text-2xl font-black text-navy mb-4">Intensive Ramadan Courses</h3>
+            <p className="text-darkgray mb-6">Fast-track your Quran journey with daily sessions designed for spiritual growth during the holy month.</p>
+            <ul className="space-y-4">
+              <li className="flex items-center gap-3 text-sm font-medium"><CheckCircle className="w-5 h-5 text-gold flex-shrink-0" /> Daily Recitation Practice</li>
+              <li className="flex items-center gap-3 text-sm font-medium"><CheckCircle className="w-5 h-5 text-gold flex-shrink-0" /> Focus on Taraweeh Surahs</li>
+              <li className="flex items-center gap-3 text-sm font-medium"><CheckCircle className="w-5 h-5 text-gold flex-shrink-0" /> Deep Spiritual Reflection (Tafseer)</li>
+            </ul>
+          </div>
+          <div className="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm">
+            <h3 className="text-2xl font-black text-navy mb-4">Eid Quran Competitions</h3>
+            <p className="text-darkgray mb-6">Showcase your progress and win prizes in our annual Quran competition held towards the end of Ramadan.</p>
+            <ul className="space-y-4">
+              <li className="flex items-center gap-3 text-sm font-medium"><CheckCircle className="w-5 h-5 text-gold flex-shrink-0" /> Categories for all age groups</li>
+              <li className="flex items-center gap-3 text-sm font-medium"><CheckCircle className="w-5 h-5 text-gold flex-shrink-0" /> Certified judge evaluations</li>
+              <li className="flex items-center gap-3 text-sm font-medium"><CheckCircle className="w-5 h-5 text-gold flex-shrink-0" /> Achievement Certificates</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -2102,7 +2534,7 @@ const AlmaasQuranAcademy = () => {
         const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
         if (tz.includes('London') || tz.includes('Europe/London')) setSelectedRegion('UK');
         else if (tz.includes('Karachi') || tz.includes('Islamabad') || tz.includes('Asia/Karachi')) setSelectedRegion('Pakistan');
-        else if (tz.includes('Dubai') || tz.includes('Riyadh') || tz.includes('Qatar') || tz.includes('Asia/Dubai')) setSelectedRegion('Europe'); // Middle East often grouped or uses USD/EUR pricing patterns 
+        else if (tz.includes('Dubai') || tz.includes('Riyadh') || tz.includes('Qatar') || tz.includes('Asia/Dubai')) setSelectedRegion('Europe'); // Middle East often grouped or uses USD/EUR pricing patterns
         else if (tz.includes('America/New_York') || tz.includes('America/Chicago') || tz.includes('America/Los_Angeles')) setSelectedRegion('USA');
         else if (tz.includes('America/Toronto') || tz.includes('America/Vancouver')) setSelectedRegion('Canada');
         else if (tz.includes('Australia')) setSelectedRegion('Australia');
@@ -2273,24 +2705,10 @@ const AlmaasQuranAcademy = () => {
     }
 
     // Fallback to static selection logic if API fails or is loading
-    if (selectedRegion === 'UK') return `£${gbpPrice}`;
-    if (selectedRegion === 'USA') {
-      const usdRate = exchangeRates ? (exchangeRates['USD'] || 1.25) : 1.25;
-      return `$${Math.round(gbpPrice * usdRate)}`;
-    }
-    if (selectedRegion === 'Pakistan') {
-      const pkrRate = exchangeRates ? (exchangeRates['PKR'] || 350) : 350;
-      return `Rs ${Math.round(gbpPrice * pkrRate)}`;
-    }
-
-    const multipliers = { Canada: 1.7, Australia: 1.9, Europe: 1.15 };
-    const symbols = { Canada: 'C$', Australia: 'A$', Europe: '€' };
-
-    const mult = multipliers[selectedRegion] || 1;
-    const sym = symbols[selectedRegion] || '£';
-    const price = Math.round(gbpPrice * mult);
-
-    return `${sym}${price}`;
+    const config = REGION_CONFIGS[selectedRegion] || REGION_CONFIGS['USA'];
+    const rate = exchangeRates ? (exchangeRates[config.currency] || config.multiplier) : config.multiplier;
+    const price = Math.round(gbpPrice * rate);
+    return `${config.symbol}${price}`;
   };
 
   const currentTier = COURSE_TIER_MAPPING[selectedPricingCourse] || 1;
@@ -2398,6 +2816,12 @@ const AlmaasQuranAcademy = () => {
         <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
         <link rel="apple-touch-icon" href="/images/almaas-online-quran-academy-logo.webp?v=2" />
+
+        {/* Global Hreflang Tags for SEO */}
+        <link rel="alternate" hreflang="en-us" href="https://almaasonlinequranacademy.online/online-quran-classes-usa/" />
+        <link rel="alternate" hreflang="en-gb" href="https://almaasonlinequranacademy.online/online-quran-classes-uk/" />
+        <link rel="alternate" hreflang="en-ae" href="https://almaasonlinequranacademy.online/online-quran-classes-uae/" />
+        <link rel="alternate" hreflang="x-default" href="https://almaasonlinequranacademy.online/" />
       </Helmet>
       <Header scrolled={scrolled} menuOpen={menuOpen} setMenuOpen={setMenuOpen} navigateTo={navigateTo} setShowPopup={setShowPopup} />
 
@@ -2437,11 +2861,23 @@ const AlmaasQuranAcademy = () => {
             <Route path="/blog/:id" element={<BlogDetailPage BLOGS={BLOGS} navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
             <Route path="/reviews" element={<ReviewsPage reviews={reviews} loadingReviews={loadingReviews} navigateTo={navigateTo} handleReviewSubmit={handleReviewSubmit} newReview={newReview} setNewReview={setNewReview} reviewStatus={reviewStatus} />} />
             <Route path="/contact" element={<ContactPage handleSubmit={handleSubmit} formStatus={formStatus} courses={COURSES} navigateTo={navigateTo} />} />
+            <Route path="/ramadan-quran-classes" element={<RamadanPage navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
 
-            <Route path="/quran-classes-usa" element={<RegionalLandingPage selectedRegion="USA" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} />} />
-            <Route path="/quran-classes-uk" element={<RegionalLandingPage selectedRegion="UK" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} />} />
-            <Route path="/quran-classes-canada" element={<RegionalLandingPage selectedRegion="Canada" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} />} />
-            <Route path="/quran-classes-australia" element={<RegionalLandingPage selectedRegion="Australia" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} />} />
+            {/* Legacy Redirects for Regional Pages */}
+            <Route path="/online-quran-classes-usa" element={<Navigate to="/quran-classes-usa/" replace />} />
+            <Route path="/online-quran-classes-uk" element={<Navigate to="/quran-classes-uk/" replace />} />
+            <Route path="/online-quran-classes-uae" element={<Navigate to="/quran-classes-uae/" replace />} />
+
+            {/* Localized Landing Pages */}
+            <Route path="/quran-classes-usa/" element={<RegionalLandingPage selectedRegion="USA" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} COURSES_DETAILED={COURSES_DETAILED} />} />
+            <Route path="/quran-classes-uk/" element={<RegionalLandingPage selectedRegion="UK" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} COURSES_DETAILED={COURSES_DETAILED} />} />
+            <Route path="/quran-classes-uae/" element={<RegionalLandingPage selectedRegion="UAE" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} COURSES_DETAILED={COURSES_DETAILED} />} />
+
+            {/* Legacy/Other Regional Routes */}
+            <Route path="/quran-classes-usa" element={<Navigate to="/online-quran-classes-usa" replace />} />
+            <Route path="/quran-classes-uk" element={<Navigate to="/online-quran-classes-uk" replace />} />
+            <Route path="/quran-classes-canada" element={<RegionalLandingPage selectedRegion="Canada" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} COURSES_DETAILED={COURSES_DETAILED} />} />
+            <Route path="/quran-classes-australia" element={<RegionalLandingPage selectedRegion="Australia" REGION_CONFIGS={REGION_CONFIGS} pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} reviews={reviews} COURSES_DETAILED={COURSES_DETAILED} />} />
 
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />

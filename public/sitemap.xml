@@ -7,9 +7,9 @@
   <!-- ===== MAIN PAGES ===== -->
 
   <url>
-    <loc>https://almaasonlinequranacademy.online/</loc>
-    <lastmod>2026-02-26</lastmod>
-    <changefreq>daily</changefreq>
+    <loc>https://www.almaasonlinequranacademy.online/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
 
@@ -149,6 +149,36 @@
   <url>
     <loc>https://almaasonlinequranacademy.online/courses/essential-knowledge</loc>
     <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ===== REGIONAL LANDING PAGES ===== -->
+
+  <url>
+    <loc>https://www.almaasonlinequranacademy.online/quran-classes-usa/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.almaasonlinequranacademy.online/quran-classes-uk/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.almaasonlinequranacademy.online/quran-classes-uae/</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.almaasonlinequranacademy.online/ramadan-quran-classes/</loc>
+    <lastmod>2026-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

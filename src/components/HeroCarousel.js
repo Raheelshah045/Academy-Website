@@ -155,7 +155,10 @@ export default function HeroCarousel({ setShowPopup, navigateTo }) {
                                     src={slide.image}
                                     alt={slide.alt}
                                     loading={slide.lazy ? 'lazy' : 'eager'}
+                                    fetchPriority={idx === 0 ? "high" : "auto"}
                                     decoding="async"
+                                    width="1920"
+                                    height="1080"
                                     onLoad={() => setImagesLoaded((p) => ({ ...p, [idx]: true }))}
                                     style={{
                                         position: 'absolute',
