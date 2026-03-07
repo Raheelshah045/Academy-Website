@@ -602,7 +602,7 @@ const EnrollPopup = ({ showPopup, setShowPopup, handleSubmit, formStatus, COURSE
           </button>
           {formStatus.success && (
             <div className="p-3 bg-green-500/20 text-green-200 rounded-lg text-center font-bold text-sm">
-              Success! We will contact you soon.
+              Your request has been submitted. We will contact you soon.
             </div>
           )}
           {formStatus.error && (
