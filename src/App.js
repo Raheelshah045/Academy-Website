@@ -71,6 +71,26 @@ const REGION_CONFIGS = {
   'Pakistan': { name: 'Pakistan', currency: 'PKR', symbol: 'Rs ', timezones: 'PKT', paymentMethods: 'EasyPaisa/JazzCash/Bank', multiplier: 350, langCode: "en-pk" }
 };
 
+const COURSE_TIER_MAPPING = {
+  'qaida': 1, 'quran-reading': 1, 'tajweed': 1, 'hifz': 1,
+  'translation': 2, 'tafseer': 2, 'arabic': 2, 'seerat-un-nabi': 2, 'new-muslim': 2, 'farz-e-uloom': 2, 'short-shariah': 2,
+  'dars-e-nizami': 3
+};
+
+const TIER_PRICES_GBP = {
+  1: { "2 Days/Week": 20, "3 Days/Week": 25, "4 Days/Week": 30, "5 Days/Week": 35, "Weekend Special": 25 },
+  2: { "2 Days/Week": 25, "3 Days/Week": 30, "4 Days/Week": 35, "5 Days/Week": 40, "Weekend Special": 30 },
+  3: { "2 Days/Week": 50, "3 Days/Week": 60, "4 Days/Week": 70, "5 Days/Week": 80, "Weekend Special": 60 }
+};
+
+const getRegionalPrice = (gbpPrice, region, exchangeRates, REGION_CONFIGS) => {
+  const config = REGION_CONFIGS[region] || REGION_CONFIGS['USA'];
+  const currency = config.currency;
+  const symbol = config.symbol;
+  const rate = (exchangeRates && exchangeRates[currency]) ? exchangeRates[currency] : config.multiplier;
+  return `${symbol}${Math.round(gbpPrice * rate)}`;
+};
+
 const COURSES = [
   { title: "Qaida for Beginners", value: "qaida" },
   { title: "Quran Reading", value: "quran-reading" },
@@ -1687,75 +1707,79 @@ const BlogDetailPage = ({ BLOGS, navigateTo, setShowPopup }) => {
     </div>
   );
 };
-const ReviewsPage = ({ reviews, loadingReviews, navigateTo, handleReviewSubmit, newReview, setNewReview, reviewStatus }) => (
-  <div className="min-h-screen bg-offwhite">
-    <div className="pt-24 pb-20 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-5xl font-black text-navy mb-4 text-center">Public Reviews</h1>
-        <p className="text-darkgray text-lg text-center mb-12">What our students and parents say about Almaas Academy</p>
-        {loadingReviews && (
-          <div className="flex justify-center py-12"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-navy"></div></div>
-        )}
-        <div className="grid gap-6">
-          {!loadingReviews && reviews.map((review) => (
-            <div key={review.id} className="bg-white p-8 rounded-3xl shadow-lg border border-navy/5">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-navy">{review.name}</h3>
-                  <div className="flex text-gold mt-1">
-                    {[...Array(5)].map((_, i) => (<Star key={i} className={`w-4 h-4 ${i < review.rating ? 'fill-gold' : 'text-gray-300'}`} />))}
-                  </div>
-                </div>
-                <span className="text-darkgray/50 text-sm font-medium">{review.date}</span>
-              </div>
-              <p className="text-darkgray text-lg italic leading-relaxed">"{review.text}"</p>
-            </div>
-          ))}
-        </div>
-        <div className="mt-16 bg-navy text-white p-12 rounded-3xl text-center mb-12">
-          <h2 className="text-3xl font-black mb-4">Share Your Experience</h2>
-          <p className="mb-8 opacity-80">Help others by sharing your journey with Almaas Academy</p>
-          <button onClick={() => { const element = document.getElementById('review-form'); if (element) element.scrollIntoView({ behavior: 'smooth' }); }} className="bg-gold text-navy px-8 py-4 rounded-xl font-black hover:bg-gold/90 transition shadow-xl">Write a Review</button>
-        </div>
+const ReviewsPage = ({ reviews, loadingReviews, navigateTo, handleReviewSubmit, newReview, setNewReview, reviewStatus, selectedRegion, REGION_CONFIGS }) => {
+  const currentRegion = REGION_CONFIGS[selectedRegion] || REGION_CONFIGS['USA'];
 
-        {/* Reviews Section */}
-        <section className="py-24 px-4 bg-offwhite/50 border-t border-navy/5">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-black mb-4">What Students in <span className="text-navy">{currentRegion.name}</span> Say</h2>
-              <div className="flex justify-center text-gold gap-1 mb-4">
-                {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-gold" />)}
-              </div>
-              <p className="text-darkgray text-lg font-medium">Real feedback from your local community</p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              {[...reviews]
-                .sort((a, b) => (a.location === currentRegion.name ? -1 : b.location === currentRegion.name ? 1 : 0))
-                .slice(0, 3)
-                .map((review) => (
-                  <div key={review.id} className="bg-white p-8 rounded-3xl shadow-xl border border-navy/5 flex flex-col hover:border-gold transition-colors duration-300">
-                    <div className="flex text-gold mb-4">
-                      {[...Array(5)].map((_, i) => <Star key={i} className={`w-4 h-4 ${i < review.rating ? 'fill-gold' : 'text-gray-300'}`} />)}
-                    </div>
-                    <p className="text-darkgray italic mb-6 flex-1 text-lg">"{review.text}"</p>
-                    <div className="flex items-center justify-between border-t border-navy/5 pt-4">
-                      <div>
-                        <span className="font-bold text-navy block">{review.name}</span>
-                        <span className="text-xs text-gold font-bold">{review.location || 'Student'}</span>
-                      </div>
-                      <span className="text-xs text-darkgray/50">{review.date}</span>
+  return (
+    <div className="min-h-screen bg-offwhite">
+      <div className="pt-24 pb-20 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-5xl font-black text-navy mb-4 text-center">Public Reviews</h1>
+          <p className="text-darkgray text-lg text-center mb-12">What our students and parents say about Almaas Academy</p>
+          {loadingReviews && (
+            <div className="flex justify-center py-12"><div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-navy"></div></div>
+          )}
+          <div className="grid gap-6">
+            {!loadingReviews && reviews.map((review) => (
+              <div key={review.id} className="bg-white p-8 rounded-3xl shadow-lg border border-navy/5">
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-navy">{review.name}</h3>
+                    <div className="flex text-gold mt-1">
+                      {[...Array(5)].map((_, i) => (<Star key={i} className={`w-4 h-4 ${i < review.rating ? 'fill-gold' : 'text-gray-300'}`} />))}
                     </div>
                   </div>
-                ))}
-            </div>
+                  <span className="text-darkgray/50 text-sm font-medium">{review.date}</span>
+                </div>
+                <p className="text-darkgray text-lg italic leading-relaxed">"{review.text}"</p>
+              </div>
+            ))}
           </div>
-        </section>
-        {/* Review Form right here on the reviews page */}
-        <ReviewForm handleReviewSubmit={handleReviewSubmit} newReview={newReview} setNewReview={setNewReview} reviewStatus={reviewStatus} />
+          <div className="mt-16 bg-navy text-white p-12 rounded-3xl text-center mb-12">
+            <h2 className="text-3xl font-black mb-4">Share Your Experience</h2>
+            <p className="mb-8 opacity-80">Help others by sharing your journey with Almaas Academy</p>
+            <button onClick={() => { const element = document.getElementById('review-form'); if (element) element.scrollIntoView({ behavior: 'smooth' }); }} className="bg-gold text-navy px-8 py-4 rounded-xl font-black hover:bg-gold/90 transition shadow-xl">Write a Review</button>
+          </div>
+
+          {/* Reviews Section */}
+          <section className="py-24 px-4 bg-offwhite/50 border-t border-navy/5">
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-black mb-4">What Students in <span className="text-navy">{currentRegion.name}</span> Say</h2>
+                <div className="flex justify-center text-gold gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-gold" />)}
+                </div>
+                <p className="text-darkgray text-lg font-medium">Real feedback from your local community</p>
+              </div>
+              <div className="grid md:grid-cols-3 gap-8 mb-12">
+                {[...reviews]
+                  .sort((a, b) => (a.location === currentRegion.name ? -1 : b.location === currentRegion.name ? 1 : 0))
+                  .slice(0, 3)
+                  .map((review) => (
+                    <div key={review.id} className="bg-white p-8 rounded-3xl shadow-xl border border-navy/5 flex flex-col hover:border-gold transition-colors duration-300">
+                      <div className="flex text-gold mb-4">
+                        {[...Array(5)].map((_, i) => <Star key={i} className={`w-4 h-4 ${i < review.rating ? 'fill-gold' : 'text-gray-300'}`} />)}
+                      </div>
+                      <p className="text-darkgray italic mb-6 flex-1 text-lg">"{review.text}"</p>
+                      <div className="flex items-center justify-between border-t border-navy/5 pt-4">
+                        <div>
+                          <span className="font-bold text-navy block">{review.name}</span>
+                          <span className="text-xs text-gold font-bold">{review.location || 'Student'}</span>
+                        </div>
+                        <span className="text-xs text-darkgray/50">{review.date}</span>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </section>
+          {/* Review Form right here on the reviews page */}
+          <ReviewForm handleReviewSubmit={handleReviewSubmit} newReview={newReview} setNewReview={setNewReview} reviewStatus={reviewStatus} />
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const ContactPage = ({ handleSubmit, formStatus, courses, navigateTo }) => (
   <div className="min-h-screen bg-offwhite">
@@ -2716,18 +2740,6 @@ const AlmaasQuranAcademy = () => {
 
   const [selectedPricingCourse, setSelectedPricingCourse] = useState('qaida');
 
-  const COURSE_TIER_MAPPING = {
-    'qaida': 1, 'quran-reading': 1, 'tajweed': 1, 'hifz': 1,
-    'translation': 2, 'tafseer': 2, 'arabic': 2, 'seerat-un-nabi': 2, 'new-muslim': 2, 'farz-e-uloom': 2, 'short-shariah': 2,
-    'dars-e-nizami': 3
-  };
-
-  const TIER_PRICES_GBP = {
-    1: { "2 Days/Week": 20, "3 Days/Week": 25, "4 Days/Week": 30, "5 Days/Week": 35, "Weekend Special": 25 },
-    2: { "2 Days/Week": 25, "3 Days/Week": 30, "4 Days/Week": 35, "5 Days/Week": 40, "Weekend Special": 30 },
-    3: { "2 Days/Week": 50, "3 Days/Week": 60, "4 Days/Week": 70, "5 Days/Week": 80, "Weekend Special": 60 }
-  };
-
   const getPrice = (gbpPrice) => {
     // If we have dynamic location data and exchange rates, use them!
     if (locationData && exchangeRates) {
@@ -2901,7 +2913,7 @@ const AlmaasQuranAcademy = () => {
             <Route path="/faq" element={<FAQPage FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} navigateTo={navigateTo} />} />
             <Route path="/blogs" element={<BlogPage BLOGS={BLOGS} navigateTo={navigateTo} />} />
             <Route path="/blog/:id" element={<BlogDetailPage BLOGS={BLOGS} navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
-            <Route path="/reviews" element={<ReviewsPage reviews={reviews} loadingReviews={loadingReviews} navigateTo={navigateTo} handleReviewSubmit={handleReviewSubmit} newReview={newReview} setNewReview={setNewReview} reviewStatus={reviewStatus} />} />
+            <Route path="/reviews" element={<ReviewsPage reviews={reviews} loadingReviews={loadingReviews} navigateTo={navigateTo} handleReviewSubmit={handleReviewSubmit} newReview={newReview} setNewReview={setNewReview} reviewStatus={reviewStatus} selectedRegion={selectedRegion} REGION_CONFIGS={REGION_CONFIGS} />} />
             <Route path="/contact" element={<ContactPage handleSubmit={handleSubmit} formStatus={formStatus} courses={COURSES} navigateTo={navigateTo} />} />
             <Route path="/ramadan-quran-classes" element={<RamadanPage navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
 
