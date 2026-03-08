@@ -820,14 +820,9 @@ const TrustCredibilitySection = ({ selectedRegion, REGION_CONFIGS }) => {
       desc: "Our teachers hold multiple Ijazahs in Quran recitation and Tajweed from world-renowned scholars, ensuring authentic learning."
     },
     {
-      icon: BookOpen,
-      title: "Graduates of Al-Azhar / Wifaq ul Madaris",
-      desc: "Educated at the world's leading Islamic universities and seminaries, providing deep scholarly and linguistic expertise."
-    },
-    {
       icon: MessageCircle,
-      title: "Fluent English & Arabic Speakers",
-      desc: "Bridging the gap with native-level English fluency combined with deep Arabic mastery for clear, effective instruction."
+      title: "Fluent English Speakers",
+      desc: "Our tutors are native-level English speakers, ensuring clear communication and effective instruction for students worldwide."
     }
   ];
 
@@ -845,7 +840,7 @@ const TrustCredibilitySection = ({ selectedRegion, REGION_CONFIGS }) => {
           </div>
         )}
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
           {credentials.map((cred, idx) => {
             const Icon = cred.icon;
             return (
