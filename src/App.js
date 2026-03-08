@@ -870,7 +870,7 @@ const MeetOurTeam = () => {
       link: "https://raheeljamal.vercel.app"
     },
     {
-      name: "Hafiz Mohammed Huzaifa Ansari",
+      name: "Hafiz Muhammad Huzaifa Ansari",
       role: "Aalim & Arabic Specialist",
       bio: "Aalim and Hafiz-ul-Quran with eight years of experience. Proficient in Arabic teaching and Shariah courses, he brings deep academic weight. Currently pursuing CMA qualifications.",
       image: "/images/team/huzaifa.webp"
