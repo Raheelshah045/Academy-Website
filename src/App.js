@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import LazySection from './components/LazySection';
 import HeroCarousel from './components/HeroCarousel';
-import { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Mail, Globe, Shield, CreditCard, UserPlus, Newspaper, ChevronDown, Facebook, Instagram, Youtube, Linkedin, ArrowLeft, Bot, Sparkles, Send } from 'lucide-react';
+import { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Mail, Globe, Shield, CreditCard, UserPlus, Newspaper, ChevronDown, Facebook, Instagram, Youtube, Linkedin, ArrowLeft, Bot, Sparkles, Send, ExternalLink } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import { Routes, Route, useNavigate, useLocation, useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -809,7 +809,131 @@ const ReviewForm = ({ handleReviewSubmit, newReview, setNewReview, reviewStatus 
   </div>
 );
 
-const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigateTo, setShowPopup, pricingPlans, FAQS, BLOGS, reviews, activeFaq, setActiveFaq, handleReviewSubmit, newReview, setNewReview, reviewStatus, handleSubmit, formStatus, COURSES, selectedPricingCourse, setSelectedPricingCourse }) => {
+const TrustCredibilitySection = ({ selectedRegion, REGION_CONFIGS }) => {
+  const currentRegion = REGION_CONFIGS[selectedRegion] || REGION_CONFIGS['USA'];
+  const isWesternMarket = ['UK', 'USA', 'Canada', 'Australia'].includes(currentRegion.name);
+
+  const credentials = [
+    {
+      icon: Award,
+      title: "Ijazah Certified Tutors",
+      desc: "Our teachers hold multiple Ijazahs in Quran recitation and Tajweed from world-renowned scholars, ensuring authentic learning."
+    },
+    {
+      icon: BookOpen,
+      title: "Graduates of Al-Azhar / Wifaq ul Madaris",
+      desc: "Educated at the world's leading Islamic universities and seminaries, providing deep scholarly and linguistic expertise."
+    },
+    {
+      icon: MessageCircle,
+      title: "Fluent English & Arabic Speakers",
+      desc: "Bridging the gap with native-level English fluency combined with deep Arabic mastery for clear, effective instruction."
+    }
+  ];
+
+  return (
+    <section className="py-24 px-4 bg-white border-y border-navy/5 overflow-hidden">
+      <div className="max-w-7xl mx-auto text-center">
+        <div className="inline-block bg-navy/5 text-navy px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6">Expertise & Qualification</div>
+        <h2 className="text-4xl md:text-5xl font-black text-navy mb-4">Highly Qualified & Vetted Tutors</h2>
+        <p className="text-darkgray text-lg mb-16 max-w-2xl mx-auto">We hand-pick our teachers to ensure the highest standards of E-E-A-T (Experience, Expertise, Authoritativeness, and Trustworthiness) for your family.</p>
+
+        {isWesternMarket && (
+          <div className="mb-16 inline-flex flex-wrap items-center justify-center gap-4 bg-gold/5 border-2 border-gold/20 p-2 sm:p-1 pr-6 rounded-3xl sm:rounded-full text-navy font-black text-sm md:text-base group hover:border-gold/40 transition-colors">
+            <div className="w-10 h-10 bg-gold rounded-full flex items-center justify-center text-navy shadow-lg"><Shield className="w-5 h-5" /></div>
+            <span className="py-2">Tutors specialized in Western Student Pedagogy – 100% English Medium Instruction</span>
+          </div>
+        )}
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {credentials.map((cred, idx) => {
+            const Icon = cred.icon;
+            return (
+              <div key={idx} className="bg-offwhite/50 p-10 rounded-[40px] border-2 border-transparent hover:border-gold/30 transition-all duration-300 shadow-sm hover:shadow-xl group relative overflow-hidden text-center">
+                <div className="absolute -right-4 -top-4 w-24 h-24 bg-gold/5 rounded-full blur-2xl group-hover:bg-gold/10 transition-colors"></div>
+                <div className="w-20 h-20 bg-navy rounded-3xl flex items-center justify-center mb-8 mx-auto transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                  <Icon className="w-10 h-10 text-gold" />
+                </div>
+                <h3 className="text-2xl font-black text-navy mb-4">{cred.title}</h3>
+                <p className="text-darkgray leading-relaxed text-sm md:text-base">{cred.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const MeetOurTeam = () => {
+  const team = [
+    {
+      name: "Hafiz Syed Raheel Shah",
+      role: "Founder & CEO",
+      bio: "Hafiz-ul-Quran with eight years of teaching experience. Serving as Founder and CEO, he combines traditional scholarship with technical expertise, graduating in Computer Science from SZABIST University.",
+      image: "/images/team/raheel.webp",
+      link: "https://raheeljamal.vercel.app"
+    },
+    {
+      name: "Hafiz Mohammed Huzaifa Ansari",
+      role: "Aalim & Arabic Specialist",
+      bio: "Aalim and Hafiz-ul-Quran with eight years of experience. Proficient in Arabic teaching and Shariah courses, he brings deep academic weight. Currently pursuing CMA qualifications.",
+      image: "/images/team/huzaifa.webp"
+    },
+    {
+      name: "Hafiz Usaid Siddiqui",
+      role: "Senior Manager & Trainer",
+      bio: "Hafiz-ul-Quran with five years of experience. Worked as a tutor, trainer, and senior manager in various online academies, overseeing pedagogical quality and staff training.",
+      image: "/images/team/usaid.webp"
+    },
+    {
+      name: "Hafiz Syed Subhan Shah",
+      role: "Senior Quran Tutor",
+      bio: "Hafiz-ul-Quran with five years of specialized experience. Having taught in numerous online academies, he brings a patient and effective approach to one-on-one student mentorship.",
+      image: "/images/team/subhan.webp"
+    }
+  ];
+
+  return (
+    <section className="py-24 px-4 bg-offwhite border-b border-navy/5">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <div className="inline-block bg-gold/10 text-gold px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6">Expert Faculty</div>
+          <h2 className="text-4xl md:text-5xl font-black text-navy mb-4">Meet Our <span className="text-navy opacity-50">Expert</span> <span className="text-gold">Leadership</span></h2>
+          <p className="text-darkgray text-lg max-w-2xl mx-auto">Expert educators with years of experience in conventional and digital Islamic scholarship.</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {team.map((member, idx) => (
+            <div key={idx} className="bg-white rounded-[40px] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 group border-2 border-transparent hover:border-gold/20 flex flex-col h-full">
+              <div className="h-80 bg-white relative flex items-center justify-center border-b border-navy/5 overflow-hidden">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                />
+              </div>
+              <div className="p-8 flex flex-col flex-1">
+                <div className="text-gold font-bold text-xs uppercase tracking-widest mb-2">{member.role}</div>
+                <h3 className="text-navy font-black text-xl mb-4 leading-tight">{member.name}</h3>
+                <p className="text-darkgray text-sm leading-relaxed mb-6 opacity-70 flex-1">{member.bio}</p>
+                {member.link && (
+                  <div className="mt-auto">
+                    <a href={member.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-navy font-black text-sm hover:text-gold transition-colors">
+                      View Portfolio <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigateTo, setShowPopup, pricingPlans, FAQS, BLOGS, reviews, activeFaq, setActiveFaq, handleReviewSubmit, newReview, setNewReview, reviewStatus, handleSubmit, formStatus, COURSES, selectedPricingCourse, setSelectedPricingCourse, selectedRegion, REGION_CONFIGS }) => {
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "EducationOrganization",
@@ -1033,6 +1157,12 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
           </div>
         </div>
       </section>
+
+      {/* Trust & Credibility Section */}
+      <TrustCredibilitySection selectedRegion={selectedRegion} REGION_CONFIGS={REGION_CONFIGS} />
+
+      {/* Meet Our Team Section */}
+      <MeetOurTeam />
 
       {/* ===== BELOW-THE-FOLD: All wrapped in LazySection — only renders when user scrolls near ===== */}
       <LazySection rootMargin="150px">
@@ -2119,6 +2249,12 @@ const RegionalLandingPage = ({ selectedRegion, REGION_CONFIGS, pricingPlans: glo
         </div>
       </div>
 
+      {/* Trust & Credibility Section */}
+      <TrustCredibilitySection selectedRegion={selectedRegion} REGION_CONFIGS={REGION_CONFIGS} />
+
+      {/* Meet Our Team Section */}
+      <MeetOurTeam />
+
       {/* Regional Social Proof */}
       <div className="py-24 px-4 bg-offwhite">
         <div className="max-w-7xl mx-auto">
@@ -2905,6 +3041,8 @@ const AlmaasQuranAcademy = () => {
                 COURSES={COURSES}
                 selectedPricingCourse={selectedPricingCourse}
                 setSelectedPricingCourse={setSelectedPricingCourse}
+                selectedRegion={selectedRegion}
+                REGION_CONFIGS={REGION_CONFIGS}
               />
             } />
             <Route path="/courses" element={<CoursesPage COURSES_DETAILED={COURSES_DETAILED} navigateTo={navigateTo} />} />
