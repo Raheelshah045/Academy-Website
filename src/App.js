@@ -2874,20 +2874,19 @@ const AlmaasQuranAcademy = () => {
   const getPrice = (gbpPrice) => {
     // If we have dynamic location data and exchange rates, use them!
     if (locationData && exchangeRates) {
-      const currency = locationData.currency;
-      const symbol = locationData.currency_symbol || '£';
-      const rate = exchangeRates[currency] || 1;
-
-      const convertedPrice = Math.round(gbpPrice * rate);
-
       const specialSymbols = {
         'GBP': '£', 'USD': '$', 'CAD': 'C$', 'AUD': 'A$', 'EUR': '€', 'NZD': 'NZ$',
         'PKR': 'Rs ', 'INR': '₹', 'BDT': '৳',
         'AED': 'Dhs ', 'SAR': 'SAR ', 'QAR': 'QAR ', 'KWD': 'KD ', 'OMR': 'OMR ', 'BHD': 'BD ',
         'MYR': 'RM ', 'IDR': 'Rp ',
       };
-      const displaySymbol = specialSymbols[currency] || symbol;
 
+      // If detected currency is not in our list, default to USD
+      const activeCurrency = specialSymbols[locationData.currency] ? locationData.currency : 'USD';
+      const displaySymbol = specialSymbols[activeCurrency];
+      const rate = exchangeRates[activeCurrency] || (activeCurrency === 'USD' ? 1.25 : 1);
+
+      const convertedPrice = Math.round(gbpPrice * rate);
       return `${displaySymbol}${convertedPrice}`;
     }
 
