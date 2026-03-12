@@ -8,7 +8,7 @@ const SLIDES = [
         image: '/images/hero-slide-1-student.webp',
         alt: 'A young Muslim student learning Quran online with a tablet – Almaas Online Quran Academy',
         label: 'For Every Child',
-        heading: 'Where Every Child\nBegins Their Quran Journey',
+        heading: 'Leading Online Quran Academy\nfor Kids and Adults',
         subtext: 'One-on-one live classes for kids as young as 4. Patient, qualified teachers with structured, engaging lessons.',
         ctaPrimary: { text: 'Start Free Trial', action: 'popup' },
         ctaSecondary: { text: 'View Courses', action: 'courses' },

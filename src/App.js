@@ -531,6 +531,52 @@ const BLOGS = [
       { q: "How often should adults have Quran lessons?", a: "3 days per week is ideal to maintain momentum while managing work and family life." },
       { q: "Can I learn Tajweed while working a full-time job?", a: "Yes, our online classes are available 24/7 to fit any professional schedule." }
     ]
+  },
+  {
+    id: 6,
+    title: "How to Choose the Best Online Quran Tutor in Canada?",
+    image: "/images/blog-canada-tutor.webp",
+    date: "March 11, 2026",
+    seoDesc: "Finding a qualified Quran teacher in Canada involves more than just a simple search. Learn the key factors to ensure your child's success.",
+    excerpt: "Finding the right mentor for your child's spiritual journey is a significant responsibility for Muslim parents in Canada.",
+    content: [
+      { type: "p", text: "Finding the right mentor for your child's spiritual journey is a significant responsibility for Muslim parents in Canada. With so many options available, how do you ensure you are choosing a qualified [Online Quran Tutor](/contact)? Here is our expert guide for Canadian families." },
+      { type: "h3", text: "1. Look for Certified Professionals (Ijazah)" },
+      { type: "p", text: "The most important factor is the teacher's qualification. Ensure the tutor has an 'Ijazah' — a traditional certification that authorizes them to teach the Quran with proper Tajweed. This ensures your child learns from a source of authentic knowledge." },
+      { type: "h3", text: "2. Time Zone Compatibility" },
+      { type: "p", text: "Canada spans multiple time zones (EST, MST, PST). You need an academy that offers 24/7 flexibility so that classes can happen after school hours or on weekends without disrupting your family's routine." },
+      { type: "h3", text: "3. Fluent English Communication" },
+      { type: "p", text: "For children born and raised in Canada, a tutor who is a [Fluent English Speaker](/reviews) is essential. Clear communication helps children understand complex Islamic concepts and stay engaged during the session." },
+      { type: "p", text: "Ready to find the perfect teacher? Start your [3-Day Free Trial](/) with our expert tutors today." }
+    ],
+    faqs: [
+      { q: "Are there female Quran teachers available for kids in Canada?", a: "Yes, we have a dedicated team of female Quran teachers for sisters and children, ensuring a comfortable learning environment." },
+      { q: "What is the best time for Quran classes in Canada?", a: "Most parents prefer evening slots (between 5 PM to 8 PM local time) or weekend mornings." },
+      { q: "Can I monitor my child's progress?", a: "Absolutely. We provide regular monthly feedback and parents are encouraged to check in on sessions." }
+    ]
+  },
+  {
+    id: 7,
+    title: "Benefits of Tajweed for Kids Living in Western Countries",
+    image: "/images/blog-tajweed-western-kids.webp",
+    date: "March 12, 2026",
+    seoDesc: "In a fast-paced Western environment, Tajweed provides more than just pronunciation rules — it builds identity and love for the Quran.",
+    excerpt: "For Muslim children growing up in the West, connecting with the Quran in its original form is vital for preserving their faith and identity.",
+    content: [
+      { type: "p", text: "For Muslim children growing up in Western countries like the USA, UK, and Canada, connecting with the Quran in its original form is vital. [Learning Tajweed](/courses/tajweed-rules) is not just about pronunciation; it's about preserving a sacred tradition." },
+      { type: "h3", text: "1. Preserving Traditional Recitation" },
+      { type: "p", text: "Tajweed ensures that the Holy Quran is recited exactly as it was revealed to the Prophet ﷺ. In a non-Arabic environment, these rules prevent the loss of correct pronunciation and protect the original meanings of the verses." },
+      { type: "h3", text: "2. Enhancing Arabic Phonetics" },
+      { type: "p", text: "Children who learn Tajweed at a young age develop an incredible ear for Arabic phonetics. This makes it significantly easier for them to learn Arabic as a second language later in life, as they are already comfortable with its unique sounds." },
+      { type: "h3", text: "3. Building Spiritual Confidence" },
+      { type: "p", text: "When a child knows they are reciting correctly, their confidence in [Salah (Prayer)](/courses/qaida-basics) grows. They take pride in their Islamic identity and feel a deeper spiritual connection to the message of Allah." },
+      { type: "p", text: "Instill a lifelong love for the Quran in your child's heart. Enroll them in our [Tajweed for Kids course](/courses/tajweed-rules) today." }
+    ],
+    faqs: [
+      { q: "Why is Tajweed more important for kids in the West?", a: "Since they aren't surrounded by the Arabic language, Tajweed provides the necessary structure to maintain correct recitation without an accent." },
+      { q: "Will my child understand the meaning along with Tajweed?", a: "Yes, our teachers explain the basic meanings of small Surahs during Tajweed lessons to build a deeper connection." },
+      { q: "Is Tajweed too difficult for a 5-year-old?", a: "Not at all. We teach kids using fun, simplified methods through the Noorani Qaida, making it easy and enjoyable." }
+    ]
   }
 ];
 
@@ -746,6 +792,11 @@ const EnrollPopup = ({ showPopup, setShowPopup, handleSubmit, formStatus, COURSE
 
 const CoursesPage = ({ COURSES_DETAILED, navigateTo }) => (
   <div className="min-h-screen bg-offwhite">
+    <Helmet>
+      <title>Our Quran Courses | Comprehensive Islamic Education Online</title>
+      <meta name="description" content="Explore our range of online Quran and Islamic courses including Qaida, Hifz, Tajweed, and Arabic language for all ages." />
+      <link rel="canonical" href="https://almaasonlinequranacademy.online/courses" />
+    </Helmet>
     <div className="pt-24 pb-20 px-4">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-5xl font-black text-navy mb-4 text-center">Our Courses</h1>
@@ -759,7 +810,7 @@ const CoursesPage = ({ COURSES_DETAILED, navigateTo }) => (
                 </div>
                 <div className="md:w-2/3 p-8">
                   <div className="flex items-start justify-between mb-4">
-                    <h2 className="text-3xl font-black text-navy">{course.title}</h2>
+                    <h3 className="text-3xl font-black text-navy">{course.title}</h3>
                     <div className="text-right">
                       <div className="inline-block bg-offwhite/50 border border-navy/10 text-navy px-3 py-1 rounded-full text-sm font-bold mb-2">{course.level}</div>
                       <div className="text-slate-600 text-sm flex items-center gap-1"><Clock className="w-4 h-4" /> {course.duration}</div>
@@ -904,7 +955,10 @@ const MeetOurTeam = () => {
               <div className="h-80 bg-white relative flex items-center justify-center border-b border-navy/5 overflow-hidden">
                 <img
                   src={member.image}
-                  alt={member.name}
+                  alt={`${member.name} – ${member.role} and Expert Quran Teacher at Almaas Online Quran Academy`}
+                  loading="lazy"
+                  width="400"
+                  height="320"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
                 />
               </div>
@@ -963,13 +1017,13 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
   return (
     <div className="min-h-screen">
       <Helmet>
-        <title>Online Quran Academy | Learn Quran with Tajweed &amp; Hifz</title>
-        <meta name="description" content="Learn Quran online with expert teachers. Online quran classes for adults, quran reading for beginners, and tajweed course for ladies. Start your 3-day free trial today!" />
+        <title>Best Online Quran Academy in USA, UK & Canada | Almaas</title>
+        <meta name="description" content="Join Al-Maas Online Quran Academy for professional online Quran classes with Tajweed. Expert tutors for kids and adults in USA, UK, and Canada. Book a free trial!" />
         <link rel="canonical" href="https://www.almaasonlinequranacademy.online/" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="online quran classes, learn quran online, quran classes for kids, online quran classes for adults, quran reading for beginners, tajweed course for ladies" />
-        <meta property="og:title" content="Online Quran Academy | Learn Quran with Tajweed &amp; Hifz" />
-        <meta property="og:description" content="Expert online Quran classes for kids and adults. One-on-one sessions, Tajweed, Hifz &amp; more. Flexible timings globaly." />
+        <meta property="og:title" content="Best Online Quran Academy in USA, UK & Canada | Almaas" />
+        <meta property="og:description" content="Join Al-Maas Online Quran Academy for professional online Quran classes with Tajweed. Expert tutors for kids and adults in USA, UK, and Canada. Book a free trial!" />
         <meta property="og:image" content="https://www.almaasonlinequranacademy.online/images/almaas-online-quran-academy-logo.webp" />
         <meta property="og:url" content="https://www.almaasonlinequranacademy.online/" />
 
@@ -990,8 +1044,7 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-black text-navy mb-6">About Almaas Online Quran Academy</h2>
           <p className="text-darkgray text-lg leading-relaxed mb-6">
-            Almaas Online Quran Academy is a premier global educational platform dedicated to providing high-quality Quranic education.
-            We bridge the gap between traditional learning and modern convenience, offering specialized one-on-one sessions for students of all ages.
+            Welcome to Almaas, the leading <strong>Online Quran Academy</strong>. We provide professional <strong>Online Quran Classes</strong> for students of all ages. Whether you are a beginner looking to <strong>Learn Quran Online</strong> with Tajweed or seeking advanced studies, our expert tutors are here to help you achieve your goals from the comfort of your home.
           </p>
 
           <details className="group">
@@ -1102,7 +1155,7 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
             {COURSES_DETAILED.slice(0, 6).map((course, idx) => (
               <div key={idx} className="bg-gradient-to-br from-navy/90 to-navy rounded-3xl overflow-hidden shadow-2xl border-4 border-white hover:scale-105 transition-transform">
                 <div className="h-48 overflow-hidden relative">
-                  <img src={course.image} alt={course.altText} loading="lazy" decoding="async" style={{ backgroundColor: '#0A1D37' }} className="w-full h-full object-cover" />
+                  <img src={course.image} alt={course.altText} loading="lazy" decoding="async" width="400" height="250" style={{ backgroundColor: '#0A1D37' }} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy to-transparent"></div>
                 </div>
                 <div className="p-6">
@@ -1231,7 +1284,7 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
               {BLOGS.slice(0, 3).map(blog => (
                 <div key={blog.id} className="bg-white border-2 border-navy/10 hover:border-gold rounded-3xl overflow-hidden transition group shadow-lg flex flex-col">
                   <div className="h-56 bg-navy overflow-hidden transition-all aspect-video border-b-2 border-navy/5">
-                    <img src={blog.image} alt={blog.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                    <img src={blog.image} alt={blog.title} loading="lazy" width="600" height="340" className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                   </div>
                   <div className="p-8 flex flex-col flex-1">
                     <span className="text-gold font-bold text-xs uppercase tracking-widest mb-2">{blog.date}</span>
@@ -1461,12 +1514,12 @@ const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
   return (
     <div className="min-h-screen bg-offwhite">
       <Helmet>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
+        <title>Online Quran Classes for Kids with Tajweed | Al-Maas Academy</title>
+        <meta name="description" content="Flexible online Quran tutoring for children. Learn Noorani Qaida and Quran recitation from the comfort of your home in USA, UK, and Canada." />
         <link rel="canonical" href={`https://almaasonlinequranacademy.online/courses/${slug}`} />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content={seo.title} />
-        <meta property="og:description" content={seo.description} />
+        <meta property="og:title" content="Online Quran Classes for Kids with Tajweed | Al-Maas Academy" />
+        <meta property="og:description" content="Flexible online Quran tutoring for children. Learn Noorani Qaida and Quran recitation from the comfort of your home in USA, UK, and Canada." />
         <meta property="og:image" content={`https://almaasonlinequranacademy.online${course.image}`} />
         <meta property="og:url" content={`https://almaasonlinequranacademy.online/courses/${slug}`} />
         <meta name="twitter:card" content="summary_large_image" />
@@ -1648,6 +1701,11 @@ const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
 
 const PricingPage = ({ pricingPlans, navigateTo, setShowPopup, COURSES, selectedPricingCourse, setSelectedPricingCourse }) => (
   <div className="min-h-screen bg-offwhite pt-24 pb-20 px-4">
+    <Helmet>
+      <title>Affordable Quran Class Pricing | Monthly Plans & Fees</title>
+      <meta name="description" content="Check our flexible and affordable pricing plans for online Quran classes. Choose from 2 to 5 days a week schedules." />
+      <link rel="canonical" href="https://almaasonlinequranacademy.online/pricing" />
+    </Helmet>
     <div className="max-w-7xl mx-auto">
       <h1 className="text-5xl font-black text-navy text-center mb-4">Tuition Fees</h1>
       <p className="text-darkgray text-lg text-center mb-8">Invest in your spiritual future with our flexible plans</p>
@@ -1712,6 +1770,8 @@ const FAQPage = ({ FAQS, activeFaq, setActiveFaq, navigateTo }) => {
     <div className="min-h-screen bg-offwhite">
       <Helmet>
         <title>Frequently Asked Questions | Almaas Online Quran Academy</title>
+        <meta name="description" content="Find answers to common questions about our online Quran classes, teaching methods, and enrollment process." />
+        <link rel="canonical" href="https://almaasonlinequranacademy.online/faq" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
       <div className="pt-24 pb-20 px-4">
@@ -1733,6 +1793,11 @@ const FAQPage = ({ FAQS, activeFaq, setActiveFaq, navigateTo }) => {
 
 const BlogPage = ({ BLOGS, navigateTo }) => (
   <div className="min-h-screen bg-offwhite">
+    <Helmet>
+      <title>Islamic Articles & Quran Learning Tips | Almaas Blogs</title>
+      <meta name="description" content="Read our latest articles on Quran memorization, Tajweed tips, and the benefits of Islamic education." />
+      <link rel="canonical" href="https://almaasonlinequranacademy.online/blogs" />
+    </Helmet>
     <div className="pt-24 pb-20 px-4">
       <div className="max-w-5xl mx-auto">
         <h1 className="text-5xl font-black text-navy mb-4 text-center">Latest Articles</h1>
@@ -1742,7 +1807,7 @@ const BlogPage = ({ BLOGS, navigateTo }) => (
             <article key={blog.id} className="bg-white border-2 border-navy/10 rounded-3xl p-8 hover:border-gold transition group shadow-lg">
               <div className="flex flex-col md:flex-row gap-8">
                 <div className="md:w-1/4 bg-navy rounded-2xl overflow-hidden group-hover:shadow-2xl transition-all aspect-square border-4 border-navy/5">
-                  <img src={blog.image} alt={blog.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+                  <img src={blog.image} alt={`${blog.title} – Helpful Insight from Almaas Online Quran Academy`} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                 </div>
                 <div className="md:w-3/4">
                   <span className="text-gold font-bold text-sm tracking-widest uppercase mb-2 block">{blog.date}</span>
@@ -1782,6 +1847,7 @@ const BlogDetailPage = ({ BLOGS, navigateTo, setShowPopup }) => {
       <Helmet>
         <title>{blog.title} | Almaas Online Quran Academy</title>
         <meta name="description" content={blog.seoDesc || blog.excerpt} />
+        <link rel="canonical" href={`https://almaasonlinequranacademy.online/blog/${id}`} />
         <meta property="og:title" content={blog.title} />
         <meta property="og:description" content={blog.excerpt} />
         <meta property="og:image" content="https://www.almaasonlinequranacademy.online/images/almaas-online-quran-academy-logo.webp" />
@@ -1837,6 +1903,11 @@ const ReviewsPage = ({ reviews, loadingReviews, navigateTo, handleReviewSubmit, 
 
   return (
     <div className="min-h-screen bg-offwhite">
+      <Helmet>
+        <title>Student Reviews & Testimonials | Almaas Academy Feedback</title>
+        <meta name="description" content="Read what our students and parents say about their experience learning Quran online with Almaas Academy." />
+        <link rel="canonical" href="https://almaasonlinequranacademy.online/reviews" />
+      </Helmet>
       <div className="pt-24 pb-20 px-4">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl font-black text-navy mb-4 text-center">Public Reviews</h1>
@@ -1908,6 +1979,11 @@ const ReviewsPage = ({ reviews, loadingReviews, navigateTo, handleReviewSubmit, 
 
 const ContactPage = ({ handleSubmit, formStatus, courses, navigateTo }) => (
   <div className="min-h-screen bg-offwhite">
+    <Helmet>
+      <title>Contact Us | Book Your Free Quran Trial Class</title>
+      <meta name="description" content="Get in touch with us to start your Quran learning journey. Book 3 free trial classes today!" />
+      <link rel="canonical" href="https://almaasonlinequranacademy.online/contact" />
+    </Helmet>
     {/* Page Header */}
     <section className="pt-32 pb-16 bg-navy text-white relative overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
@@ -2577,6 +2653,17 @@ const QuickChat = ({ navigateTo, setShowPopup, isOpen, onToggle }) => {
   );
 };
 
+const MobileStickyCTA = ({ setShowPopup }) => (
+  <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-navy/10 p-3 z-[60] flex gap-3 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+    <a href="https://wa.me/923350277160" target="_blank" rel="noopener noreferrer" className="flex-1 bg-green-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 h-12">
+      <MessageCircle className="w-5 h-5" /> WhatsApp
+    </a>
+    <button onClick={() => setShowPopup(true)} className="flex-1 bg-gold text-navy rounded-xl font-bold flex items-center justify-center gap-2 h-12">
+      Book Trial
+    </button>
+  </div>
+);
+
 const FloatingContact = ({ isOpen, onToggle }) => {
 
   const contacts = [
@@ -2758,13 +2845,13 @@ const AlmaasQuranAcademy = () => {
 
   // SEO & Meta Title Management
   useEffect(() => {
-    let title = "Almaas Online Quran Academy | Learn Quran with Tajweed & Hifz";
-    let description = "Learn Quran from home with expert teachers. Online Quran classes for kids and adults with flexible timings and affordable pricing.";
+    let title = "Best Online Quran Academy in USA, UK & Canada | Almaas";
+    let description = "Join Al-Maas Online Quran Academy for professional online Quran classes with Tajweed. Expert tutors for kids and adults in USA, UK, and Canada. Book a free trial!";
 
     const path = location.pathname;
 
     if (path === '/') {
-      title = "Almaas Online Quran Academy | Learn Quran with Tajweed & Hifz";
+      title = "Best Online Quran Academy in USA, UK & Canada | Almaas";
     } else if (path === '/courses') {
       title = "Our Quran Courses | Comprehensive Islamic Education Online";
       description = "Explore our range of online Quran and Islamic courses including Qaida, Hifz, Tajweed, and Arabic language for all ages.";
@@ -2993,7 +3080,7 @@ const AlmaasQuranAcademy = () => {
 
   // RENDER MAIN LAYOUT
   return (
-    <div className="min-h-screen bg-offwhite">
+    <div className="min-h-screen bg-offwhite overflow-x-hidden">
       <Helmet>
         <meta name="robots" content="index, follow" />
         <meta property="og:site_name" content="Almaas Online Quran Academy" />
@@ -3089,6 +3176,7 @@ const AlmaasQuranAcademy = () => {
         />
       </div>
       <EnrollPopup showPopup={showPopup} setShowPopup={setShowPopup} handleSubmit={handleSubmit} formStatus={formStatus} COURSES={COURSES} />
+      <MobileStickyCTA setShowPopup={setShowPopup} />
     </div>
   );
 };

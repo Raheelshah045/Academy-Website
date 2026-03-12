@@ -9,6 +9,26 @@
       }
     }
   ],
+  "headers": [
+    {
+      "source": "/(fonts|images|static)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).(js|css|webp|png|jpg|jpeg|svg|woff|woff2|ttf|otf|ico)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
   "redirects": [
     {
       "source": "/(almaas-online-quran-academy-logo|arabic-language-course-online|dars-e-nizami-islamic-scholarship-course|farz-e-uloom-essential-islamic-knowledge|logo_v2|new-muslim-quran-course-online|online-quran-memorization-hifz-classes|online-quran-reading-course|quran-qaida-beginners-course|quran-tafseer-course-online|quran-tajweed-tarteel-course-online|quran-translation-course-online|seerat-un-nabi-course-online|short-shariah-course-online).webp",
