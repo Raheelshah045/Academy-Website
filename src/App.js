@@ -2597,7 +2597,7 @@ const QuickChat = ({ navigateTo, setShowPopup, isOpen, onToggle }) => {
   };
 
   return (
-    <div className="relative pointer-events-auto">
+    <div className="relative pointer-events-auto hidden md:block">
       {/* Chat Window */}
       <div className={`absolute bottom-full right-0 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col transition-all duration-300 transform origin-bottom-right z-10 ${isOpen ? 'w-[85vw] sm:w-[320px] h-[60vh] sm:h-[380px] opacity-100 scale-100 mb-4' : 'w-0 h-0 opacity-0 scale-95 pointer-events-none'}`}>
         <div className="bg-navy p-4 text-white flex items-center justify-between">
@@ -2652,17 +2652,6 @@ const QuickChat = ({ navigateTo, setShowPopup, isOpen, onToggle }) => {
     </div>
   );
 };
-
-const MobileStickyCTA = ({ setShowPopup }) => (
-  <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-navy/10 p-3 z-[60] flex gap-3 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
-    <a href="https://wa.me/923350277160" target="_blank" rel="noopener noreferrer" className="flex-1 bg-green-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 h-12">
-      <MessageCircle className="w-5 h-5" /> WhatsApp
-    </a>
-    <button onClick={() => setShowPopup(true)} className="flex-1 bg-gold text-navy rounded-xl font-bold flex items-center justify-center gap-2 h-12">
-      Book Trial
-    </button>
-  </div>
-);
 
 const FloatingContact = ({ isOpen, onToggle }) => {
 
@@ -3176,7 +3165,6 @@ const AlmaasQuranAcademy = () => {
         />
       </div>
       <EnrollPopup showPopup={showPopup} setShowPopup={setShowPopup} handleSubmit={handleSubmit} formStatus={formStatus} COURSES={COURSES} />
-      <MobileStickyCTA setShowPopup={setShowPopup} />
     </div>
   );
 };
