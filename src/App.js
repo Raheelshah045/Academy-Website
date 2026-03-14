@@ -1018,12 +1018,12 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
     <div className="min-h-screen">
       <Helmet>
         <title>Best Online Quran Academy in USA, UK & Canada | Almaas</title>
-        <meta name="description" content="Join Al-Maas Online Quran Academy for professional online Quran classes with Tajweed. Expert tutors for kids and adults in USA, UK, and Canada. Book a free trial!" />
+        <meta name="description" content="Join Almaas Online Quran Academy for professional online Quran classes with Tajweed. Expert tutors for kids and adults in USA, UK, and Canada. Book a free trial!" />
         <link rel="canonical" href="https://www.almaasonlinequranacademy.online/" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="online quran classes, learn quran online, quran classes for kids, online quran classes for adults, quran reading for beginners, tajweed course for ladies" />
         <meta property="og:title" content="Best Online Quran Academy in USA, UK & Canada | Almaas" />
-        <meta property="og:description" content="Join Al-Maas Online Quran Academy for professional online Quran classes with Tajweed. Expert tutors for kids and adults in USA, UK, and Canada. Book a free trial!" />
+        <meta property="og:description" content="Join Almaas Online Quran Academy for professional online Quran classes with Tajweed. Expert tutors for kids and adults in USA, UK, and Canada. Book a free trial!" />
         <meta property="og:image" content="https://www.almaasonlinequranacademy.online/images/almaas-online-quran-academy-logo.webp" />
         <meta property="og:url" content="https://www.almaasonlinequranacademy.online/" />
 
@@ -1514,11 +1514,11 @@ const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
   return (
     <div className="min-h-screen bg-offwhite">
       <Helmet>
-        <title>Online Quran Classes for Kids with Tajweed | Al-Maas Academy</title>
+        <title>Online Quran Classes for Kids with Tajweed | Almaas Academy</title>
         <meta name="description" content="Flexible online Quran tutoring for children. Learn Noorani Qaida and Quran recitation from the comfort of your home in USA, UK, and Canada." />
         <link rel="canonical" href={`https://almaasonlinequranacademy.online/courses/${slug}`} />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Online Quran Classes for Kids with Tajweed | Al-Maas Academy" />
+        <meta property="og:title" content="Online Quran Classes for Kids with Tajweed | Almaas Academy" />
         <meta property="og:description" content="Flexible online Quran tutoring for children. Learn Noorani Qaida and Quran recitation from the comfort of your home in USA, UK, and Canada." />
         <meta property="og:image" content={`https://almaasonlinequranacademy.online${course.image}`} />
         <meta property="og:url" content={`https://almaasonlinequranacademy.online/courses/${slug}`} />
@@ -2835,7 +2835,7 @@ const AlmaasQuranAcademy = () => {
   // SEO & Meta Title Management
   useEffect(() => {
     let title = "Best Online Quran Academy in USA, UK & Canada | Almaas";
-    let description = "Join Al-Maas Online Quran Academy for professional online Quran classes with Tajweed. Expert tutors for kids and adults in USA, UK, and Canada. Book a free trial!";
+    let description = "Join Almaas Online Quran Academy for professional online Quran classes with Tajweed. Expert tutors for kids and adults in USA, UK, and Canada. Book a free trial!";
 
     const path = location.pathname;
 
