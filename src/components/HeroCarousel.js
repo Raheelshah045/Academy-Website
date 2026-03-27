@@ -69,6 +69,17 @@ const SLIDES = [
         ctaSecondary: { text: 'What We Offer', action: 'courses' },
         lazy: true,
     },
+    {
+        id: 7,
+        image: '/images/urdu-language-course-banner.webp',
+        alt: 'Happy child learning Urdu with a digital tablet – Urdu Language Course at Almaas Online Quran Academy',
+        label: 'New Course Available',
+        heading: 'Master Urdu Language\nFrom Basics to\nAdvanced Fluency',
+        subtext: 'Comprehensive 1-on-1 Urdu classes for kids and adults. Learn speaking, reading, and writing with expert native teachers.',
+        ctaPrimary: { text: 'Start Learning Urdu', action: 'popup' },
+        ctaSecondary: { text: 'Course Details', action: 'courses' },
+        lazy: true,
+    },
 ];
 
 // ─── Auto-slide interval (ms) ──────────────────────────────────────────────────

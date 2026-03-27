@@ -8,14 +8,14 @@
 
   <url>
     <loc>https://www.almaasonlinequranacademy.online/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://almaasonlinequranacademy.online/courses</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -151,6 +151,14 @@
     <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- 13. Urdu Language Course -->
+  <url>
+    <loc>https://almaasonlinequranacademy.online/courses/urdu-language</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <!-- ===== REGIONAL LANDING PAGES ===== -->

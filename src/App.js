@@ -73,7 +73,7 @@ const REGION_CONFIGS = {
 
 const COURSE_TIER_MAPPING = {
   'qaida': 1, 'quran-reading': 1, 'tajweed': 1, 'hifz': 1,
-  'translation': 2, 'tafseer': 2, 'arabic': 2, 'seerat-un-nabi': 2, 'new-muslim': 2, 'farz-e-uloom': 2, 'short-shariah': 2,
+  'translation': 2, 'tafseer': 2, 'arabic': 2, 'urdu': 2, 'seerat-un-nabi': 2, 'new-muslim': 2, 'farz-e-uloom': 2, 'short-shariah': 2,
   'dars-e-nizami': 3
 };
 
@@ -102,6 +102,7 @@ const COURSES = [
   { title: "New Muslim Guide", value: "new-muslim" },
   { title: "Seerat un Nabi", value: "seerat-un-nabi" },
   { title: "Dars e Nizami", value: "dars-e-nizami" },
+  { title: "Urdu Language Course", value: "urdu" },
   { title: "Short Shariah Course", value: "short-shariah" },
   { title: "Farz e Uloom", value: "farz-e-uloom" },
 ];
@@ -123,7 +124,10 @@ const FAQS = [
   { q: "Is online Quran learning safe for kids?", a: "Yes. Classes are conducted in a secure environment with monitored sessions and professional, vetted teachers." },
   { q: "How do you keep children engaged?", a: "We use interactive teaching, gentle correction, motivation techniques, and structured lesson plans tailored for younger minds." },
   { q: "Is learning the Quran online permissible in Islam?", a: "Yes. Seeking knowledge is obligatory in Islam. As long as proper Tajweed and teacher supervision are maintained, online learning is highly beneficial." },
-  { q: "Will students learn proper Tajweed?", a: "Absolutely. Tajweed rules are applied and corrected live during every session to ensure accurate and beautiful recitation." }
+  { q: "Will students learn proper Tajweed?", a: "Absolutely. Tajweed rules are applied and corrected live during every session to ensure accurate and beautiful recitation." },
+  { q: "How long will it take to become fluent in Urdu?", a: "The duration depends on the student’s pace and starting level; typically, it takes between 3 to 12 months to achieve significant fluency." },
+  { q: "Are the Urdu classes suitable for children?", a: "Yes, our Urdu Language Course is specifically designed for both children and adults, with personalized lessons for every age group." },
+  { q: "What resources are provided for the Urdu course?", a: "We provide interactive exercises, reading and writing worksheets, vocabulary guides, and continuous teacher support for practical conversation." }
 ];
 
 const COURSES_DETAILED = [
@@ -390,6 +394,34 @@ const COURSES_DETAILED = [
     whoFor: "Seeking the essential knowledge of religion is an individual obligation (Farz al-Ayn) upon every Muslim. This course is for everyone who wants to fulfill this obligation and ensure they have the minimum required knowledge to be a practicing Muslim.",
     curriculumDepth: "We cover 'Aqaid' (Beliefs) to ensure your Tawheed is sound, and 'Masail' (Rulings) regarding Taharah (Purification) and Salah. We also touch upon the basic rights of parents, neighbors, and fellow Muslims, as well as the 'sins of the heart' to avoid.",
     benefitsExt: "This course is your spiritual insurance. It protects you from the major mistakes that can nullify your worship. It gives you a firm footing in your faith and prepares you to face the challenges of life with a clear Islamic perspective."
+  },
+  {
+    title: "Urdu Language Course",
+    slug: "urdu-language",
+    shortDesc: "A structured, deep-dive language course designed to take students from absolute basics to advanced fluency in Urdu. Perfect for non-native speakers who wish to connect with their heritage, academic goals, or professional needs.",
+    fullDesc: "Our Urdu Language Course is one of the most comprehensive online programs available, focusing on the four core pillars of language mastery: speaking, reading, writing, and comprehension. Using a modern, interactive teaching methodology, we move beyond simple memorization to ensure students truly understand the nuances of the language. \n\nStarting with the unique Urdu script and phonetics, learners progress to building complex sentences, mastering essential grammar rules, and developing a rich vocabulary for daily use. All sessions are 1-on-1, allowing the teacher to adapt the pace and style to the student's individual learning curve. Whether you are a child starting from scratch or an adult looking to polish your formal Urdu skills, our certified native teachers provide the personalized guidance required for success.\n\n**Learning Guides:** Includes our exclusive [Complete Urdu Language Guide – Master Urdu Fast](/contact) which provides step-by-step instructions for effective retention and daily practice routines.",
+    image: "/images/urdu-language-course-online.webp",
+    bannerImage: "/images/urdu-language-course-banner.webp",
+    altText: "Urdu Language Course for Kids and Adults – Learn to Speak, Read, and Write Urdu Online at Almaas Academy",
+    whatYouLearn: [
+      "Urdu Alphabet & Phonetics (Huroof-e-Tahajji)",
+      "Correct Pronunciation & Articulation",
+      "Building Core Vocabulary & Daily Phrases",
+      "Grammar Essentials: Tenses, Nouns, & Verbs",
+      "Reading Fluency with Graded Text",
+      "Creative Writing & Formal Script Practice",
+      "Interactive Speaking & Social Conversation",
+      "Advanced Urdu: Poetry, Prose & Literature",
+      "Regular Assessments & Progress Tracking",
+      "Professional Completion Certificate"
+    ],
+    duration: "Flexible (3–12 Months)",
+    level: "Beginner to Advanced",
+    summary: "A complete journey from the first letter to advanced fluency. Master the beauty of Urdu with expert native teachers.",
+    cta: "Enroll Now and join the thousands of students mastering the language of poetry and grace",
+    whoFor: "This course is specifically curated for English-speaking students, including children who want to connect with their cultural roots and adults who require Urdu for personal interest, travel, or career advancement. It is perfect for those who have zero prior experience with the Arabic/Urdu script, as we start from the very foundation. It is also highly beneficial for students of Islamic history and South Asian literature who wish to access original texts.",
+    curriculumDepth: "The curriculum is divided into three major phases: Foundations (Alphabet, basic sounds, and simple words), Intermediate (Grammar, sentence formation, and daily dialogs), and Advanced (Complex literature, poetry analysis, and formal presentation). Each phase is supported by digital worksheets, audio-visual aids, and real-time feedback. We emphasize practical application, so students start speaking simple sentences from the very first week.",
+    benefitsExt: "Beyond linguistic proficiency, this course enhances cognitive flexibility and memory. For children, it builds a bridge to their family heritage and identity. For professionals, it opens doors to communication in one of the most widely spoken languages in South Asia. Graduates will not only be able to communicate effectively but will also gain a deep appreciation for the rich cultural nuances and beautiful literature that Urdu offers."
   }
 ];
 
@@ -816,7 +848,7 @@ const CoursesPage = ({ COURSES_DETAILED, navigateTo }) => (
                       <div className="text-slate-600 text-sm flex items-center gap-1"><Clock className="w-4 h-4" /> {course.duration}</div>
                     </div>
                   </div>
-                  <p className="text-darkgray mb-6 leading-relaxed">{course.fullDesc}</p>
+                  <p className="text-darkgray mb-6 leading-relaxed">{course.shortDesc}</p>
                   <div className="mb-6">
                     <h3 className="text-lg font-bold text-navy mb-3 flex items-center gap-2"><CheckCircle className="w-5 h-5" /> What You Will Learn:</h3>
                     <ul className="grid md:grid-cols-2 gap-2">
@@ -1466,6 +1498,25 @@ const COURSE_SEO = {
     ],
     syllabus: ["Aqeedah (Islamic Beliefs) – the Six Pillars", 'Correct method of Wudu and Ghusl', 'Complete method of Salah (all 5 prayers)', 'Essentials of Fasting in Ramadan', 'Rights of parents, neighbors & Muslims', "Sins of the heart to avoid (Kibr, Hasad, etc.)"],
   },
+  'urdu-language': {
+    title: 'Online Urdu Language Course | Beginner to Advanced – Almaas Academy',
+    description: 'Learn Urdu online with our comprehensive language course. Master speaking, reading, writing, and grammar under expert guidance. Structured classes for kids and adults worldwide.',
+    faqs: [
+      { q: 'Is this course suitable for someone who has no prior knowledge of Urdu?', a: 'Yes, our course is designed to take you from absolute basics (the alphabet and sounds) to advanced levels. No prior knowledge is required for beginners.' },
+      { q: 'Will I be able to read and write Urdu after this course?', a: 'Yes. Our curriculum emphasizes all four components of language learning: speaking, reading, writing, and comprehension, ensuring you develop full literacy.' },
+      { q: 'Does this course cover Urdu poetry and literature?', a: 'For our advanced students, we offer specialized modules focused on Urdu poetry, literature, and formal writing styles to enrich your cultural understanding.' },
+    ],
+    syllabus: [
+      'Urdu alphabet & correct pronunciation',
+      'Basic vocabulary & everyday phrases',
+      'Urdu grammar (tenses & structures)',
+      'Reading and writing practice exercises',
+      'Interactive conversation sessions',
+      'Advanced Urdu (poetry & literature)',
+      'Regular progress monitoring & reports',
+      'Certificate upon completion'
+    ],
+  },
 };
 
 const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
@@ -1535,7 +1586,7 @@ const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
       <div className="relative h-72 md:h-[420px]">
         {/* Navy placeholder shown instantly while WebP downloads */}
         <img
-          src={course.image}
+          src={course.bannerImage || course.image}
           alt={course.altText}
           loading="eager"
           decoding="async"
