@@ -47,7 +47,7 @@ const REGION_CONFIGS = {
     h1: "Best Online Quran Classes UK",
     seoTitle: "Best Online Quran Classes UK | Quran Teacher London & Manchester",
     seoDesc: "Struggling to find a reliable Quran tutor in the UK? Expert classes for London, Manchester & Birmingham. 1-on-1 sessions scheduled around school hours. Book today!",
-    keywords: ["online quran classes uk", "quran teacher london", "quran classes for kids uk", "online quran classes uk fees", "female quran teacher uk for sisters", "one to one quran lessons manchester", "Best Quran Classes in London", "Learn Quran Online Manchester", "Quran Tutor for Kids in Birmingham"],
+    keywords: ["online quran classes uk", "quran teacher london", "quran classes for kids uk", "online quran classes uk fees", "one to one quran lessons manchester", "Best Quran Classes in London", "Learn Quran Online Manchester", "Quran Tutor for Kids in Birmingham"],
     langCode: "en-gb",
     slug: "uk"
   },
@@ -127,11 +127,9 @@ const COURSES = [
   { title: "Urdu Language Course", value: "urdu" },
   { title: "Short Shariah Course", value: "short-shariah" },
   { title: "Farz e Uloom", value: "farz-e-uloom" },
-  { title: "Female Quran Teacher", value: "female-tutors" },
 ];
 
 const FAQS = [
-  { q: "How can I find a female Quran teacher in London for my daughter?", a: "We have a dedicated team of qualified female Quran teachers from the UK and around the world. Every teacher is background-checked and trained specifically to teach young girls and sisters in a safe, comfortable environment. You can request a female teacher during your free trial sign-up." },
   { q: "What are the best online Quran classes for kids in the USA?", a: "The best classes are those that combine expert Tajweed instruction with engaging, child-friendly methods. At Almaas Academy, our USA-focused program offers 1-on-1 sessions scheduled for EST/PST, ensuring your child learns at their own pace without the pressure of a group setting." },
   { q: "Is learning Quran online effective for adults in Dubai?", a: "Absolutely. Our online platform provides high-quality video and audio, making it feel like the teacher is right next to you. For busy professionals in UAE, we offer flexible timings that work around work schedules and GST time zones." },
   { q: "What is the best way to choose an online Quran academy?", a: "Look for academies that offer qualified teachers with Ijazah, flexible scheduling in your local time zone, and a transparent pricing structure. Always start with a free trial to ensure the teaching style matches your learning needs." },
@@ -445,28 +443,6 @@ const COURSES_DETAILED = [
     whoFor: "This course is specifically curated for English-speaking students, including children who want to connect with their cultural roots and adults who require Urdu for personal interest, travel, or career advancement. It is perfect for those who have zero prior experience with the Arabic/Urdu script, as we start from the very foundation. It is also highly beneficial for students of Islamic history and South Asian literature who wish to access original texts.",
     curriculumDepth: "The curriculum is divided into three major phases: Foundations (Alphabet, basic sounds, and simple words), Intermediate (Grammar, sentence formation, and daily dialogs), and Advanced (Complex literature, poetry analysis, and formal presentation). Each phase is supported by digital worksheets, audio-visual aids, and real-time feedback. We emphasize practical application, so students start speaking simple sentences from the very first week.",
     benefitsExt: "Beyond linguistic proficiency, this course enhances cognitive flexibility and memory. For children, it builds a bridge to their family heritage and identity. For professionals, it opens doors to communication in one of the most widely spoken languages in South Asia. Graduates will not only be able to communicate effectively but will also gain a deep appreciation for the rich cultural nuances and beautiful literature that Urdu offers."
-  },
-  {
-    title: "Female Quran Teacher",
-    slug: "female-tutors",
-    shortDesc: "A safe and comfortable online environment for sisters and children, led by highly qualified and vetted female Quran teachers.",
-    fullDesc: "Our Female Quran Teacher program is designed specifically for sisters and young girls who prefer a private, comfortable learning environment. All our female tutors are certified with Ijazah and have extensive experience in teaching Quran with Tajweed, Islamic studies, and Arabic. Lessons are conducted 1-on-1 via Microsoft Teams or our interactive platform, ensuring personal attention and a safe space for spiritual growth.",
-    image: "/images/female-quran-tutor-online.webp",
-    altText: "Female Quran Teacher for Sisters – Private Online Quran Classes for Women",
-    whatYouLearn: [
-      "Quran reading with Tajweed",
-      "One-on-one private sessions",
-      "Basic Islamic studies for women",
-      "Memorization of small Surahs",
-      "Comfortable learning for sisters"
-    ],
-    duration: "Flexible",
-    level: "All Levels",
-    summary: "Professional female tutors for sisters and children. A secure environment for authentic learning.",
-    cta: "Request a Female Tutor Now and start your free trial",
-    whoFor: "This course is ideal for sisters, mothers, and young girls who want to learn the Quran from a lady teacher. We ensure a safe online environment where students can feel confident and focused on their studies.",
-    curriculumDepth: "The curriculum is tailored to the student's level, ranging from basic Qaida to advanced Tajweed and Hifz. We incorporate daily Supplications (Duas) and essential Islamic rulings (Fiqh) relevant to women's daily lives.",
-    benefitsExt: "Learning from a female teacher provides a unique level of comfort and mentorship for sisters. It allows for open communication, better understanding of specific rulings, and creates a supportive spiritual bond between teacher and student."
   }
 ];
 
@@ -1562,16 +1538,6 @@ const COURSE_SEO = {
       'Certificate upon completion'
     ],
   },
-  'female-tutors': {
-    title: 'Female Quran Teacher for Sisters | Online Quran Classes for Women',
-    description: 'Looking for a private lady Quran tutor? Our female teachers provide a safe online environment for sisters and children to learn Quran with Tajweed on Microsoft Teams.',
-    faqs: [
-      { q: 'Can I specifically request a female teacher?', a: 'Yes, we have a large team of qualified female teachers available for sisters and young girls. You can request a lady tutor during the free trial setup.' },
-      { q: 'Is the learning environment safe for sisters?', a: 'Absolutely. We provide a secure and private online environment, often using 1-on-1 sessions to ensure the comfort and privacy of our female students.' },
-      { q: 'What subjects do female teachers cover?', a: 'Our female tutors teach Noorani Qaida, Quran with Tajweed, Hifz, Arabic, and basic Islamic studies for women.' },
-    ],
-    syllabus: ['1-on-1 private sessions with lady tutor', 'Quran recitation with Tajweed rules', 'Memorization of essential Surahs', 'Islamic studies for women & sisters', 'Comfortable & secure learning environment'],
-  },
 };
 
 const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
@@ -2493,10 +2459,6 @@ const RegionalLandingPage = ({ selectedRegion, REGION_CONFIGS, pricingPlans: glo
               <div className="bg-white p-8 rounded-2xl shadow-sm border border-navy/5">
                 <h3 className="text-xl font-bold text-navy mb-4">What are the best online Quran classes for kids in the {currentRegion.name}?</h3>
                 <p className="text-darkgray leading-relaxed text-sm">Almaas Academy offers the highest-rated Quran classes for children in the {currentRegion.name}, featuring interactive lessons, progress tracking, and specialized child-friendly teaching methods.</p>
-              </div>
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-navy/5">
-                <h3 className="text-xl font-bold text-navy mb-4">How can I find a female Quran teacher in the {currentRegion.name} for my daughter?</h3>
-                <p className="text-darkgray leading-relaxed text-sm">We provide background-checked, highly qualified female Quran tutors for sisters and kids in the {currentRegion.name}. Classes are conducted in a secure and comfortable online environment.</p>
               </div>
               <div className="bg-white p-8 rounded-2xl shadow-sm border border-navy/5">
                 <h3 className="text-xl font-bold text-navy mb-4">How do I schedule Quran lessons around school hours in {currentRegion.timezones}?</h3>
