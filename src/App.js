@@ -31,9 +31,9 @@ const REGION_CONFIGS = {
     paymentMethods: 'Stripe/PayPal',
     multiplier: 1.25,
     h1: "Best Online Quran Academy USA",
-    seoTitle: "Best Online Quran Academy USA - Almaas Online Quran Academy",
-    seoDesc: "Searching for the best online Quran classes for kids in the USA? We offer 1-on-1 sessions scheduled for EST/PST with expert tutors. Start your 3-day free trial!",
-    keywords: ["online quran academy usa", "learn quran online usa", "hifz classes online usa", "online quran classes for kids in usa with tajweed", "best online quran tutor new york", "affordable quran classes monthly fee usd"],
+    seoTitle: "Best Online Quran Academy USA | Online Quran Teacher New York & Texas",
+    seoDesc: "Searching for the best online Quran classes for kids in the USA? We offer 1-on-1 sessions for New York, Texas, California & Chicago with expert tutors. 3-day free trial!",
+    keywords: ["online quran academy usa", "learn quran online usa", "hifz classes online usa", "online quran classes for kids in usa with tajweed", "best online quran tutor new york", "affordable quran classes monthly fee usd", "Online Quran Academy USA", "Online Quran Teacher New York", "Quran Academy for Kids in Texas", "Arabic Teacher for Kids in USA", "Online Quran Center Chicago", "Quran Classes Houston"],
     langCode: "en-us",
     slug: "usa"
   },
@@ -45,9 +45,9 @@ const REGION_CONFIGS = {
     paymentMethods: 'Direct Transfer/Stripe',
     multiplier: 1,
     h1: "Best Online Quran Classes UK",
-    seoTitle: "Best Online Quran Classes UK - Almaas Online Quran Academy",
-    seoDesc: "Struggling to find a reliable Quran tutor in the UK? We offer 1-on-1 classes scheduled around school hours with background-checked teachers. Book a free trial today!",
-    keywords: ["online quran classes uk", "quran teacher london", "quran classes for kids uk", "online quran classes uk fees", "female quran teacher uk for sisters", "one to one quran lessons manchester"],
+    seoTitle: "Best Online Quran Classes UK | Quran Teacher London & Manchester",
+    seoDesc: "Struggling to find a reliable Quran tutor in the UK? Expert classes for London, Manchester & Birmingham. 1-on-1 sessions scheduled around school hours. Book today!",
+    keywords: ["online quran classes uk", "quran teacher london", "quran classes for kids uk", "online quran classes uk fees", "female quran teacher uk for sisters", "one to one quran lessons manchester", "Best Quran Classes in London", "Learn Quran Online Manchester", "Quran Tutor for Kids in Birmingham"],
     langCode: "en-gb",
     slug: "uk"
   },
@@ -59,15 +59,37 @@ const REGION_CONFIGS = {
     paymentMethods: 'Stripe/Bank Transfer',
     multiplier: 4.6,
     h1: "Professional Online Quran Classes UAE",
-    seoTitle: "Professional Online Quran Classes UAE - Almaas Online Quran Academy",
+    seoTitle: "Professional Online Quran Classes UAE | Online Quran Tutor Dubai",
     seoDesc: "Join Almaas Online Quran Academy in UAE. Expert tutors for Dubai, Abu Dhabi, and Sharjah. Flexible timings and expert teachers from the comfort of home.",
     keywords: ["online quran classes uae", "quran tutor dubai", "learn quran with tajweed abu dhabi", "personalized quran classes dubai for adults", "online quran teacher sharjah", "quran and islamic studies for kids uae"],
     langCode: "en-ae",
     slug: "uae"
   },
-  'Canada': { name: 'Canada', currency: 'CAD', symbol: 'C$', timezones: 'EST/MST/PST', paymentMethods: 'Interac/Stripe', multiplier: 1.7, langCode: "en-ca" },
-  'Australia': { name: 'Australia', currency: 'AUD', symbol: 'A$', timezones: 'AEST/AWST', paymentMethods: 'Stripe/PayPal', multiplier: 1.9, langCode: "en-au" },
-  'Europe': { name: 'Europe', currency: 'EUR', symbol: '€', timezones: 'CET/EET', paymentMethods: 'IBAN/Stripe', multiplier: 1.15, langCode: "en-eu" },
+  'Canada': { 
+    name: 'Canada', 
+    currency: 'CAD', 
+    symbol: 'C$', 
+    timezones: 'EST/MST/PST', 
+    paymentMethods: 'Interac/Stripe', 
+    multiplier: 1.7, 
+    langCode: "en-ca",
+    seoTitle: "Online Quran Tutor Canada | Best Quran School Toronto",
+    seoDesc: "Looking for an expert Quran tutor in Canada? We offer personalized online Quran learning for kids and adults in Toronto and beyond. Register for a free trial!",
+    keywords: ["quran tutor canada", "online islamic classes toronto", "learn quran online canada", "best quran teacher canada"]
+  },
+  'Australia': { 
+    name: 'Australia', 
+    currency: 'AUD', 
+    symbol: 'A$', 
+    timezones: 'AEST/AWST', 
+    paymentMethods: 'Stripe/PayPal', 
+    multiplier: 1.9, 
+    langCode: "en-au",
+    seoTitle: "Online Quran School Australia | Quran Learning Sydney",
+    seoDesc: "Best Online Quran School in Australia. Join 1-on-1 Quran classes in Sydney, Melbourne, and Perth with qualified teachers. Reliable Islamic education for kids.",
+    keywords: ["online quran school australia", "quran learning sydney", "learn quran online australia", "online quran classes melbourne"]
+  },
+  'Europe': { name: 'Europe', currency: 'EUR', symbol: '€', timezones: 'CET/EET', paymentMethods: 'IBAN/Stripe', multiplier: 1.15, langCode: "en-eu", seoTitle: "Online Quran Academy Europe | English Speaking Quran Tutor Online", seoDesc: "Leading Online Quran Academy for students in Europe. Learn with English speaking tutors at your own pace. Start your Quran journey today!", keywords: ["online quran academy europe", "english speaking quran tutor online", "learn quran online europe"] },
   'Pakistan': { name: 'Pakistan', currency: 'PKR', symbol: 'Rs ', timezones: 'PKT', paymentMethods: 'EasyPaisa/JazzCash/Bank', multiplier: 350, langCode: "en-pk" }
 };
 
@@ -105,6 +127,7 @@ const COURSES = [
   { title: "Urdu Language Course", value: "urdu" },
   { title: "Short Shariah Course", value: "short-shariah" },
   { title: "Farz e Uloom", value: "farz-e-uloom" },
+  { title: "Female Quran Teacher", value: "female-tutors" },
 ];
 
 const FAQS = [
@@ -137,7 +160,7 @@ const COURSES_DETAILED = [
     shortDesc: "A foundational course designed to help beginners learn the Arabic alphabet, basic pronunciation, and the rules of Quranic reading step by step, with clarity and ease.",
     fullDesc: "This foundational course is designed for beginners who are starting their Quran learning journey from the very beginning. Students learn Arabic letters, correct pronunciation, and letter formation in a simple, step-by-step manner. Special focus is given to clarity, repetition, and individual attention so learners build confidence before moving on to Quran reading. This course is suitable for children, adults, and new learners with no prior Arabic background.\n\n**Learning Guides:** Explore our latest resource on [10 Benefits of Learning the Quran](/blog/1) to understand why starting today is the best decision for your child.",
     image: "/images/quran-qaida-beginners-course.webp",
-    altText: "Quran Qaida for Beginners – Learn Arabic Letters and Pronunciation Online at Almaas Academy",
+    altText: "Online Quran classes for kids in USA - Learn Noorani Qaida Online",
     whatYouLearn: [
       "Arabic alphabet (Huroof-e-Hijai)",
       "Correct pronunciation and articulation",
@@ -159,7 +182,7 @@ const COURSES_DETAILED = [
     shortDesc: "A guided course designed to help learners read the Holy Quran fluently, focusing on correct pronunciation, smooth recitation, and building confidence in every verse.",
     fullDesc: "This course helps students read the Holy Quran fluently and confidently with correct pronunciation. Learners are guided step by step to improve flow, accuracy, and consistency in recitation. Teachers focus on correcting mistakes and strengthening reading skills through regular practice. Ideal for students who can read basic Arabic and want to improve Quran recitation.",
     image: "/images/online-quran-reading-course.webp",
-    altText: "Online Quran Reading Course – Fluent and Confident Quran Recitation for Kids and Adults",
+    altText: "Online Quran Reading Course – Fluent and Confident Quran Recitation for Beginners",
     whatYouLearn: [
       "Fluent Quran reading",
       "Correct pronunciation of words",
@@ -181,7 +204,7 @@ const COURSES_DETAILED = [
     shortDesc: "A structured course that helps students memorize the Holy Quran with accuracy, daily revision plans, and expert guidance to retain and recite confidently.",
     fullDesc: "This structured course is designed to help students memorize the Holy Quran accurately and effectively. A disciplined system of daily lessons, revision plans, and continuous supervision ensures strong memorization and retention. Suitable for children and adults aspiring to become Hafiz or Hafiza.\n\n**Learning Guides:** Discover our proven [Memorizing Quran: Complete Step-by-Step Guide](/blog/3) to fast-track your Hifz journey.",
     image: "/images/online-quran-memorization-hifz-classes.webp",
-    altText: "Online Quran Memorization (Hifz) Classes for Kids and Adults at Almaas Online Quran Academy",
+    altText: "Online Hifz Program – Online Quran Memorization for Kids at Home",
     whatYouLearn: [
       "Systematic Quran memorization",
       "Daily lesson and revision planning",
@@ -313,7 +336,7 @@ const COURSES_DETAILED = [
     shortDesc: "A detailed course focused on perfecting Quranic pronunciation (Tajweed) and reciting with rhythm and beauty (Tarteel), following the rules of proper recitation.",
     fullDesc: "This course focuses on perfecting Quran recitation by teaching Tajweed rules and the beauty of Tarteel. Students learn correct pronunciation, articulation points, and rhythmic recitation. Recite the Quran as it was revealed.\n\n**Learning Guides:** Deep dive into our expert guide on [How to Improve Your Tajweed (Practical Tips)](/blog/2) or explore [Makharij for Beginners](/blog/2).",
     image: "/images/quran-tajweed-tarteel-course-online.webp",
-    altText: "Online Quran Tajweed and Tarteel Course – Perfect Your Quran Recitation with Certified Teachers",
+    altText: "Online Tajweed Course – Learn Quran with Proper Pronunciation",
     whatYouLearn: [
       "Rules of Tajweed",
       "Makharij and letter characteristics",
@@ -379,7 +402,7 @@ const COURSES_DETAILED = [
     shortDesc: "An essential course covering the basic Islamic knowledge every Muslim must know like beliefs, prayer, purification, and daily obligations in light of the Shariah.",
     fullDesc: "This essential course covers the basic Islamic knowledge that every Muslim must know. It explains beliefs, worship, and obligations clearly to ensure correct practice in daily life.",
     image: "/images/farz-e-uloom-essential-islamic-knowledge.webp",
-    altText: "Farz-e-Uloom Essential Islamic Knowledge Course – Learn Obligatory Islamic Practices Online",
+    altText: "Online Islamic Classes for Children – Learn Dua and Salah Online",
     whatYouLearn: [
       "Basic Islamic beliefs",
       "Purification and cleanliness",
@@ -422,6 +445,28 @@ const COURSES_DETAILED = [
     whoFor: "This course is specifically curated for English-speaking students, including children who want to connect with their cultural roots and adults who require Urdu for personal interest, travel, or career advancement. It is perfect for those who have zero prior experience with the Arabic/Urdu script, as we start from the very foundation. It is also highly beneficial for students of Islamic history and South Asian literature who wish to access original texts.",
     curriculumDepth: "The curriculum is divided into three major phases: Foundations (Alphabet, basic sounds, and simple words), Intermediate (Grammar, sentence formation, and daily dialogs), and Advanced (Complex literature, poetry analysis, and formal presentation). Each phase is supported by digital worksheets, audio-visual aids, and real-time feedback. We emphasize practical application, so students start speaking simple sentences from the very first week.",
     benefitsExt: "Beyond linguistic proficiency, this course enhances cognitive flexibility and memory. For children, it builds a bridge to their family heritage and identity. For professionals, it opens doors to communication in one of the most widely spoken languages in South Asia. Graduates will not only be able to communicate effectively but will also gain a deep appreciation for the rich cultural nuances and beautiful literature that Urdu offers."
+  },
+  {
+    title: "Female Quran Teacher",
+    slug: "female-tutors",
+    shortDesc: "A safe and comfortable online environment for sisters and children, led by highly qualified and vetted female Quran teachers.",
+    fullDesc: "Our Female Quran Teacher program is designed specifically for sisters and young girls who prefer a private, comfortable learning environment. All our female tutors are certified with Ijazah and have extensive experience in teaching Quran with Tajweed, Islamic studies, and Arabic. Lessons are conducted 1-on-1 via Microsoft Teams or our interactive platform, ensuring personal attention and a safe space for spiritual growth.",
+    image: "/images/female-quran-tutor-online.webp",
+    altText: "Female Quran Teacher for Sisters – Private Online Quran Classes for Women",
+    whatYouLearn: [
+      "Quran reading with Tajweed",
+      "One-on-one private sessions",
+      "Basic Islamic studies for women",
+      "Memorization of small Surahs",
+      "Comfortable learning for sisters"
+    ],
+    duration: "Flexible",
+    level: "All Levels",
+    summary: "Professional female tutors for sisters and children. A secure environment for authentic learning.",
+    cta: "Request a Female Tutor Now and start your free trial",
+    whoFor: "This course is ideal for sisters, mothers, and young girls who want to learn the Quran from a lady teacher. We ensure a safe online environment where students can feel confident and focused on their studies.",
+    curriculumDepth: "The curriculum is tailored to the student's level, ranging from basic Qaida to advanced Tajweed and Hifz. We incorporate daily Supplications (Duas) and essential Islamic rulings (Fiqh) relevant to women's daily lives.",
+    benefitsExt: "Learning from a female teacher provides a unique level of comfort and mentorship for sisters. It allows for open communication, better understanding of specific rulings, and creates a supportive spiritual bond between teacher and student."
   }
 ];
 
@@ -1049,20 +1094,20 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
   return (
     <div className="min-h-screen">
       <Helmet>
-        <title>Best Online Quran Academy in USA, UK & Canada | Almaas</title>
-        <meta name="description" content="Join Almaas Online Quran Academy for professional online Quran classes with Tajweed. Expert tutors for kids and adults in USA, UK, and Canada. Book a free trial!" />
+        <title>Online Quran Academy | Learn Quran Online with Tajweed & Expert Tutors</title>
+        <meta name="description" content="Join the best Online Quran Academy for 1-on-1 Quran Lessons with Tajweed. We offer Hifz classes, Islamic Studies, and Arabic for Kids & Adults in USA, UK, Canada & Australia. Start your free trial today!" />
         <link rel="canonical" href="https://www.almaasonlinequranacademy.online/" />
         <meta name="robots" content="index, follow" />
-        <meta name="keywords" content="online quran classes, learn quran online, quran classes for kids, online quran classes for adults, quran reading for beginners, tajweed course for ladies" />
-        <meta property="og:title" content="Best Online Quran Academy in USA, UK & Canada | Almaas" />
-        <meta property="og:description" content="Join Almaas Online Quran Academy for professional online Quran classes with Tajweed. Expert tutors for kids and adults in USA, UK, and Canada. Book a free trial!" />
+        <meta name="keywords" content="Online Quran Academy, Learn Quran Online, Best Online Quran Classes, Online Quran Tutor, Quran Teaching Online, Quran Classes for Kids, Quran Classes for Adults, One-on-One Quran Lessons, Professional Quran Teacher, Online Quran School, Live Quran Classes, Affordable Quran Classes" />
+        <meta property="og:title" content="Online Quran Academy | Learn Quran Online with Tajweed & Expert Tutors" />
+        <meta property="og:description" content="Discover the best Online Quran classes for kids and adults. One-on-one personalized Quran lessons scheduled worldwide. 24/7 flexibility. Start for free!" />
         <meta property="og:image" content="https://www.almaasonlinequranacademy.online/images/almaas-online-quran-academy-logo.webp" />
         <meta property="og:url" content="https://www.almaasonlinequranacademy.online/" />
 
         {/* Advanced Hreflang Implementation */}
-        <link rel="alternate" hreflang="en-gb" href="https://www.almaasonlinequranacademy.online/online-quran-classes-uk/" />
-        <link rel="alternate" hreflang="en-us" href="https://www.almaasonlinequranacademy.online/online-quran-classes-usa/" />
-        <link rel="alternate" hreflang="en-ae" href="https://www.almaasonlinequranacademy.online/online-quran-classes-uae/" />
+        <link rel="alternate" hreflang="en-gb" href="https://www.almaasonlinequranacademy.online/uk/" />
+        <link rel="alternate" hreflang="en-us" href="https://www.almaasonlinequranacademy.online/usa/" />
+        <link rel="alternate" hreflang="en-ae" href="https://www.almaasonlinequranacademy.online/uae/" />
         <link rel="alternate" hreflang="x-default" href="https://www.almaasonlinequranacademy.online/" />
 
         <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>
@@ -1076,7 +1121,7 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-black text-navy mb-6">About Almaas Online Quran Academy</h2>
           <p className="text-darkgray text-lg leading-relaxed mb-6">
-            Welcome to Almaas, the leading <strong>Online Quran Academy</strong>. We provide professional <strong>Online Quran Classes</strong> for students of all ages. Whether you are a beginner looking to <strong>Learn Quran Online</strong> with Tajweed or seeking advanced studies, our expert tutors are here to help you achieve your goals from the comfort of your home.
+            Welcome to Almaas Online Academy, the leading <strong>Low Cost Online Quran Academy</strong>. We provide professional and <strong>Affordable Quran Classes</strong> for students of all ages. Whether you are a beginner looking to <strong>Learn Quran Online</strong> with Tajweed or seeking <strong>Flexible Timings Quran Classes</strong>, our verified scholars are here to help you achieve your goals from the comfort of your home via <strong>Microsoft Teams</strong>.
           </p>
 
           <details className="group">
@@ -1107,12 +1152,12 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
           <p className="text-darkgray text-lg text-center mb-12">What makes us different from others</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { icon: Award, title: "Certified Teachers", desc: "All teachers certified with Ijazah and years of experience" },
-              { icon: Shield, title: "Money-Back Guarantee", desc: "100% satisfaction guaranteed or money back within 7 days" },
-              { icon: Clock, title: "Flexible Schedule", desc: "Choose your own time slots - available 24/7 worldwide" },
-              { icon: Users, title: "One-on-One Attention", desc: "Personal attention with customized learning plans" },
-              { icon: Globe, title: "Learn from Anywhere", desc: "Access classes from any device, anywhere in the world" },
-              { icon: CheckCircle, title: "Proven Results", desc: "Thousands of successful students achieved their goals" }
+              { icon: Award, title: "Verified Quran Scholars", desc: "All teachers certified with Ijazah and years of experience" },
+              { icon: Shield, title: "Affordable Monthly Fees", desc: "High-quality education with 100% satisfaction guarantee" },
+              { icon: Clock, title: "Flexible Timings", desc: "Choose your own time slots - available 24/7 worldwide" },
+              { icon: Users, title: "One-on-One Teams Class", desc: "Interactive sessions on Microsoft Teams for focused learning" },
+              { icon: Globe, title: "Learn Quran at Home", desc: "Access classes from any device, anywhere in the world" },
+              { icon: CheckCircle, title: "Free Trial Session", desc: "Book 3 free trial classes before committing to enrollment" }
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -1134,10 +1179,10 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
           <p className="text-darkgray text-lg text-center mb-12">Get started in 4 simple steps</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { num: "1", title: "Register Free", desc: "Fill form and book free demo classes", icon: UserPlus },
-              { num: "2", title: "Choose Course", desc: "Select course matching your goals", icon: BookOpen },
-              { num: "3", title: "Schedule Class", desc: "Pick convenient time with teacher", icon: Clock },
-              { num: "4", title: "Start Learning", desc: "Begin Quran learning journey", icon: Star }
+              { num: "1", title: "Register for Free", desc: "Fill the form for your Free Trial Quran Session", icon: UserPlus },
+              { num: "2", title: "Teams Setup", desc: "Learn Quran via Microsoft Teams easily at home", icon: BookOpen },
+              { num: "3", title: "Pick Your Plan", desc: "Choose from our Affordable Quran Classes", icon: Clock },
+              { num: "4", title: "Start Learning", desc: "Begin your one-to-one Teams Quran Class", icon: Star }
             ].map((step, idx) => {
               const Icon = step.icon;
               return (
@@ -1379,8 +1424,8 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
 // --- Per-course SEO metadata ---
 const COURSE_SEO = {
   'qaida-basics': {
-    title: 'Quran Qaida for Beginners Online | Learn Arabic Letters & Pronunciation – Almaas Academy',
-    description: 'Start your Quran journey with our Qaida for Beginners course. Learn Arabic letters, correct pronunciation, and Quranic reading step-by-step with expert teachers. Free trial available.',
+    title: 'Learn Noorani Qaida Online | Basic Quran Reading for Kids & Beginners',
+    description: 'Start your Quran journey with our Foundation Quran Course. Learn Arabic alphabet for kids, Noorani Qaida online, and basic pronunciation with expert teachers.',
     faqs: [
       { q: 'How old should a child be to start Qaida?', a: 'Children as young as 4 years old can start our Qaida course. We have specialized teachers trained in teaching young learners with patience and interactive methods.' },
       { q: 'How long does the Qaida course take to complete?', a: 'Typically 2–3 months depending on the student\'s age, learning pace, and frequency of classes per week.' },
@@ -1399,8 +1444,8 @@ const COURSE_SEO = {
     syllabus: ['Review of Qaida fundamentals', 'Juz Amma – short Surahs for fluency', 'Pause (Waqf) and continuation rules', 'Basic Tajweed as applied in text', 'Confidence building in recitation', 'Consistent reading speed (Tarteel)'],
   },
   'hifz-memorization': {
-    title: 'Online Quran Memorization (Hifz) Classes | Become Hafiz/Hafiza – Almaas Academy',
-    description: 'Structured Quran Hifz classes online for kids and adults. Memorize the Quran with daily revision plans, expert teachers, and Tajweed focus. Start your Hafiz journey with 3 free trial classes.',
+    title: 'Online Hifz Program | Memorize Quran at Home with Private Hifz Tutor',
+    description: 'Join our structured Online Hifz Program. Online Quran Memorization for Kids and Adults with daily revision plans, private tutors, and Tajweed focus. Become a Hafiz today.',
     faqs: [
       { q: 'Can adults memorize the Quran online?', a: 'Absolutely. Many adults successfully complete Hifz through our structured program. We provide customized plans based on your schedule and memorization speed.' },
       { q: 'What is the daily commitment required for Hifz?', a: 'A minimum of 30–60 minutes of new memorization and 30 minutes of revision daily is recommended for consistent progress.' },
@@ -1459,8 +1504,8 @@ const COURSE_SEO = {
     syllabus: ['Early life of the Prophet (PBUH) in Makkah', 'The beginning of revelation (Wahy)', 'Persecution and patience of early Muslims', 'Hijrah (Migration) to Madinah', 'Key battles and Islamic constitution', 'Final sermon and the Prophet\'s legacy'],
   },
   'tajweed-rules': {
-    title: 'Online Quran Tajweed Course | Perfect Your Recitation – Almaas Academy',
-    description: 'Master Tajweed and Tarteel with certified online teachers. Learn Makharij, Sifaat, Ghunna, Madd rules, and more. Beautify your Quran recitation for kids and adults worldwide.',
+    title: 'Online Tajweed Course | Learn Quran with Proper Pronunciation & Tarteel',
+    description: 'Master Tajweed and Tarteel with certified online teachers. Learn advanced Tajweed rules online, Makharij, and rhythmic recitation. Beautify your Quran today.',
     faqs: [
       { q: 'Is learning Tajweed obligatory (Fard)?', a: 'Scholars agree that applying Tajweed to avoid changing the meaning of words is obligatory (Fard al-Ayn) for every Muslim who recites the Quran.' },
       { q: 'I can already read Quran. Why do I need a Tajweed course?', a: 'Most self-taught reciters have pronunciation habits that need correction. A Tajweed course provides live feedback from a trained teacher to correct these errors systematically.' },
@@ -1489,8 +1534,8 @@ const COURSE_SEO = {
     syllabus: ['Fiqh of Taharah (Purification)', 'Fiqh of Salah (Prayer rules & conditions)', 'Fiqh of Zakat (Charity obligations)', 'Fiqh of Fasting (Ramadan rules)', 'Halal & Haram in food and business', 'Rights of family, neighbors & community'],
   },
   'essential-knowledge': {
-    title: 'Farz e Uloom Course Online | Essential Islamic Knowledge for Every Muslim',
-    description: 'Learn the essential Islamic knowledge (Farz-e-Uloom) every Muslim must have. Covers Aqeedah, Salah, purification, and daily Islamic obligations. Beginner-friendly online course.',
+    title: 'Online Islamic Classes for Children | Learn Dua, Salah & Pillars of Islam',
+    description: 'Join our Online Islamic Classes for Children. Learn essential Islamic knowledge, how to pray Salah, basic Islamic history, and the Seerah of Prophet Muhammad (PBUH).',
     faqs: [
       { q: 'What is Farz-e-Uloom?', a: 'Farz-e-Uloom (obligatory knowledge) refers to the minimum Islamic knowledge that is an individual duty (Farz al-Ayn) upon every Muslim to learn, such as correct Aqeedah, how to pray, and basic Islamic duties.' },
       { q: 'Is this course suitable for someone who grew up Muslim but never learned formally?', a: 'This is the most common student for this course. Many Muslims who grew up in the faith have gaps in foundational knowledge that this course addresses comprehensively.' },
@@ -1516,6 +1561,16 @@ const COURSE_SEO = {
       'Regular progress monitoring & reports',
       'Certificate upon completion'
     ],
+  },
+  'female-tutors': {
+    title: 'Female Quran Teacher for Sisters | Online Quran Classes for Women',
+    description: 'Looking for a private lady Quran tutor? Our female teachers provide a safe online environment for sisters and children to learn Quran with Tajweed on Microsoft Teams.',
+    faqs: [
+      { q: 'Can I specifically request a female teacher?', a: 'Yes, we have a large team of qualified female teachers available for sisters and young girls. You can request a lady tutor during the free trial setup.' },
+      { q: 'Is the learning environment safe for sisters?', a: 'Absolutely. We provide a secure and private online environment, often using 1-on-1 sessions to ensure the comfort and privacy of our female students.' },
+      { q: 'What subjects do female teachers cover?', a: 'Our female tutors teach Noorani Qaida, Quran with Tajweed, Hifz, Arabic, and basic Islamic studies for women.' },
+    ],
+    syllabus: ['1-on-1 private sessions with lady tutor', 'Quran recitation with Tajweed rules', 'Memorization of essential Surahs', 'Islamic studies for women & sisters', 'Comfortable & secure learning environment'],
   },
 };
 
@@ -1548,12 +1603,18 @@ const CourseDetailPage = ({ COURSES_DETAILED, navigateTo, setShowPopup }) => {
     "timeRequired": course.duration,
     "url": `https://almaasonlinequranacademy.online/courses/${slug}`,
     "image": `https://almaasonlinequranacademy.online${course.image}`,
+    "educationalCredentialAwarded": "Certificate of Completion",
+    "occupationalCategory": "Religious Education",
     "offers": {
       "@type": "Offer",
       "category": "Education",
       "price": "25.00",
       "priceCurrency": "USD",
-      "description": "3 Free Trial Classes Available"
+      "description": "3 Free Trial Classes Available on Microsoft Teams",
+      "offeredBy": {
+        "@type": "Organization",
+        "name": "Almaas Online Quran Academy"
+      }
     },
     "aggregateRating": {
       "@type": "AggregateRating",
