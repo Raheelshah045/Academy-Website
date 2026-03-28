@@ -643,33 +643,42 @@ const XLogo = ({ className }) => (
   </svg>
 );
 
-const Header = ({ scrolled, menuOpen, setMenuOpen, navigateTo, setShowPopup }) => (
-  <header className={`fixed w-full top-0 z-40 transition ${scrolled ? 'bg-offwhite shadow-sm' : 'bg-offwhite/95'}`}>
-    <div className="max-w-7xl mx-auto px-4 py-4">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3 sm:gap-4">
-          <LogoImage className="h-12 w-12 sm:h-16 sm:w-16" />
-          <div>
-            <div className="text-lg sm:text-xl font-bold text-navy">ALMAAS ONLINE</div>
-            <p className="text-xs sm:text-sm text-darkgray font-medium">QURAN ACADEMY</p>
+const Header = ({ scrolled, menuOpen, setMenuOpen, navigateTo, setShowPopup }) => {
+  // Reversible Style - Old: ${scrolled ? 'bg-offwhite shadow-sm' : 'bg-offwhite/95'}
+  const headerBg = scrolled 
+    ? 'bg-white/70 backdrop-blur-md shadow-lg border-b border-white/20' 
+    : 'bg-white/5 backdrop-blur-[6px] border-b border-white/5';
+
+  const textColor = scrolled ? 'text-navy' : 'text-white';
+  const subTextColor = scrolled ? 'text-darkgray' : 'text-white/70';
+
+  return (
+    <header className={`fixed w-full top-0 z-40 transition-all duration-500 ${headerBg} ${textColor}`}>
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <LogoImage className="h-12 w-12 sm:h-16 sm:w-16" />
+            <div>
+              <div className={`text-lg sm:text-xl font-bold transition-colors ${textColor}`}>ALMAAS ONLINE</div>
+              <p className={`text-xs sm:text-sm font-medium transition-colors ${subTextColor}`}>QURAN ACADEMY</p>
+            </div>
           </div>
+          <nav className="hidden lg:flex items-center gap-8">
+            <button onClick={() => navigateTo('/')} className={`font-medium transition-colors hover:text-gold ${textColor}`}>Home</button>
+            <button onClick={() => navigateTo('/courses')} className={`font-medium transition-colors hover:text-gold ${textColor}`}>Courses</button>
+            <button onClick={() => navigateTo('/pricing')} className={`font-medium transition-colors hover:text-gold ${textColor}`}>Pricing</button>
+            <button onClick={() => navigateTo('/blogs')} className={`font-medium transition-colors hover:text-gold ${textColor}`}>Blogs</button>
+            <button onClick={() => navigateTo('/faq')} className={`font-medium transition-colors hover:text-gold ${textColor}`}>FAQ</button>
+            <button onClick={() => navigateTo('/reviews')} className={`font-medium transition-colors hover:text-gold ${textColor}`}>Reviews</button>
+            <button onClick={() => navigateTo('/contact')} className={`font-medium transition-colors hover:text-gold ${textColor}`}>Contact</button>
+            <button onClick={() => setShowPopup(true)} className="bg-navy text-white px-6 py-3.5 md:py-2.5 rounded-lg font-bold shadow-lg hover:bg-navy/90 transition-all">Start Free Trial</button>
+          </nav>
+          <button onClick={() => setMenuOpen(!menuOpen)} className={`lg:hidden p-2 transition-colors ${textColor}`}>
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
-        <nav className="hidden lg:flex items-center gap-8">
-          <button onClick={() => navigateTo('/')} className="text-darkgray hover:text-navy font-medium">Home</button>
-          <button onClick={() => navigateTo('/courses')} className="text-darkgray hover:text-navy font-medium">Courses</button>
-          <button onClick={() => navigateTo('/pricing')} className="text-darkgray hover:text-navy font-medium">Pricing</button>
-          <button onClick={() => navigateTo('/blogs')} className="text-darkgray hover:text-navy font-medium">Blogs</button>
-          <button onClick={() => navigateTo('/faq')} className="text-darkgray hover:text-navy font-medium">FAQ</button>
-          <button onClick={() => navigateTo('/reviews')} className="text-darkgray hover:text-navy font-medium">Reviews</button>
-          <button onClick={() => navigateTo('/contact')} className="text-darkgray hover:text-navy font-medium">Contact</button>
-          <button onClick={() => setShowPopup(true)} className="bg-navy text-white px-6 py-3.5 md:py-2.5 rounded-lg font-bold">Start Free Trial</button>
-        </nav>
-        <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden text-navy p-2">
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </div>
       {menuOpen && (
-        <div className="lg:hidden mt-4 pb-4 bg-offwhite/50 rounded-xl border-2 border-navy">
+        <div className="lg:hidden mt-4 pb-4 bg-white/80 backdrop-blur-xl rounded-2xl border-2 border-navy/20 shadow-2xl">
           <div className="flex flex-col gap-2 p-4">
             <button onClick={() => navigateTo('/')} className="text-darkgray hover:text-navy py-3 px-4 rounded-lg text-left font-medium">Home</button>
             <button onClick={() => navigateTo('/courses')} className="text-darkgray hover:text-navy py-3 px-4 rounded-lg text-left font-medium">Courses</button>
@@ -683,8 +692,9 @@ const Header = ({ scrolled, menuOpen, setMenuOpen, navigateTo, setShowPopup }) =
         </div>
       )}
     </div>
-  </header>
-);
+    </header>
+  );
+};
 
 const Footer = ({ navigateTo }) => (
   <footer className="bg-navy text-white/70 py-16 px-4 border-t border-gold/10">
