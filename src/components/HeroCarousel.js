@@ -177,7 +177,7 @@ export default function HeroCarousel({ setShowPopup, navigateTo }) {
                                         width: '100%',
                                         height: '100%',
                                         objectFit: 'cover',
-                                        objectPosition: 'center center',
+                                        objectPosition: 'center bottom',
                                         opacity: imagesLoaded[idx] ? 1 : 0,
                                         transition: 'opacity 0.6s ease',
                                     }}
@@ -187,7 +187,7 @@ export default function HeroCarousel({ setShowPopup, navigateTo }) {
                                     style={{
                                         position: 'absolute',
                                         inset: 0,
-                                        background: 'linear-gradient(to bottom, rgba(10,29,55,0.72) 0%, rgba(10,29,55,0.60) 50%, rgba(10,29,55,0.80) 100%)',
+                                        background: 'linear-gradient(to bottom, rgba(10,29,55,0.25) 0%, rgba(10,29,55,0.40) 20%, rgba(10,29,55,0.60) 50%, rgba(10,29,55,0.80) 100%)',
                                     }}
                                 />
                             </div>
