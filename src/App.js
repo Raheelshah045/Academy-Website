@@ -644,13 +644,19 @@ const XLogo = ({ className }) => (
 );
 
 const Header = ({ scrolled, menuOpen, setMenuOpen, navigateTo, setShowPopup }) => {
+  const location = useLocation();
+  const isHome = location.pathname === '/' || location.pathname === '';
+  
+  // Pages that explicitly use the dark navy hero section at the top
+  const isDarkHeroPage = isHome || ['/usa', '/uk', '/uae', '/usa/', '/uk/', '/uae/', '/ramadan-quran-classes'].includes(location.pathname);
+
   // Reversible Style - Old: ${scrolled ? 'bg-offwhite shadow-sm' : 'bg-offwhite/95'}
   const headerBg = scrolled 
     ? 'bg-white/70 backdrop-blur-md shadow-lg border-b border-white/20' 
-    : 'bg-white/5 backdrop-blur-[6px] border-b border-white/5';
+    : (isDarkHeroPage ? 'bg-white/5 backdrop-blur-[6px] border-b border-white/5' : 'bg-white shadow-sm');
 
-  const textColor = scrolled ? 'text-navy' : 'text-white';
-  const subTextColor = scrolled ? 'text-darkgray' : 'text-white/70';
+  const textColor = (scrolled || !isDarkHeroPage) ? 'text-navy' : 'text-white';
+  const subTextColor = (scrolled || !isDarkHeroPage) ? 'text-darkgray' : 'text-white/70';
 
   return (
     <header className={`fixed w-full top-0 z-40 transition-all duration-500 ${headerBg} ${textColor}`}>
