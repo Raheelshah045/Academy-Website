@@ -17,7 +17,7 @@ const SETTINGS = {
     'usaid.webp': { width: 600, quality: 75 },
 
     // Hero Slides: These were 600KB+. Resizing to 1600px and compressing.
-    'hero-slide-1-student.webp': { width: 1600, quality: 70 },
+    'hero-slide-1-student-v3.webp': { width: 1600, quality: 70 },
     'hero-slide-2-children.webp': { width: 1600, quality: 70 },
     'hero-slide-2-scholar.webp': { width: 1600, quality: 70 },
     'hero-slide-2-teacher.webp': { width: 1600, quality: 70 },

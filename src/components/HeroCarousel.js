@@ -5,7 +5,7 @@ import { ChevronRight } from 'lucide-react';
 const SLIDES = [
     {
         id: 1,
-        image: '/images/hero-slide-1-student.webp',
+        image: '/images/hero-slide-1-student-v3.webp',
         alt: 'A young Muslim student learning Quran online with a tablet – Almaas Online Quran Academy',
         label: 'For Every Child',
         heading: 'Leading Online Quran Academy\nfor Kids and Adults',
