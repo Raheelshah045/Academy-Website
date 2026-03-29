@@ -89,8 +89,7 @@ const REGION_CONFIGS = {
     seoDesc: "Best Online Quran School in Australia. Join 1-on-1 Quran classes in Sydney, Melbourne, and Perth with qualified teachers. Reliable Islamic education for kids.",
     keywords: ["online quran school australia", "quran learning sydney", "learn quran online australia", "online quran classes melbourne"]
   },
-  'Europe': { name: 'Europe', currency: 'EUR', symbol: '€', timezones: 'CET/EET', paymentMethods: 'IBAN/Stripe', multiplier: 1.15, langCode: "en-eu", seoTitle: "Online Quran Academy Europe | English Speaking Quran Tutor Online", seoDesc: "Leading Online Quran Academy for students in Europe. Learn with English speaking tutors at your own pace. Start your Quran journey today!", keywords: ["online quran academy europe", "english speaking quran tutor online", "learn quran online europe"] },
-  'Pakistan': { name: 'Pakistan', currency: 'PKR', symbol: 'Rs ', timezones: 'PKT', paymentMethods: 'EasyPaisa/JazzCash/Bank', multiplier: 350, langCode: "en-pk" }
+  'Europe': { name: 'Europe', currency: 'EUR', symbol: '€', timezones: 'CET/EET', paymentMethods: 'IBAN/Stripe', multiplier: 1.15, langCode: "en-eu", seoTitle: "Online Quran Academy Europe | English Speaking Quran Tutor Online", seoDesc: "Leading Online Quran Academy for students in Europe. Learn with English speaking tutors at your own pace. Start your Quran journey today!", keywords: ["online quran academy europe", "english speaking quran tutor online", "learn quran online europe"] }
 };
 
 const COURSE_TIER_MAPPING = {
@@ -2881,7 +2880,6 @@ const AlmaasQuranAcademy = () => {
           if (country === 'United Kingdom') setSelectedRegion('UK');
           else if (country === 'Canada') setSelectedRegion('Canada');
           else if (country === 'Australia') setSelectedRegion('Australia');
-          else if (country === 'Pakistan') setSelectedRegion('Pakistan');
           else if (ipData.continent_code === 'EU') setSelectedRegion('Europe');
           else setSelectedRegion('USA');
 
@@ -2900,7 +2898,6 @@ const AlmaasQuranAcademy = () => {
         // Fallback: Timezone-based detection
         const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
         if (tz.includes('London') || tz.includes('Europe/London')) setSelectedRegion('UK');
-        else if (tz.includes('Karachi') || tz.includes('Islamabad') || tz.includes('Asia/Karachi')) setSelectedRegion('Pakistan');
         else if (tz.includes('Dubai') || tz.includes('Riyadh') || tz.includes('Qatar') || tz.includes('Asia/Dubai')) setSelectedRegion('Europe'); // Middle East often grouped or uses USD/EUR pricing patterns
         else if (tz.includes('America/New_York') || tz.includes('America/Chicago') || tz.includes('America/Los_Angeles')) setSelectedRegion('USA');
         else if (tz.includes('America/Toronto') || tz.includes('America/Vancouver')) setSelectedRegion('Canada');
@@ -3042,7 +3039,7 @@ const AlmaasQuranAcademy = () => {
     if (locationData && exchangeRates) {
       const specialSymbols = {
         'GBP': '£', 'USD': '$', 'CAD': 'C$', 'AUD': 'A$', 'EUR': '€', 'NZD': 'NZ$',
-        'PKR': 'Rs ', 'INR': '₹', 'BDT': '৳',
+        'INR': '₹', 'BDT': '৳',
         'AED': 'Dhs ', 'SAR': 'SAR ', 'QAR': 'QAR ', 'KWD': 'KD ', 'OMR': 'OMR ', 'BHD': 'BD ',
         'MYR': 'RM ', 'IDR': 'Rp ',
       };
