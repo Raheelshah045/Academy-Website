@@ -1,10 +1,11 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import LazySection from './components/LazySection';
 import HeroCarousel from './components/HeroCarousel';
-import { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Mail, Globe, Shield, CreditCard, UserPlus, Newspaper, ChevronDown, Facebook, Instagram, Youtube, Linkedin, ArrowLeft, Bot, Sparkles, Send, ExternalLink } from 'lucide-react';
+import { Menu, X, Phone, Clock, Users, Award, BookOpen, Star, CheckCircle, ChevronRight, MessageCircle, Mail, Globe, Shield, CreditCard, UserPlus, Newspaper, ChevronDown, Facebook, Instagram, Youtube, Linkedin, ArrowLeft, ArrowRight, Bot, Sparkles, Send } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import { Routes, Route, useNavigate, useLocation, useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import BLOGS from './data/blogsDB';
 
 // --- DATABASE CONFIG ---
 // Get these from your Supabase dashboard: Settings -> API
@@ -177,7 +178,7 @@ const COURSES_DETAILED = [
     title: "Quran Reading",
     slug: "quran-reading",
     shortDesc: "A guided course designed to help learners read the Holy Quran fluently, focusing on correct pronunciation, smooth recitation, and building confidence in every verse.",
-    fullDesc: "This course helps students read the Holy Quran fluently and confidently with correct pronunciation. Learners are guided step by step to improve flow, accuracy, and consistency in recitation. Teachers focus on correcting mistakes and strengthening reading skills through regular practice. Ideal for students who can read basic Arabic and want to improve Quran recitation.",
+    fullDesc: "This course helps students read the Holy Quran fluently and confidently with correct pronunciation. Learners are guided step by step to improve flow, accuracy, and consistency in recitation. Teachers focus on correcting mistakes and strengthening reading skills through regular practice. Ideal for students who can read basic Arabic and want to improve Quran recitation.\n\n**Learning Guides:** Master your schedule with our latest guide on [How to Balance Secular Education and Quranic Studies](/blog/8).",
     image: "/images/online-quran-reading-course.webp",
     altText: "Online Quran Reading Course – Fluent and Confident Quran Recitation for Beginners",
     whatYouLearn: [
@@ -199,7 +200,7 @@ const COURSES_DETAILED = [
     title: "Quran Memorization (Hifz)",
     slug: "hifz-memorization",
     shortDesc: "A structured course that helps students memorize the Holy Quran with accuracy, daily revision plans, and expert guidance to retain and recite confidently.",
-    fullDesc: "This structured course is designed to help students memorize the Holy Quran accurately and effectively. A disciplined system of daily lessons, revision plans, and continuous supervision ensures strong memorization and retention. Suitable for children and adults aspiring to become Hafiz or Hafiza.\n\n**Learning Guides:** Discover our proven [Memorizing Quran: Complete Step-by-Step Guide](/blog/3) to fast-track your Hifz journey.",
+    fullDesc: "This structured course is designed to help students memorize the Holy Quran accurately and effectively. A disciplined system of daily lessons, revision plans, and continuous supervision ensures strong memorization and retention. Suitable for children and adults aspiring to become Hafiz or Hafiza.\n\n**Learning Guides:** Discover our proven [Memorizing Quran: Complete Step-by-Step Guide](/blog/3) or learn [How to Balance Secular Education and Quranic Studies](/blog/8) to fast-track your Hifz journey.",
     image: "/images/online-quran-memorization-hifz-classes.webp",
     altText: "Online Hifz Program – Online Quran Memorization for Kids at Home",
     whatYouLearn: [
@@ -444,194 +445,6 @@ const COURSES_DETAILED = [
     benefitsExt: "Beyond linguistic proficiency, this course enhances cognitive flexibility and memory. For children, it builds a bridge to their family heritage and identity. For professionals, it opens doors to communication in one of the most widely spoken languages in South Asia. Graduates will not only be able to communicate effectively but will also gain a deep appreciation for the rich cultural nuances and beautiful literature that Urdu offers."
   }
 ];
-
-const BLOGS = [
-  {
-    id: 1,
-    title: "10 Benefits of Learning the Quran (According to Quran & Hadith)",
-    image: "/images/blog-benefits-quran.webp",
-    date: "Feb 15, 2026",
-    seoDesc: "Discover the 10 spiritual and worldly benefits of learning the Quran. From peace of mind to eternal rewards, read our complete guide.",
-    excerpt: "The Quran is not just a book — it is the divine guidance sent by Allah ﷻ for all of humanity. Discover the eternal rewards.",
-    content: [
-      { type: "p", text: "The Quran is not just a book — it is the divine guidance sent by Allah ﷻ for all of humanity. Learning the Quran is one of the greatest acts of worship a Muslim can perform. Its benefits are not limited to this world; they extend into the Hereafter." },
-      { type: "h3", text: "1. You Become Among the Best of People" },
-      { type: "quote", text: "“The best of you are those who learn the Quran and teach it.”", source: "Sahih al-Bukhari" },
-      { type: "p", text: "This Hadith clearly shows the high status of a person who dedicates themselves to learning the Quran. It is a sign of honor and closeness to Allah." },
-      { type: "h3", text: "2. The Quran Will Intercede for You" },
-      { type: "quote", text: "“Recite the Quran, for it will come as an intercessor for its companions on the Day of Resurrection.”", source: "Sahih Muslim" },
-      { type: "h3", text: "3. Elevation in Ranks in Jannah" },
-      { type: "quote", text: "“It will be said to the companion of the Quran: Recite and rise... for your status will be at the last verse you recite.”", source: "Sunan Abi Dawud" },
-      { type: "h3", text: "4. Source of Guidance and Light" },
-      { type: "quran", text: "“This is the Book about which there is no doubt, a guidance for those conscious of Allah.”", ref: "Surah Al-Baqarah 2:2" },
-      { type: "h3", text: "5. Brings Peace and Tranquility" },
-      { type: "quran", text: "“Verily, in the remembrance of Allah do hearts find rest.”", ref: "Surah Ar-Ra’d 13:28" },
-      { type: "h3", text: "6. Multiplies Rewards for Every Letter" },
-      { type: "p", text: "The Prophet ﷺ said: “Whoever recites a letter from the Book of Allah will receive a reward, and that reward will be multiplied by ten.”" },
-      { type: "h3", text: "7. Protection from Misguidance" },
-      { type: "p", text: "Learning the Quran protects a believer from deviation and confusion in religious matters." },
-      { type: "h3", text: "8. Angels Surround the Gathering" },
-      { type: "p", text: "No people gather in a house of Allah, reciting and studying it together, except that tranquility descends upon them and angels surround them." },
-      { type: "h3", text: "9. Status of Individuals and Nations" },
-      { type: "p", text: "“Indeed, Allah raises some people by this Book and lowers others by it.” (Sahih Muslim)" },
-      { type: "h3", text: "10. A Continuous Source of Reward" },
-      { type: "p", text: "Teaching or learning the Quran is beneficial knowledge that continues to bring reward even after death. Start your journey today with our [Online Quran classes in the UK](/quran-classes-uk/)." }
-    ],
-    faqs: [
-      { q: "Is learning Quran online effective?", a: "Yes, online classes provide 1-on-1 attention, which is often more effective than traditional crowded classrooms for individual progress." },
-      { q: "What age should kids start learning?", a: "Children can start as early as 4 or 5 years old with Noorani Qaida to build a strong foundation." },
-      { q: "Do you offer Tajweed for adults?", a: "Yes, we have specialized Tajweed courses for brothers and sisters designed for adult learners." }
-    ]
-  },
-  {
-    id: 2,
-    title: "How to Improve Your Tajweed (Practical Tips)",
-    image: "/images/blog-tajweed-tips.webp",
-    date: "Feb 12, 2026",
-    seoDesc: "Master the rules of Tajweed with our practical tips. Learn correct pronunciation (Makharij) and improve your recitation today.",
-    excerpt: "Learning Tajweed is about reciting the words of Allah ﷻ correctly, the way they were revealed to the Prophet ﷺ.",
-    content: [
-      { type: "p", text: "Learning Tajweed is not just about beautifying your voice — it is about reciting the words of Allah ﷻ correctly. Proper Tajweed protects the meaning of the Quran. If you want to master these rules, sign up for our [Tajweed & Tarteel course](/courses/tajweed-rules)." },
-      { type: "quran", text: "“And recite the Qur’an with measured recitation.”", ref: "Surah Al-Muzzammil 73:4" },
-      { type: "h3", text: "1. Correct Your Intention First" },
-      { type: "p", text: "Tajweed is an act of worship. You are not learning to impress others — you are learning to please Allah." },
-      { type: "h3", text: "2. Learn the Basic Rules Step by Step" },
-      { type: "p", text: "Focus on Makharij (articulation), Sifaat (characteristics), and rules of Noon/Meem Sakinah." },
-      { type: "h3", text: "3. Focus on Makharij (Pronunciation)" },
-      { type: "p", text: "Practice letters individually to distinguish between similar sounding letters like Ain and Alif, or Saad and Seen." },
-      { type: "h3", text: "4. Recite Slowly (Tarteel)" },
-      { type: "p", text: "Speed is the enemy of Tajweed. Slow recitation helps you apply rules properly and avoid mistakes." },
-      { type: "h3", text: "5. Listen to Expert Qaris" },
-      { type: "p", text: "Follow consistent masters like Alafasy or Al-Sudais. Repeat after them to imitate flow." },
-      { type: "h3", text: "6. Record Your Recitation" },
-      { type: "p", text: "Listen to yourself to identify where you rush or mispronounce. Self-review is powerful." }
-    ],
-    faqs: [
-      { q: "What is the best way to learn Tajweed?", a: "The best way is through a qualified teacher who can listen to your recitation and provide immediate correction." },
-      { q: "How long does it take to learn Tajweed rules?", a: "Basic Tajweed can be learned in 4-6 months with consistent practice of 2-3 sessions per week." },
-      { q: "Can I learn Tajweed online?", a: "Absolutely. High-quality audio and video software make online Tajweed classes highly effective." }
-    ]
-  },
-  {
-    id: 3,
-    title: "Memorizing Quran: Complete Step-by-Step Guide",
-    image: "/images/blog-hifz-guide.webp",
-    date: "Feb 10, 2026",
-    seoDesc: "Want to become a Hafiz? Follow our 10-step guide to successful Quran memorization with revision strategies and best practices.",
-    excerpt: "Hifz is one of the greatest honors. Discover our structured 10-step plan to preserve the Quran in your heart.",
-    content: [
-      { type: "p", text: "Hifz is a sacred journey that requires patience and a structured approach. To get professional guidance, consider our [Quran Memorization (Hifz) Course](/courses/hifz-memorization)." },
-      { type: "h3", text: "Virtues of Memorizing" },
-      { type: "p", text: "Every ayah memorized raises your rank in Paradise. It also brings immense honor to your parents in the afterlife." },
-      { type: "h3", text: "The Complete Plan" },
-      { type: "p", text: "1. Strengthen your intention for Allah alone." },
-      { type: "p", text: "2. Fix your Tajweed before starting Hifz." },
-      { type: "p", text: "3. Choose a consistent time (Fajr is best)." },
-      { type: "p", text: "4. Follow a realistic daily plan (5-10 lines)." },
-      { type: "p", text: "5. Use the 3x Method: Read 10x looking, 10x without, then connect." },
-      { type: "h3", text: "The Golden Rule" },
-      { type: "p", text: "Revision is more important than new memorization. Without it, the Quran fades like untied camels. Maintain your Hifz with the best [Online Quran classes in the USA](/quran-classes-usa/)." }
-    ],
-    faqs: [
-      { q: "What is the best age for Hifz?", a: "Between 7 and 13 is often considered the 'golden age' for memorization, but adults can also successfully complete Hifz with dedication." },
-      { q: "How much should I memorize daily?", a: "Start small with 3-5 lines per day and gradually increase as your memory strength grows." },
-      { q: "Is daily revision necessary?", a: "Yes, 'Sabqi' and 'Manzil' (revision) are critical to ensuring you don't forget previously memorized verses." }
-    ]
-  },
-  {
-    id: 4,
-    title: "How to Choose the Best Online Quran Academy (Parent's Guide)",
-    image: "/images/blog-choose-academy.webp",
-    date: "March 5, 2026",
-    seoDesc: "Choosing the right Quran school is critical for your child's success. Learn the 5 key factors every parent must check before enrolling.",
-    excerpt: "Finding the right academy for your child can be overwhelming. We break down the absolute essentials you must verify.",
-    content: [
-      { type: "p", text: "Choosing an online Quran academy is one of the most important decisions you will make for your child's spiritual education. How do you find the best [Online Quran classes for kids](/courses/qaida-basics)? Here is your checklist." },
-      { type: "h3", text: "1. Teacher Qualifications and Vetting" },
-      { type: "p", text: "Look for teachers with Ijazah and experience in teaching children. Ask if the academy does background checks." },
-      { type: "h2", text: "2. Trial Classes and Methodology" },
-      { type: "p", text: "Never pay upfront without a trial. See if the teacher is patient and uses engaging methods for kids." },
-      { type: "h2", text: "3. Flexibility vs consistency" },
-      { type: "p", text: "Ensure the academy can match your time zone (e.g., GST for UAE or GMT for UK) while maintaining a strict schedule." },
-      { type: "p", text: "Join the best [Online Quran classes in UAE](/quran-classes-uae/) and see the difference today." }
-    ],
-    faqs: [
-      { q: "What should I look for in a Quran teacher?", a: "Proper Tajweed certification (Ijazah), experience with the student's age group, and a patient teaching style." },
-      { q: "Are online Quran classes safe for children?", a: "Yes, reputable academies use secure platforms and many allow parents to monitor sessions." },
-      { q: "How much do online Quran classes cost?", a: "Prices typically range from $25 to $60 per month depending on the frequency of classes." }
-    ]
-  },
-  {
-    id: 5,
-    title: "The Ultimate Guide to Learning Quran for Adults",
-    image: "/images/blog-adult-quran.webp",
-    date: "March 8, 2026",
-    seoDesc: "Adults often hesitate to start learning Quran from basics. Our guide shows you why it's never too late and how to start effectively.",
-    excerpt: "It is never too late to learn the Book of Allah. This guide is tailored specifically for the challenges and strengths of adult learners.",
-    content: [
-      { type: "p", text: "Many adults feel shy or think it's 'too late' to learn Quran from scratch. In reality, adult learners often have better focus and dedication than children. Whether you want to learn [Quran Reading](/courses/quran-reading) or master Tajweed, we have a path for you." },
-      { type: "h2", text: "Overcoming the Psychological Barrier" },
-      { type: "p", text: "The Prophet (SAW) received revelation in his 40s. Age is a number, but sincerity is the key. Allah rewards the effort you put in." },
-      { type: "h3", text: "Step 1: Start with Noorani Qaida" },
-      { type: "p", text: "Don't rush to read verses. Master the alphabet and basic pronunciation (Makharij) first. This is the foundation of everything." },
-      { type: "h2", text: "Step 2: Consistent Small Windows" },
-      { type: "p", text: "Adults are busy. Instead of one long session, try 20-30 minutes of focused learning 3 times a week." },
-      { type: "p", text: "Start your journey today with our specialized [Online Quran classes for adults](/courses/quran-reading)." }
-    ],
-    faqs: [
-      { q: "Is it too late for an adult to start learning Quran?", a: "Never. Many of the Sahaba (companions) embraced Islam and learned the Quran in their adulthood." },
-      { q: "How often should adults have Quran lessons?", a: "3 days per week is ideal to maintain momentum while managing work and family life." },
-      { q: "Can I learn Tajweed while working a full-time job?", a: "Yes, our online classes are available 24/7 to fit any professional schedule." }
-    ]
-  },
-  {
-    id: 6,
-    title: "How to Choose the Best Online Quran Tutor in Canada?",
-    image: "/images/blog-canada-tutor.webp",
-    date: "March 11, 2026",
-    seoDesc: "Finding a qualified Quran teacher in Canada involves more than just a simple search. Learn the key factors to ensure your child's success.",
-    excerpt: "Finding the right mentor for your child's spiritual journey is a significant responsibility for Muslim parents in Canada.",
-    content: [
-      { type: "p", text: "Finding the right mentor for your child's spiritual journey is a significant responsibility for Muslim parents in Canada. With so many options available, how do you ensure you are choosing a qualified [Online Quran Tutor](/contact)? Here is our expert guide for Canadian families." },
-      { type: "h3", text: "1. Look for Certified Professionals (Ijazah)" },
-      { type: "p", text: "The most important factor is the teacher's qualification. Ensure the tutor has an 'Ijazah' — a traditional certification that authorizes them to teach the Quran with proper Tajweed. This ensures your child learns from a source of authentic knowledge." },
-      { type: "h3", text: "2. Time Zone Compatibility" },
-      { type: "p", text: "Canada spans multiple time zones (EST, MST, PST). You need an academy that offers 24/7 flexibility so that classes can happen after school hours or on weekends without disrupting your family's routine." },
-      { type: "h3", text: "3. Fluent English Communication" },
-      { type: "p", text: "For children born and raised in Canada, a tutor who is a [Fluent English Speaker](/reviews) is essential. Clear communication helps children understand complex Islamic concepts and stay engaged during the session." },
-      { type: "p", text: "Ready to find the perfect teacher? Start your [3-Day Free Trial](/) with our expert tutors today." }
-    ],
-    faqs: [
-      { q: "Are there female Quran teachers available for kids in Canada?", a: "Yes, we have a dedicated team of female Quran teachers for sisters and children, ensuring a comfortable learning environment." },
-      { q: "What is the best time for Quran classes in Canada?", a: "Most parents prefer evening slots (between 5 PM to 8 PM local time) or weekend mornings." },
-      { q: "Can I monitor my child's progress?", a: "Absolutely. We provide regular monthly feedback and parents are encouraged to check in on sessions." }
-    ]
-  },
-  {
-    id: 7,
-    title: "Benefits of Tajweed for Kids Living in Western Countries",
-    image: "/images/blog-tajweed-western-kids.webp",
-    date: "March 12, 2026",
-    seoDesc: "In a fast-paced Western environment, Tajweed provides more than just pronunciation rules — it builds identity and love for the Quran.",
-    excerpt: "For Muslim children growing up in the West, connecting with the Quran in its original form is vital for preserving their faith and identity.",
-    content: [
-      { type: "p", text: "For Muslim children growing up in Western countries like the USA, UK, and Canada, connecting with the Quran in its original form is vital. [Learning Tajweed](/courses/tajweed-rules) is not just about pronunciation; it's about preserving a sacred tradition." },
-      { type: "h3", text: "1. Preserving Traditional Recitation" },
-      { type: "p", text: "Tajweed ensures that the Holy Quran is recited exactly as it was revealed to the Prophet ﷺ. In a non-Arabic environment, these rules prevent the loss of correct pronunciation and protect the original meanings of the verses." },
-      { type: "h3", text: "2. Enhancing Arabic Phonetics" },
-      { type: "p", text: "Children who learn Tajweed at a young age develop an incredible ear for Arabic phonetics. This makes it significantly easier for them to learn Arabic as a second language later in life, as they are already comfortable with its unique sounds." },
-      { type: "h3", text: "3. Building Spiritual Confidence" },
-      { type: "p", text: "When a child knows they are reciting correctly, their confidence in [Salah (Prayer)](/courses/qaida-basics) grows. They take pride in their Islamic identity and feel a deeper spiritual connection to the message of Allah." },
-      { type: "p", text: "Instill a lifelong love for the Quran in your child's heart. Enroll them in our [Tajweed for Kids course](/courses/tajweed-rules) today." }
-    ],
-    faqs: [
-      { q: "Why is Tajweed more important for kids in the West?", a: "Since they aren't surrounded by the Arabic language, Tajweed provides the necessary structure to maintain correct recitation without an accent." },
-      { q: "Will my child understand the meaning along with Tajweed?", a: "Yes, our teachers explain the basic meanings of small Surahs during Tajweed lessons to build a deeper connection." },
-      { q: "Is Tajweed too difficult for a 5-year-old?", a: "Not at all. We teach kids using fun, simplified methods through the Noorani Qaida, making it easy and enjoyable." }
-    ]
-  }
-];
-
 const LogoImage = ({ className }) => (
   <img src="/images/almaas-online-quran-academy-logo.webp" alt="Almaas Online Quran Academy – Best Online Quran Academy for Kids and Adults" className={className} width="64" height="64" />
 );
@@ -644,6 +457,9 @@ const XLogo = ({ className }) => (
 
 const Header = ({ scrolled, menuOpen, setMenuOpen, navigateTo, setShowPopup }) => {
   const location = useLocation();
+  const isBlogDetail = location.pathname.startsWith('/blog/');
+  if (isBlogDetail) return null;
+
   const isHome = location.pathname === '/' || location.pathname === '';
   
   // Pages that explicitly use the dark navy hero section at the top
@@ -702,27 +518,45 @@ const Header = ({ scrolled, menuOpen, setMenuOpen, navigateTo, setShowPopup }) =
 };
 
 const Footer = ({ navigateTo }) => (
-  <footer className="bg-navy text-white/70 py-16 px-4 border-t border-gold/10">
-    <div className="max-w-7xl mx-auto">
+  <footer className="bg-[#050b1a] text-white/70 py-14 px-4 relative overflow-hidden border-t-2 border-gold/40">
+    {/* Sophisticated Aesthetic Background */}
+    <div className="absolute inset-0 opacity-20 group">
+      {/* Mesh Gradient Base */}
+      <div className="absolute inset-0 bg-[radial-gradient(at_0%_0%,#1a365d_0,transparent_50%),radial-gradient(at_50%_0%,#002147_0,transparent_50%),radial-gradient(at_100%_0%,#1a365d_0,transparent_50%)]"></div>
+      
+      {/* Islamic Geometric Pattern Overlay */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{ 
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l15 15-15 15-15-15L30 0zm0 60l15-15-15-15-15 15 15 15zM0 30l15-15 15 15-15 15L0 30zm60 0l-15-15-15 15 15 15 15-15z' fill='%23d4af37' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+        backgroundSize: '80px 80px'
+      }}></div>
+      
+      {/* Abstract Golden Glows */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[120px] -translate-y-1/2"></div>
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-navy/40 rounded-full blur-[100px] translate-y-1/2"></div>
+    </div>
+
+    <div className="max-w-7xl mx-auto relative z-10">
       <div className="grid md:grid-cols-4 gap-12 mb-12">
         <div className="space-y-6">
           <div className="flex items-center gap-4">
-            <LogoImage className="h-14 w-14" />
+            <div className="w-16 h-16 bg-white/5 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/10 p-2 transform hover:rotate-3 transition-transform duration-500">
+              <LogoImage className="w-full h-full object-contain" />
+            </div>
             <div>
-              <div className="text-white font-black text-lg leading-none">ALMAAS ONLINE</div>
-              <div className="text-gold text-[10px] font-bold tracking-[0.2em] mt-1">QURAN ACADEMY</div>
+              <div className="text-white font-black text-xl leading-none tracking-tight">ALMAAS <span className="text-gold">ONLINE</span></div>
+              <div className="text-gold/50 text-[10px] font-black tracking-[0.4em] mt-2 uppercase">Quran Academy</div>
             </div>
           </div>
-          <p className="text-sm leading-relaxed opacity-80">
-            Empowering the next generation with divine knowledge through personalized online Quranic education.
+          <p className="text-sm leading-relaxed opacity-60 font-medium max-w-xs">
+            Spreading the light of Quranic wisdom across the globe through expert-led, personalized online education for all generations.
           </p>
-          <div className="flex gap-3">
+          <div className="flex gap-4">
             {[
-              { icon: Facebook, href: "https://www.facebook.com/almaasonlinequranacademy", label: "Facebook", hover: "hover:bg-blue-600" },
-              { icon: XLogo, href: "https://x.com/Almaas_Academy?s=20", label: "X (Twitter)", hover: "hover:bg-black" },
-              { icon: Instagram, href: "https://www.instagram.com/almaasonlinequranacademy", label: "Instagram", hover: "hover:bg-pink-600" },
-              { icon: Youtube, href: "https://youtube.com/@almaasonlinequranacademy", label: "YouTube", hover: "hover:bg-red-600" },
-              { icon: Linkedin, href: "https://www.linkedin.com/company/almaas-online-quran-academy/", label: "LinkedIn", hover: "hover:bg-blue-700" }
+              { icon: Facebook, href: "https://www.facebook.com/almaasonlinequranacademy", label: "Facebook", color: "hover:text-blue-500" },
+              { icon: X, href: "https://x.com/Almaas_Academy?s=20", label: "X", color: "hover:text-white" },
+              { icon: Instagram, href: "https://www.instagram.com/almaasonlinequranacademy", label: "Instagram", color: "hover:text-pink-500" },
+              { icon: Youtube, href: "https://youtube.com/@almaasonlinequranacademy", label: "YouTube", color: "hover:text-red-500" },
+              { icon: Linkedin, href: "https://www.linkedin.com/company/almaas-online-quran-academy/", label: "LinkedIn", color: "hover:text-blue-600" }
             ].map((social, i) => (
               <a
                 key={i}
@@ -730,7 +564,7 @@ const Footer = ({ navigateTo }) => (
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className={`w-10 h-10 bg-white/5 ${social.hover} text-white rounded-xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1 border border-white/10`}
+                className={`text-white/40 ${social.color} transition-all duration-300 hover:-translate-y-1`}
               >
                 <social.icon className="w-5 h-5" />
               </a>
@@ -739,14 +573,18 @@ const Footer = ({ navigateTo }) => (
         </div>
 
         <div>
-          <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Quick Navigation</h4>
-          <div className="flex flex-col gap-3">
+          <h4 className="text-white font-black mb-8 text-xs uppercase tracking-[0.3em] flex items-center gap-3">
+            <span className="w-6 h-px bg-gold/50"></span>
+            Quick Links
+          </h4>
+          <div className="flex flex-col gap-4">
             {['Home', 'Courses', 'Pricing', 'Reviews', 'Blogs', 'Contact'].map((item) => (
               <button
                 key={item}
                 onClick={() => navigateTo(item === 'Home' ? '/' : `/${item.toLowerCase()}`)}
-                className="text-sm hover:text-gold text-left transition-colors w-fit"
+                className="text-[13px] font-semibold hover:text-gold text-left transition-colors w-fit flex items-center gap-2 group"
               >
+                <ChevronRight className="w-3 h-3 text-gold/30 group-hover:text-gold transition-colors" />
                 {item}
               </button>
             ))}
@@ -754,19 +592,23 @@ const Footer = ({ navigateTo }) => (
         </div>
 
         <div>
-          <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Legal & Support</h4>
-          <div className="flex flex-col gap-3">
+          <h4 className="text-white font-black mb-8 text-xs uppercase tracking-[0.3em] flex items-center gap-3">
+            <span className="w-6 h-px bg-gold/50"></span>
+            Policies
+          </h4>
+          <div className="flex flex-col gap-4">
             {[
               { name: 'Privacy Policy', path: '/privacy-policy' },
               { name: 'Terms & Conditions', path: '/terms-and-conditions' },
               { name: 'FAQ', path: '/faq' },
-              { name: 'Support Center', path: '/contact' }
+              { name: 'Support', path: '/contact' }
             ].map((item) => (
               <button
                 key={item.name}
                 onClick={() => navigateTo(item.path)}
-                className="text-sm hover:text-gold text-left transition-colors w-fit"
+                className="text-[13px] font-semibold hover:text-gold text-left transition-colors w-fit flex items-center gap-2 group"
               >
+                <ChevronRight className="w-3 h-3 text-gold/30 group-hover:text-gold transition-colors" />
                 {item.name}
               </button>
             ))}
@@ -774,35 +616,50 @@ const Footer = ({ navigateTo }) => (
         </div>
 
         <div>
-          <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Get In Touch</h4>
-          <div className="space-y-4">
-            <a href="tel:+923152267416" className="flex items-center gap-3 text-sm hover:text-gold transition-colors">
-              <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-gold border border-white/10">
+          <h4 className="text-white font-black mb-8 text-xs uppercase tracking-[0.3em] flex items-center gap-3">
+            <span className="w-6 h-px bg-gold/50"></span>
+            Contact
+          </h4>
+          <div className="space-y-6">
+            <a href="tel:+923152267416" className="flex items-center gap-4 text-sm font-semibold hover:text-gold transition-colors group">
+              <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-navy transition-all duration-500">
                 <Phone className="w-4 h-4" />
               </div>
-              +92 315 2267416
-            </a>
-            <a href="https://wa.me/923350277160" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm hover:text-gold transition-colors">
-              <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-gold border border-white/10">
-                <MessageCircle className="w-4 h-4" />
+              <div className="flex flex-col">
+                <span className="text-[10px] text-white/30 uppercase tracking-widest leading-none mb-1">Call Us</span>
+                +92 315 2267416
               </div>
-              +92 335 0277160
             </a>
-            <div className="flex items-center gap-3 text-sm">
-              <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-gold border border-white/10">
-                <Globe className="w-4 h-4" />
+            <a href="mailto:contact@almaasonlinequranacademy.online" className="flex items-center gap-4 text-sm font-semibold hover:text-gold transition-colors group">
+              <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-navy transition-all duration-500">
+                <Mail className="w-4 h-4" />
               </div>
-              Available 24/7 Worldwide
+              <div className="flex flex-col">
+                <span className="text-[10px] text-white/30 uppercase tracking-widest leading-none mb-1">Email Us</span>
+                Academic Support
+              </div>
+            </a>
+            <div className="pt-2 flex items-center gap-3">
+              <div className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
+              </div>
+              <span className="text-[11px] font-black uppercase tracking-[0.2em] text-white/40">Available 24/7 Worldwide</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium tracking-wide">
-        <p>© 2026 ALMAAS ONLINE QURAN ACADEMY</p>
-        <div className="flex gap-6">
-          <span className="text-gold/60">FOR THE SERVICE OF UMMAH</span>
+      <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="flex items-center gap-6 opacity-30">
+          <Globe className="w-4 h-4" />
+          <Shield className="w-4 h-4" />
+          <Award className="w-4 h-4" />
+          <CheckCircle className="w-4 h-4" />
         </div>
+        <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/20">
+          © 2026 ALMAAS ONLINE QURAN ACADEMY. SECURED BY SSL.
+        </p>
       </div>
     </div>
   </footer>
@@ -1009,35 +866,60 @@ const MeetOurTeam = () => {
   ];
 
   return (
-    <section className="py-24 px-4 bg-offwhite border-b border-navy/5">
+    <section className="py-24 px-4 bg-offwhite relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent"></div>
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="inline-block bg-gold/10 text-gold px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6">Expert Faculty</div>
-          <h2 className="text-4xl md:text-5xl font-black text-navy mb-4">Meet Our <span className="text-navy opacity-50">Expert</span> <span className="text-gold">Leadership</span></h2>
-          <p className="text-darkgray text-lg max-w-2xl mx-auto">Expert educators with years of experience in conventional and digital Islamic scholarship.</p>
+        <div className="text-center mb-20">
+          <div className="inline-block bg-navy/5 text-navy px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-8 border border-navy/10 shadow-sm backdrop-blur">
+            Academic Excellence
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black text-navy mb-6 tracking-tight leading-none">
+            Meet Our <span className="text-gold">Leadership</span>
+          </h2>
+          <div className="w-24 h-1.5 bg-gold mx-auto mb-6 rounded-full"></div>
+          <p className="text-darkgray text-xl font-medium max-w-2xl mx-auto italic">
+            Expert educators combining classical scholarship with modern digital pedagogical techniques.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           {team.map((member, idx) => (
-            <div key={idx} className="bg-white rounded-[40px] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 group border-2 border-transparent hover:border-gold/20 flex flex-col h-full">
-              <div className="h-80 bg-white relative flex items-center justify-center border-b border-navy/5 overflow-hidden">
-                <img
-                  src={member.image}
-                  alt={`${member.name} – ${member.role} and Expert Quran Teacher at Almaas Online Quran Academy`}
-                  loading="lazy"
-                  width="400"
-                  height="320"
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
-                />
+            <div 
+              key={idx} 
+              className="group bg-white rounded-[40px] overflow-hidden shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-navy/5 flex flex-col h-full relative"
+            >
+              {/* Profile Image Wrapper */}
+              <div className="h-80 bg-white relative overflow-hidden p-6 pb-0">
+                <div className="w-full h-full rounded-[30px] overflow-hidden bg-offwhite/50 shadow-inner group-hover:shadow-2xl transition-shadow transition-transform">
+                  <img
+                    src={member.image}
+                    alt={`${member.name} – ${member.role}`}
+                    loading="lazy"
+                    className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                  />
+                </div>
+                {/* Float Badge */}
+                <div className="absolute top-10 right-10 w-10 h-10 bg-gold/90 text-navy rounded-xl flex items-center justify-center shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                  <Star className="w-5 h-5 fill-navy" />
+                </div>
               </div>
-              <div className="p-8 flex flex-col flex-1">
-                <div className="text-gold font-bold text-xs uppercase tracking-widest mb-2">{member.role}</div>
-                <h3 className="text-navy font-black text-xl mb-4 leading-tight">{member.name}</h3>
-                <p className="text-darkgray text-sm leading-relaxed mb-6 opacity-70 flex-1">{member.bio}</p>
+
+              <div className="p-8 pb-10 flex flex-col flex-1 text-center md:text-left">
+                <div className="text-gold font-black text-xs uppercase tracking-[0.2em] mb-3">{member.role}</div>
+                <h3 className="text-navy font-black text-2xl mb-4 leading-tight group-hover:text-amber-800 transition-colors">
+                  {member.name}
+                </h3>
+                <div className="w-12 h-1 bg-gold/20 mb-4 rounded-full group-hover:w-20 transition-all duration-500"></div>
+                <p className="text-darkgray line-clamp-4 text-sm font-medium leading-relaxed mb-8 opacity-80 flex-1 italic group-hover:opacity-100 transition-opacity">
+                  "{member.bio}"
+                </p>
                 {member.link && (
                   <div className="mt-auto">
-                    <a href={member.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-navy font-black text-sm hover:text-gold transition-colors">
-                      View Portfolio <ExternalLink className="w-4 h-4" />
+                    <a href={member.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-navy font-black text-xs uppercase tracking-widest hover:text-gold transition-all group/link">
+                      Explore Portfolio 
+                      <div className="w-8 h-8 bg-offwhite rounded-full flex items-center justify-center group-hover/link:bg-navy group-hover/link:text-white transition-all">
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
                     </a>
                   </div>
                 )}
@@ -1137,25 +1019,39 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 px-4 bg-offwhite">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black text-center mb-4">Why Choose <span className="text-navy">Almaas Academy</span></h2>
-          <p className="text-darkgray text-lg text-center mb-12">What makes us different from others</p>
+      <section className="py-24 px-4 bg-white relative overflow-hidden">
+        {/* Dynamic Background Elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-navy/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-black text-navy mb-6 tracking-tight leading-none">
+              Why Choose <span className="text-gold">Almaas Academy?</span>
+            </h2>
+            <div className="w-24 h-1.5 bg-gold mx-auto mb-6 rounded-full"></div>
+            <p className="text-darkgray text-xl font-medium max-w-2xl mx-auto">We combine traditional Quranic teaching with modern technology to provide the best learning experience.</p>
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { icon: Award, title: "Verified Quran Scholars", desc: "All teachers certified with Ijazah and years of experience" },
-              { icon: Shield, title: "Affordable Monthly Fees", desc: "High-quality education with 100% satisfaction guarantee" },
-              { icon: Clock, title: "Flexible Timings", desc: "Choose your own time slots - available 24/7 worldwide" },
-              { icon: Users, title: "One-on-One Teams Class", desc: "Interactive sessions on Microsoft Teams for focused learning" },
-              { icon: Globe, title: "Learn Quran at Home", desc: "Access classes from any device, anywhere in the world" },
-              { icon: CheckCircle, title: "Free Trial Session", desc: "Book 3 free trial classes before committing to enrollment" }
+              { icon: Award, title: "Verified Quran Scholars", desc: "All teachers are certified Ijazah holders from reputable Islamic universities with years of pedagogical experience.", color: "from-gold/20 to-gold/5" },
+              { icon: Shield, title: "Affordable Monthly Fees", desc: "High-quality education should be accessible. We offer various plans with a 100% satisfaction guarantee.", color: "from-navy/10 to-navy/5" },
+              { icon: Clock, title: "Total Timing Flexibility", desc: "Our global network of tutors allows us to offer 24/7 classes. Choose your own time slots from anywhere.", color: "from-gold/20 to-gold/5" },
+              { icon: Users, title: "Personalized One-on-One", desc: "Focused individual attention on Microsoft Teams, allowing the student to progress at their own comfortable pace.", color: "from-navy/10 to-navy/5" },
+              { icon: Globe, title: "Global Digital Campus", desc: "Learn from the comfort of your home. No commute, no stress—just pure Quranic learning on your device.", color: "from-gold/20 to-gold/5" },
+              { icon: CheckCircle, title: "3 Free Trial Sessions", desc: "We are confident in our quality. Experience 3 full class sessions for free before making any commitment.", color: "from-navy/10 to-navy/5" }
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="bg-offwhite/50 border-2 border-navy/10 hover:border-navy p-6 rounded-2xl transition">
-                  <div className="w-16 h-16 bg-navy rounded-xl flex items-center justify-center mb-4"><Icon className="w-8 h-8 text-white" /></div>
-                  <h3 className="text-xl font-bold text-navy mb-3">{item.title}</h3>
-                  <p className="text-darkgray">{item.desc}</p>
+                <div key={idx} className="group relative p-1 transition-all duration-500 hover:scale-[1.03]">
+                  <div className={`h-full bg-gradient-to-br ${item.color} border border-navy/5 rounded-[2.5rem] p-10 flex flex-col items-center text-center group-hover:border-gold/30 transition-all shadow-lg hover:shadow-2xl`}>
+                    <div className="w-20 h-20 bg-navy group-hover:bg-gold rounded-3xl flex items-center justify-center mb-8 rotate-3 group-hover:rotate-0 transition-all duration-500 shadow-xl">
+                      <Icon className="w-10 h-10 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-black text-navy mb-4 group-hover:text-amber-700 transition-colors">{item.title}</h3>
+                    <p className="text-darkgray font-medium leading-relaxed">{item.desc}</p>
+                  </div>
                 </div>
               );
             })}
@@ -1164,111 +1060,125 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
       </section>
 
       {/* How It Works */}
-      <section className="py-20 px-4 bg-offwhite/50">
+      <section className="py-24 px-4 bg-gradient-to-b from-white to-offwhite relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black text-center mb-4">How It <span className="text-navy">Works</span></h2>
-          <p className="text-darkgray text-lg text-center mb-12">Get started in 4 simple steps</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { num: "1", title: "Register for Free", desc: "Fill the form for your Free Trial Quran Session", icon: UserPlus },
-              { num: "2", title: "Teams Setup", desc: "Learn Quran via Microsoft Teams easily at home", icon: BookOpen },
-              { num: "3", title: "Pick Your Plan", desc: "Choose from our Affordable Quran Classes", icon: Clock },
-              { num: "4", title: "Start Learning", desc: "Begin your one-to-one Teams Quran Class", icon: Star }
-            ].map((step, idx) => {
-              const Icon = step.icon;
-              return (
-                <div key={idx} className="bg-offwhite border-2 border-navy p-6 rounded-2xl text-center">
-                  <div className="w-16 h-16 bg-navy rounded-full flex items-center justify-center text-white text-2xl font-black mx-auto mb-4">{step.num}</div>
-                  <Icon className="w-12 h-12 text-navy mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-navy mb-3">{step.title}</h3>
-                  <p className="text-darkgray text-sm">{step.desc}</p>
-                </div>
-              );
-            })}
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-black text-navy mb-6 tracking-tight leading-none">
+              How It <span className="text-gold">Works</span>
+            </h2>
+            <div className="w-24 h-1.5 bg-gold mx-auto mb-6 rounded-full"></div>
+            <p className="text-darkgray text-xl font-medium max-w-2xl mx-auto italic">Get started on your spiritual journey in 4 simple steps</p>
           </div>
-        </div>
-      </section>
 
-      {/* Offering Section */}
-      <section className="py-20 px-4 bg-offwhite">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black text-center mb-4">We Are <span className="text-navy">Offering</span></h2>
-          <p className="text-darkgray text-lg text-center mb-12">Comprehensive features for effective learning</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: Clock, title: "Flexibility of Time", desc: "Classes 24/7 according to your convenience" },
-              { icon: Users, title: "Weekend Classes", desc: "Special weekend batches available" },
-              { icon: Award, title: "3 Demo Classes", desc: "Try 3 free classes before enrollment" },
-              { icon: Globe, title: "Easily Accessible", desc: "Learn from anywhere with internet" }
-            ].map((feature, idx) => {
-              const Icon = feature.icon;
-              return (
-                <div key={idx} className="bg-offwhite/50 border-2 border-navy/10 hover:border-navy p-6 rounded-2xl transition">
-                  <div className="w-14 h-14 bg-navy rounded-xl flex items-center justify-center mb-4"><Icon className="w-7 h-7 text-white" /></div>
-                  <h3 className="text-lg font-bold text-navy mb-2">{feature.title}</h3>
-                  <p className="text-darkgray text-sm">{feature.desc}</p>
-                </div>
-              );
-            })}
+          <div className="relative">
+            {/* Connection Line (Desktop) */}
+            <div className="absolute top-1/2 left-0 w-full h-1 bg-navy/5 hidden lg:block -translate-y-1/2 z-0"></div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 relative z-10">
+              {[
+                { num: "01", title: "Register for Free", desc: "Fill the quick form for your Free Trial Quran Session", icon: UserPlus },
+                { num: "02", title: "Teams Setup", desc: "Our team helps you setup Microsoft Teams easily at home", icon: BookOpen },
+                { num: "03", title: "Pick Your Plan", desc: "Choose from our Highly Affordable Quran Classes", icon: Clock },
+                { num: "04", title: "Start Learning", desc: "Begin your one-to-one personalized Quran Class", icon: Star }
+              ].map((step, idx) => {
+                const Icon = step.icon;
+                return (
+                  <div 
+                    key={idx} 
+                    className="group bg-white border border-navy/5 p-10 rounded-[2.5rem] text-center shadow-xl hover:shadow-2xl hover:scale-[1.05] hover:border-gold/50 transition-all duration-500 relative"
+                  >
+                    {/* Step Number Badge */}
+                    <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-navy text-white rounded-2xl flex items-center justify-center text-lg font-black shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500 border-2 border-gold/30">
+                      {step.num}
+                    </div>
+
+                    <div className="mb-8 relative">
+                      <div className="w-24 h-24 bg-offwhite rounded-3xl flex items-center justify-center mx-auto group-hover:bg-navy transition-colors duration-500 shadow-inner">
+                        <Icon className="w-12 h-12 text-navy group-hover:text-gold transition-colors duration-500" />
+                      </div>
+                      {/* Decorative Pulse */}
+                      <div className="absolute inset-0 w-24 h-24 bg-navy/5 rounded-3xl mx-auto scale-110 animate-pulse -z-10 group-hover:bg-gold/10"></div>
+                    </div>
+
+                    <h3 className="text-2xl font-black text-navy mb-4 group-hover:text-gold transition-colors">{step.title}</h3>
+                    <p className="text-darkgray font-medium leading-relaxed">{step.desc}</p>
+                    
+                    {/* Bottom Accent */}
+                    <div className="mt-8 pt-6 border-t border-navy/5 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span className="text-gold font-black text-sm uppercase tracking-widest">Step {step.num}</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Courses Section */}
-      <section className="py-20 px-4 bg-offwhite/50">
+      <section className="py-24 px-4 bg-offwhite/50 relative">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black text-center mb-4">Our <span className="text-navy">Courses</span></h2>
-          <p className="text-darkgray text-lg text-center mb-12">Comprehensive Quran learning programs</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-black text-navy mb-6 tracking-tight leading-none">
+              Our <span className="text-gold">Courses</span>
+            </h2>
+            <div className="w-24 h-1.5 bg-gold mx-auto mb-6 rounded-full"></div>
+            <p className="text-darkgray text-xl font-medium max-w-2xl mx-auto italic">Explore our comprehensive Quran learning programs for all ages and levels.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {COURSES_DETAILED.slice(0, 6).map((course, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-navy/90 to-navy rounded-3xl overflow-hidden shadow-2xl border-4 border-white hover:scale-105 transition-transform">
-                <div className="h-48 overflow-hidden relative">
-                  <img src={course.image} alt={course.altText} loading="lazy" decoding="async" width="400" height="250" style={{ backgroundColor: '#0A1D37' }} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy to-transparent"></div>
+              <div key={idx} className="bg-gradient-to-br from-navy/90 to-navy rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white hover:scale-105 transition-all duration-500 group">
+                <div className="h-56 overflow-hidden relative">
+                  <img src={course.image} alt={course.altText} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent"></div>
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <span className="bg-gold text-navy text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Featured Course</span>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-black text-gold/80 mb-4">{course.title}</h3>
-                  <p className="text-white text-sm mb-6 leading-relaxed line-clamp-3">{course.shortDesc}</p>
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <button onClick={() => setShowPopup(true)} className="flex-1 bg-gradient-to-r from-gold to-amber-600 hover:from-gold hover:to-amber-700 text-navy py-4 px-4 rounded-xl font-bold transition shadow-lg">Start Now</button>
-                    <button onClick={() => navigateTo(`/courses/${course.slug}`)} className="flex-1 bg-offwhite hover:bg-gray-100 text-navy py-4 px-4 rounded-xl font-bold transition shadow-lg">Read More</button>
+                <div className="p-8">
+                  <h3 className="text-2xl font-black text-white group-hover:text-gold transition-colors mb-4">{course.title}</h3>
+                  <p className="text-white/80 text-sm mb-8 leading-relaxed line-clamp-3">{course.shortDesc}</p>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <button onClick={() => setShowPopup(true)} className="flex-1 bg-gradient-to-r from-gold to-amber-600 hover:from-white hover:to-white hover:text-navy text-navy py-4 px-4 rounded-2xl font-bold transition-all shadow-lg active:scale-95">Start Now</button>
+                    <button onClick={() => navigateTo(`/courses/${course.slug}`)} className="flex-1 bg-white/10 hover:bg-white/20 text-white py-4 px-4 rounded-2xl font-bold transition shadow-lg border border-white/20">Details</button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* SEO Expansion for Lessons */}
-          <div className="max-w-4xl mx-auto mt-16 p-8 bg-white/30 backdrop-blur rounded-[32px] border-2 border-navy/5">
+          {/* Curriculum Expansion */}
+          <div className="max-w-4xl mx-auto mt-20 p-10 bg-white rounded-[3rem] shadow-2xl border border-navy/5">
             <details className="group">
-              <summary className="text-xl font-bold text-navy cursor-pointer list-none flex items-center justify-between">
-                <span>Detailed Curriculum Overview & Learning Philosophy</span>
-                <ChevronDown className="w-6 h-6 group-open:rotate-180 transition-transform" />
+              <summary className="text-2xl font-black text-navy cursor-pointer list-none flex items-center justify-between">
+                <span>Our Learning Philosophy</span>
+                <div className="w-10 h-10 bg-offwhite rounded-full flex items-center justify-center group-open:rotate-180 transition-transform">
+                  <ChevronDown className="w-6 h-6" />
+                </div>
               </summary>
-              <div className="mt-8 space-y-4 text-darkgray leading-relaxed">
+              <div className="mt-10 space-y-6 text-darkgray text-lg leading-relaxed">
                 <p>
-                  At Almaas Online Quran Academy, our lessons are carefully structured to take a student from the very basics of Arabic phonetics to the advanced levels of Quranic scholarship. Each lesson is designed to be engaging, age-appropriate, and spiritually uplifting.
+                  At Almaas Online Quran Academy, we believe in a holistic approach to education. We don't just teach reading; we foster a deep, spiritual connection with the Word of Allah.
                 </p>
-                <div className="grid md:grid-cols-2 gap-6 pt-4">
-                  <div>
-                    <h4 className="font-black text-navy mb-2 uppercase text-xs tracking-widest">For Beginners</h4>
-                    <p className="text-sm">We focus on the 'Noorani Qaida' method, which is the most effective way to learn Arabic reading. Our teachers emphasize 'Makharij' (articulation points) from day one, ensuring a solid foundation for Tajweed.</p>
+                <div className="grid md:grid-cols-2 gap-10 pt-6">
+                  <div className="p-6 bg-offwhite rounded-3xl">
+                    <h4 className="font-black text-navy mb-3 uppercase text-sm tracking-widest text-gold text-center md:text-left underline decoration-gold/30">For Beginners</h4>
+                    <p className="text-base">Focusing on the 'Noorani Qaida' method with precise emphasis on 'Makharij' (articulation) from day one.</p>
                   </div>
-                  <div>
-                    <h4 className="font-black text-navy mb-2 uppercase text-xs tracking-widest">For Advanced Students</h4>
-                    <p className="text-sm">Our Hifz (Memorization) program uses the classical 'Dauri' method, combining new memorization with rigorous revision of previous parts to ensure long-term retention of the Holy Quran.</p>
+                  <div className="p-6 bg-offwhite rounded-3xl">
+                    <h4 className="font-black text-navy mb-3 uppercase text-sm tracking-widest text-gold text-center md:text-left underline decoration-gold/30">Hifz Program</h4>
+                    <p className="text-base">Classical 'Dauri' method, combining new memorization with rigorous revision for high retention.</p>
                   </div>
                 </div>
-                <p className="pt-4 italic">
-                  "Our goal is not just to teach reading, but to instill a lifelong love for the Word of Allah in the hearts of our students."
-                </p>
               </div>
             </details>
           </div>
 
-          <div className="text-center mt-12">
-            <button onClick={() => navigateTo('/courses')} className="text-navy font-black flex items-center gap-2 mx-auto hover:text-gold transition text-lg">
-              View All Courses <ChevronRight className="w-6 h-6" />
+          <div className="text-center mt-16">
+            <button onClick={() => navigateTo('/courses')} className="bg-navy text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-gold hover:text-navy transition-all shadow-2xl inline-flex items-center gap-3 group">
+              Explore All Courses <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
@@ -1284,44 +1194,93 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
       <LazySection rootMargin="150px">
 
         {/* Pricing Section */}
-        <section className="py-20 px-4 bg-offwhite">
+        <section className="py-24 px-4 bg-offwhite relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-navy/10 to-transparent"></div>
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-black text-center mb-4">Affordable <span className="text-navy">Pricing</span></h2>
-            <p className="text-darkgray text-lg text-center mb-8">Choose the plan that fits your schedule</p>
+            <div className="text-center mb-20">
+              <h2 className="text-4xl md:text-6xl font-black text-navy mb-6 tracking-tight leading-none">
+                Affordable <span className="text-gold">Pricing</span>
+              </h2>
+              <div className="w-24 h-1.5 bg-gold mx-auto mb-6 rounded-full"></div>
+              <p className="text-darkgray text-xl font-medium max-w-2xl mx-auto italic">Highly affordable Quran plans designed for quality learning and consistency.</p>
+            </div>
 
-            <div className="max-w-md mx-auto mb-16 px-4">
-              <div className="bg-navy rounded-2xl p-6 shadow-xl border-2 border-gold/20">
-                <label className="block text-gold text-xs font-black uppercase tracking-widest mb-3 text-center">Select Your Course for Pricing</label>
+            <div className="max-w-xl mx-auto mb-20 px-4">
+              <div className="bg-white rounded-[2.5rem] p-10 shadow-2xl border border-navy/5 relative group">
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-navy text-white px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest shadow-lg border border-gold/30">
+                  Step 1: Select Your Path
+                </div>
+                <label className="block text-navy/40 text-[10px] font-black uppercase tracking-[0.3em] mb-4 text-center">Customize Your Learning Experience</label>
                 <div className="relative">
                   <select
                     value={selectedPricingCourse}
                     onChange={(e) => setSelectedPricingCourse(e.target.value)}
-                    className="w-full bg-offwhite/10 border-2 border-white/20 rounded-xl px-5 py-3 text-white font-bold focus:outline-none focus:border-gold appearance-none cursor-pointer"
+                    className="w-full bg-offwhite border-2 border-transparent focus:border-gold rounded-2xl px-6 py-4 text-navy font-black text-lg focus:outline-none appearance-none cursor-pointer transition-all shadow-inner"
                   >
-                    {COURSES.map(course => <option key={course.value} value={course.value} className="bg-navy text-white">{course.title}</option>)}
+                    {COURSES.map(course => <option key={course.value} value={course.value}>{course.title}</option>)}
                   </select>
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gold"><ChevronDown className="w-5 h-5" /></div>
+                  <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gold">
+                    <ChevronDown className="w-6 h-6" />
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
               {pricingPlans.map((plan, idx) => (
-                <div key={idx} className="rounded-3xl p-8 transition-transform hover:scale-105 bg-navy text-white shadow-2xl relative border-2 border-gold/10 flex flex-col h-full">
-                  {plan.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-navy px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">Most Popular</span>}
-                  <div className="text-sm font-bold opacity-80 mb-2 uppercase tracking-widest text-center">{plan.tag}</div>
-                  <h3 className="text-2xl font-black text-center mb-6">{plan.name}</h3>
-                  <div className="flex flex-col items-center gap-2 mb-8 py-6 border-y border-white/10">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-black">{plan.price}</span>
-                      <span className="text-xl font-medium opacity-70">/mo</span>
+                <div 
+                  key={idx} 
+                  className={`group rounded-[3rem] p-12 transition-all duration-500 hover:-translate-y-4 flex flex-col h-full relative overflow-hidden ${
+                    plan.popular 
+                    ? 'bg-navy text-white shadow-[0_30px_60px_-15px_rgba(10,29,55,0.4)] border-2 border-gold/40 scale-105' 
+                    : 'bg-white text-navy shadow-xl border border-navy/5 hover:border-gold/30'
+                  }`}
+                >
+                  {plan.popular && (
+                    <div className="absolute top-0 right-0 py-2 px-10 bg-gold text-navy font-black text-[10px] uppercase tracking-[0.2em] transform rotate-45 translate-x-10 translate-y-6 shadow-xl">
+                      BEST VALUE
                     </div>
+                  )}
+
+                  <div className={`text-xs font-black uppercase tracking-[0.3em] mb-6 ${plan.popular ? 'text-gold' : 'text-navy/40'}`}>
+                    {plan.tag}
                   </div>
-                  <ul className="space-y-4 mb-8 flex-1">
+                  
+                  <h3 className="text-3xl font-black mb-10 leading-tight">
+                    {plan.name}
+                  </h3>
+
+                  <div className="flex flex-col items-start gap-2 mb-12 py-8 border-y border-navy/5 group-hover:border-gold/20 transition-all">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-6xl font-black">{plan.price}</span>
+                      <span className={`text-xl font-bold ${plan.popular ? 'text-white/60' : 'text-navy/40'}`}>/mo</span>
+                    </div>
+                    <p className={`text-xs font-bold uppercase tracking-widest ${plan.popular ? 'text-gold' : 'text-gold'}`}>Customized Group Sessions</p>
+                  </div>
+
+                  <ul className="space-y-6 mb-12 flex-1">
                     {plan.features.map((f, i) => (
-                      <li key={i} className="flex items-center gap-3"><CheckCircle className="w-5 h-5 flex-shrink-0 text-gold" /> <span className="text-sm font-medium">{f}</span></li>
+                      <li key={i} className="flex items-start gap-4">
+                        <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${plan.popular ? 'bg-gold/20' : 'bg-navy/5'}`}>
+                          <CheckCircle className={`w-4 h-4 ${plan.popular ? 'text-gold' : 'text-navy'}`} />
+                        </div>
+                        <span className="text-sm font-bold opacity-80 leading-relaxed">{f}</span>
+                      </li>
                     ))}
                   </ul>
-                  <button onClick={() => setShowPopup(true)} className="w-full py-4 rounded-xl font-black text-lg transition-all shadow-xl bg-gold text-navy hover:transform hover:-translate-y-1 mt-auto">Get Started Now</button>
+
+                  <button 
+                    onClick={() => setShowPopup(true)} 
+                    className={`w-full py-5 rounded-2xl font-black text-xl transition-all shadow-2xl active:scale-95 ${
+                      plan.popular 
+                      ? 'bg-gold text-navy hover:bg-white hover:scale-105' 
+                      : 'bg-navy text-white hover:bg-gold hover:text-navy hover:scale-105'
+                    }`}
+                  >
+                    Start 3 Free Trials
+                  </button>
+                  
+                  <p className={`mt-6 text-center text-[10px] font-black uppercase tracking-widest opacity-40`}>No Registration Fee Required</p>
                 </div>
               ))}
             </div>
@@ -1946,10 +1905,37 @@ const BlogDetailPage = ({ BLOGS, navigateTo, setShowPopup }) => {
         <meta property="og:image" content="https://www.almaasonlinequranacademy.online/images/almaas-online-quran-academy-logo.webp" />
         {faqSchema && <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>}
       </Helmet>
-      <button onClick={() => navigateTo('/blogs')} className="fixed top-4 left-4 z-50 bg-navy text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg"><ArrowLeft className="w-4 h-4" /> Back to Blogs</button>
-      <div className="pt-24 pb-20 px-4">
-        <article className="max-w-3xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-2xl">
-          <header className="mb-12 border-b pb-8"><span className="text-gold font-bold uppercase tracking-widest block mb-4">{blog.date}</span><h1 className="text-4xl md:text-5xl font-black text-navy leading-tight">{blog.title}</h1></header>
+      <button onClick={() => navigateTo('/blogs')} className="fixed bottom-6 left-6 z-50 bg-navy text-white p-3.5 rounded-xl shadow-2xl hover:bg-navy/90 hover:scale-110 transition-all flex items-center justify-center group" aria-label="Back to Blogs">
+        <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+      </button>
+      <div className="pt-8 md:pt-12 pb-20 px-2 sm:px-4 lg:px-6 w-full max-w-full">
+        <article className="w-full mx-auto bg-white rounded-2xl md:rounded-3xl p-4 sm:p-8 md:p-12 shadow-2xl overflow-hidden">
+          <header className="mb-12 border-b pb-8 text-center"><span className="text-gold font-bold uppercase tracking-widest block mb-4 mx-auto">{blog.date}</span><h1 className="text-3xl md:text-5xl font-black text-navy leading-tight">{blog.title}</h1></header>
+
+          {/* Aesthetic Image Display */}
+          <div className="relative max-w-4xl mx-auto mb-16 md:mb-20 mt-8 px-4 md:px-8 flex justify-center items-center">
+            {/* Geometric Accent Frame (Behind) */}
+            <div className="absolute top-4 bottom-4 left-8 right-8 md:top-8 md:bottom-8 md:left-16 md:right-16 border-[6px] md:border-[10px] border-navy opacity-90 translate-x-3 translate-y-3 z-0"></div>
+            
+            {/* SVG Mask Definition */}
+            <svg width="0" height="0" className="absolute block hidden">
+              <defs>
+                <clipPath id="aesthetic-shape" clipPathUnits="objectBoundingBox">
+                  <path d="M0.06,0.18 C0.12,0.05 0.35,0.08 0.52,0.02 C0.68,-0.04 0.88,0.05 0.94,0.18 C1.00,0.31 0.93,0.48 0.98,0.65 C1.03,0.82 0.88,0.96 0.72,0.99 C0.56,1.02 0.42,0.90 0.25,0.95 C0.08,1.00 -0.02,0.85 0.02,0.68 C0.06,0.51 0.15,0.38 0.06,0.18 Z" />
+                </clipPath>
+              </defs>
+            </svg>
+
+            {/* Masked Image */}
+            <div className="relative z-10 w-full h-[300px] md:h-[500px]">
+              <img 
+                src={blog.image} 
+                alt={blog.title} 
+                className="w-full h-full object-cover transition-transform duration-1000 hover:scale-[1.03]"
+                style={{ clipPath: "url(#aesthetic-shape)" }}
+              />
+            </div>
+          </div>
 
           <div className="space-y-8 blog-content">
             {blog.content.map((block, idx) => {
@@ -1969,21 +1955,6 @@ const BlogDetailPage = ({ BLOGS, navigateTo, setShowPopup }) => {
               return null;
             })}
           </div>
-
-          {/* Blog FAQs for Featured Snippets */}
-          {blog.faqs && (
-            <div className="mt-20 pt-12 border-t-2 border-navy/5">
-              <h2 className="text-3xl font-black text-navy mb-10 text-center">Frequently Asked Questions</h2>
-              <div className="space-y-6">
-                {blog.faqs.map((faq, i) => (
-                  <div key={i} className="bg-offwhite/50 p-8 rounded-2xl border border-navy/5">
-                    <h3 className="text-xl font-bold text-navy mb-4 flex gap-3"><span className="text-gold">Q:</span> {faq.q}</h3>
-                    <p className="text-darkgray leading-relaxed text-sm"><span className="text-navy font-bold">A:</span> {faq.a}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
 
           <footer className="mt-16 pt-8 border-t text-center"><button onClick={() => setShowPopup(true)} className="bg-navy text-white px-10 py-4 rounded-xl font-black hover:scale-105 transition shadow-xl">Get Started with Your Demo</button></footer>
         </article>
@@ -3205,7 +3176,7 @@ const AlmaasQuranAcademy = () => {
             <Route path="/courses" element={<CoursesPage COURSES_DETAILED={COURSES_DETAILED} navigateTo={navigateTo} />} />
             <Route path="/courses/:slug" element={<CourseDetailPage COURSES_DETAILED={COURSES_DETAILED} navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
             <Route path="/pricing" element={<PricingPage pricingPlans={pricingPlans} navigateTo={navigateTo} setShowPopup={setShowPopup} COURSES={COURSES} selectedPricingCourse={selectedPricingCourse} setSelectedPricingCourse={setSelectedPricingCourse} />} />
-            <Route path="/faq" element={<FAQPage FAQS={FAQS} activeFaq={activeFaq} setActiveFaq={setActiveFaq} navigateTo={navigateTo} />} />
+            <Route path="/faq" element={<FAQPage FAQS={[...FAQS, ...BLOGS.reduce((acc, blog) => acc.concat(blog.faqs || []), [])]} activeFaq={activeFaq} setActiveFaq={setActiveFaq} navigateTo={navigateTo} />} />
             <Route path="/blogs" element={<BlogPage BLOGS={BLOGS} navigateTo={navigateTo} />} />
             <Route path="/blog/:id" element={<BlogDetailPage BLOGS={BLOGS} navigateTo={navigateTo} setShowPopup={setShowPopup} />} />
             <Route path="/reviews" element={<ReviewsPage reviews={reviews} loadingReviews={loadingReviews} navigateTo={navigateTo} handleReviewSubmit={handleReviewSubmit} newReview={newReview} setNewReview={setNewReview} reviewStatus={reviewStatus} selectedRegion={selectedRegion} REGION_CONFIGS={REGION_CONFIGS} />} />
