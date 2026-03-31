@@ -1184,6 +1184,100 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
         </div>
       </section>
 
+      {/* Pricing Section */}
+      <section className="py-24 px-4 bg-offwhite relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-navy/10 to-transparent"></div>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-black text-navy mb-6 tracking-tight leading-none">
+              Affordable <span className="text-gold">Pricing</span>
+            </h2>
+            <div className="w-24 h-1.5 bg-gold mx-auto mb-6 rounded-full"></div>
+            <p className="text-darkgray text-xl font-medium max-w-2xl mx-auto italic">Highly affordable Quran plans designed for quality learning and consistency.</p>
+          </div>
+
+          <div className="max-w-xl mx-auto mb-20 px-4">
+            <div className="bg-white rounded-[2.5rem] p-10 shadow-2xl border border-navy/5 relative group">
+              <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-navy text-white px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest shadow-lg border border-gold/30">
+                Step 1: Select Your Path
+              </div>
+              <label className="block text-navy/40 text-[10px] font-black uppercase tracking-[0.3em] mb-4 text-center">Customize Your Learning Experience</label>
+              <div className="relative">
+                <select
+                  value={selectedPricingCourse}
+                  onChange={(e) => setSelectedPricingCourse(e.target.value)}
+                  className="w-full bg-offwhite border-2 border-transparent focus:border-gold rounded-2xl px-6 py-4 text-navy font-black text-lg focus:outline-none appearance-none cursor-pointer transition-all shadow-inner"
+                >
+                  {COURSES.map(course => <option key={course.value} value={course.value}>{course.title}</option>)}
+                </select>
+                <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gold">
+                  <ChevronDown className="w-6 h-6" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {pricingPlans.map((plan, idx) => (
+              <div 
+                key={idx} 
+                className={`group rounded-[3rem] p-12 transition-all duration-500 hover:-translate-y-4 flex flex-col h-full relative overflow-hidden ${
+                  plan.popular 
+                  ? 'bg-navy text-white shadow-[0_30px_60px_-15px_rgba(10,29,55,0.4)] border-2 border-gold/40 scale-105' 
+                  : 'bg-white text-navy shadow-xl border border-navy/5 hover:border-gold/30'
+                }`}
+              >
+                {plan.popular && (
+                  <div className="absolute top-0 right-0 py-2 px-10 bg-gold text-navy font-black text-[10px] uppercase tracking-[0.2em] transform rotate-45 translate-x-10 translate-y-6 shadow-xl">
+                    BEST VALUE
+                  </div>
+                )}
+
+                <div className={`text-xs font-black uppercase tracking-[0.3em] mb-6 ${plan.popular ? 'text-gold' : 'text-navy/40'}`}>
+                  {plan.tag}
+                </div>
+                
+                <h3 className="text-3xl font-black mb-10 leading-tight">
+                  {plan.name}
+                </h3>
+
+                <div className="flex flex-col items-start gap-2 mb-12 py-8 border-y border-navy/5 group-hover:border-gold/20 transition-all">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-6xl font-black">{plan.price}</span>
+                    <span className={`text-xl font-bold ${plan.popular ? 'text-white/60' : 'text-navy/40'}`}>/mo</span>
+                  </div>
+                  <p className={`text-xs font-bold uppercase tracking-widest ${plan.popular ? 'text-gold' : 'text-gold'}`}>Customized Group Sessions</p>
+                </div>
+
+                <ul className="space-y-6 mb-12 flex-1">
+                  {plan.features.map((f, i) => (
+                    <li key={i} className="flex items-start gap-4">
+                      <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${plan.popular ? 'bg-gold/20' : 'bg-navy/5'}`}>
+                        <CheckCircle className={`w-4 h-4 ${plan.popular ? 'text-gold' : 'text-navy'}`} />
+                      </div>
+                      <span className="text-sm font-bold opacity-80 leading-relaxed">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button 
+                  onClick={() => setShowPopup(true)} 
+                  className={`w-full py-5 rounded-2xl font-black text-xl transition-all shadow-2xl active:scale-95 ${
+                    plan.popular 
+                    ? 'bg-gold text-navy hover:bg-white hover:scale-105' 
+                    : 'bg-navy text-white hover:bg-gold hover:text-navy hover:scale-105'
+                  }`}
+                >
+                  Start 3 Free Trials
+                </button>
+                
+                <p className={`mt-6 text-center text-[10px] font-black uppercase tracking-widest opacity-40`}>No Registration Fee Required</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Trust & Credibility Section */}
       <TrustCredibilitySection selectedRegion={selectedRegion} REGION_CONFIGS={REGION_CONFIGS} />
 
@@ -1192,100 +1286,6 @@ const HomePage = ({ TAGLINES, currentTagline, counts, COURSES_DETAILED, navigate
 
       {/* ===== BELOW-THE-FOLD: All wrapped in LazySection — only renders when user scrolls near ===== */}
       <LazySection rootMargin="150px">
-
-        {/* Pricing Section */}
-        <section className="py-24 px-4 bg-offwhite relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-navy/10 to-transparent"></div>
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl md:text-6xl font-black text-navy mb-6 tracking-tight leading-none">
-                Affordable <span className="text-gold">Pricing</span>
-              </h2>
-              <div className="w-24 h-1.5 bg-gold mx-auto mb-6 rounded-full"></div>
-              <p className="text-darkgray text-xl font-medium max-w-2xl mx-auto italic">Highly affordable Quran plans designed for quality learning and consistency.</p>
-            </div>
-
-            <div className="max-w-xl mx-auto mb-20 px-4">
-              <div className="bg-white rounded-[2.5rem] p-10 shadow-2xl border border-navy/5 relative group">
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-navy text-white px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest shadow-lg border border-gold/30">
-                  Step 1: Select Your Path
-                </div>
-                <label className="block text-navy/40 text-[10px] font-black uppercase tracking-[0.3em] mb-4 text-center">Customize Your Learning Experience</label>
-                <div className="relative">
-                  <select
-                    value={selectedPricingCourse}
-                    onChange={(e) => setSelectedPricingCourse(e.target.value)}
-                    className="w-full bg-offwhite border-2 border-transparent focus:border-gold rounded-2xl px-6 py-4 text-navy font-black text-lg focus:outline-none appearance-none cursor-pointer transition-all shadow-inner"
-                  >
-                    {COURSES.map(course => <option key={course.value} value={course.value}>{course.title}</option>)}
-                  </select>
-                  <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gold">
-                    <ChevronDown className="w-6 h-6" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {pricingPlans.map((plan, idx) => (
-                <div 
-                  key={idx} 
-                  className={`group rounded-[3rem] p-12 transition-all duration-500 hover:-translate-y-4 flex flex-col h-full relative overflow-hidden ${
-                    plan.popular 
-                    ? 'bg-navy text-white shadow-[0_30px_60px_-15px_rgba(10,29,55,0.4)] border-2 border-gold/40 scale-105' 
-                    : 'bg-white text-navy shadow-xl border border-navy/5 hover:border-gold/30'
-                  }`}
-                >
-                  {plan.popular && (
-                    <div className="absolute top-0 right-0 py-2 px-10 bg-gold text-navy font-black text-[10px] uppercase tracking-[0.2em] transform rotate-45 translate-x-10 translate-y-6 shadow-xl">
-                      BEST VALUE
-                    </div>
-                  )}
-
-                  <div className={`text-xs font-black uppercase tracking-[0.3em] mb-6 ${plan.popular ? 'text-gold' : 'text-navy/40'}`}>
-                    {plan.tag}
-                  </div>
-                  
-                  <h3 className="text-3xl font-black mb-10 leading-tight">
-                    {plan.name}
-                  </h3>
-
-                  <div className="flex flex-col items-start gap-2 mb-12 py-8 border-y border-navy/5 group-hover:border-gold/20 transition-all">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-6xl font-black">{plan.price}</span>
-                      <span className={`text-xl font-bold ${plan.popular ? 'text-white/60' : 'text-navy/40'}`}>/mo</span>
-                    </div>
-                    <p className={`text-xs font-bold uppercase tracking-widest ${plan.popular ? 'text-gold' : 'text-gold'}`}>Customized Group Sessions</p>
-                  </div>
-
-                  <ul className="space-y-6 mb-12 flex-1">
-                    {plan.features.map((f, i) => (
-                      <li key={i} className="flex items-start gap-4">
-                        <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${plan.popular ? 'bg-gold/20' : 'bg-navy/5'}`}>
-                          <CheckCircle className={`w-4 h-4 ${plan.popular ? 'text-gold' : 'text-navy'}`} />
-                        </div>
-                        <span className="text-sm font-bold opacity-80 leading-relaxed">{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <button 
-                    onClick={() => setShowPopup(true)} 
-                    className={`w-full py-5 rounded-2xl font-black text-xl transition-all shadow-2xl active:scale-95 ${
-                      plan.popular 
-                      ? 'bg-gold text-navy hover:bg-white hover:scale-105' 
-                      : 'bg-navy text-white hover:bg-gold hover:text-navy hover:scale-105'
-                    }`}
-                  >
-                    Start 3 Free Trials
-                  </button>
-                  
-                  <p className={`mt-6 text-center text-[10px] font-black uppercase tracking-widest opacity-40`}>No Registration Fee Required</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* FAQ Excerpt Section */}
         <section className="py-20 px-4 bg-offwhite/50">
@@ -2331,30 +2331,6 @@ const RegionalLandingPage = ({ selectedRegion, REGION_CONFIGS, pricingPlans: glo
         </div>
       </div>
 
-      {/* Pricing Section */}
-      <div className="py-24 px-4 bg-offwhite">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black text-navy mb-4">Affordable Pricing for {currentRegion.name}</h2>
-            <p className="text-darkgray text-lg">Premium Quran education at competitive rates in {currentRegion.currency}</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {pricingPlans.slice(0, 3).map((plan, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-3xl shadow-xl border border-navy/5 relative hover:border-gold transition flex flex-col h-full transform hover:-translate-y-2 duration-300">
-                {plan.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-navy text-white px-4 py-1 rounded-full text-sm font-bold">Best Value</span>}
-                <h3 className="text-xl font-black text-navy mb-4">{plan.name}</h3>
-                <div className="text-4xl font-black text-navy mb-6">{plan.price}<span className="text-sm opacity-60">/mo</span></div>
-                <ul className="space-y-3 mb-8 flex-1">
-                  {plan.features.map((f, i) => <li key={i} className="flex items-center gap-2 text-darkgray text-sm"><CheckCircle className="w-4 h-4 text-gold" /> {f}</li>)}
-                  <li className="flex items-center gap-2 text-darkgray text-sm font-bold"><Clock className="w-4 h-4 text-navy" /> {currentRegion.timezones} Adjusted</li>
-                </ul>
-                <button onClick={() => setShowPopup(true)} className="w-full py-4 rounded-xl font-black bg-navy text-white mt-auto hover:bg-gold hover:text-navy transition-colors">Start Free Trial in {currentRegion.name}</button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Courses Sneak Peek */}
       <div className="py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
@@ -2378,6 +2354,30 @@ const RegionalLandingPage = ({ selectedRegion, REGION_CONFIGS, pricingPlans: glo
                     <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {course.duration}</span>
                   </div>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Pricing Section */}
+      <div className="py-24 px-4 bg-offwhite">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-black text-navy mb-4">Affordable Pricing for {currentRegion.name}</h2>
+            <p className="text-darkgray text-lg">Premium Quran education at competitive rates in {currentRegion.currency}</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {pricingPlans.slice(0, 3).map((plan, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-3xl shadow-xl border border-navy/5 relative hover:border-gold transition flex flex-col h-full transform hover:-translate-y-2 duration-300">
+                {plan.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-navy text-white px-4 py-1 rounded-full text-sm font-bold">Best Value</span>}
+                <h3 className="text-xl font-black text-navy mb-4">{plan.name}</h3>
+                <div className="text-4xl font-black text-navy mb-6">{plan.price}<span className="text-sm opacity-60">/mo</span></div>
+                <ul className="space-y-3 mb-8 flex-1">
+                  {plan.features.map((f, i) => <li key={i} className="flex items-center gap-2 text-darkgray text-sm"><CheckCircle className="w-4 h-4 text-gold" /> {f}</li>)}
+                  <li className="flex items-center gap-2 text-darkgray text-sm font-bold"><Clock className="w-4 h-4 text-navy" /> {currentRegion.timezones} Adjusted</li>
+                </ul>
+                <button onClick={() => setShowPopup(true)} className="w-full py-4 rounded-xl font-black bg-navy text-white mt-auto hover:bg-gold hover:text-navy transition-colors">Start Free Trial in {currentRegion.name}</button>
               </div>
             ))}
           </div>
