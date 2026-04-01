@@ -711,43 +711,178 @@ const EnrollPopup = ({ showPopup, setShowPopup, handleSubmit, formStatus, COURSE
 
 
 const CoursesPage = ({ COURSES_DETAILED, navigateTo }) => (
-  <div className="min-h-screen bg-offwhite">
+  <div className="min-h-screen" style={{ background: 'linear-gradient(160deg, #FDFBF7 0%, #f3f0e8 50%, #FDFBF7 100%)' }}>
     <Helmet>
       <title>Our Quran Courses | Comprehensive Islamic Education Online</title>
       <meta name="description" content="Explore our range of online Quran and Islamic courses including Qaida, Hifz, Tajweed, and Arabic language for all ages." />
       <link rel="canonical" href="https://almaasonlinequranacademy.online/courses" />
     </Helmet>
-    <div className="pt-24 pb-20 px-4">
+
+    {/* Hero Header Section */}
+    <div style={{ background: 'linear-gradient(135deg, #0A1D37 0%, #112649 60%, #0A1D37 100%)' }} className="pt-28 pb-16 px-4 relative overflow-hidden">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-5" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l15 15-15 15-15-15L30 0zm0 60l15-15-15-15-15 15 15 15zM0 30l15-15 15 15-15 15L0 30zm60 0l-15-15-15 15 15 15 15-15z' fill='%23C5A059' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+        backgroundSize: '60px 60px'
+      }}></div>
+      {/* Glow blobs */}
+      <div className="absolute top-0 left-1/4 w-80 h-80 rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(197,160,89,0.15) 0%, transparent 70%)' }}></div>
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(197,160,89,0.10) 0%, transparent 70%)' }}></div>
+      <div className="max-w-7xl mx-auto relative z-10 text-center">
+        <h1 className="text-5xl font-black text-white mb-4">Our Courses</h1>
+        <p className="text-lg mb-0" style={{ color: 'rgba(255,255,255,0.65)' }}>Explore our comprehensive Islamic education programs</p>
+      </div>
+    </div>
+
+    {/* Courses List */}
+    <div className="pb-24 px-4" style={{ paddingTop: '3.5rem' }}>
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-5xl font-black text-navy mb-4 text-center">Our Courses</h1>
-        <p className="text-darkgray text-lg text-center mb-12">Explore our comprehensive Islamic education programs</p>
         <div className="space-y-8">
           {COURSES_DETAILED.map((course, idx) => (
-            <div key={idx} className="bg-offwhite border-2 border-navy/10 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition">
+            <div
+              key={idx}
+              className="rounded-2xl overflow-hidden relative"
+              style={{
+                background: '#ffffff',
+                border: '1px solid rgba(10,29,55,0.08)',
+                boxShadow: '0 2px 16px rgba(10,29,55,0.06), 0 1px 3px rgba(10,29,55,0.04)',
+                transition: 'transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-6px)';
+                e.currentTarget.style.boxShadow = '0 20px 48px rgba(10,29,55,0.14), 0 6px 16px rgba(10,29,55,0.08)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 2px 16px rgba(10,29,55,0.06), 0 1px 3px rgba(10,29,55,0.04)';
+              }}
+            >
+              {/* Top gold accent bar */}
+              <div style={{ height: '4px', background: 'linear-gradient(90deg, #C5A059 0%, #e8c97a 50%, #C5A059 100%)' }}></div>
+
               <div className="md:flex">
-                <div className="md:w-1/3 h-64 md:h-auto">
-                  <img src={course.image} alt={course.altText} className="w-full h-full object-cover" />
+                {/* Image column */}
+                <div className="md:w-2/5 relative" style={{ minHeight: '300px' }}>
+                  <div className="absolute inset-0 overflow-hidden">
+                    <img
+                      src={course.image}
+                      alt={course.altText}
+                      className="w-full h-full object-cover"
+                      style={{ transition: 'transform 0.5s ease' }}
+                      onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.07)'; }}
+                      onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}
+                    />
+                  </div>
+                  {/* Dark gradient overlay bottom */}
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(10,29,55,0.55) 0%, transparent 45%)' }}></div>
+                  {/* Right fade toward content */}
+                  <div className="absolute inset-0 pointer-events-none hidden md:block" style={{ background: 'linear-gradient(to right, transparent 70%, rgba(255,255,255,0.15) 100%)' }}></div>
+                  {/* Gold numbered badge */}
+                  <div
+                    className="absolute top-4 left-4 flex items-center justify-center font-black text-white rounded-full z-10"
+                    style={{
+                      width: '46px', height: '46px', fontSize: '15px',
+                      background: 'linear-gradient(135deg, #C5A059 0%, #a8843a 100%)',
+                      boxShadow: '0 4px 14px rgba(197,160,89,0.55)',
+                      border: '2.5px solid rgba(255,255,255,0.45)',
+                    }}
+                  >
+                    {String(idx + 1).padStart(2, '0')}
+                  </div>
+                  {/* Duration chip */}
+                  <div
+                    className="absolute bottom-4 left-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-white z-10"
+                    style={{ background: 'rgba(10,29,55,0.78)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.18)' }}
+                  >
+                    <Clock className="w-3.5 h-3.5" style={{ color: '#C5A059' }} />
+                    {course.duration}
+                  </div>
                 </div>
-                <div className="md:w-2/3 p-8">
-                  <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-3xl font-black text-navy">{course.title}</h3>
-                    <div className="text-right">
-                      <div className="inline-block bg-offwhite/50 border border-navy/10 text-navy px-3 py-1 rounded-full text-sm font-bold mb-2">{course.level}</div>
-                      <div className="text-slate-600 text-sm flex items-center gap-1"><Clock className="w-4 h-4" /> {course.duration}</div>
+
+                {/* Content column */}
+                <div className="md:w-3/5 p-7 flex flex-col justify-between" style={{ minHeight: '300px' }}>
+                  <div>
+                    {/* Title + level badge row */}
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <h3 className="text-2xl font-black leading-snug" style={{ color: '#0A1D37' }}>{course.title}</h3>
+                      <span
+                        className="flex-shrink-0 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider mt-0.5"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(197,160,89,0.18) 0%, rgba(197,160,89,0.06) 100%)',
+                          color: '#7A5520',
+                          border: '1px solid rgba(197,160,89,0.35)',
+                        }}
+                      >
+                        {course.level}
+                      </span>
+                    </div>
+
+                    {/* Short description */}
+                    <p className="text-sm leading-relaxed mb-5" style={{ color: '#4B5563' }}>{course.shortDesc}</p>
+
+                    {/* Gold divider */}
+                    <div className="mb-4" style={{ height: '1px', background: 'linear-gradient(90deg, rgba(197,160,89,0.35) 0%, transparent 100%)' }}></div>
+
+                    {/* What You Will Learn — pill tags */}
+                    <div className="mb-5">
+                      <div className="flex items-center gap-2 mb-3">
+                        <CheckCircle className="w-4 h-4 flex-shrink-0" style={{ color: '#C5A059' }} />
+                        <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#0A1D37' }}>What You Will Learn</span>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {course.whatYouLearn.map((item, i) => (
+                          <span
+                            key={i}
+                            className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full"
+                            style={{
+                              background: 'linear-gradient(135deg, #f9f6f0 0%, #f1ece0 100%)',
+                              color: '#374151',
+                              border: '1px solid rgba(197,160,89,0.28)',
+                            }}
+                          >
+                            <span style={{ color: '#C5A059', fontWeight: 900, fontSize: '10px' }}>✦</span>
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Summary quote block */}
+                    <div
+                      className="flex items-start gap-3 px-4 py-3.5 rounded-xl mb-5"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(10,29,55,0.03) 0%, rgba(197,160,89,0.05) 100%)',
+                        borderLeft: '3px solid #C5A059',
+                      }}
+                    >
+                      <span className="text-3xl leading-none flex-shrink-0" style={{ color: '#C5A059', fontFamily: 'Georgia, serif', marginTop: '-4px' }}>“</span>
+                      <p className="text-sm italic" style={{ color: '#4B5563' }}>{course.summary}</p>
                     </div>
                   </div>
-                  <p className="text-darkgray mb-6 leading-relaxed">{course.shortDesc}</p>
-                  <div className="mb-6">
-                    <h3 className="text-lg font-bold text-navy mb-3 flex items-center gap-2"><CheckCircle className="w-5 h-5" /> What You Will Learn:</h3>
-                    <ul className="grid md:grid-cols-2 gap-2">
-                      {course.whatYouLearn.map((item, i) => (
-                        <li key={i} className="flex items-start text-darkgray"><span className="text-navy mr-2">✓</span>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="bg-offwhite/50 border-l-4 border-navy p-4 mb-6"><p className="text-darkgray/90 italic">{course.summary}</p></div>
-                  <button onClick={() => navigateTo(`/courses/${course.slug}`)} className="w-full md:w-auto bg-gradient-to-r from-navy to-navy/90 text-white py-3 px-8 rounded-xl font-bold hover:from-navy/90 hover:to-navy/80 transition shadow-lg flex items-center justify-center gap-2">
-                    <BookOpen className="w-5 h-5" /> Learn More About {course.title}
+
+                  {/* CTA Button */}
+                  <button
+                    onClick={() => navigateTo(`/courses/${course.slug}`)}
+                    className="self-start flex items-center gap-2 text-sm font-bold px-6 py-3 rounded-xl text-white"
+                    style={{
+                      background: 'linear-gradient(135deg, #0A1D37 0%, #112952 100%)',
+                      boxShadow: '0 4px 16px rgba(10,29,55,0.3)',
+                      transition: 'transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease',
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.transform = 'scale(1.04)';
+                      e.currentTarget.style.boxShadow = '0 8px 28px rgba(10,29,55,0.4)';
+                      e.currentTarget.style.background = 'linear-gradient(135deg, #112952 0%, #1c3e76 100%)';
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.transform = 'scale(1)';
+                      e.currentTarget.style.boxShadow = '0 4px 16px rgba(10,29,55,0.3)';
+                      e.currentTarget.style.background = 'linear-gradient(135deg, #0A1D37 0%, #112952 100%)';
+                    }}
+                  >
+                    <BookOpen className="w-4 h-4" />
+                    Learn More About {course.title}
+                    <ChevronRight className="w-4 h-4" style={{ color: '#C5A059' }} />
                   </button>
                 </div>
               </div>
@@ -1814,16 +1949,27 @@ const FAQPage = ({ FAQS, activeFaq, setActiveFaq, navigateTo }) => {
   };
 
   return (
-    <div className="min-h-screen bg-offwhite">
+    <div className="min-h-screen" style={{ background: 'linear-gradient(160deg, #FDFBF7 0%, #f3f0e8 50%, #FDFBF7 100%)' }}>
       <Helmet>
         <title>Frequently Asked Questions | Almaas Online Quran Academy</title>
         <meta name="description" content="Find answers to common questions about our online Quran classes, teaching methods, and enrollment process." />
         <link rel="canonical" href="https://almaasonlinequranacademy.online/faq" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
-      <div className="pt-24 pb-20 px-4">
+
+      {/* Hero Header */}
+      <div style={{ background: 'linear-gradient(135deg, #0A1D37 0%, #112649 60%, #0A1D37 100%)' }} className="pt-28 pb-16 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l15 15-15 15-15-15L30 0zm0 60l15-15-15-15-15 15 15 15zM0 30l15-15 15 15-15 15L0 30zm60 0l-15-15-15 15 15 15 15-15z' fill='%23C5A059' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }}></div>
+        <div className="absolute top-0 left-1/4 w-80 h-80 rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(197,160,89,0.15) 0%, transparent 70%)' }}></div>
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(197,160,89,0.10) 0%, transparent 70%)' }}></div>
+        <div className="max-w-4xl mx-auto relative z-10 text-center">
+          <h1 className="text-5xl font-black text-white mb-4">Frequently Asked Questions</h1>
+          <p className="text-lg" style={{ color: 'rgba(255,255,255,0.65)' }}>Find answers to common questions about our online Quran classes</p>
+        </div>
+      </div>
+
+      <div className="pb-20 px-4" style={{ paddingTop: '3.5rem' }}>
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl font-black text-navy mb-12 text-center">Frequently Asked Questions</h1>
           <div className="space-y-4">
             {FAQS.map((faq, idx) => (
               <div key={idx} className="bg-white border-2 border-navy/10 rounded-2xl overflow-hidden shadow-sm">
